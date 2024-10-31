@@ -7,8 +7,9 @@ const routes = [
   {
     path: '/',
     component: IndexPage,
+    name: 'Accueil',
     meta: {
-      title: 'Vite + Vue + TypeScript + Tailwind Starter Template',
+      title: "Toul'Barz - Street Workout Toulouse",
     },
   },
   {
