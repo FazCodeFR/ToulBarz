@@ -7,7 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    3_column_with_illustrations_and_header: typeof import('./src/components/Mission.vue')['default']
+    4_column_with_company_mission: typeof import('./src/components/Footer.vue')['default']
+    Footer: typeof import('./src/components/Footer.vue')['default']
+    Formule: typeof import('./src/components/Formule.vue')['default']
+    Header: typeof import('./src/components/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Heroe: typeof import('./src/components/Heroe.vue')['default']
+    Mission: typeof import('./src/components/Mission.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
