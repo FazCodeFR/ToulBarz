@@ -8,6 +8,7 @@ const store = useStore()
     <!-- <HelloWorld msg="Hello World Component" /> -->
   <Mission></Mission>
   
+  <Stats></Stats>
   
   <Formule></Formule>
   
