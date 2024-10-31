@@ -5,6 +5,9 @@ const store = useStore()
 
 
   <Heroe/>
+
+  <StreetWorkout></StreetWorkout>
+
     <!-- <HelloWorld msg="Hello World Component" /> -->
   <Mission></Mission>
   
