@@ -71,7 +71,7 @@ const navigation = {
     { name: 'Notre vision', href: '#' },
     { name: 'Quelques chiffres', href: '#' },
     { name: 'Tarifs', href: '#' },
-    { name: 'Insights', href: '#' },
+    { name: 'Partenaires', href: '#' },
   ],
   support: [
     { name: 'Pricing', href: '#' },

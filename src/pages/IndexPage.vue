@@ -14,6 +14,8 @@ const store = useStore()
   <Stats></Stats>
   
   <Formule></Formule>
+
+  <Partenaire></Partenaire>
   
   <Footer></Footer>
 
