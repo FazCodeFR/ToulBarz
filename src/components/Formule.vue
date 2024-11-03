@@ -13,7 +13,7 @@
         <h3 :id="tier.id" class="text-base font-semibold leading-7 text-accent">{{ tier.name }}</h3>
         <p class="mt-4 flex items-baseline gap-x-2">
           <span class="text-5xl font-bold tracking-tight text-gray-900">{{ tier.priceMonthly }}</span>
-          <span class="text-base text-gray-500">/mois</span>
+          <span class="text-base text-gray-500"> / an</span>
         </p>
         <p class="mt-6 text-base leading-7 text-gray-600">{{ tier.description }}</p>
         <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 sm:mt-10">
@@ -36,7 +36,7 @@ const tiers = [
     name: 'Adhésion Classique',
     id: 'tier-classique',
     href: 'https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toulbarz-2024-2025',
-    priceMonthly: '10€',
+    priceMonthly: '95€',
     description: "Adapté aux niveaux débutant et intermédiaire",
     features: [
       'Accès exclusif aux séances hebdomadaires',
@@ -55,7 +55,7 @@ const tiers = [
     name: 'Adhésion Athlète',
     id: 'tier-athlete',
     href: 'https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toulbarz-2024-2025',
-    priceMonthly: '15€',
+    priceMonthly: '145€',
     description: "Adapté aux niveaux avancés",
     features: [
       'Accès à tous les avantages des adhérents classiques',
