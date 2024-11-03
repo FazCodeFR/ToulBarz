@@ -20,9 +20,9 @@
   
   <script setup>
   const stats = [
-    { id: 1, name: 'Adhérents sportifs', value: '32' },
-    { id: 2, name: 'Adhérents athlètes', value: '19' },
-    { id: 3, name: 'Bénévoles', value: '18' },
-    { id: 4, name: 'Événements organisés', value: '15' },
+    { id: 1, name: 'Adhérents', value: '56 ' },
+    { id: 2, name: 'Bénévoles', value: '18' },
+    { id: 3, name: 'Élèves rencontrés ', value: '426' },
+    { id: 4, name: 'Personnes initiées', value: '368' },
   ]
   </script>
