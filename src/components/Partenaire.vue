@@ -5,19 +5,19 @@
                 Les sponsors et partenaires
             </h2>
 
-            <div class="mx-auto mt-10 grid max-w-lg grid-cols-3 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div class="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-3 lg:max-w-none lg:grid-cols-4 lg:gap-x-10">
                 <div 
                     v-for="partenaire in partenaires" 
                     :key="partenaire.name" 
-                    class="flex flex-col items-center col-span-3 sm:col-span-1">
+                    class="flex flex-col items-center">
                     <img 
                         :src="partenaire.imgSrc" 
                         :alt="partenaire.name" 
                         class="h-24 w-24 object-contain"
                     />
-                    <p class=" text-lg font-semibold leading-8 tracking-tight text-gray-900">{{ partenaire.name }}</p>
+                    <p class=" text-lg text-center font-semibold leading-8 tracking-tight text-gray-900">{{ partenaire.name }}</p>
                     <div class="flex gap-x-2.5">
-                        <p class="text-sm leading-6 text-gray-600">{{ partenaire.description }}</p>
+                        <p class="text-sm text-center leading-6 text-gray-600">{{ partenaire.description }}</p>
                     </div>
                 </div>
             </div>
@@ -58,5 +58,17 @@ const partenaires = [
     link: 'https://gorletic.com',
     description: 'Matériel de sport'
   },
+  {
+    name : 'Strength and Balance',
+    imgSrc: '/img/partenaires/strengthandbalance.jpg',
+    link: 'https://strength-and-balance.fr/',
+    description: 'Vêtement de street workout'
+  },
+  {
+    name: 'CTGym',
+    imgSrc: '/img/partenaires/ctgym.jpg',
+    link: 'https://ctgym.fr/',
+    description: 'Salle de gym à Toulouse'
+  }
 ]
 </script> 
