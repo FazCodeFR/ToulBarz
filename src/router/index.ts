@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import DemoPage from '@/pages/DemoPage.vue'
 import IndexPage from '@/pages/IndexPage.vue'
+import AdhesionPage from '@/pages/AdhesionPage.vue'
+
 
 const routes = [
   {
@@ -10,6 +12,14 @@ const routes = [
     name: 'Accueil',
     meta: {
       title: "Toul'Barz - Street Workout Toulouse",
+    },
+  },
+  {
+    path: '/adhesion/',
+    component: AdhesionPage,
+    name: 'Adhésion',
+    meta: {
+      title: 'Adhésion - Toul\'Barz',
     },
   },
   {

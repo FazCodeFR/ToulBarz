@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 // See vite.config.ts for details about automatic imports
 const route = useRoute()
 
@@ -25,12 +26,12 @@ const thisYear = new Date().getFullYear()
 </script>
 
 <template>
-
-  <Header/>
-
   <main>
+    <Header/>
+    <ScrollTopButton />
     <router-view />
+    <Footer/>
   </main>
-  <!-- Footer here -->
 
+ 
 </template>

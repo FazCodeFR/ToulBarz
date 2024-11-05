@@ -29,10 +29,10 @@ const toggleMenu = () => {
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
         >Évènements</router-link>
-        <a href="#adhesion"
+        <router-link to="/adhesion"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
-          >Adhésion</a>
+          >Adhésion</router-link>
         <a href="#contact"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
