@@ -46,7 +46,7 @@
   <style scoped>
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.5s ease;
+    transition: opacity 1.0s ease;
   }
   .fade-enter-from,
   .fade-leave-to {
