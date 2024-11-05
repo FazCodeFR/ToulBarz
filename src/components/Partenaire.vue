@@ -6,7 +6,7 @@
       </h2>
 
       <!-- Section de logos avec défilement infini -->
-      <div class="logos group relative overflow-hidden whitespace-nowrap py-10 mt-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
+      <div class="logos group relative overflow-hidden whitespace-nowrap py-6 mt-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
         <div class="animate-slide-left-infinite group-hover:animation-pause inline-block w-max">
           <!-- Génère dynamiquement les logos et détails des partenaires -->
           <div
@@ -59,6 +59,18 @@
           </div>
         </div>
       </div>
+
+      <div class="text-center">
+        <a
+          href="https://www.instagram.com/toulbarz_tlb/"
+          target="_blank"
+          class="text-base items-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent"
+        >
+          [Devenir partenaire ?]
+        </a>
+      </div>
+      
+      
     </div>
   </div>
 </template>
