@@ -25,7 +25,7 @@ const toggleMenu = () => {
             active-class="text-accent"
           > Accueil
         </router-link >
-        <router-link to="/demo"
+        <router-link to="/event"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
         >Évènements</router-link>
