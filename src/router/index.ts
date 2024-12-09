@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DemoPage from '@/pages/DemoPage.vue'
 import IndexPage from '@/pages/IndexPage.vue'
 import AdhesionPage from '@/pages/AdhesionPage.vue'
+import EventPage from '@/pages/EventPage.vue'
 
 
 const routes = [
@@ -20,6 +21,13 @@ const routes = [
     name: 'Adhésion',
     meta: {
       title: 'Adhésion - Toul\'Barz',
+    },
+  },
+  {
+    path: '/event/',
+    component: EventPage,
+    meta: {
+      title: 'Événements - Toul\'Barz',
     },
   },
   {

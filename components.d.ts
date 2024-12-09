@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Adhesion: typeof import('./src/pages/AdhesionPage.vue')['default']
+    Event: typeof import('./src/components/Event.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Formule: typeof import('./src/components/Formule.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
