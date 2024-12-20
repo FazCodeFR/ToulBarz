@@ -3,9 +3,20 @@
     <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
       <div class="mx-auto max-w-4xl px-4 lg:max-w-none">
         <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          <div class="relative overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 order-2 lg:order-1">
-            <img src="/img/presentations/one_arm.jpg" alt="Street Workout" class="object-cover object-center w-full h-full" />
-            <div class="absolute inset-0 bg-black opacity-30"></div>
+          <div class="relative order-2 lg:order-1 h-full w-full">
+            <media-theme-sutro
+              style="--media-primary-color: #ff7f11;  --media-accent-color: #ff7f11;"
+              class="h-full w-full"
+            >
+              <youtube-video
+                slot="media"
+                src="https://www.youtube.com/watch?v=-S6mYskysIk"
+                playsinline
+                crossorigin
+                class="h-full w-full"
+                style="aspect-ratio: 16/9; max-height: 80vh;"
+              ></youtube-video>
+            </media-theme-sutro>
           </div>
           <div class="order-1 lg:order-2">
             <h2 class="text-5xl font-bold tracking-tight underline underline-offset-8 decoration-accent sm:text-6xl">C’est quoi le <br> street workout ?</h2>
@@ -18,3 +29,8 @@
     </div>
   </div>
 </template>
+
+<script setup>
+  import 'youtube-video-element';
+  import 'player.style/sutro';
+</script>
