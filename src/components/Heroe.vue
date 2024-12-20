@@ -15,11 +15,11 @@
             Quand la force devient une œuvre 
           </p>
 
-          <a href="#"
+          <router-link to="/boutique"
             class="mt-4 group relative inline-flex items-center justify-center rounded-full border-2 border-white p-3 text-white transition-all duration-200 hover:bg-white hover:text-black disabled:bg-gray-300 disabled:text-gray-500"
             aria-label="Je m'inscris">
             <span class="text-base font-light tracking-wide">Rejoins-nous</span>
-          </a>
+          </router-link>
 
           <div class="animate-bounce mt-12 flex items-center justify-center gap-x-6">
             <a href="#" class="text-6xl font-semibold leading-6 text-white">
