@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Action: typeof import('./src/components/Action.vue')['default']
     Adhesion: typeof import('./src/pages/AdhesionPage.vue')['default']
     Event: typeof import('./src/components/Event.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
@@ -14,7 +15,6 @@ declare module 'vue' {
     Header: typeof import('./src/components/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Heroe: typeof import('./src/components/Heroe.vue')['default']
-    Mission: typeof import('./src/components/Mission.vue')['default']
     Partenaire: typeof import('./src/components/Partenaire.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
