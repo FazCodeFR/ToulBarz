@@ -3,6 +3,7 @@ const store = useStore()
 </script>
 <template>
   <Heroe/>
+  <Vision></Vision>
   <StreetWorkout></StreetWorkout>
   <!-- <HelloWorld msg="Hello World Component" /> -->
   <Action></Action>
