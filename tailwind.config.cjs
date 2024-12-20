@@ -35,7 +35,7 @@ module.exports = {
         },
       },
       animation: {
-        'slide-left-infinite': 'slide-left 15s linear infinite',
+        'slide-left-infinite': 'slide-left 25s linear infinite',
       },
     },
   },

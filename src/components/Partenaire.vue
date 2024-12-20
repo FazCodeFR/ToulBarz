@@ -22,7 +22,7 @@
             <!-- Nom avec lien et styles -->
             <a
               :href="partenaire.link"
-              class="text-base text-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent duration-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="text-base text-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
               {{ partenaire.name }}
             </a>
@@ -48,12 +48,12 @@
             <!-- Nom avec lien et styles -->
             <a
               :href="partenaire.link"
-              class="text-base text-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent duration-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="text-base text-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent opacity-0 group-hover:opacity-100 transition-opacity duration-800"
             >
               {{ partenaire.name }}
             </a>
             <!-- Description visibles uniquement au survol -->
-            <p class="text-sm text-center leading-6 text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-sm text-center leading-6 text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-800">
               {{ partenaire.description }}
             </p>
           </div>
