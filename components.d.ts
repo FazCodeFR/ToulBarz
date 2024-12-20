@@ -21,5 +21,6 @@ declare module 'vue' {
     ScrollTopButton: typeof import('./src/components/ScrollTopButton.vue')['default']
     Stats: typeof import('./src/components/Stats.vue')['default']
     StreetWorkout: typeof import('./src/components/StreetWorkout.vue')['default']
+    Vision: typeof import('./src/components/Vision.vue')['default']
   }
 }
