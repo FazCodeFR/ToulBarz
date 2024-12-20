@@ -20,28 +20,28 @@ const toggleMenu = () => {
         </router-link>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <router-link to="/"
+        <router-link to="Street workout"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
-          > Accueil
+          >Street workout
         </router-link >
         <router-link to="/event"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
         >Évènements</router-link>
-        <router-link to="/adhesion"
+        <router-link to="/boutique"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
-          >Adhésion</router-link>
-        <a href="#contact"
+          >La boutique</router-link>
+        <!-- <a href="#contact"
             class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
             active-class="text-accent"
-        >Contact</a>
+        >Contact</a> -->
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <router-link to="/adhesion"
           class="rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-          Je m'inscris
+          Rejoins-nous
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -66,9 +66,9 @@ const toggleMenu = () => {
             <span class="sr-only">Toul'Barz</span>
             <img class="h-28 w-auto" src="/img/logo.webp" alt="Logo Toul'Barz">
           </router-link>
-          <router-link to="/adhesion"
+          <router-link to="/boutique"
             class="ml-auto rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Je m'inscris
+            Rejoins-nous
           </router-link>
           <button @click="toggleMenu" type="button" class="-m-2.5 rounded-md p-2.5 text-secondary">
             <span class="sr-only">Fermer le menu</span>
@@ -82,13 +82,21 @@ const toggleMenu = () => {
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
               <router-link to="/"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">Accueil</router-link>
-              <router-link to="/"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">Événements</router-link>
-              <router-link to="/adhesion"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">Adhésion</router-link>
-              <router-link to="/"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">Contact</router-link>
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">
+                Street workout
+              </router-link>
+              <router-link to="/event"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">
+                Événements
+              </router-link>
+              <router-link to="/boutique"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">
+                La boutique
+              </router-link>
+              <!-- <router-link to="/"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-secondary hover:bg-accent duration-200">
+                Contact
+              </router-link> -->
             </div>
           </div>
         </div>
