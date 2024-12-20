@@ -39,7 +39,7 @@ const toggleMenu = () => {
         >Contact</a> -->
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
-        <router-link to="/adhesion"
+        <router-link to="/boutique"
           class="rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
           Rejoins-nous
         </router-link>
