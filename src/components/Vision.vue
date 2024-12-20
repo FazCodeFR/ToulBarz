@@ -12,35 +12,45 @@
       </p>
     </div>
 
-    <div class="mt-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="text-center">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-accent text-white mx-auto">
-            <!-- Icon -->
-            <span class="text-white w-7 h-7 i-mdi-account-voice"></span>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <div v-for="feature in features" :key="feature.name" class="flex flex-col">
+            <dt class="text-lg font-semibold leading-7 text-gray-900">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
+                <div :class="feature.icon" class="h-6 w-6 text-white" aria-hidden="true" />
+              </div>
+              {{ feature.name }}
+            </dt>
+            <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">{{ feature.description }}</p>
+            </dd>
           </div>
-          <h3 class="mt-4 text-lg leading-6 font-medium text-gray-900">Audace</h3>
-          <p class="mt-2 text-base text-gray-700">Déconstruire les préjugés et explorer de nouveaux espaces.</p>
-        </div>
-        <div class="text-center">
-          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-accent text-white mx-auto">
-            <!-- Icon -->
-            <span class="text-white w-7 h-7 i-mdi-account-voice"></span>
-          </div>
-          <h3 class="mt-4 text-lg leading-6 font-medium text-gray-900">Collectif</h3>
-          <p class="mt-2 text-base text-gray-700">La force du groupe pour célébrer la diversité et la créativité.</p>
-        </div>
-        <div class="text-center">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-accent text-white mx-auto">
-            <!-- Icon -->
-            <span class="text-white w-7 h-7 i-mdi-account-voice"></span>
-          </div>
-          <h3 class="mt-4 text-lg leading-6 font-medium text-gray-900">Innovation</h3>
-          <p class="mt-2 text-base text-gray-700">Moderniser les cultures urbaines tout en respectant leurs racines.</p>
-        </div>
+        </dl>
       </div>
-    </div>
   </div>
 </section>
 </template>
   
+
+<script setup>
+const features = [
+  {
+    name: 'Accessibilité',
+    description:
+      'Rendre le street workout accessible à tous, en proposant des entraînements adaptés à tous les niveaux et des infrastructures ouvertes à la communauté.',
+    icon: "i-mdi-account-voice",
+  },
+  {
+    name: 'Communauté',
+    description:
+      'Créer un esprit d\'entraide et de partage, en réunissant des passionnés pour s\'entraîner ensemble et s\'encourager à dépasser nos limites.',
+    icon: "i-mdi-account-voice",
+  },
+  {
+    name: 'Progression',
+    description:
+      'Accompagner chaque membre dans son évolution physique et mentale, grâce à des conseils personnalisés et des événements motivants.',
+    icon: "i-mdi-account-voice",
+  },
+]
+</script>
