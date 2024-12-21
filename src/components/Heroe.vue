@@ -7,7 +7,7 @@
       </div>
       <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:py-32">
         <div class="flex flex-col items-center text-center">
-          <img class="h-80 w-auto" src="/img/logo.webp" alt="Logo Toul'Barz">
+          <img class="hover:animate-pulse h-80 w-auto" src="/img/logo.webp" alt="Logo Toul'Barz">
           <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             TOUL'BARZ
           </h1>
