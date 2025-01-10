@@ -10,7 +10,7 @@
         </h1>
 
         <!-- Introduction -->
-        <h2 class="mt-16 text-lg font-medium tracking-tight text-gray-800 sm:text-xl">
+        <h2 class="mt-16 mb-8 text-lg font-medium tracking-tight text-gray-800 sm:text-xl">
           Découvrez nos prochains événements :
         </h2>
 
