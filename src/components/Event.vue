@@ -144,6 +144,22 @@ const formatDate = (date) =>
     minute: '2-digit',
   });
 
+  // Fonction pour récupérer l'URL de l'image depuis l'API Google Drive (en public)
+  const fetchGoogleDriveImage = async (fileId) => {
+    const driveUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
+
+    try {
+      const response = await fetch(driveUrl);
+      if (!response.ok) {
+        throw new Error('Erreur lors de la récupération de l\'image depuis Google Drive');
+      }
+      return response.url;
+    } catch (error) {
+      console.error('Erreur lors de la récupération de l\'image Google Drive :', error);
+      return ''; // Retourner une chaîne vide si l'image ne peut pas être récupérée
+    }
+  };
+
   const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
   try {
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30`;
@@ -151,16 +167,28 @@ const formatDate = (date) =>
     if (!response.ok) throw new Error('Erreur lors de la récupération des événements');
     const data = await response.json();
     const now = new Date();
-    eventsRef.value = data.items
-      .map((event) => ({
-        id: event.id,
-        summary: event?.summary || 'Sans titre',
-        description: event?.description || '',
-        location: event?.location || 'Lieu non spécifié',
-        start: new Date(event.start?.dateTime || event.start?.date),
-        end: new Date(event.end?.dateTime || event.end?.date),
-      }))
-      .filter((event) => event.end > now); // Filtrer les événements passés
+    const fetchedEvents = await Promise.all(
+      data.items.map(async (event) => {
+        const fileId = event.attachments?.[0]?.fileId || '';
+        const type = event.attachments?.[0]?.mimeType || '';
+        let imageUrl = '';
+        if (fileId && type.includes('image')) {
+          imageUrl = await fetchGoogleDriveImage(fileId);
+        }
+
+        return {
+          id: event.id,
+          summary: event?.summary || 'Sans titre',
+          description: event?.description || '',
+          location: event?.location || 'Lieu non spécifié',
+          start: new Date(event.start?.dateTime || event.start?.date),
+          end: new Date(event.end?.dateTime || event.end?.date),
+          imageUrl, // URL de l'image
+        };
+      })
+    );
+
+    eventsRef.value = fetchedEvents.filter((event) => event.end > now); // Filtrer les événements passés
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
   }
