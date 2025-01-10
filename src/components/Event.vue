@@ -4,8 +4,7 @@
       <div class="mx-auto max-w-2xl lg:max-w-4xl">
 
         <!-- Titre principal -->
-        <h1
-          class="text-center text-3xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-4xl lg:text-5xl">
+        <h1 class="text-center text-3xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-4xl lg:text-5xl">
           Événements de l'association
         </h1>
 
@@ -45,8 +44,8 @@
           </div>
         </div>
 
-        <!-- Skeleton -->
-        <template v-if="isLoading">
+      <!-- Skeleton -->
+      <template v-if="isLoading">
           <div class="bg-white py-2 sm:py-24 animate-pulse">
             <div class="space-y-16 lg:space-y-20">
               <article class="relative isolate flex flex-col gap-6 lg:flex-row">
@@ -81,10 +80,18 @@
           <article v-for="event in getActiveEvents" :key="event.id" class="relative isolate flex flex-col gap-6 lg:flex-row">
             <div class="relative aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] lg:w-96 lg:shrink-0 group">
               <img
-                :src="event.imageUrl || defaultImage"
+                v-if="event.imageUrl"
+                :src="event.imageUrl"
                 alt="Image de l'événement"
                 loading="lazy"
                 class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+              />
+              <img
+                v-else
+                :src="defaultImage"
+                alt="Image par défaut"
+                loading="lazy"
+                class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
               />
               <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
             </div>
@@ -144,23 +151,23 @@ const formatDate = (date) =>
     minute: '2-digit',
   });
 
-  // Fonction pour récupérer l'URL de l'image depuis l'API Google Drive (en public)
-  const fetchGoogleDriveImage = async (fileId) => {
-    const driveUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
+// Fonction pour récupérer l'URL de l'image depuis l'API Google Drive (en public)
+const fetchGoogleDriveImage = async (fileId) => {
+  const driveUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
 
-    try {
-      const response = await fetch(driveUrl);
-      if (!response.ok) {
-        throw new Error('Erreur lors de la récupération de l\'image depuis Google Drive');
-      }
-      return response.url;
-    } catch (error) {
-      console.error('Erreur lors de la récupération de l\'image Google Drive :', error);
-      return ''; // Retourner une chaîne vide si l'image ne peut pas être récupérée
+  try {
+    const response = await fetch(driveUrl);
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération de l\'image depuis Google Drive');
     }
-  };
+    return response.url;
+  } catch (error) {
+    console.error('Erreur lors de la récupération de l\'image Google Drive :', error);
+    return ''; // Retourner une chaîne vide si l'image ne peut pas être récupérée
+  }
+};
 
-  const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
+const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
   try {
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30`;
     const response = await fetch(url);
@@ -193,7 +200,6 @@ const formatDate = (date) =>
     console.error('Erreur lors de la récupération des événements :', error);
   }
 };
-
 
 onMounted(async () => {
   await Promise.all([
