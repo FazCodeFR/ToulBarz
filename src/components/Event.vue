@@ -45,8 +45,39 @@
           </div>
         </div>
 
+        <!-- Skeleton -->
+        <template v-if="isLoading">
+          <div class="bg-white py-2 sm:py-24 animate-pulse">
+            <div class="space-y-16 lg:space-y-20">
+              <article class="relative isolate flex flex-col gap-6 lg:flex-row">
+                <div class="relative aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] lg:w-96 lg:shrink-0">
+                  <div class="h-full w-full rounded-2xl bg-gray-200"></div>
+                </div>
+                <div>
+                  <div class="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
+                  <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                  <div class="mt-5 h-6 bg-gray-200 rounded w-full"></div>
+                  <div class="mt-4 h-6 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </article>
+              <!-- Ajout de plusieurs squelettes si nécessaire -->
+              <article class="relative isolate flex flex-col gap-6 lg:flex-row">
+                <div class="relative aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] lg:w-96 lg:shrink-0">
+                  <div class="h-full w-full rounded-2xl bg-gray-200"></div>
+                </div>
+                <div>
+                  <div class="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
+                  <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                  <div class="mt-5 h-6 bg-gray-200 rounded w-full"></div>
+                  <div class="mt-4 h-6 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </template>
+
         <!-- Event List -->
-        <div v-if="getActiveEvents.length" class="mt-12 space-y-16 lg:space-y-20">
+        <div v-else-if="getActiveEvents.length" class="mt-12 space-y-16 lg:space-y-20">
           <article v-for="event in getActiveEvents" :key="event.id" class="relative isolate flex flex-col gap-6 lg:flex-row">
             <div class="relative aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] lg:w-96 lg:shrink-0 group">
               <img
@@ -71,7 +102,6 @@
                 <p class="mt-5 mb-2 text-sm leading-6 text-gray-600">
                   {{ event.description || 'Aucune description disponible' }}
                 </p>
-
                 <a
                   v-if="event.location"
                   :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`"
@@ -92,13 +122,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-const CALENDAR_PUBLIC_ID = import.meta.env.VITE_CALENDAR_PUBLIC_ID;
-const CALENDAR_MEMBERS_ID = import.meta.env.VITE_CALENDAR_MEMBERS_ID;
-
-
+const isLoading = ref(true); // État de chargement
 const activeTab = ref('public');
 const eventsPublic = ref([]);
 const eventsMembers = ref([]);
@@ -118,71 +144,34 @@ const formatDate = (date) =>
     minute: '2-digit',
   });
 
-
 const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
-  console.log('🚀 ~ fetchGoogleCalendarEvents ~ GOOGLE_API_KEY:', GOOGLE_API_KEY);
-  
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${GOOGLE_API_KEY}`;
-
   try {
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Erreur lors de la récupération des événements');
     const data = await response.json();
-    console.log('🚀 ~ fetchGoogleCalendarEvents ~ data:', data);
-    const now = new Date();
-    const fetchedEvents = await Promise.all(
-      data.items.map(async (event) => {
-        const fileId = event.attachments?.[0]?.fileId || '';
-        const type = event.attachments?.[0]?.mimeType || '';
-        let imageUrl = '';
-        if (fileId && type.includes('image')) {
-          imageUrl = await fetchGoogleDriveImage(fileId);
-        }
-
-        return {
-          id: event.id,
-          summary: event?.summary || 'Sans titre',
-          description: event?.description || '',
-          location: event?.location || 'Lieu non spécifié',
-          start: event.start?.dateTime || event.start?.date, // Date de début
-          end: event.end?.dateTime || event.end?.date,       // Date de fin
-          imageUrl, // URL de l'image
-        };
-      })
-    );
-
-    eventsRef.value = fetchedEvents
-
-    console.log('🚀 ~ fetchGoogleCalendarEvents ~ eventsRef.value:', eventsRef.value);
+    eventsRef.value = data.items.map((event) => ({
+      id: event.id,
+      summary: event?.summary || 'Sans titre',
+      description: event?.description || '',
+      location: event?.location || 'Lieu non spécifié',
+      start: event.start?.dateTime || event.start?.date,
+      end: event.end?.dateTime || event.end?.date,
+    }));
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
   }
 };
 
-// Fonction pour récupérer l'URL de l'image depuis l'API Google Drive (en public)
-const fetchGoogleDriveImage = async (fileId) => {
-  const driveUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${GOOGLE_API_KEY}`;
-
-  try {
-    const response = await fetch(driveUrl);
-
-    if (!response.ok) {
-      throw new Error('Erreur lors de la récupération de l\'image depuis Google Drive');
-    }
-    return response.url;
-  } catch (error) {
-    console.error('Erreur lors de la récupération de l\'image Google Drive :', error);
-    return ''; // Retourner une chaîne vide si l'image ne peut pas être récupérée
-  }
-};
-
-onMounted(() => {
-  fetchGoogleCalendarEvents(CALENDAR_PUBLIC_ID, eventsPublic);
-  fetchGoogleCalendarEvents(CALENDAR_MEMBERS_ID, eventsMembers);
+onMounted(async () => {
+  await Promise.all([
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic),
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers),
+  ]);
+  isLoading.value = false; // Arrêter le chargement
 });
 
 const getActiveEvents = computed(() =>
   activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value
 );
 </script>
-
