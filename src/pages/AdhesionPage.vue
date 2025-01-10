@@ -1,4 +1,6 @@
 <template>
+
+    <Formule></Formule>
     <iframe 
         id="haWidget"
         allowtransparency="true"

@@ -18,12 +18,12 @@
         <p class="mt-6 text-base leading-7 text-gray-600">{{ tier.description }}</p>
         <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600 sm:mt-10">
           <li v-for="feature in tier.features" :key="feature" class="flex gap-x-3">
-            <!-- <CheckIcon class="h-6 w-5 flex-none text-indigo-600" aria-hidden="true" /> -->
             <span class="i-mdi-checkbox-marked-circle h-6 w-5 flex-none text-accent"></span>
             {{ feature }}
           </li>
         </ul>
-        <router-link to="/boutique" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">
+        <!-- Check if the current route is not '/boutique' -->
+        <router-link v-if="route.path !== '/boutique'" to="/boutique" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">
           Commencez dès aujourd'hui
         </router-link>
       </div>
@@ -32,6 +32,9 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const tiers = [
   {
