@@ -5,7 +5,7 @@
     </div>
     <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
         <h2 class="text-base font-semibold leading-7 text-accent">Tarifs</h2>
-        <p class="mt-2 text-4xl font-bold tracking-tight  underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl">Choisissez l'offre qui vous correspond</p>
+        <p class="mt-2 text-4xl font-bold tracking-tight  underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl" v-text=" route.path !== '/boutique' ? 'Choisissez l\'offre qui vous correspond' : 'Avantage adhérents'"></p>
     </div>
     <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Adaptez votre adhésion selon vos besoins et objectifs avec Toul'Barz.</p>
     <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
