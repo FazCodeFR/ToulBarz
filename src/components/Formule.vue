@@ -23,7 +23,9 @@
             {{ feature }}
           </li>
         </ul>
-        <a :href="tier.href" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">Commencez dès aujourd'hui</a>
+        <router-link to="/boutique" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">
+          Commencez dès aujourd'hui
+        </router-link>
       </div>
     </div>
   </div>
@@ -35,7 +37,6 @@ const tiers = [
   {
     name: 'Adhésion Classique',
     id: 'tier-classique',
-    href: 'https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toulbarz-2024-2025',
     priceMonthly: '95€',
     description: "Adapté aux niveaux débutant et intermédiaire",
     features: [
@@ -54,7 +55,6 @@ const tiers = [
   {
     name: 'Adhésion Athlète',
     id: 'tier-athlete',
-    href: 'https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toulbarz-2024-2025',
     priceMonthly: '145€',
     description: "Adapté aux niveaux avancés",
     features: [
