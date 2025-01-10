@@ -38,19 +38,19 @@ const features = [
     name: 'Accessibilité',
     description:
       'Rendre le street workout accessible à tous, en proposant des entraînements adaptés à tous les niveaux et des infrastructures ouvertes à la communauté.',
-    icon: "i-mdi-account-voice",
+    icon: "i-mdi-human-greeting-variant",
   },
   {
     name: 'Communauté',
     description:
       'Créer un esprit d\'entraide et de partage, en réunissant des passionnés pour s\'entraîner ensemble et s\'encourager à dépasser nos limites.',
-    icon: "i-mdi-account-voice",
+    icon: "i-mdi-account-group",
   },
   {
     name: 'Progression',
     description:
       'Accompagner chaque membre dans son évolution physique et mentale, grâce à des conseils personnalisés et des événements motivants.',
-    icon: "i-mdi-account-voice",
+    icon: "i-mdi-trending-up",
   },
 ]
 </script>
