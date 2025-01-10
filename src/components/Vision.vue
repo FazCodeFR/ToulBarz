@@ -1,5 +1,5 @@
 <template>
-<section class="bg-white py-16 sm:py-24">
+<section id="vision-section" class="bg-white py-16 sm:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <p class="mt-1 text-5xl font-bold text-gray-900 sm:text-6xl sm:tracking-tight underline underline-offset-8 decoration-accent">
