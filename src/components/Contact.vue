@@ -2,7 +2,7 @@
     <div class="bg-white pb-10 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
-            Contact
+            Viens nous rencontrer
         </h2>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
             Rejoins-nous et découvre notre communauté en pleine action !
