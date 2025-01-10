@@ -144,24 +144,28 @@ const formatDate = (date) =>
     minute: '2-digit',
   });
 
-const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
+  const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
   try {
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}`;
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Erreur lors de la récupération des événements');
     const data = await response.json();
-    eventsRef.value = data.items.map((event) => ({
-      id: event.id,
-      summary: event?.summary || 'Sans titre',
-      description: event?.description || '',
-      location: event?.location || 'Lieu non spécifié',
-      start: event.start?.dateTime || event.start?.date,
-      end: event.end?.dateTime || event.end?.date,
-    }));
+    const now = new Date();
+    eventsRef.value = data.items
+      .map((event) => ({
+        id: event.id,
+        summary: event?.summary || 'Sans titre',
+        description: event?.description || '',
+        location: event?.location || 'Lieu non spécifié',
+        start: new Date(event.start?.dateTime || event.start?.date),
+        end: new Date(event.end?.dateTime || event.end?.date),
+      }))
+      .filter((event) => event.end > now); // Filtrer les événements passés
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
   }
 };
+
 
 onMounted(async () => {
   await Promise.all([
