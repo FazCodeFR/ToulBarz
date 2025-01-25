@@ -29,7 +29,7 @@ onUnmounted(() => {
   <header
     :class="[
       'sticky top-0 z-50 transition-all duration-300 ease-in-out',
-      isScrolled ? 'bg-primary/70 backdrop-blur-md shadow-md h-16' : 'bg-primary h-32'
+      isScrolled ? 'bg-primary/70 backdrop-blur-md shadow-md h-18' : 'bg-primary h-32'
     ]"
   >
     <nav
