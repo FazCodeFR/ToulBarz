@@ -25,20 +25,24 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Header avec réduction au scroll -->
+  <!-- Fond noir statique -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-black z-40"></div>
+
+  <!-- Navbar sticky -->
   <header
-    :class="[
+    :class="[ 
       'sticky top-0 z-50 transition-all duration-300 ease-in-out',
       isScrolled ? 'bg-primary/70 backdrop-blur-md shadow-md h-18' : 'bg-primary h-32'
     ]"
   >
     <nav
-      :class="[
+      :class="[ 
         'mx-auto flex max-w-7xl items-center justify-between gap-x-6 transition-all duration-300 ease-in-out',
         isScrolled ? 'p-4' : 'p-6'
       ]"
       aria-label="Global"
     >
+      <!-- Logo -->
       <div class="flex lg:flex-1">
         <router-link to="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Toul'Barz</span>
@@ -49,9 +53,11 @@ onUnmounted(() => {
           >
         </router-link>
       </div>
+
+      <!-- Menu desktop -->
       <div class="hidden lg:flex lg:gap-x-12">
         <router-link
-          to="Street workout"
+          to="/"
           class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
           active-class="text-accent"
         >
@@ -72,18 +78,19 @@ onUnmounted(() => {
           La boutique
         </router-link>
       </div>
+
+      <!-- CTA et bouton mobile -->
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <router-link
           to="/boutique"
-          class="rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          class="hidden lg:inline-block rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Rejoins-nous
         </router-link>
-      </div>
-      <div class="flex lg:hidden">
+
         <button
           type="button"
-          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          class="lg:hidden -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           @click="toggleMenu"
         >
           <span class="sr-only">Ouvrir le menu</span>
@@ -107,20 +114,17 @@ onUnmounted(() => {
 
     <!-- Menu mobile -->
     <div v-if="isMenuOpen" class="lg:hidden" role="dialog" aria-modal="true">
-      <div class="fixed inset-0 z-10 bg-primary opacity-75"></div>
+      <!-- Overlay -->
+      <div class="fixed inset-0 z-10 bg-black bg-opacity-75"></div>
+
+      <!-- Menu -->
       <div
-        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-primary px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+        class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-primary px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center gap-x-6">
           <router-link to="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Toul'Barz</span>
-            <img class="h-28 w-auto" src="/img/logo.webp" alt="Logo Toul'Barz">
-          </router-link>
-          <router-link
-            to="/boutique"
-            class="ml-auto rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Rejoins-nous
+            <img class="h-12 w-auto" src="/img/logo.webp" alt="Logo Toul'Barz">
           </router-link>
           <button
             @click="toggleMenu"
