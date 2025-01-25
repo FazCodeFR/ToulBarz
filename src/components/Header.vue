@@ -53,7 +53,7 @@ onUnmounted(() => {
         <router-link to="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Toul'Barz</span>
           <img
-            :class="[isScrolled ? 'h-12 w-auto' : 'h-16 w-auto']"
+            :class="[isScrolled ? 'h-14 w-auto' : 'h-16 w-auto']"
             src="/img/logo.webp"
             alt="Logo Toul'Barz"
           >
@@ -62,22 +62,34 @@ onUnmounted(() => {
       <div class="hidden lg:flex lg:gap-x-12">
         <router-link
           to="Street workout"
-          class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
-          active-class="text-accent"
+          :class="[
+            'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
+            $route.path === '/street-workout' 
+              ? 'text-accent border-b-2 border-accent' 
+              : 'text-secondary hover:text-accent hover:border-accent'
+          ]"
         >
           Street workout
         </router-link>
         <router-link
           to="/event"
-          class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
-          active-class="text-accent"
+          :class="[
+            'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
+            $route.path === '/event' 
+              ? 'text-accent border-b-2 border-accent' 
+              : 'text-secondary hover:text-accent hover:border-accent'
+          ]"
         >
           Événements
         </router-link>
         <router-link
           to="/boutique"
-          class="text-base font-semibold leading-6 text-secondary py-2 pr-4 pl-3 border-b-2 border-transparent hover:text-accent hover:border-accent duration-200"
-          active-class="text-accent"
+          :class="[
+            'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
+            $route.path === '/boutique' 
+              ? 'text-accent border-b-2 border-accent' 
+              : 'text-secondary hover:text-accent hover:border-accent'
+          ]"
         >
           La boutique
         </router-link>
@@ -98,11 +110,11 @@ onUnmounted(() => {
         >
           <span class="sr-only">Ouvrir le menu</span>
           <svg
-            class="h-6 w-6"
+            class="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
-            stroke="currentColor"
+            stroke="black"
             aria-hidden="true"
           >
             <path
@@ -120,31 +132,40 @@ onUnmounted(() => {
       <router-link
         to="Street workout"
         @click="closeMenu"
-        class="block py-2 px-4 text-white hover:bg-accent"
+        :class="[
+          'block py-2 px-4 text-white duration-200',
+          $route.path === '/street-workout' 
+            ? 'bg-accent text-secondary' 
+            : 'hover:bg-accent hover:text-secondary'
+        ]"
       >
         Street workout
       </router-link>
       <router-link
         to="/event"
         @click="closeMenu"
-        class="block py-2 px-4 text-white hover:bg-accent"
+        :class="[
+          'block py-2 px-4 text-white duration-200',
+          $route.path === '/event' 
+            ? 'bg-accent text-secondary' 
+            : 'hover:bg-accent hover:text-secondary'
+        ]"
       >
         Événements
       </router-link>
       <router-link
         to="/boutique"
         @click="closeMenu"
-        class="block py-2 px-4 text-white hover:bg-accent"
+        :class="[
+          'block py-2 px-4 text-white duration-200',
+          $route.path === '/boutique' 
+            ? 'bg-accent text-secondary' 
+            : 'hover:bg-accent hover:text-secondary'
+        ]"
       >
         La boutique
       </router-link>
-      <router-link
-        to="/boutique"
-        @click="closeMenu"
-        class="block py-2 px-4 text-white hover:bg-accent"
-      >
-        Rejoins-nous
-      </router-link>
     </div>
+
   </header>
 </template>
