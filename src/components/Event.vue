@@ -35,12 +35,13 @@
             class="border rounded-lg p-4 shadow-sm"
             :min-date="new Date()"
             :attributes="calendarAttributes"
+            @dayclick="handleDayClick"
           />
         </div>
 
         <!-- Event List -->
         <div v-if="getActiveEvents.length" class="lg:w-2/3 space-y-16 lg:space-y-20">
-          <article v-for="event in getActiveEvents" :key="event.id" class="relative isolate flex flex-col gap-6 w-full">
+          <article v-for="event in getActiveEvents" :key="event.id" :id="`event-${event.id}`" class="relative isolate flex flex-col gap-6 w-full">
             <div>
               <div class="flex items-center gap-x-2 text-lg">
                 <time :datetime="event.start" class="text-gray-500">
@@ -73,7 +74,6 @@
   </div>
 </template>
 
-
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { Calendar, DatePicker } from 'v-calendar';
@@ -101,14 +101,21 @@ const formatDate = (date) => {
 };
 
 const calendarAttributes = computed(() => {
-  return getActiveEvents.value.map(event => ({
-    key: event.id,
-    dates: event.start,
-    dot: 'red',
-    popover: {
-      label: event.summary,
-    },
-  }));
+  const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
+
+  return getActiveEvents.value.map(event => {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    return {
+      key: event.id,
+      dates: event.start,
+      dot: randomColor,
+      // highlight: randomColor,
+      popover: {
+        label: event.summary,
+      },
+    };
+  });
 });
 
 const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
@@ -145,4 +152,22 @@ onMounted(async () => {
 const getActiveEvents = computed(() =>
   activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value
 );
+
+function handleDayClick(day) {
+  // Parcourir les attributs du calendrier pour trouver les événements associés à la date cliquée
+  const eventOnDay = calendarAttributes.value.find(attr => {
+    // Vérifier si la date de l'événement correspond à la date cliquée
+    return attr.dates.toDateString() === day.date.toDateString();
+  });
+  if (eventOnDay) {
+    const eventElement = document.getElementById(`event-${eventOnDay.key}`);
+    const scrollTop = eventElement.offsetTop + 20;
+    if (eventElement) {
+      window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+    }
+  }
+}
+
+
+
 </script>
