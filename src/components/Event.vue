@@ -29,8 +29,17 @@
           </div>
         </div>
 
+        <div class="mt-12 flex flex-col lg:flex-row gap-8">
+        <div class="lg:sticky lg:top-40 lg:w-1/3 self-start">
+          <Calendar
+            class="border rounded-lg p-4 shadow-sm"
+            :min-date="new Date()"
+            :attributes="calendarAttributes"
+          />
+        </div>
+
         <!-- Event List -->
-        <div v-if="getActiveEvents.length" class="mt-12 space-y-16 lg:space-y-20">
+        <div v-if="getActiveEvents.length" class="lg:w-2/3 space-y-16 lg:space-y-20">
           <article v-for="event in getActiveEvents" :key="event.id" class="relative isolate flex flex-col gap-6 w-full">
             <div>
               <div class="flex items-center gap-x-2 text-lg">
@@ -60,12 +69,15 @@
         <p v-else class="mt-8 text-center text-gray-600">Aucun événement à afficher pour le moment.</p>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { Calendar, DatePicker } from 'v-calendar';
+import 'v-calendar/style.css';
 
 const isLoading = ref(true);
 const activeTab = ref('public');
@@ -87,6 +99,17 @@ const formatDate = (date) => {
     minute: '2-digit',
   });
 };
+
+const calendarAttributes = computed(() => {
+  return getActiveEvents.value.map(event => ({
+    key: event.id,
+    dates: event.start,
+    dot: 'red',
+    popover: {
+      label: event.summary,
+    },
+  }));
+});
 
 const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
   try {
