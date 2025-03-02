@@ -8,19 +8,20 @@
         </div>
 
         <!-- Tab -->
-        <div>
-          <div class="sm:hidden">
-            <label for="tabs" class="sr-only">Sélectionner un onglet</label>
+        <div class="sticky top-20 z-10 bg-white">
+          <div class="sm:hidden w-full">
+            <label for="tabs" class="w-full sr-only">Sélectionner un onglet</label>
             <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-accent focus:ring-accent" v-model="activeTab">
               <option v-for="tab in tabs" :key="tab.name" :value="tab.key">{{ tab.name }}</option>
             </select>
           </div>
+
           <div class="hidden sm:block">
             <div class="border-b border-gray-200">
               <nav class="-mb-px flex" aria-label="Tabs">
-                <a v-for="tab in tabs" :key="tab.name" href="#" 
-                  :class="[tab.key === activeTab ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'w-1/2 border-b-2 py-4 px-1 text-center text-sm font-medium']" 
-                  @click.prevent="console.log('Changement de tab:', tab.key); activeTab = tab.key" :aria-current="tab.key === activeTab ? 'page' : undefined">
+                <a v-for="tab in tabs" :key="tab.name" href="#"
+                  :class="[tab.key === activeTab ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'w-1/2 border-b-2 py-4 px-1 text-center text-sm font-medium']"
+                  @click.prevent="activeTab = tab.key" :aria-current="tab.key === activeTab ? 'page' : undefined">
                   {{ tab.name }}
                 </a>
               </nav>
@@ -41,7 +42,7 @@
                 <h3 class="mt-1 text-2xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   {{ event.summary }}
                 </h3>
-                <p class="mt-5 mb-2 text-sm leading-6 text-gray-600" 
+                <p class="mt-5 mb-2 text-sm leading-6 text-gray-600"
                   v-html="event.description || 'Aucune description disponible'">
                 </p>
                 <template v-if="event.location !== 'Lieu non spécifié'">
@@ -61,6 +62,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
