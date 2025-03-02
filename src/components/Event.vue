@@ -93,10 +93,7 @@ const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Erreur lors de la récupération des événements');
     const data = await response.json();
-    
-    console.log(`Données récupérées pour ${calendarId}:`, data); // Vérification
 
-    
     const fetchedEvents = data.items.map((event) => ({
       id: event.id,
       summary: event?.summary || 'Sans titre',
@@ -105,14 +102,7 @@ const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
       start: new Date(event.start?.dateTime || event.start?.date),
       end: new Date(event.end?.dateTime || event.end?.date),
     }));
-
-    console.log(`Événements filtrés pour ${calendarId}:`, fetchedEvents); // Vérification
-    // console.log(`Mise à jour1 de eventsRef pour eventsPublic`, eventsPublic.value);
-    // console.log(`Mise à jour1 de eventsRef pour eventsMembers`, eventsMembers.value);
     eventsRef.value = fetchedEvents.filter((event) => event.end > now);
-    console.log(`Mise à jour2 de eventsRef pour eventsPublic`, eventsPublic.value);
-    console.log(`Mise à jour2 de eventsRef pour eventsMembers`, eventsMembers.value);
-
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
   }
@@ -127,20 +117,7 @@ onMounted(async () => {
   isLoading.value = false;
 });
 
-const getActiveEvents = computed(() => {
-  console.log('🔄 Changement de activeTab:', activeTab.value);
-  // console.log('📌 eventsMembers:', eventsMembers.value);
-  // console.log('📌 eventsPublic:', eventsPublic.value);
-  return activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value;
-});
-
-watch(eventsPublic, (newVal) => {
-  console.log('🔄 Mise à jour de eventsPublic:', newVal);
-}, { deep: true });
-
-watch(eventsMembers, (newVal) => {
-  console.log('🔍 Changement de eventsMembers:', newVal);
-}, { deep: true });
-
-
+const getActiveEvents = computed(() =>
+  activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value
+);
 </script>
