@@ -1,0 +1,3 @@
+<template>
+  <PresStreetWorkout></PresStreetWorkout>
+</template>
