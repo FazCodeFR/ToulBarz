@@ -25,7 +25,7 @@
             <span class="text-base font-light tracking-wide">Rejoins-nous</span>
           </router-link>
 
-          <div class="animate-bounce mt-12 flex items-center justify-center gap-x-6">
+          <div class="animate-bounce mt-10 flex items-center justify-center gap-x-6">
             <a href="#vision-section" class="text-6xl font-semibold leading-6 text-white">
               <span aria-hidden="true">↓</span>
             </a>

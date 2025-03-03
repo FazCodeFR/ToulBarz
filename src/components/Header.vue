@@ -61,7 +61,7 @@ onUnmounted(() => {
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <router-link
-          to="Street workout"
+          to="street-workout"
           :class="[
             'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
             $route.path === '/street-workout' 
@@ -69,7 +69,7 @@ onUnmounted(() => {
               : 'text-secondary hover:text-accent hover:border-accent'
           ]"
         >
-          Street workout
+          Street Workout
         </router-link>
         <router-link
           to="/event"
@@ -130,11 +130,11 @@ onUnmounted(() => {
     <!-- Menu mobile -->
     <div v-if="isMenuOpen" class="lg:hidden">
       <router-link
-        to="Street workout"
+        to="street-workout"
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/street-workout' 
+          $route.path === '/street-Workout' 
             ? 'bg-accent text-secondary' 
             : 'hover:bg-accent hover:text-secondary'
         ]"

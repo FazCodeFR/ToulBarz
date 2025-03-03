@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Action: typeof import('./src/components/Action.vue')['default']
-    Adhesion: typeof import('./src/pages/AdhesionPage.vue')['default']
     Contact: typeof import('./src/components/Contact.vue')['default']
     Event: typeof import('./src/components/Event.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
