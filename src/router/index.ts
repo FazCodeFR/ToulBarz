@@ -4,6 +4,8 @@ import DemoPage from '@/pages/DemoPage.vue'
 import IndexPage from '@/pages/IndexPage.vue'
 import AdhesionPage from '@/pages/AdhesionPage.vue'
 import EventPage from '@/pages/EventPage.vue'
+import StreetWorkoutPage from '@/pages/StreetWorkoutPage.vue'
+
 
 
 const routes = [
@@ -16,7 +18,7 @@ const routes = [
     },
   },
   {
-    path: '/boutique/',
+    path: '/boutique',
     component: AdhesionPage,
     name: 'La boutique',
     meta: {
@@ -24,8 +26,15 @@ const routes = [
     },
   },
   {
-    path: '/event/',
+    path: '/event',
     component: EventPage,
+    meta: {
+      title: 'Événements - Toul\'Barz',
+    },
+  },
+  {
+    path: '/street-workout',
+    component: StreetWorkoutPage,
     meta: {
       title: 'Événements - Toul\'Barz',
     },
