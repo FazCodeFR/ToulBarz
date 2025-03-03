@@ -1,5 +1,4 @@
 <template>
-
   <!-- Hero Section avec fond parallax -->
   <header class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 bg-white/70 z-10"></div>
@@ -149,116 +148,109 @@
 
 </template>
 
-<script>
-export default {
-  name: 'FiguresSection',
-  data() {
-    return {
-      figures: [
-        {
-          name: 'Muscle-up',
-          difficulty: 'Intermédiaire',
-          description: 'Le muscle-up est un mouvement avancé qui combine une traction et un dip. L\'athlète commence suspendu à une barre, effectue une traction puissante pour amener sa poitrine au-dessus de la barre, puis étend les bras pour terminer en position de support.',
-          muscles: 'Dos, biceps, triceps, épaules, abdominaux',
-          image: '/img/partenaires/ctgym.jpg'
-        },
-        {
-          name: 'Human Flag',
-          image: '/img/figures/humanflag.jpg',
-          difficulty: 'Intermédiaire',
-          description: 'Le human flag (drapeau humain) est une figure impressionnante où l\'athlète tient un poteau vertical avec ses mains et maintient son corps à l\'horizontale, parallèle au sol, formant ainsi la figure d\'un drapeau.',
-          muscles: 'Épaules, abdominaux, obliques, avant-bras'
-        },
-        {
-          name: 'Front Lever',
-          image: '/img/figures/frontlever.jpg',
-          difficulty: 'Intermédiaire',
-          description: 'Le front lever consiste à maintenir le corps en position horizontale, face vers le haut, en étant suspendu par les mains à une barre. Le corps doit former une ligne droite des épaules aux pieds.',
-          muscles: 'Abdominaux, dos, épaules'
-        },
-        {
-          name: 'Planche',
-          image: '/img/figures/planche.jpg',
-          difficulty: 'Avancée',
-          description: 'La planche est une figure où l\'athlète maintient son corps parallèle au sol en équilibre sur ses mains, bras tendus. Le corps entier est suspendu au-dessus du sol, créant une ligne droite.',
-          muscles: 'Épaules, pectoraux, triceps, abdominaux'
-        },
-        {
-          name: 'Handstand',
-          image: '/img/figures/handstand.jpg',
-          difficulty: 'Débutant',
-          description: 'L\'équilibre sur les mains est une figure fondamentale où l\'athlète se tient verticalement sur ses mains, corps aligné. Cette figure est souvent utilisée comme base pour d\'autres mouvements plus avancés.',
-          muscles: 'Épaules, abdominaux, dos'
-        },
-        {
-          name: 'Back Lever',
-          image: '/img/figures/backlever.jpg',
-          difficulty: 'Intermédiaire',
-          description: 'Le back lever est l\'inverse du front lever. L\'athlète maintient son corps en position horizontale, face vers le sol, en étant suspendu par les mains à une barre, formant une ligne droite.',
-          muscles: 'Dos, biceps, abdominaux'
-        }
-      ],
-      conseils: [
-        {
-          title: "Maîtrisez les bases",
-          description: "Commencez par maîtriser les mouvements fondamentaux comme les tractions, dips et pompes avant de tenter des figures avancées.",
-          iconBackground: "bg-gradient-to-br from-cyan-500 to-blue-500",
-          iconPath: "M9 5l7 7-7 7"
-        },
-        {
-          title: "Progression graduelle",
-          description: "Respectez les étapes d'apprentissage et progressez graduellement pour éviter les blessures et construire une base solide.",
-          iconBackground: "bg-gradient-to-br from-purple-500 to-pink-500",
-          iconPath: "M13 10V3L4 14h7v7l9-11h-7z"
-        },
-        {
-          title: "Échauffement complet",
-          description: "Échauffez-vous correctement avant chaque session pour préparer vos muscles et articulations aux efforts intenses.",
-          iconBackground: "bg-gradient-to-br from-blue-500 to-indigo-500",
-          iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        },
-        {
-          title: "Communauté",
-          description: "Rejoignez une communauté de pratiquants pour échanger des conseils, vous motiver mutuellement et progresser ensemble.",
-          iconBackground: "bg-gradient-to-br from-pink-500 to-red-500",
-          iconPath: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        }
-      ]
-    }
+<script setup>
+const figures = [
+  {
+    name: 'Muscle-up',
+    difficulty: 'Intermédiaire',
+    description: 'Le muscle-up est un mouvement avancé qui combine une traction et un dip. L\'athlète commence suspendu à une barre, effectue une traction puissante pour amener sa poitrine au-dessus de la barre, puis étend les bras pour terminer en position de support.',
+    muscles: 'Dos, biceps, triceps, épaules, abdominaux',
+    image: '/img/partenaires/ctgym.jpg'
   },
-  methods: {
-    getDifficultyClasses(difficulty) {
-      const colorMap = {
-        'Débutant': {
-          hoverGradient: 'bg-gradient-to-br from-green-500/30 to-green-600/30',
-          titleHover: 'group-hover:text-green-500',
-          badge: 'bg-green-500',
-          accent: 'text-green-500'
-        },
-        'Intermédiaire': {
-          hoverGradient: 'bg-gradient-to-br from-blue-500/30 to-blue-600/30',
-          titleHover: 'group-hover:text-blue-500',
-          badge: 'bg-blue-500',
-          accent: 'text-blue-500'
-        },
-        'Avancée': {
-          hoverGradient: 'bg-gradient-to-br from-purple-500/30 to-purple-600/30',
-          titleHover: 'group-hover:text-purple-500',
-          badge: 'bg-purple-500',
-          accent: 'text-purple-500'
-        },
-        // Default fallback to the original cyan colors
-        'default': {
-          hoverGradient: 'bg-gradient-to-br from-cyan-500/30 to-blue-500/30',
-          titleHover: 'group-hover:text-cyan-400',
-          badge: 'bg-cyan-500',
-          accent: 'text-cyan-400'
-        }
-      }
-      
-      // Return the color scheme for the given difficulty or the default if not found
-      return colorMap[difficulty] || colorMap.default
+  {
+    name: 'Human Flag',
+    image: '/img/figures/humanflag.jpg',
+    difficulty: 'Intermédiaire',
+    description: 'Le human flag (drapeau humain) est une figure impressionnante où l\'athlète tient un poteau vertical avec ses mains et maintient son corps à l\'horizontale, parallèle au sol, formant ainsi la figure d\'un drapeau.',
+    muscles: 'Épaules, abdominaux, obliques, avant-bras'
+  },
+  {
+    name: 'Front Lever',
+    image: '/img/figures/frontlever.jpg',
+    difficulty: 'Intermédiaire',
+    description: 'Le front lever consiste à maintenir le corps en position horizontale, face vers le haut, en étant suspendu par les mains à une barre. Le corps doit former une ligne droite des épaules aux pieds.',
+    muscles: 'Abdominaux, dos, épaules'
+  },
+  {
+    name: 'Planche',
+    image: '/img/figures/planche.jpg',
+    difficulty: 'Avancée',
+    description: 'La planche est une figure où l\'athlète maintient son corps parallèle au sol en équilibre sur ses mains, bras tendus. Le corps entier est suspendu au-dessus du sol, créant une ligne droite.',
+    muscles: 'Épaules, pectoraux, triceps, abdominaux'
+  },
+  {
+    name: 'Handstand',
+    image: '/img/figures/handstand.jpg',
+    difficulty: 'Débutant',
+    description: 'L\'équilibre sur les mains est une figure fondamentale où l\'athlète se tient verticalement sur ses mains, corps aligné. Cette figure est souvent utilisée comme base pour d\'autres mouvements plus avancés.',
+    muscles: 'Épaules, abdominaux, dos'
+  },
+  {
+    name: 'Back Lever',
+    image: '/img/figures/backlever.jpg',
+    difficulty: 'Intermédiaire',
+    description: 'Le back lever est l\'inverse du front lever. L\'athlète maintient son corps en position horizontale, face vers le sol, en étant suspendu par les mains à une barre, formant une ligne droite.',
+    muscles: 'Dos, biceps, abdominaux'
+  }
+];
+
+const conseils = [
+  {
+    title: "Maîtrisez les bases",
+    description: "Commencez par maîtriser les mouvements fondamentaux comme les tractions, dips et pompes avant de tenter des figures avancées.",
+    iconBackground: "bg-gradient-to-br from-cyan-500 to-blue-500",
+    iconPath: "M9 5l7 7-7 7"
+  },
+  {
+    title: "Progression graduelle",
+    description: "Respectez les étapes d'apprentissage et progressez graduellement pour éviter les blessures et construire une base solide.",
+    iconBackground: "bg-gradient-to-br from-purple-500 to-pink-500",
+    iconPath: "M13 10V3L4 14h7v7l9-11h-7z"
+  },
+  {
+    title: "Échauffement complet",
+    description: "Échauffez-vous correctement avant chaque session pour préparer vos muscles et articulations aux efforts intenses.",
+    iconBackground: "bg-gradient-to-br from-blue-500 to-indigo-500",
+    iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    title: "Communauté",
+    description: "Rejoignez une communauté de pratiquants pour échanger des conseils, vous motiver mutuellement et progresser ensemble.",
+    iconBackground: "bg-gradient-to-br from-pink-500 to-red-500",
+    iconPath: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+  }
+];
+
+const getDifficultyClasses = (difficulty) => {
+  const colorMap = {
+    'Débutant': {
+      hoverGradient: 'bg-gradient-to-br from-green-500/30 to-green-600/30',
+      titleHover: 'group-hover:text-green-500',
+      badge: 'bg-green-500',
+      accent: 'text-green-500'
+    },
+    'Intermédiaire': {
+      hoverGradient: 'bg-gradient-to-br from-blue-500/30 to-blue-600/30',
+      titleHover: 'group-hover:text-blue-500',
+      badge: 'bg-blue-500',
+      accent: 'text-blue-500'
+    },
+    'Avancée': {
+      hoverGradient: 'bg-gradient-to-br from-purple-500/30 to-purple-600/30',
+      titleHover: 'group-hover:text-purple-500',
+      badge: 'bg-purple-500',
+      accent: 'text-purple-500'
+    },
+    // Default fallback to the original cyan colors
+    'default': {
+      hoverGradient: 'bg-gradient-to-br from-cyan-500/30 to-blue-500/30',
+      titleHover: 'group-hover:text-cyan-400',
+      badge: 'bg-cyan-500',
+      accent: 'text-cyan-400'
     }
   }
-}
+
+  // Return the color scheme for the given difficulty or the default if not found
+  return colorMap[difficulty] || colorMap.default
+};
 </script>
