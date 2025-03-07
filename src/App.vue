@@ -14,6 +14,18 @@ useHead({
       name: 'twitter:title',
       content: () => route.meta.title,
     },
+    {
+      name: 'description',
+      content: 'Toul\'Barz est une association toulousaine qui place le street workout au cœur de ses projets. Toul\'Barz propose des cours pour tous, débutants comme avancés, et organise des événements pour promouvoir cette discipline sportive.',
+    },
+    {
+      property: 'og:description',
+      content: 'Toul\'Barz - Street Workout Toulouse',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Toul\'Barz - Street Workout Toulouse',
+    },
   ],
   script: [
     {
