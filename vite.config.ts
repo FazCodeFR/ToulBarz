@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import { version as pkgVersion } from './package.json'
-import { robots } from 'vite-plugin-robots'
 
 process.env.VITE_APP_VERSION = pkgVersion
 if (process.env.NODE_ENV === 'production') {
@@ -31,7 +30,6 @@ export default defineConfig({
         enabled: true,
       },
     }),
-    robots(),
     Components({
       dts: 'components.d.ts',
     }),
