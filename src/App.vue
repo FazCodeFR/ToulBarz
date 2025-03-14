@@ -33,6 +33,10 @@ useHead({
       async: true
     },
     {
+      src: "https://static.elfsight.com/platform/platform.js",
+      async: true
+    },
+    {
       innerHTML: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -59,5 +63,4 @@ const thisYear = new Date().getFullYear()
     <Footer/>
   </main>
 
- 
 </template>
