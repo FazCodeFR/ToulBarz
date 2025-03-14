@@ -29,10 +29,12 @@ useHead({
   ],
   script: [
     {
+      // Google Analytics
       src: "https://www.googletagmanager.com/gtag/js?id=G-JNS3NEMVE0",
       async: true
     },
     {
+      // Instagram feed
       src: "https://static.elfsight.com/platform/platform.js",
       async: true
     },
