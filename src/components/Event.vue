@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="relative isolate bg-white px-6 py-12 sm:py-24 lg:px-8">
         <div class="mx-auto max-w-7xl text-center sm:max-w-4xl">
-          <h1 class="text-3xl font-bold tracking-tight text-accent sm:text-4xl lg:text-5xl underline underline-offset-4 decoration-accent text-gray-900">Événements de l'association</h1>
+          <h1 class="text-3xl font-bold tracking-tight text-accent sm:text-4xl lg:text-5xl underline underline-offset-4 decoration-accent text-gray-900">Nos actualités</h1>
           <p class="mt-6 mb-12 text-lg font-medium text-gray-600 sm:text-xl">
             Découvrez nos prochains événements et rejoignez-nous
           </p>

@@ -19,7 +19,7 @@
             </media-theme-sutro>
           </div>
           <div class="order-1 lg:order-2">
-            <h2 class="text-5xl font-bold tracking-tight underline underline-offset-8 decoration-accent sm:text-6xl">C’est quoi le <br> street workout ?</h2>
+            <h2 class="text-5xl font-bold tracking-tight underline underline-offset-8 decoration-accent sm:text-6xl">Qu’est-ce que le <br> Street Workout ? </h2>
             <p class="mt-6 text-lg">Le Street Workout (littéralement « entraînement de rue ») est un sport à mi-chemin entre la gymnastique et la musculation. Mélangeant figures de force, de souplesse et d’équilibre, c’est un sport qui se pratique essentiellement en extérieur.</p>
             <h3 class="mt-8 text-3xl font-semibold">Et le statique ?</h3>
             <p class="mt-4 text-lg">Le statique est une catégorie de mouvements de force qui requièrent souvent des années de travail intense et régulier pour être maîtrisés. Ces mouvements permettent de libérer tout le potentiel de son corps en adoptant des positions statiques telles que le drapeau ou la planche.</p>
