@@ -1,39 +1,37 @@
 <template>
-<section id="vision-section" class="bg-white py-16 sm:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <p class="mt-1 text-5xl font-bold text-gray-900 sm:text-6xl sm:tracking-tight underline underline-offset-8 decoration-accent">
-        Notre vision
-      </p>
-      <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">
-        Toul'Barz est une association toulousaine qui place le street workout au cœur de ses projets.
-        <br /><br />
-        Toul'Barz propose des cours pour tous, débutants comme avancés, des événements, des collaborations professionnelles, de la gestion de projets, du mentorat et une pépinière d'artistes. Nous croyons en la force du collectif pour moderniser les cultures urbaines tout en respectant leurs valeurs fortes.
-      </p>
-    </div>
+  <section id="vision-section" class="bg-white py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <p class="mt-1 text-5xl font-bold text-gray-900 sm:text-6xl sm:tracking-tight underline underline-offset-8 decoration-accent">
+          Notre vision
+        </p>
+        <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">
+          Chez ToulBarz, nous croyons que le street workout est bien plus qu'un simple sport. C'est un art, un mode de vie et une communauté.
+        </p>
+      </div>
 
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-        <div v-for="feature in features" :key="feature.name" class="flex flex-col">
-          <div class="backdrop-blur-md bg-white/10 rounded-2xl p-8 shadow-xl border border-gray-200 flex-grow">
-            <dt class="text-lg font-semibold leading-7 text-gray-900">
-              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
-                <div :class="feature.icon" class="h-6 w-6 text-white" aria-hidden="true" />
-              </div>
-              <h3 class="text-1xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-dark">
-                {{ feature.name }}
-              </h3>
-            </dt>
-            <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-              <p class="flex-auto text-gray-700 text-lg leading-relaxed">{{ feature.description }}</p>
-            </dd>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div
+          v-for="feature in features"
+          :key="feature.name"
+          class="rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-none bg-white"
+        >
+          <div class="flex flex-col items-center pt-8 px-12 pb-6">
+            <div class="mb-4">
+              <div :class="feature.icon" class="h-14 w-14 text-accent" aria-hidden="true" />
+            </div>
+            <h3 class="text-xl font-bold mt-2 mb-4 text-center font-montserrat text-gray-900">
+              {{ feature.name }}
+            </h3>
+            <p class="text-gray-600 text-center font-roboto">{{ feature.description }}</p>
           </div>
         </div>
-      </dl>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
+
+
   
 
 <script setup>
