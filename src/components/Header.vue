@@ -72,10 +72,10 @@ onUnmounted(() => {
           Street Workout
         </router-link>
         <router-link
-          to="/event"
+          to="/evenements"
           :class="[
             'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
-            $route.path === '/event' 
+            $route.path === '/evenements' 
               ? 'text-accent border-b-2 border-accent' 
               : 'text-secondary hover:text-accent hover:border-accent'
           ]"
@@ -142,11 +142,11 @@ onUnmounted(() => {
         Street workout
       </router-link>
       <router-link
-        to="/event"
+        to="/evenements"
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/event' 
+          $route.path === '/evenements' 
             ? 'bg-accent text-secondary' 
             : 'hover:bg-accent hover:text-secondary'
         ]"

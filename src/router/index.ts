@@ -24,7 +24,7 @@ const routes = [
     },
   },
   {
-    path: '/event',
+    path: '/evenements',
     component: EventPage,
     meta: {
       title: 'Événements - Toul\'Barz',
