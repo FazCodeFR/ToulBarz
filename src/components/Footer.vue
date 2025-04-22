@@ -5,13 +5,12 @@ const associationInfo = {
   name: 'ToulBarz',
   description:
     'Association de Street Workout à Toulouse, dédiée à la pratique, l\'apprentissage et le développement de la discipline.',
-  address: '📍 Parc de la Maourine, 31200 Toulouse',
-  email: '📧 contact@toulbarz.fr',
-  phone: '📱 06 XX XX XX XX',
-  practiceHoursTitle: 'Horaires de pratique',
+  address: 'Toulouse',
+  email: 'contact@toulbarz.fr',
+  practiceHoursTitle: 'Horaires adhérents',
   practiceHours: [
-    'Lundi, Mercredi, Vendredi: 18h - 20h',
-    'Samedi: 14h - 17h',
+    'Vendredi : 16h30 - 19h00',
+    'Dimanche : 16h30 - 18h00',
   ],
 };
 
@@ -20,7 +19,6 @@ const quickLinks = [
   { label: 'Street Workout', path: '/street-workout' },
   { label: 'Événements', path: '/evenements' },
   { label: 'La boutique', path: '/boutique' },
-  { label: 'Faire un don', path: '/boutique' },
 ];
 
 const legalLinks = [
@@ -68,9 +66,16 @@ const legalLinks = [
         <!-- Contact Info -->
         <div>
           <h3 class="text-xl font-bold mb-4 text-accent">Contact</h3>
-          <p class="mb-2">{{ associationInfo.address }}</p>
-          <p class="mb-2">{{ associationInfo.email }}</p>
-          <p class="mb-2">{{ associationInfo.phone }}</p>
+          <p class="mb-2 flex items-center">
+            <i class="i-mdi-map-marker text-gray-400 mr-2"></i>{{ associationInfo.address }}
+          </p>
+          <p class="mb-2 flex items-center">
+            <i class="i-mdi-email text-gray-400 mr-2"></i>
+            <a href="mailto:{{ associationInfo.email }}" class="hover:text-accent transition-colors duration-300">
+              {{ associationInfo.email }}
+            </a>
+          </p>
+
           <h4 class="font-bold mt-4 mb-2">{{ associationInfo.practiceHoursTitle }}</h4>
           <p class="mb-1">{{ associationInfo.practiceHours[0] }}</p>
           <p>{{ associationInfo.practiceHours[1] }}</p>
@@ -79,8 +84,9 @@ const legalLinks = [
         <!-- Newsletter -->
         <div>
           <h3 class="text-xl font-bold mb-4 text-accent">Newsletter</h3>
-          <p class="mb-4">Inscris-toi pour recevoir nos actualités et ne rien manquer !</p>
-          <form class="space-y-2" @submit.prevent>
+          <!-- <p class="mb-4">Inscris-toi pour recevoir nos actualités et ne rien manquer !</p> -->
+          <p class="mb-4">A venir très prochainement</p>
+          <!-- <form class="space-y-2" @submit.prevent>
             <div>
               <input 
                 type="email" 
@@ -90,23 +96,30 @@ const legalLinks = [
               />
             </div>
             <button type="submit" class="btn bg-accent rounded-lg  px-4 py-2 w-full">S'inscrire</button>
-          </form>
-        </div>
+          </form> -->
+        </div> 
       </div>
 
       <div class="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-        <p>&copy; {{ currentYear }} {{ associationInfo.name }}. Tous droits réservés.</p>
-        <div class="mt-4 md:mt-0">
-          <router-link
-            v-for="link in legalLinks"
-            :key="link.path"
-            :to="link.path"
-            class="text-sm text-gray-400 hover:text-primary transition-colors duration-300 mx-2"
-          >
-            {{ link.label }}
-          </router-link>
-        </div>
+      <p>&copy; {{ currentYear }} {{ associationInfo.name }}. Tous droits réservés.</p>
+      <div class="mt-4 md:mt-0 flex items-center">
+        <a href="https://leoairaudi.com/" target="_blank" rel="noopener noreferrer">
+          <p class="text-sm text-gray-400 hover:text-accent">Développé avec 🧡 par Léo Airaudi</p>
+        </a>
       </div>
+
+      <div class="mt-4 md:mt-0">
+        <router-link
+          v-for="link in legalLinks"
+          :key="link.path"
+          :to="link.path"
+          class="text-sm text-gray-400 hover:text-primary transition-colors duration-300 mx-2"
+        >
+          {{ link.label }}
+        </router-link>
+      </div>
+    </div>
+
     </div>
   </footer>
 </template>
