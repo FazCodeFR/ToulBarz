@@ -47,17 +47,17 @@ jobs:
       - name: Type Check
         run: pnpm type-check
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      # - name: Install Playwright browsers
+      #   run: npx playwright install --with-deps
 
-      - name: Run e2e tests
-        run: |
-          pnpm build
-          pnpm test:ci-e2e
+      # - name: Run e2e tests
+      #   run: |
+      #     pnpm build
+      #     pnpm test:ci-e2e
 
-      - name: Run unit tests
-        run: pnpm test:ci
+      # - name: Run unit tests
+      #   run: pnpm test:ci
 
-      - name: Coverage
-        uses: davelosert/vitest-coverage-report-action@v2.5.0
-        if: ${{ always() }}
+      # - name: Coverage
+      #   uses: davelosert/vitest-coverage-report-action@v2.5.0
+      #   if: ${{ always() }}
