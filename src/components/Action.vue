@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl underline underline-offset-4 decoration-accent">
-          Nos actions
+          Nos objectifs
         </h2>
         <p class="mt-6 text-lg leading-8 text-gray-600">
           Le Street Workout, bien que non reconnu comme sport officiel par les ministères, gagne en popularité et se développe de façon autonome. Toul'Barz croit fermement en son potentiel et s'engage à accélérer son développement à l'échelle internationale et locale, en se concentrant sur trois axes principaux.

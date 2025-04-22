@@ -2,7 +2,7 @@
   <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
-        Les sponsors et partenaires
+        Nos partenaires
       </h2>
 
       <!-- Section de logos avec défilement infini -->
