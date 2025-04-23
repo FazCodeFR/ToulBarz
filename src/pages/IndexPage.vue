@@ -11,4 +11,5 @@ const store = useStore()
   <Stats></Stats>
   <Partenaire></Partenaire>
   <Insta></Insta>
+  <InstaBouton></InstaBouton>
 </template>
