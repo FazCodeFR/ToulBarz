@@ -45,7 +45,8 @@ module.exports = {
     require('@tailwindcss/forms'),
     iconsPlugin({
       // Collections: https://icones.js.org/
-      collections: getIconCollections(['mdi']),
+      // https://icones.js.org/collection/mdi
+      collections: getIconCollections(['mdi','bxl']),
     }),
   ],
 }

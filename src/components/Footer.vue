@@ -38,15 +38,11 @@ const legalLinks = [
           <div class="flex space-x-4">
             <a href="https://instagram.com/toulbarz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
               <span class="sr-only">Instagram</span>
-              
               <div class="h-6 w-6 i-mdi-instagram"></div>
-
             </a>
-            <a href="https://facebook.com/toulbarz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
-              <span class="sr-only">Facebook</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <!-- SVG Facebook -->
-              </svg>
+            <a href="https://instagram.com/toulbarz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
+              <span class="sr-only">Instagram</span>
+              <div class="h-6 w-6 i-bxl-tiktok"></div>
             </a>
           </div>
         </div>
@@ -71,7 +67,7 @@ const legalLinks = [
           </p>
           <p class="mb-2 flex items-center">
             <i class="i-mdi-email text-gray-400 mr-2"></i>
-            <a href="mailto:{{ associationInfo.email }}" class="hover:text-accent transition-colors duration-300">
+            <a :href="'mailto:' + associationInfo.email" class="hover:text-accent transition-colors duration-300">
               {{ associationInfo.email }}
             </a>
           </p>
