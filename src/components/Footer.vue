@@ -23,7 +23,7 @@ const quickLinks = [
 
 const legalLinks = [
   { label: 'Mentions légales', path: '/mentions-legales' },
-  { label: 'Politique de confidentialité', path: '/politique-de-confidentialite' },
+  // { label: 'Politique de confidentialité', path: '/politique-de-confidentialite' },
 ];
 </script>
 
@@ -36,12 +36,12 @@ const legalLinks = [
           <h3 class="text-xl text-accent font-bold mb-4">{{ associationInfo.name }}</h3>
           <p class="mb-4">{{ associationInfo.description }}</p>
           <div class="flex space-x-4">
-            <a href="https://instagram.com/toulbarz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
+            <a href="https://www.instagram.com/toulbarz_tlb/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
               <span class="sr-only">Instagram</span>
               <div class="h-6 w-6 i-mdi-instagram"></div>
             </a>
-            <a href="https://instagram.com/toulbarz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
-              <span class="sr-only">Instagram</span>
+            <a href="https://tiktok.com/@toul_barz" target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent transition-colors duration-300">
+              <span class="sr-only">Tiktok</span>
               <div class="h-6 w-6 i-bxl-tiktok"></div>
             </a>
           </div>

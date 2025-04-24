@@ -1,6 +1,6 @@
 <template>
     <a
-      href="https://instagram.com/toulbarz"
+      href="https://www.instagram.com/toulbarz_tlb/"
       target="_blank"
       rel="noopener noreferrer"
       class="fixed left-0 bottom-12 z-50 bg-white shadow-md rounded-r-2xl p-2 transition-all hover:left-2"

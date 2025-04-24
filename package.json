@@ -19,6 +19,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@unhead/vue": "1.11.10",
+    "@vueuse/motion": "github:vueuse/motion",
     "ical.js": "^2.1.0",
     "motion-v": "1.0.0-beta.2",
     "pinia": "2.2.5",

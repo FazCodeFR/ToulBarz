@@ -5,6 +5,7 @@ import IndexPage from '@/pages/IndexPage.vue'
 import AdhesionPage from '@/pages/AdhesionPage.vue'
 import EventPage from '@/pages/EventPage.vue'
 import FiguresPage from '@/pages/FiguresPage.vue'
+import MentionsLegalesPage from '@/pages/MentionsLegalesPage.vue'
 
 const routes = [
   {
@@ -35,6 +36,13 @@ const routes = [
     component: FiguresPage,
     meta: {
       title: 'Le Street Workout - Toul\'Barz',
+    },
+  },
+  {
+    path: '/mentions-legales',
+    component: MentionsLegalesPage,
+    meta: {
+      title: 'Mentions Légales - Toul\'Barz',
     },
   },
   {
