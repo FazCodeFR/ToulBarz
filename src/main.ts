@@ -5,6 +5,8 @@ import App from './App.vue'
 import './assets/index.postcss'
 import router from './router'
 import { setupCalendar } from 'v-calendar';
+import { MotionPlugin } from '@vueuse/motion'
+
 const head = createHead()
 const app = createApp(App)
 
@@ -14,6 +16,7 @@ pinia.use(({ store }) => {
 })
 app.use(pinia)
 app.use(router)
+app.use(MotionPlugin)
 app.use(head)
 app.use(setupCalendar, {})
 
