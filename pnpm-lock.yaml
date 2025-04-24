@@ -18,8 +18,8 @@ importers:
         specifier: 1.11.10
         version: 1.11.10(vue@3.5.12(typescript@5.6.3))
       '@vueuse/motion':
-        specifier: github:vueuse/motion
-        version: https://codeload.github.com/vueuse/motion/tar.gz/c0efec2b20d546752763919def979f194d41a99b(magicast@0.3.5)(vue@3.5.12(typescript@5.6.3))
+        specifier: 3.0.3
+        version: 3.0.3(magicast@0.3.5)(vue@3.5.12(typescript@5.6.3))
       ical.js:
         specifier: ^2.1.0
         version: 2.1.0
@@ -1141,9 +1141,8 @@ packages:
   '@vueuse/metadata@13.1.0':
     resolution: {integrity: sha512-+TDd7/a78jale5YbHX9KHW3cEDav1lz1JptwDvep2zSG8XjCsVE+9mHIzjTOaPbHUAk5XiE4jXLz51/tS+aKQw==}
 
-  '@vueuse/motion@https://codeload.github.com/vueuse/motion/tar.gz/c0efec2b20d546752763919def979f194d41a99b':
-    resolution: {tarball: https://codeload.github.com/vueuse/motion/tar.gz/c0efec2b20d546752763919def979f194d41a99b}
-    version: 3.0.3
+  '@vueuse/motion@3.0.3':
+    resolution: {integrity: sha512-4B+ITsxCI9cojikvrpaJcLXyq0spj3sdlzXjzesWdMRd99hhtFI6OJ/1JsqwtF73YooLe0hUn/xDR6qCtmn5GQ==}
     peerDependencies:
       vue: '>=3.0.0'
 
@@ -4817,7 +4816,7 @@ snapshots:
 
   '@vueuse/metadata@13.1.0': {}
 
-  '@vueuse/motion@https://codeload.github.com/vueuse/motion/tar.gz/c0efec2b20d546752763919def979f194d41a99b(magicast@0.3.5)(vue@3.5.12(typescript@5.6.3))':
+  '@vueuse/motion@3.0.3(magicast@0.3.5)(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       '@vueuse/core': 13.1.0(vue@3.5.12(typescript@5.6.3))
       '@vueuse/shared': 13.1.0(vue@3.5.12(typescript@5.6.3))
