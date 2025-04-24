@@ -3,6 +3,7 @@
         <header class="text-center">
             <h1 class="text-3xl font-bold text-orange-500 mb-6">Mentions Légales</h1>
         </header>
+
         <section class="association-info space-y-6">
             <h2 class="text-2xl font-semibold text-black">Informations sur l'Association</h2>
             <div class="space-y-3">
@@ -62,37 +63,3 @@
         </footer>
     </div>
 </template>
-
-<script setup lang="ts">
-</script>
-
-<style scoped>
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.legal-notice {
-    animation: fadeIn 1s ease-out;
-}
-
-h1,
-h2 {
-    font-family: 'Roboto', sans-serif;
-}
-
-a {
-    transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-    color: #FF5722;
-}
-</style>

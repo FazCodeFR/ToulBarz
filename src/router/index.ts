@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import DemoPage from '@/pages/DemoPage.vue'
 import IndexPage from '@/pages/IndexPage.vue'
 import AdhesionPage from '@/pages/AdhesionPage.vue'
 import EventPage from '@/pages/EventPage.vue'
@@ -43,13 +42,6 @@ const routes = [
     component: MentionsLegalesPage,
     meta: {
       title: 'Mentions Légales - Toul\'Barz',
-    },
-  },
-  {
-    path: '/demo/',
-    component: DemoPage,
-    meta: {
-      title: 'Demo title',
     },
   },
 ]
