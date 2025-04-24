@@ -8,6 +8,7 @@ const store = useStore()
   <StreetWorkout></StreetWorkout>
   <!-- <HelloWorld msg="Hello World Component" /> -->
   <Action></Action>
+  <EventSection></EventSection>
   <Stats></Stats>
   <Partenaire></Partenaire>
   <Insta></Insta>

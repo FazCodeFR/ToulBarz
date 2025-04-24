@@ -78,7 +78,10 @@
                   {{ event.summary }}
                 </h3>
                 
-                <div class="mt-4 prose prose-sm text-gray-600 max-w-none" v-html="event.description || 'Aucune description disponible'"></div>
+                <div
+                  class="mt-4 prose prose-sm text-gray-600 max-w-none"
+                  v-html="(event.description || 'Aucune description disponible') + '<br>📩 Envoie-nous un MP sur <a href=\'https://instagram.com/toulbarz\' target=\'_blank\' rel=\'noopener noreferrer\' class=\'text-accent underline\'>Instagram (@toulbarz_tlb)</a> pour plus d\'infos.'"
+                ></div>
                 
                 <div class="mt-6 flex flex-wrap items-center gap-4">
                   <a 
