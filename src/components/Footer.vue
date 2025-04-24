@@ -109,7 +109,7 @@ const legalLinks = [
           v-for="link in legalLinks"
           :key="link.path"
           :to="link.path"
-          class="text-sm text-gray-400 hover:text-primary transition-colors duration-300 mx-2"
+          class="text-sm text-gray-400 hover:text-accent transition-colors duration-300 mx-2"
         >
           {{ link.label }}
         </router-link>

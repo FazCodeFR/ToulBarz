@@ -10,6 +10,7 @@ declare module 'vue' {
     Action: typeof import('./src/components/Action.vue')['default']
     Contact: typeof import('./src/components/Contact.vue')['default']
     Event: typeof import('./src/components/Event.vue')['default']
+    EventSection: typeof import('./src/components/EventSection.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Formule: typeof import('./src/components/Formule.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
