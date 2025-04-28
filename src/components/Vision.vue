@@ -2,9 +2,10 @@
   <section id="vision-section" class="bg-white py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <p class="mt-1 text-5xl font-bold text-gray-900 sm:text-6xl sm:tracking-tight underline underline-offset-8 decoration-accent">
+        <h2
+        class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
           Notre vision
-        </p>
+        </h2>
         <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">
           Chez ToulBarz, nous croyons que le street workout est bien plus qu'un simple sport. C'est un art, un mode de vie et une communauté.
         </p>

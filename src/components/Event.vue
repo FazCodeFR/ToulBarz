@@ -33,7 +33,7 @@
 
         <div class="mt-12 flex flex-col gap-8 lg:flex-row">
           <!-- Calendar Section -->
-          <div class="lg:sticky lg:top-40 lg:w-1/3 self-start">
+          <div class="lg:sticky lg:top-40 lg:w-1/3">
             <div class="overflow-hidden rounded-xl bg-white shadow-md ring-1 ring-gray-200 transition-all duration-300 hover:shadow-lg">
               <div class="bg-accent/10 p-4">
                 <h3 class="font-medium text-accent text-center">

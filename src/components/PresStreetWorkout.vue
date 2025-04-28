@@ -128,8 +128,7 @@
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
-  
-      <div class="text-center relative z-10">
+      <div class="text-center relative z-10 mx-4">
         <h2
           class="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-dark">
           Prêt à défier vos limites?

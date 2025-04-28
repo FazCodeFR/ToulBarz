@@ -134,7 +134,7 @@ onUnmounted(() => {
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/street-Workout' 
+          $route.path === '/street-workout' 
             ? 'bg-accent text-secondary' 
             : 'hover:bg-accent hover:text-secondary'
         ]"

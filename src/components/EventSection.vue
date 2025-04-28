@@ -2,9 +2,9 @@
   <section class="py-20 px-4 md:px-8 bg-white text-black">
     <div class="max-w-7xl mx-auto">
       <div class="text-center">
-        <p class="mt-1 text-5xl font-bold text-gray-900 sm:text-6xl sm:tracking-tight underline underline-offset-8 decoration-orange-500">
+        <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
           Prochains événements
-        </p>
+        </h2>
       </div>
 
       <div v-if="isLoading" class="text-center text-orange-500 font-medium text-lg py-12">
