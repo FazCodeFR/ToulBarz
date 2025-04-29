@@ -6,13 +6,10 @@ const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,ts}'],
   theme: {
-    // extend: {
-    //   // here's how to extend fonts if needed
-    //   fontFamily: {
-    //     sans: [...defaultTheme.fontFamily.sans],
-    //   },
-    // },
     extend: {
+      fontFamily: {
+        sans: ['Rubik', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: '#000000', // Noir
