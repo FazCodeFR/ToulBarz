@@ -1,68 +1,67 @@
 <template>
-  <section class="py-20 px-4 md:px-8 bg-white text-black">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
-          Prochains événements
-        </h2>
-      </div>
-
-      <div v-if="isLoading" class="text-center text-orange-500 font-medium text-lg py-12">
-        Chargement des événements...
-      </div>
-
-      <transition-group
-        name="fade"
-        tag="div"
-        class="mt-10 grid gap-8 md:grid-cols-2"
-      >
-        <RouterLink
-          v-for="event in eventsPublic.slice(0, 1)"
-          :key="event.id"
-          to="/evenements"
-          class="rounded-2xl p-6 bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all block group"
-        >
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-sm font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700">
-              Public
-            </span>
-            <span class="text-sm text-gray-500">{{ formatDate(event.start) }}</span>
+  <section class="bg-white text-black">
+    <div class="w-full ">
+      <!-- Grand conteneur style bannière -->
+      <div class="border border-gray-200 bg-gray-50 p-8">
+        <div class="md:flex md:items-center md:gap-10 mx-auto max-w-screen-xl">
+          <div class="md:w-1/3 flex justify-center md:justify-start">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 text-center md:text-left">
+              Prochains événements
+            </h2>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-black leading-snug group-hover:underline">
-            {{ event.summary }}
-          </h3>
-          <p class="text-sm text-gray-500 italic">
-            {{ event.location }}
-          </p>
-        </RouterLink>
+          <!-- Cartes d'événements à droite -->
+          <div class="flex-1 mt-8 md:mt-0 grid gap-6 md:grid-cols-2">
+            <RouterLink
+              v-for="event in eventsPublic.slice(0, 1)"
+              :key="event.id"
+              to="/evenements"
+              class="rounded-xl p-4 bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all block group"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-orange-100 text-orange-700">
+                  Public
+                </span>
+                <span class="text-xs text-gray-500">{{ formatDate(event.start) }}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1 text-black leading-snug group-hover:underline">
+                {{ event.summary }}
+              </h3>
+              <p class="text-xs text-gray-500 italic">
+                {{ event.location }}
+              </p>
+            </RouterLink>
 
-        <RouterLink
-          v-for="event in eventsMembers.slice(0, 1)"
-          :key="event.id"
-          to="/evenements"
-          class="rounded-2xl p-6 bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all block group"
-        >
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-sm font-medium px-3 py-1 rounded-full bg-gray-200 text-gray-800">
-              Adhérent
-            </span>
-            <span class="text-sm text-gray-500">{{ formatDate(event.start) }}</span>
+            <RouterLink
+              v-for="event in eventsMembers.slice(0, 1)"
+              :key="event.id"
+              to="/evenements"
+              class="rounded-xl p-4 bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all block group"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-200 text-gray-800">
+                  Adhérent
+                </span>
+                <span class="text-xs text-gray-500">{{ formatDate(event.start) }}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1 text-black leading-snug group-hover:underline">
+                {{ event.summary }}
+              </h3>
+              <p class="text-xs text-gray-500 italic">
+                {{ event.location }}
+              </p>
+            </RouterLink>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-black leading-snug group-hover:underline">
-            {{ event.summary }}
-          </h3>
-          <p class="text-sm text-gray-500 italic">
-            {{ event.location }}
-          </p>
-        </RouterLink>
-      </transition-group>
+        </div>
+        <!-- Lien vers tous les événements -->
+        <div class="mt-6 text-center md:text-right  mx-auto max-w-screen-xl">
+          <RouterLink
+            to="/evenements"
+            class="text-orange-600 hover:underline text-sm font-medium"
+          >
+            Voir les prochains événements →
+          </RouterLink>
+        </div>
 
-      <div class="mt-8 text-center">
-        <RouterLink
-          to="/evenements"
-          class="text-orange-600 hover:underline text-sm font-medium"
-        > Voir les prochains événements →
-        </RouterLink>
       </div>
     </div>
   </section>
