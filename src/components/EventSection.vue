@@ -1,8 +1,8 @@
 <template>
   <section class="bg-white text-black">
-    <div class="w-full ">
+    <div class="w-full">
       <!-- Grand conteneur style bannière -->
-      <div class="border border-gray-200 bg-gray-50 p-8">
+      <div class="border border-gray-200 bg-gray-50 px-8 py-4">
         <div class="md:flex md:items-center md:gap-10 mx-auto max-w-screen-xl">
           <div class="md:w-1/3 flex justify-center md:justify-start">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 text-center md:text-left">
