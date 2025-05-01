@@ -53,7 +53,7 @@
           </div>
         </div>
         <!-- Lien vers tous les événements -->
-        <div class="mt-6 text-center md:text-right  mx-auto max-w-screen-xl">
+        <div class="mt-2 text-center md:text-right  mx-auto max-w-screen-xl">
           <RouterLink
             to="/evenements"
             class="text-orange-600 hover:underline text-sm font-medium"
