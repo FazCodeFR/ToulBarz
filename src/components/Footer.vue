@@ -5,13 +5,23 @@ const associationInfo = {
   name: 'ToulBarz',
   description:
     'Association de Street Workout à Toulouse, dédiée à la pratique, l\'apprentissage et le développement de la discipline.',
-  address: 'Toulouse',
+  address: '34 rue Boulbonne, 31000 Toulouse',
   email: 'contact@toulbarz.fr',
   practiceHoursTitle: 'Horaires adhérents',
   practiceHours: [
-    'Vendredi : 16h30 - 19h00',
-    'Dimanche : 16h30 - 18h00',
-  ],
+  {
+    day: 'Vendredi',
+    time: '16h30 - 19h00',
+    place: 'The roof',
+    link: 'https://maps.app.goo.gl/B4raGkQYrwzhEUZSA'
+  },
+  {
+    day: 'Dimanche',
+    time: '16h30 - 18h00',
+    place: 'L-Danse',
+    link: 'https://maps.app.goo.gl/QdnSPB2oT174P7y5A'
+  }
+]
 };
 
 const quickLinks = [
@@ -73,8 +83,14 @@ const legalLinks = [
           </p>
 
           <h4 class="font-bold mt-4 mb-2">{{ associationInfo.practiceHoursTitle }}</h4>
-          <p class="mb-1">{{ associationInfo.practiceHours[0] }}</p>
-          <p>{{ associationInfo.practiceHours[1] }}</p>
+          <p v-for="(hour, index) in associationInfo.practiceHours" :key="index" class="mb-1">
+            <span>{{ hour.day }} à </span>
+            <a :href="hour.link" class="text-accent hover:text-accent-dark hover:underline" target="_blank" rel="noopener">
+              {{ hour.place }}
+            </a>
+            <span> : {{ hour.time }}</span>
+          </p>
+
         </div>
 
         <!-- Newsletter -->

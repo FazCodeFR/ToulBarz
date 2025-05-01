@@ -46,7 +46,7 @@
             transition="{ delay: 0.6, duration: 0.6 }"
           >
             <p class="mt-4 text-lg leading-8 text-gray-100 font-serif">
-              Quand la force devient une œuvre
+              Street Workout Toulouse
             </p>
           </Motion>
 
