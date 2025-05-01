@@ -25,7 +25,7 @@
           <p class="border-l border-gray-200 pl-6 pt-2 text-gray-600 mb-4">
             Retrouve tous nos événements dans l’onglet dédié sur notre site et ne manque aucune actu sur notre
             <a href="https://www.instagram.com/toulbarz_tlb/" target="_blank"
-              class="inline-flex items-center gap-1 text-gray-600 hover:text-accent transition">
+              class="inline-flex items-center gap-1 text-accent hover:text-accent-dark hover:underline transition">
               instagram
               <span class="w-5 h-5 i-mdi-instagram"></span>
             </a>
