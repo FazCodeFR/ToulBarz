@@ -5,7 +5,7 @@
     </div>
     <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
         <h2 class="text-base font-semibold leading-7 text-accent">Tarifs</h2>
-        <p class="mt-2 text-4xl font-bold tracking-tight  underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl" v-text=" route.path !== '/boutique' ? 'Choisissez l\'offre qui vous correspond' : 'Avantage adhérents'"></p>
+        <p class="mt-2 text-4xl font-bold tracking-tight  underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl" v-text=" route.path !== '/adhesions' ? 'Choisissez l\'offre qui vous correspond' : 'Avantage adhérents'"></p>
     </div>
     <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Adaptez votre adhésion selon vos besoins et objectifs avec Toul'Barz.</p>
     <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
@@ -22,8 +22,8 @@
             {{ feature }}
           </li>
         </ul>
-        <!-- Check if the current route is not '/boutique' -->
-        <router-link v-if="route.path !== '/boutique'" to="/boutique" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">
+        <!-- Check if the current route is not '/adhesions' -->
+        <router-link v-if="route.path !== '/adhesions'" to="/adhesions" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-accent text-white shadow hover:bg-accent-dark' : 'text-accent ring-1 ring-inset ring-accent hover:ring-accent-dark', 'mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark sm:mt-10']">
           Commencez dès aujourd'hui
         </router-link>
       </div>

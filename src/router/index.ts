@@ -16,11 +16,11 @@ const routes = [
     },
   },
   {
-    path: '/boutique',
+    path: '/adhesions',
     component: AdhesionPage,
-    name: 'La boutique',
+    name: 'Adhésions',
     meta: {
-      title: 'La boutique - Toul\'Barz',
+      title: 'Adhésions - Toul\'Barz',
     },
   },
   {

@@ -18,7 +18,7 @@ const quickLinks = [
   { label: 'Accueil', path: '/' },
   { label: 'Street Workout', path: '/street-workout' },
   { label: 'Événements', path: '/evenements' },
-  { label: 'La boutique', path: '/boutique' },
+  { label: 'Adhésions', path: '/adhesions' },
 ];
 
 const legalLinks = [
