@@ -60,7 +60,7 @@
             
           >
             <router-link
-              to="/boutique"
+              to="/adhesions"
               class="mt-4 group relative inline-flex items-center justify-center rounded-full border-2 backdrop-blur-sm border-white p-3 text-white transition-all duration-200 hover:bg-white hover:text-black disabled:bg-gray-300 disabled:text-gray-500"
               aria-label="Je m'inscris"
             >

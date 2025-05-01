@@ -83,20 +83,20 @@ onUnmounted(() => {
           Événements
         </router-link>
         <router-link
-          to="/boutique"
+          to="/adhesions"
           :class="[
             'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
-            $route.path === '/boutique' 
+            $route.path === '/adhesions' 
               ? 'text-accent border-b-2 border-accent' 
               : 'text-secondary hover:text-accent hover:border-accent'
           ]"
         >
-          La boutique
+          Adhésions
         </router-link>
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <router-link
-          to="/boutique"
+          to="/adhesions"
           class="rounded-md bg-accent px-3 py-2 text-base font-semibold text-secondary shadow-sm hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Rejoins-nous
@@ -154,16 +154,16 @@ onUnmounted(() => {
         Événements
       </router-link>
       <router-link
-        to="/boutique"
+        to="/adhesions"
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/boutique' 
+          $route.path === '/adhesions' 
             ? 'bg-accent text-secondary' 
             : 'hover:bg-accent hover:text-secondary'
         ]"
       >
-        La boutique
+        Adhésions
       </router-link>
     </div>
 
