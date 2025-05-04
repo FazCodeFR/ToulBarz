@@ -7,8 +7,13 @@
           Notre vision
         </h2>
         <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">
-          Chez ToulBarz, nous croyons que le street workout est bien plus qu'un simple sport. C'est un art, un mode de vie et une communauté.
+          Chez <span class="font-semibold">Toul’Barz</span>, nous ne sommes pas un simple 
+          <span class="font-semibold">club de street workout à Toulouse.</span>
+          Nous sommes une association qui <span class="font-semibold">structure, développe et fédère</span> la pratique du 
+          <span class="font-semibold">street workout</span> et 
+          <span class="font-semibold">calisthenics</span> en France, avec l'ambition de porter cette discipline plus haut et d'en faire un sport reconnu à grande échelle.
         </p>
+
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
@@ -38,22 +43,22 @@
 <script setup>
 const features = [
   {
-    name: 'Accessibilité',
+    name: 'Officialiser',
     description:
-      'Rendre le street workout accessible à tous, en proposant des entraînements adaptés à tous les niveaux et des infrastructures ouvertes à la communauté.',
-    icon: "i-mdi-human-greeting-variant",
+      'Nous travaillons activement pour poser les fondations d\"un street workout reconnu où chaque pratiquant peut évoluer sereinement.',
+    icon: "i-mdi-seal",
   },
   {
-    name: 'Communauté',
+    name: 'Démocratiser',
     description:
-      'Créer un esprit d\'entraide et de partage, en réunissant des passionnés pour s\'entraîner ensemble et s\'encourager à dépasser nos limites.',
-    icon: "i-mdi-account-group",
+      'Chaque jour, nous nous engageons à faire découvrir le street workout à tous ceux qui ne le connaissent pas. Nous sommes convaincus que chacun, quel que soit son âge ou son niveau, peut devenir la meilleure version de lui-même grâce au street workout.',
+    icon: "i-mdi-earth",
   },
   {
-    name: 'Progression',
+    name: 'Rendre accessible',
     description:
-      'Accompagner chaque membre dans son évolution physique et mentale, grâce à des conseils personnalisés et des événements motivants.',
-    icon: "i-mdi-trending-up",
+      'Du débutant à niveau élite, nous accompagnons tous les niveaux afin que chacun progresse à son rythme et trouve sa place au sein de notre communauté.',
+    icon: "i-mdi-access-point",
   },
 ]
 </script>

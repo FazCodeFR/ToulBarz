@@ -64,7 +64,7 @@
         <a
           href="https://www.instagram.com/toulbarz_tlb/"
           target="_blank"
-          class="text-base items-center font-semibold leading-6 text-gray-900 border-b-2 border-accent hover:text-accent-dark hover:border-accent"
+          class="text-base items-center font-semibold leading-6  text-accent hover:text-accent-dark hover:underline transition"
         >
           [Devenir partenaire ?]
         </a>
