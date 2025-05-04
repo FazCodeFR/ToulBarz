@@ -54,7 +54,7 @@
         <h3 class="text-2xl font-bold mb-4 z-10">🎉 Happy Birthday  🎉</h3>
         <h3 class="text-2xl font-bold mb-4 z-10">Agustin</h3>
         <img
-          src="https://media.giphy.com/media/3o6ZsX2dZgFvN6zopo/giphy.gif"
+          src="/img/agustin.jpg"
           alt="Happy Birthday"
           class="rounded-lg mb-4 z-10"
         />
