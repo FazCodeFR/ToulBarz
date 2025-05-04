@@ -93,11 +93,15 @@
                     <span class="i-mdi-map-marker h-4 w-4"></span>
                     {{ event.location }}
                   </a>
-                  
-                  <!-- <button class="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200">
-                    <span class="i-mdi-calendar-plus h-4 w-4"></span>
-                    S'inscrire
-                  </button> -->
+                  <a
+                  :href="`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.summary)}&dates=${formatGoogleCalendarDate(event.start)}/${formatGoogleCalendarDate(event.end)}&details=${encodeURIComponent(event.description || '')}&location=${encodeURIComponent(event.location || '')}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
+                >
+                  <span class="i-mdi-calendar-plus h-4 w-4"></span>
+                  Ajouter à Google Calendar
+                </a>
                 </div>
               </article>
             </div>
@@ -146,6 +150,11 @@ const calendarAttributes = computed(() => {
     }
   }));
 });
+
+const formatGoogleCalendarDate = (date) => {
+  return new Date(date).toISOString().replace(/[-:]|\.\d{3}/g, '');
+};
+
 
 // const calendarAttributes = computed(() => {
 //   const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white py-24 sm:py-32">
+  <div class="bg-white py-24 sm:py-32 relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <!-- Titre et texte -->
       <div class="mx-auto max-w-2xl text-center">
@@ -7,7 +7,7 @@
           Nos actions
         </h2>
         <p class="mt-6 text-lg leading-8 text-gray-600">
-          Le Street Workout, bien que non reconnu comme sport officiel par les ministères, gagne en popularité et se développe de façon autonome. Toul'Barz croit fermement en son potentiel et s'engage à accélérer son développement à l'échelle internationale et locale, en se concentrant sur quatre axes principaux.
+          Le Street Workout, bien que non reconnu comme sport officiel par les ministères, gagne en popularité...
         </p>
       </div>
 
@@ -16,8 +16,7 @@
         <div
           v-for="(item, index) in incentives"
           :key="index"
-          class="relative overflow-hidden rounded-3xl shadow-lg group transition-transform hover:scale-105
-                 w-80 h-80 md:w-64 md:h-[450px]"
+          class="relative overflow-hidden rounded-3xl shadow-lg group transition-transform hover:scale-105 w-80 h-80 md:w-64 md:h-[450px]"
         >
           <img
             :src="item.imgSrc"
@@ -27,33 +26,89 @@
           <div
             class="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-lg font-semibold md:text-xl z-10 bg-black/30"
           >
-            <span>
-              {{ item.name }}
-            </span>
+            <span>{{ item.name }}</span>
+          </div>
+
+          <!-- 🎉 Emoji only for "Communauté" -->
+          <div
+            v-if="item.name === 'Communauté'"
+            @click="openModalWithFireworks"
+            class="absolute bottom-2 right-2 text-xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity z-20"
+            title="Surprise !"
+          >
+            🎉
           </div>
         </div>
       </div>
     </div>
+
+    <!-- 🎉 Popup -->
+    <div
+      v-if="showModal"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50"
+    >
+      <div class="bg-white p-6 rounded-2xl shadow-xl max-w-sm text-center relative overflow-hidden z-10">
+        <button @click="closeModal" class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
+          ✖
+        </button>
+        <h3 class="text-2xl font-bold mb-4 z-10">🎉 Happy Birthday  🎉</h3>
+        <h3 class="text-2xl font-bold mb-4 z-10">Agustin</h3>
+        <img
+          src="https://media.giphy.com/media/3o6ZsX2dZgFvN6zopo/giphy.gif"
+          alt="Happy Birthday"
+          class="rounded-lg mb-4 z-10"
+        />
+      </div>
+    </div>
+
+    <!-- 🌟 Fireworks on whole screen -->
+    <Fireworks
+      v-if="showFireworks"
+      class="fixed inset-0 z-[9999] pointer-events-none"
+      :options="{
+        hue: { min: 0, max: 360 },
+        delay: { min: 15, max: 30 },
+        rocketsPoint: { min: 50, max: 50 },
+        speed: 2,
+        acceleration: 1.05,
+        friction: 0.97,
+        gravity: 1.5,
+        particles: 100,
+        traceLength: 5,
+        explosion: 6
+      }"
+    />
   </div>
 </template>
 
+
+
 <script setup>
+import { ref } from 'vue'
+import { Fireworks } from '@fireworks-js/vue'
+
 const incentives = [
-  {
-    name: 'Évènements & Compétitions',
-    imgSrc: '/img/actions/action_evenements_&_competitions.jpg',
-  },
-  {
-    name: 'Formations tous niveaux',
-    imgSrc: '/img/actions/action_formations_tous_niveaux.jpg',
-  },
-  {
-    name: 'Communauté',
-    imgSrc: '/img/actions/action_communaute.jpg',
-  },
-  {
-    name: 'Show & Spectacles',
-    imgSrc: '/img/actions/action_show_&_spectacles.jpg',
-  }
+  { name: 'Évènements & Compétitions', imgSrc: '/img/actions/action_evenements_&_competitions.jpg' },
+  { name: 'Formations tous niveaux', imgSrc: '/img/actions/action_formations_tous_niveaux.jpg' },
+  { name: 'Communauté', imgSrc: '/img/actions/action_communaute.jpg' },
+  { name: 'Show & Spectacles', imgSrc: '/img/actions/action_show_&_spectacles.jpg' }
 ]
+
+const showModal = ref(false)
+const showFireworks = ref(false)
+
+const openModalWithFireworks = () => {
+  showModal.value = true
+  showFireworks.value = true
+
+  // Stop fireworks after 7 seconds
+  setTimeout(() => {
+    showFireworks.value = false
+  }, 15000)
+}
+
+const closeModal = () => {
+  showModal.value = false
+}
 </script>
+

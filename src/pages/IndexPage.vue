@@ -3,12 +3,11 @@ const store = useStore()
 </script>
 <template>
   <Heroe/>
-  <Contact></Contact>
   <EventSection></EventSection>
+  <Contact></Contact>
   <Vision></Vision>
-  <StreetWorkout></StreetWorkout>
-  <!-- <HelloWorld msg="Hello World Component" /> -->
   <Action></Action>
+  <StreetWorkout></StreetWorkout>
   <Stats></Stats>
   <Partenaire></Partenaire>
   <Insta></Insta>
