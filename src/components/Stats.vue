@@ -31,10 +31,10 @@
 <script setup>
 import { ref } from 'vue'
 const stats = [
-  { id: 1, name: 'Adhérents', value: 104 },
-  { id: 2, name: 'Bénévoles', value: 15 },
-  { id: 3, name: 'Personnes initiées', value: 654 },
-  { id: 4, name: 'Années d\'existence', value: 5 },
+  { id: 1, name: 'Adhérents', value: 110 },
+  { id: 2, name: 'Bénévoles', value: 16 },
+  { id: 3, name: 'Personnes initiées', value: 1785 },
+  { id: 4, name: 'Évènements réalisés en 2 ans', value: 190 },
 ]
 
 // Valeurs animées

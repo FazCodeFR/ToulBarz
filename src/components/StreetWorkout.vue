@@ -24,9 +24,19 @@
               Qu'est-ce que le Street Workout ?
             </h2>
 
-            <p class="mt-6 text-lg">Le Street Workout (littéralement « entraînement de rue ») est un sport à mi-chemin entre la gymnastique et la musculation. Mélangeant figures de force, de souplesse et d’équilibre, c’est un sport qui se pratique essentiellement en extérieur.</p>
+            <p class="mt-6 text-lg">Le street workout ou calisthenics, du grec Khalos Sthenos (« beauté de la force »), est un sport-spectacle en pleine explosion, mêlant force, agilité et équilibre. Utilisant uniquement le poids du corps, il transforme la performance en un spectacle vivant, où les athlètes repoussent les limites de leurs corps.</p>
             <h3 class="mt-8 text-3xl font-semibold">Et le statique ?</h3>
             <p class="mt-4 text-lg">Le statique est une catégorie de mouvements de force qui requièrent souvent des années de travail intense et régulier pour être maîtrisés. Ces mouvements permettent de libérer tout le potentiel de son corps en adoptant des positions statiques telles que le drapeau ou la planche.</p>
+            <p class="mt-4 text-3xl">
+              <RouterLink
+                to="/evenements"
+                class="text-orange-600 hover:underline text-lg font-medium"
+              >
+                En savoir plus
+              </RouterLink>
+            </p>
+          
+
           </div>
         </div>
       </div>

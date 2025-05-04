@@ -17,6 +17,7 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "@fireworks-js/vue": "^2.10.8",
     "@popperjs/core": "^2.11.8",
     "@unhead/vue": "1.11.10",
     "@vueuse/motion": "3.0.3",
