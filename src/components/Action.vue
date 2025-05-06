@@ -86,9 +86,9 @@ import { Fireworks } from '@fireworks-js/vue'
 
 const incentives = [
   { name: 'Évènements & Compétitions', imgSrc: '/img/actions/action_evenements_&_competitions.jpg' },
-  { name: 'Formations tous niveaux', imgSrc: '/img/actions/action_formations_tous_niveaux.jpg' },
+  { name: 'Cours & Formations tous niveaux', imgSrc: '/img/actions/action_formations_tous_niveaux.jpg' },
   { name: 'Communauté', imgSrc: '/img/actions/action_communaute.jpg' },
-  { name: 'Show & Spectacles', imgSrc: '/img/actions/action_show_&_spectacles.jpg' }
+  { name: 'Shows & Animations', imgSrc: '/img/actions/action_show_&_spectacles.jpg' }
 ]
 
 const showModal = ref(false)
