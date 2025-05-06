@@ -4,10 +4,10 @@ const store = useStore()
 <template>
   <Heroe/>
   <EventSection></EventSection>
-  <Contact></Contact>
   <Vision></Vision>
   <Action></Action>
   <StreetWorkout></StreetWorkout>
+  <Contact></Contact>
   <Stats></Stats>
   <Partenaire></Partenaire>
   <Insta></Insta>

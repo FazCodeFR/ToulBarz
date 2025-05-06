@@ -2,13 +2,10 @@
   <div class="bg-white py-24 sm:py-32 relative">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <!-- Titre et texte -->
-      <div class="mx-auto max-w-2xl text-center">
+      <div class="mx-auto max-w-5xl text-center">
         <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
           Nos actions
         </h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">
-          Le Street Workout, bien que non reconnu comme sport officiel par les ministères, gagne en popularité...
-        </p>
       </div>
 
       <!-- Cartes -->
@@ -51,10 +48,10 @@
         <button @click="closeModal" class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
           ✖
         </button>
-        <h3 class="text-2xl font-bold mb-4 z-10">🎉 Happy Birthday  🎉</h3>
+        <h3 class="text-2xl font-bold mb-4 z-10">🎉 Joyeux anniversaire monsieur le président 🎉</h3>
         <h3 class="text-2xl font-bold mb-4 z-10">Agustin</h3>
         <img
-          src="/img/agustin.jpg"
+          src="/img/agustin.png"
           alt="Happy Birthday"
           class="rounded-lg mb-4 z-10"
         />
