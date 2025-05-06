@@ -15,11 +15,14 @@
           :key="index"
           class="relative overflow-hidden rounded-3xl shadow-lg group transition-transform hover:scale-105 w-80 h-80 md:w-64 md:h-[450px]"
         >
-          <img
-            :src="item.imgSrc"
-            :alt="item.name"
-            class="object-cover w-full h-full"
-          />
+        <img
+          :src="item.imgSrc"
+          :alt="item.name"
+          loading="eager"
+          decoding="async"
+          class="w-full h-full object-cover"
+        />
+
           <div
             class="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-lg font-semibold md:text-xl z-10 bg-black/30"
           >
@@ -30,7 +33,7 @@
           <div
             v-if="item.name === 'Communauté'"
             @click="openModalWithFireworks"
-            class="absolute bottom-2 right-2 text-xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity z-20"
+            class="absolute bottom-2 right-2 text-base cursor-pointer opacity-50 hover:opacity-100 transition-opacity z-20"
             title="Surprise !"
           >
             🎉
@@ -98,10 +101,9 @@ const openModalWithFireworks = () => {
   showModal.value = true
   showFireworks.value = true
 
-  // Stop fireworks after 7 seconds
   setTimeout(() => {
     showFireworks.value = false
-  }, 15000)
+  }, 11000)
 }
 
 const closeModal = () => {
