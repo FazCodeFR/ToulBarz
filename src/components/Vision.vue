@@ -6,7 +6,7 @@
         class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
           Notre vision
         </h2>
-        <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-700">
+        <p class="mt-6 max-w-5xl mx-auto text-lg text-gray-700">
           Chez <span class="font-semibold">Toul’Barz</span>, nous ne sommes pas un simple 
           <span class="font-semibold">club de street workout à Toulouse.</span>
           Nous sommes une association qui <span class="font-semibold">structure, développe et fédère</span> la pratique du 
@@ -52,7 +52,7 @@ const features = [
     name: 'Démocratiser',
     description:
       'Chaque jour, nous nous engageons à faire découvrir le street workout à tous ceux qui ne le connaissent pas. Nous sommes convaincus que chacun, quel que soit son âge ou son niveau, peut devenir la meilleure version de lui-même grâce au street workout.',
-    icon: "i-mdi-earth",
+    icon: "i-mdi-account-group",
   },
   {
     name: 'Rendre accessible',

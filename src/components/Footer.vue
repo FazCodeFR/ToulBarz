@@ -4,7 +4,7 @@ const currentYear = new Date().getFullYear();
 const associationInfo = {
   name: 'ToulBarz',
   description:
-    'Association de Street Workout à Toulouse, dédiée à la pratique, l\'apprentissage et le développement de la discipline.',
+    'Toul\'Barz est un club associatif de street workout toulousain dédié à officialiser, démocratiser et rendre accessible la pratique de cette discipline.',
   address: '34 rue Boulbonne, 31000 Toulouse',
   email: 'contact@toulbarz.fr',
   practiceHoursTitle: 'Horaires adhérents',
