@@ -33,7 +33,7 @@
           <div
             v-if="item.name === 'Communauté'"
             @click="openModalWithFireworks"
-            class="absolute bottom-2 right-2 text-base cursor-pointer opacity-50 hover:opacity-100 transition-opacity z-20"
+            class="absolute bottom-24 right-32 text-lg cursor-pointer opacity-60 hover:opacity-100 transition-opacity z-20"
             title="Surprise !"
           >
             🎉
@@ -47,12 +47,17 @@
       v-if="showModal"
       class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50"
     >
-      <div class="bg-white p-6 rounded-2xl shadow-xl max-w-sm text-center relative overflow-hidden z-10">
+      <div class="bg-white bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 space-y-2  p-6 rounded-2xl shadow-xl max-w-sm text-center relative overflow-hidden z-10">
         <button @click="closeModal" class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
           ✖
         </button>
-        <h3 class="text-2xl font-bold mb-4 z-10">🎉 Joyeux anniversaire monsieur le président 🎉</h3>
-        <h3 class="text-2xl font-bold mb-4 z-10">Agustin</h3>
+        <div class="text-center text-white ">
+          <h3 class="text-3xl font-extrabold">🎉🎉🎉</h3>
+          <h3 class="text-3xl font-extrabold">Joyeux anniversaire</h3>
+          <h3 class="text-2xl font-bold">Monsieur le Président Agustin</h3>
+          <h3 class="text-xl font-medium">Merci pour tout 🙏</h3>
+        </div>
+
         <img
           src="/img/agustin.png"
           alt="Happy Birthday"
