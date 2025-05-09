@@ -96,8 +96,8 @@ const videoSrc = ref('')
 const updateVideoSrc = () => {
   const isMobile = window.innerWidth < 768 || window.innerHeight > window.innerWidth
   videoSrc.value = isMobile
-    ? 'http://fazcode.com/video/video_hero_mobile_the_roof.mov'
-    : 'http://fazcode.com/video/video_hero_pc_basket.mov'
+    ? 'https://fazcode.com/video/video_hero_mobile_the_roof.mov'
+    : 'https://fazcode.com/video/video_hero_pc_basket.mov'
 }
 
 onMounted(() => {
