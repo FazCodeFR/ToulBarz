@@ -96,8 +96,8 @@ const videoSrc = ref('')
 const updateVideoSrc = () => {
   const isMobile = window.innerWidth < 768 || window.innerHeight > window.innerWidth
   videoSrc.value = isMobile
-    ? 'https://fazcode.com/video/video_hero_mobile_the_roof.mov'
-    : 'https://fazcode.com/video/video_hero_pc_basket.mov'
+    ? 'https://r1geyiedyzmzonp8.public.blob.vercel-storage.com/video/video_hero_mobile_the_roof.mov'
+    : 'https://r1geyiedyzmzonp8.public.blob.vercel-storage.com/video/video_hero_pc_basket.mov'
 }
 
 onMounted(() => {
