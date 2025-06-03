@@ -154,7 +154,7 @@
       difficulty: 'Intermédiaire',
       description: 'Le muscle-up est un mouvement avancé qui combine une traction et un dip. L\'athlète commence suspendu à une barre, effectue une traction puissante pour amener sa poitrine au-dessus de la barre, puis étend les bras pour terminer en position de support.',
       muscles: 'Dos, biceps, triceps, épaules, abdominaux',
-      image: '/img/partenaires/ctgym.jpg'
+      image: '/img/figures/muscle-up.jpg'
     },
     {
       name: 'Human Flag',

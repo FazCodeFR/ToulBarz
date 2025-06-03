@@ -35,12 +35,12 @@ onUnmounted(() => {
 
   <!-- Navbar sticky -->
   <header
-    :class="[ 
-      'sticky top-0 z-50 transition-all duration-300 ease-in-out',
-      isScrolled ? 'bg-primary/70 backdrop-blur-md shadow-md' : 'bg-primary',
-      isMenuOpen ? 'h-auto' : 'h-30'
-    ]"
-    :style="{ height: isMenuOpen ? 'h-8' : 'h-24' }"
+    :class="[
+    'sticky top-0 z-50 transition-all duration-300 ease-in-out',
+    isScrolled ? 'bg-primary/70 backdrop-blur-md shadow-md' : 'bg-primary',
+    isMenuOpen ? 'h-auto' : 'h-24'
+  ]"
+
   >
     <nav
       :class="[ 
@@ -128,7 +128,7 @@ onUnmounted(() => {
     </nav>
 
     <!-- Menu mobile -->
-    <div v-if="isMenuOpen" class="lg:hidden">
+    <div v-if="isMenuOpen" class="lg:hidden overflow-auto max-h-[80vh]">
       <router-link
         to="street-workout"
         @click="closeMenu"
