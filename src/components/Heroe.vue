@@ -96,9 +96,10 @@ const videoSrc = ref('')
 const updateVideoSrc = () => {
   const isMobile = window.innerWidth < 768 || window.innerHeight > window.innerWidth
   videoSrc.value = isMobile
-    ? 'https://r1geyiedyzmzonp8.public.blob.vercel-storage.com/video/video_hero_mobile_the_roof.mov'
-    : 'https://r1geyiedyzmzonp8.public.blob.vercel-storage.com/video/video_hero_pc_basket.mov'
+    ? 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_hero_mobile_the_roof.mp4'
+    : 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_hero_pc_basket.mp4'
 }
+// Hébergement des vidéos temporaire sur R2
 
 onMounted(() => {
   updateVideoSrc()
