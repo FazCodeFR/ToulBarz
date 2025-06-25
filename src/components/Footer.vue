@@ -115,8 +115,8 @@ const legalLinks = [
       <div class="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
       <p>&copy; {{ currentYear }} {{ associationInfo.name }}. Tous droits réservés.</p>
       <div class="mt-4 md:mt-0 flex items-center">
-        <a href="https://leoairaudi.com/" target="_blank">
-          <p class="text-sm text-accent hover:text-accent-dark hover:underline transition">Développé avec 🧡 par Léo Airaudi</p>
+        <a href="https://www.fazcode.com/" target="_blank">
+          <p class="text-sm text-accent hover:text-accent-dark hover:underline transition">Développé avec 🧡 par Léo Airaudi - FazCode</p>
         </a>
       </div>
 
