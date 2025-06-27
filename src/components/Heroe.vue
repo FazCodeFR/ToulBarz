@@ -76,6 +76,7 @@
           :animate="{ opacity: 1 }"
           transition="{ delay: 1.1, duration: 0.6 }"
           class="mt-10 flex flex-col items-center justify-center gap-y-2"
+          aria-label="Aller à la section événements"
         >
           <a href="#vision-section" class="animate-bounce text-6xl font-semibold leading-6 text-white">
             <span aria-hidden="true">↓</span>
