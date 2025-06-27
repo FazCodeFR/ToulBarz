@@ -5,7 +5,7 @@
       <div class="text-center">
         <h2 class="text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-white sm:text-5xl">L'asso en quelques chiffres</h2>
       </div>
-      <dl class="mt-12 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4 relative z-10">
+      <dl class="mt-12 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4 relative">
         <div
           v-for="stat in stats"
           :key="stat.id"

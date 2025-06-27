@@ -30,14 +30,14 @@
           </div>
 
           <!-- 🎉 Emoji only for "Communauté" -->
-          <div
+          <!-- <div
             v-if="item.name === 'Communauté'"
             @click="openModalWithFireworks"
             class="absolute bottom-24 right-32 text-lg cursor-pointer opacity-60 hover:opacity-100 transition-opacity z-20"
             title="Surprise !"
           >
             🎉
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

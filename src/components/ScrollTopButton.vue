@@ -3,7 +3,7 @@
       <button
         v-if="isVisible"
         @click="scrollToTop"
-        class="fixed z-10 bottom-4 right-4 bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded-full shadow-lg"
+        class="fixed z-40 bottom-4 right-4 bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded-full shadow-lg"
       >
         ↑
       </button>
