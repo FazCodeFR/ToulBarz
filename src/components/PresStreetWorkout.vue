@@ -2,7 +2,7 @@
   <!-- Hero Section avec fond parallax -->
   <header class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 bg-white/70 z-10"></div>
-    <div class="absolute inset-0 bg-[url('/img/presentations/one_arm.jpg')] bg-cover bg-center bg-fixed"></div>
+    <div class="absolute inset-0 bg-[url('/img/presentations/one_arm.webp')] bg-cover bg-center bg-fixed"></div>
 
     <div class="container mx-auto px-4 z-20 text-center">
       <h1
@@ -157,39 +157,39 @@
       difficulty: 'Intermédiaire',
       description: 'Le muscle-up est un mouvement avancé qui combine une traction et un dip. L\'athlète commence suspendu à une barre, effectue une traction puissante pour amener sa poitrine au-dessus de la barre, puis étend les bras pour terminer en position de support.',
       muscles: 'Dos, biceps, triceps, épaules, abdominaux',
-      image: '/img/figures/muscle-up.jpg'
+      image: '/img/figures/muscle-up.webp'
     },
     {
       name: 'Human Flag',
-      image: '/img/figures/humanflag.jpg',
+      image: '/img/figures/humanflag.webp',
       difficulty: 'Intermédiaire',
       description: 'Le human flag (drapeau humain) est une figure impressionnante où l\'athlète tient un poteau vertical avec ses mains et maintient son corps à l\'horizontale, parallèle au sol, formant ainsi la figure d\'un drapeau.',
       muscles: 'Épaules, abdominaux, obliques, avant-bras'
     },
     {
       name: 'Front Lever',
-      image: '/img/figures/frontlever.jpg',
+      image: '/img/figures/frontlever.webp',
       difficulty: 'Intermédiaire',
       description: 'Le front lever consiste à maintenir le corps en position horizontale, face vers le haut, en étant suspendu par les mains à une barre. Le corps doit former une ligne droite des épaules aux pieds.',
       muscles: 'Abdominaux, dos, épaules'
     },
     {
       name: 'Planche',
-      image: '/img/figures/planche.jpg',
+      image: '/img/figures/planche.webp',
       difficulty: 'Avancée',
       description: 'La planche est une figure où l\'athlète maintient son corps parallèle au sol en équilibre sur ses mains, bras tendus. Le corps entier est suspendu au-dessus du sol, créant une ligne droite.',
       muscles: 'Épaules, pectoraux, triceps, abdominaux'
     },
     {
       name: 'Handstand',
-      image: '/img/figures/handstand.jpg',
+      image: '/img/figures/handstand.webp',
       difficulty: 'Débutant',
       description: 'L\'équilibre sur les mains est une figure fondamentale où l\'athlète se tient verticalement sur ses mains, corps aligné. Cette figure est souvent utilisée comme base pour d\'autres mouvements plus avancés.',
       muscles: 'Épaules, abdominaux, dos'
     },
     {
       name: 'Back Lever',
-      image: '/img/figures/backlever.jpg',
+      image: '/img/figures/backlever.webp',
       difficulty: 'Intermédiaire',
       description: 'Le back lever est l\'inverse du front lever. L\'athlète maintient son corps en position horizontale, face vers le sol, en étant suspendu par les mains à une barre, formant une ligne droite.',
       muscles: 'Dos, biceps, abdominaux'

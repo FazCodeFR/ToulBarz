@@ -59,7 +59,7 @@
         </div>
 
         <img
-          src="/img/agustin.png"
+          src="/img/agustin.webp"
           alt="Happy Birthday"
           class="rounded-lg mb-4 z-10"
         />
@@ -93,10 +93,10 @@ import { ref } from 'vue'
 import { Fireworks } from '@fireworks-js/vue'
 
 const incentives = [
-  { name: 'Évènements & Compétitions', imgSrc: '/img/actions/action_evenements_&_competitions.jpg' },
-  { name: 'Cours & Formations tous niveaux', imgSrc: '/img/actions/action_formations_tous_niveaux.jpg' },
-  { name: 'Communauté', imgSrc: '/img/actions/action_communaute.jpg' },
-  { name: 'Shows & Animations', imgSrc: '/img/actions/action_show_&_spectacles.jpg' }
+  { name: 'Évènements & Compétitions', imgSrc: '/img/actions/action_evenements_&_competitions.webp' },
+  { name: 'Cours & Formations tous niveaux', imgSrc: '/img/actions/action_formations_tous_niveaux.webp' },
+  { name: 'Communauté', imgSrc: '/img/actions/action_communaute.webp' },
+  { name: 'Shows & Animations', imgSrc: '/img/actions/action_show_&_spectacles.webp' }
 ]
 
 const showModal = ref(false)

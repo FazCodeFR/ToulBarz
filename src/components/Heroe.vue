@@ -3,7 +3,7 @@
     <!-- Image de fond -->
     <div
       class="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-      style="background-image: url('/img/home_heroe.png');"
+      style="background-image: url('/img/home_heroe.webp');"
     ></div>
     <!-- Vidéo de fond (mobile ou desktop selon contexte) -->
     <video

@@ -80,7 +80,7 @@
 const partenaires = [
   {
     name: 'SWO',
-    imgSrc: '/img/partenaires/swo.avif',
+    imgSrc: '/img/partenaires/swo.webp',
     link: 'https://sw-official.com/',
     description: 'Marque de Street Workout'
   },
@@ -92,7 +92,7 @@ const partenaires = [
   },
   {
     name: "Chiropratique Connexion",
-    imgSrc: '/img/partenaires/centrechiroconnexion.png',
+    imgSrc: '/img/partenaires/centrechiroconnexion.webp',
     link: 'https://centrechiroconnexion.com/',
     description: 'Centre de chiropratique'
   },
@@ -104,19 +104,19 @@ const partenaires = [
   },
   {
     name: 'Gorletic',
-    imgSrc: '/img/partenaires/gorletic.jpg',
+    imgSrc: '/img/partenaires/gorletic.webp',
     link: 'https://gorletic.com',
     description: 'Matériel de sport'
   },
   {
     name : 'S&B',
-    imgSrc: '/img/partenaires/strengthandbalance.jpg',
+    imgSrc: '/img/partenaires/strengthandbalance.webp',
     link: 'https://strength-and-balance.fr/',
     description: 'Vêtement de street workout'
   },
   {
     name: 'CTGym',
-    imgSrc: '/img/partenaires/ctgym.jpg',
+    imgSrc: '/img/partenaires/ctgym.webp',
     link: 'https://ctgym.fr/',
     description: 'Salle de gym'
   }
