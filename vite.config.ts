@@ -92,7 +92,7 @@ export default defineConfig({
   },
 
   server: {
-    host: true, // accessible sur le réseau local
+    host: false,
     port: 3000,
     open: true,
   },

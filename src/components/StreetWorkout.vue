@@ -10,7 +10,7 @@
             >
               <youtube-video
                 slot="media"
-                src="https://www.youtube.com/embed/-S6mYskysIk"
+                src="https://www.youtube-nocookie.com/embed/-S6mYskysIk"
                 playsinline
                 crossorigin
                 class="h-full w-full"

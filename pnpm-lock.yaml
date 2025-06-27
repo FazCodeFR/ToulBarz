@@ -48,8 +48,8 @@ importers:
         specifier: 4.4.5
         version: 4.4.5(vue@3.5.12(typescript@5.6.3))
       youtube-video-element:
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.5.3
+        version: 1.5.3
     devDependencies:
       '@egoist/tailwindcss-icons':
         specifier: 1.8.1
@@ -3811,8 +3811,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  youtube-video-element@1.5.1:
-    resolution: {integrity: sha512-oWZFg/d7U4IyAfY7Srh2nIhYkFdmGD9vm2kCnMUvb3mE5RnDl+rF1BPvBKANb6g5SYCZC2OZszlY5zNHUBvmGA==}
+  youtube-video-element@1.5.3:
+    resolution: {integrity: sha512-oF9lNlbuWpmpNgbQPrlALGELpgpPLrtz0nakgNUTSQCBQVuyMyU1EVopG6WQsdFh7tZlk0JxDna3bUTWy7erZg==}
 
   zhead@2.2.4:
     resolution: {integrity: sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag==}
@@ -7887,6 +7887,6 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  youtube-video-element@1.5.1: {}
+  youtube-video-element@1.5.3: {}
 
   zhead@2.2.4: {}
