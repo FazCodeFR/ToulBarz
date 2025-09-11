@@ -13,11 +13,11 @@
             Prends ta séance d'essai gratuite
           </h3>
           <p class="border-l border-gray-200 pl-6 pt-2 text-gray-600 mb-4">
-            Viens découvrir gratuitement le street workout au sein de notre association. Débutant, intermédiaire ou niveau avancé, tu pourras te faire encadrer par nos coachs et tu n'as pas besoin de matériel,
-            <a href="https://www.instagram.com/toulbarz_tlb/" target="_blank"
+                        <a href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t" target="_blank"
               class="inline-flex items-center gap-1 text-accent hover:text-accent-dark hover:underline transition">
-              donc viens comme tu es !
+               Viens découvrir gratuitement
             </a>
+            le street workout au sein de notre association. Débutant, intermédiaire ou niveau avancé, tu pourras te faire encadrer par nos coachs et tu n'as pas besoin de matériel, donc viens comme tu es !
           </p>
         </div>
 

@@ -82,13 +82,13 @@ const partenaires = [
     name: 'SWO',
     imgSrc: '/img/partenaires/swo.webp',
     link: 'https://sw-official.com/',
-    description: 'Marque de Street Workout'
+    description: 'Street Workout'
   },
   {
     name: 'Via Fortis',
     imgSrc: '/img/partenaires/viafortis.svg',
     link: 'https://viafortis.fr/',
-    description: 'Marque de Street Workout'
+    description: 'Street Workout'
   },
   {
     name: "Chiropratique Connexion",
@@ -100,7 +100,7 @@ const partenaires = [
     name: 'FocaFoca',
     imgSrc: '/img/partenaires/focafoca.webp',
     link: 'https://focafoca.fr/fr',
-    description: 'Cuisine italienne authentique'
+    description: 'Cuisine italienne'
   },
   {
     name: 'Gorletic',
@@ -109,10 +109,10 @@ const partenaires = [
     description: 'Matériel de sport'
   },
   {
-    name : 'S&B',
-    imgSrc: '/img/partenaires/strengthandbalance.webp',
-    link: 'https://strength-and-balance.fr/',
-    description: 'Vêtement de street workout'
+    name : 'Peanut',
+    imgSrc: '/img/partenaires/peanutcoffeee.webp',
+    link: 'https://www.instagram.com/peanutcoffeee',
+    description: 'Coffee shop'
   },
   {
     name: 'CTGym',

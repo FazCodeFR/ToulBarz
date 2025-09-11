@@ -40,7 +40,7 @@ const tiers = [
   {
     name: 'Adhésion Classique',
     id: 'tier-classique',
-    priceMonthly: '95€',
+    priceMonthly: '175€',
     description: "Adapté aux niveaux débutant et intermédiaire",
     features: [
       'Accès exclusif aux séances hebdomadaires',
@@ -58,7 +58,7 @@ const tiers = [
   {
     name: 'Adhésion Athlète',
     id: 'tier-athlete',
-    priceMonthly: '145€',
+    priceMonthly: '250€',
     description: "Adapté aux niveaux avancés",
     features: [
       'Accès à tous les avantages des adhérents classiques',
