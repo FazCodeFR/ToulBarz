@@ -11,15 +11,15 @@ const associationInfo = {
   practiceHours: [
   {
     day: 'Vendredi',
-    time: '16h30 - 19h00',
-    place: 'The roof',
-    link: 'https://maps.app.goo.gl/B4raGkQYrwzhEUZSA'
+    time: '17h30 - 20h00',
+    place: 'Studio 9',
+    link: 'https://maps.app.goo.gl/istoY2LvXYDyz3fn6'
   },
   {
     day: 'Dimanche',
-    time: '16h30 - 18h00',
-    place: 'L-Danse',
-    link: 'https://maps.app.goo.gl/QdnSPB2oT174P7y5A'
+    time: '16h30 - 18h30',
+    place: 'The roof',
+    link: 'https://maps.app.goo.gl/B4raGkQYrwzhEUZSA'
   }
 ]
 };
