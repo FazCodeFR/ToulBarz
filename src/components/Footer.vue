@@ -17,7 +17,7 @@ const associationInfo = {
   },
   {
     day: 'Dimanche',
-    time: '16h30 - 18h30',
+    time: '16h00 - 18h30',
     place: 'The roof',
     link: 'https://maps.app.goo.gl/B4raGkQYrwzhEUZSA'
   }
