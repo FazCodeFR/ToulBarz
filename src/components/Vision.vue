@@ -22,7 +22,7 @@
           :key="feature.name"
           class="rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-none bg-white"
         >
-          <div class="flex flex-col items-center pt-8 px-12 pb-6">
+          <div class="flex flex-col items-center pt-8 px-6 sm:px-12 pb-6">
             <div class="mb-4">
               <div :class="feature.icon" class="h-14 w-14 text-accent" aria-hidden="true" />
             </div>
