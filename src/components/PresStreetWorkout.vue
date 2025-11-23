@@ -2,7 +2,7 @@
   <!-- Hero Section avec fond parallax -->
   <header class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 z-10"></div>
-    <div class="absolute inset-0 bg-[url('/img/presentations/one_arm.webp')] bg-cover bg-center bg-fixed"></div>
+    <div class="absolute inset-0 bg-[url('/img/figures/header.webp')] bg-cover bg-center bg-fixed"></div>
 
     <div class="container mx-auto px-4 z-20 text-center">
       <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold mb-6">
