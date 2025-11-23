@@ -29,7 +29,4 @@ const store = useStore()
   <div v-scroll-animate="{ animation: 'fade-up', delay: 100 }">
     <Insta></Insta>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 200 }">
-    <InstaBouton></InstaBouton>
-  </div>
 </template>
