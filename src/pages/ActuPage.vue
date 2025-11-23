@@ -97,14 +97,21 @@ const selectActu = (id: number) => {
   }
 }
 
-const formatDate = (dateStr: string) => {
+const formatDate = (dateStr?: string) => {
+  if (!dateStr) return '' // ou return dateStr si tu veux juste renvoyer vide
+
   const [day, month, year] = dateStr.split('-')
+  if (!day || !month || !year) return dateStr // format inattendu → on renvoie brut
+
   const months = [
     'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
     'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
   ]
-  return `${parseInt(day)} ${months[parseInt(month) - 1]} ${year}`
+
+  const monthIndex = parseInt(month) - 1
+  return `${parseInt(day)} ${months[monthIndex]} ${year}`
 }
+
 
 const downloadPdf = () => {
   if (selectedActu.value) {
