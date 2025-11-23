@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 interface Actu {
@@ -13,6 +13,16 @@ interface Actu {
 
 const route = useRoute()
 const router = useRouter()
+
+// Ref pour le scroll
+const pdfViewerRef = ref<HTMLElement | null>(null)
+
+// Détection mobile
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 1024
+}
 
 const actus: Actu[] = [
   {
@@ -47,15 +57,29 @@ const selectedActu = computed(() => {
   return actus.find((actu) => actu.id === selectedActuId.value) || actus[0]
 })
 
-// Generate Google Docs Viewer URL for cross-platform PDF viewing
+// URL du PDF selon le device
 const pdfViewerUrl = computed(() => {
   if (!selectedActu.value) return ''
   const baseUrl = window.location.origin
   const pdfUrl = baseUrl + selectedActu.value.pdfUrl
-  const url  =  `https://docs.google.com/gview?url=${pdfUrl}&embedded=true`
-  console.log('🚀 ~ url:', url);
-  return url
+  
+  if (isMobile.value) {
+    // Mobile : utiliser Google Docs Viewer
+    return `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`
+  } else {
+    // Desktop : URL directe du PDF
+    return selectedActu.value.pdfUrl
+  }
 })
+
+// Fonction pour scroller vers l'article
+const scrollToArticle = () => {
+  nextTick(() => {
+    if (pdfViewerRef.value) {
+      pdfViewerRef.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  })
+}
 
 const selectActu = (id: number) => {
   const actu = actus.find((a) => a.id === id)
@@ -91,13 +115,25 @@ const openPdfInNewTab = () => {
 
 // Initialize from URL query param
 onMounted(() => {
+  // Vérifier si mobile
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+  
   const actuParam = route.query.actu as string
   if (actuParam) {
     const actu = actus.find((a) => a.slug === actuParam)
     if (actu) {
       selectedActuId.value = actu.id
+      // Scroll vers l'article après un court délai pour laisser le DOM se charger
+      setTimeout(() => {
+        scrollToArticle()
+      }, 100)
     }
   }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
 })
 
 // Watch for route query changes
@@ -174,11 +210,11 @@ watch(
         </div>
 
         <!-- PDF Viewer -->
-        <div class="lg:w-2/3 xl:w-3/4">
+        <div class="lg:w-2/3 xl:w-3/4" ref="pdfViewerRef">
           <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             <!-- PDF Header -->
             <div class="bg-primary p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
+              <div class="text-center sm:text-left">
                 <h3 class="text-white font-bold text-lg">
                   {{ selectedActu?.title }}
                 </h3>
@@ -186,7 +222,7 @@ watch(
                   {{ selectedActu?.subtitle }} • {{ formatDate(selectedActu?.date || '') }}
                 </p>
               </div>
-              <div class="flex gap-3">
+              <div class="flex gap-3 justify-center sm:justify-end">
                 <button
                   @click="openPdfInNewTab"
                   class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium backdrop-blur-sm"
@@ -208,11 +244,11 @@ watch(
               </div>
             </div>
 
-            <!-- PDF Embed - Works on both mobile and desktop via Google Docs Viewer -->
+            <!-- PDF Embed - Mobile: Google Docs Viewer / Desktop: Direct PDF -->
             <div class="relative w-full bg-gray-100" style="height: 70vh; min-height: 500px;">
               <iframe
                 :src="pdfViewerUrl"
-                :key="selectedActu?.id"
+                :key="`${selectedActu?.id}-${isMobile}`"
                 class="w-full h-full border-0"
                 :title="selectedActu?.title"
                 allowfullscreen
