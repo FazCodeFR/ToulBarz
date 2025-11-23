@@ -76,6 +76,7 @@ const thisYear = new Date().getFullYear()
   <main class="overflow-x-hidden">
     <Header/>
     <ScrollTopButton />
+    <InstaBouton />
     <router-view />
     <Footer/>
   </main>
