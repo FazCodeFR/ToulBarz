@@ -8,6 +8,7 @@ interface Actu {
   subtitle: string
   date: string
   pdfUrl: string
+  slug: string
 }
 
 const route = useRoute()
@@ -20,6 +21,7 @@ const actus: Actu[] = [
     subtitle: 'Mister France',
     date: '03-10-2025',
     pdfUrl: '/pdfs/03-10-2025 - Mister France.pdf',
+    slug: 'mister-france',
   },
   {
     id: 2,
@@ -27,6 +29,7 @@ const actus: Actu[] = [
     subtitle: 'Tubecon 2025',
     date: '04-10-2025',
     pdfUrl: '/pdfs/04-10-2025 - Tubecon.pdf',
+    slug: 'tubecon-2025',
   },
   {
     id: 3,
@@ -34,6 +37,7 @@ const actus: Actu[] = [
     subtitle: 'Cohésion Athlètes',
     date: '05-10-2025',
     pdfUrl: '/pdfs/05-10-2025 - Cohésion Athlètes.pdf',
+    slug: 'cohesion-athletes',
   },
 ]
 
@@ -44,8 +48,11 @@ const selectedActu = computed(() => {
 })
 
 const selectActu = (id: number) => {
-  selectedActuId.value = id
-  router.push({ query: { actu: id.toString() } })
+  const actu = actus.find((a) => a.id === id)
+  if (actu) {
+    selectedActuId.value = id
+    router.push({ query: { actu: actu.slug } })
+  }
 }
 
 const formatDate = (dateStr: string) => {
@@ -74,11 +81,11 @@ const openPdfInNewTab = () => {
 
 // Initialize from URL query param
 onMounted(() => {
-  const actuParam = route.query.actu
+  const actuParam = route.query.actu as string
   if (actuParam) {
-    const id = parseInt(actuParam as string)
-    if (actus.find((a) => a.id === id)) {
-      selectedActuId.value = id
+    const actu = actus.find((a) => a.slug === actuParam)
+    if (actu) {
+      selectedActuId.value = actu.id
     }
   }
 })
@@ -88,9 +95,9 @@ watch(
   () => route.query.actu,
   (newActu) => {
     if (newActu) {
-      const id = parseInt(newActu as string)
-      if (actus.find((a) => a.id === id)) {
-        selectedActuId.value = id
+      const actu = actus.find((a) => a.slug === newActu)
+      if (actu) {
+        selectedActuId.value = actu.id
       }
     }
   }
@@ -98,14 +105,14 @@ watch(
 </script>
 
 <template>
-  <div class="min-h-screen bg-secondary pt-8 pb-16">
+  <div class="min-h-screen bg-gray-50 pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
           Nos <span class="text-accent">Actualités</span>
         </h1>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">
           Retrouvez toutes nos dernières actualités et articles de presse
         </p>
       </div>
@@ -114,30 +121,30 @@ watch(
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- Liste des actus (sidebar) -->
         <div class="lg:w-1/3 xl:w-1/4">
-          <div class="bg-primary rounded-xl p-4 sticky top-28">
-            <h2 class="text-secondary font-semibold text-lg mb-4 px-2">
+          <div class="bg-white rounded-2xl p-5 sticky top-28 shadow-sm border border-gray-100">
+            <h2 class="text-primary font-semibold text-lg mb-4 px-2">
               Articles
             </h2>
-            <div class="space-y-2">
+            <div class="space-y-3">
               <button
                 v-for="actu in actus"
                 :key="actu.id"
                 @click="selectActu(actu.id)"
                 :class="[
-                  'w-full text-left p-4 rounded-lg transition-all duration-200',
+                  'w-full text-left p-4 rounded-xl transition-all duration-300',
                   selectedActuId === actu.id
-                    ? 'bg-accent text-secondary'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-secondary'
+                    ? 'bg-accent text-white shadow-md shadow-accent/30'
+                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-sm'
                 ]"
               >
-                <div class="font-semibold text-sm leading-tight mb-1 line-clamp-2">
+                <div class="font-semibold text-sm leading-tight mb-2 line-clamp-2">
                   {{ actu.title }}
                 </div>
-                <div class="flex items-center justify-between mt-2">
+                <div class="flex items-center justify-between">
                   <span
                     :class="[
-                      'text-xs',
-                      selectedActuId === actu.id ? 'text-secondary/80' : 'text-gray-500'
+                      'text-xs font-medium',
+                      selectedActuId === actu.id ? 'text-white/80' : 'text-gray-500'
                     ]"
                   >
                     {{ actu.subtitle }}
@@ -145,7 +152,7 @@ watch(
                   <span
                     :class="[
                       'text-xs',
-                      selectedActuId === actu.id ? 'text-secondary/80' : 'text-gray-500'
+                      selectedActuId === actu.id ? 'text-white/80' : 'text-gray-400'
                     ]"
                   >
                     {{ actu.date }}
@@ -158,21 +165,21 @@ watch(
 
         <!-- PDF Viewer -->
         <div class="lg:w-2/3 xl:w-3/4">
-          <div class="bg-primary rounded-xl overflow-hidden shadow-lg">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             <!-- PDF Header -->
-            <div class="bg-gray-800 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="bg-primary p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h3 class="text-secondary font-bold text-lg">
+                <h3 class="text-white font-bold text-lg">
                   {{ selectedActu?.title }}
                 </h3>
-                <p class="text-gray-400 text-sm mt-1">
-                  {{ selectedActu?.subtitle }} - {{ formatDate(selectedActu?.date || '') }}
+                <p class="text-gray-300 text-sm mt-1">
+                  {{ selectedActu?.subtitle }} • {{ formatDate(selectedActu?.date || '') }}
                 </p>
               </div>
-              <div class="flex gap-2">
+              <div class="flex gap-3">
                 <button
                   @click="openPdfInNewTab"
-                  class="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-secondary px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                  class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium backdrop-blur-sm"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -181,7 +188,7 @@ watch(
                 </button>
                 <button
                   @click="downloadPdf"
-                  class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-secondary px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                  class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium shadow-md shadow-accent/30"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -192,36 +199,27 @@ watch(
             </div>
 
             <!-- PDF Embed -->
-            <div class="relative w-full" style="height: 70vh; min-height: 500px;">
+            <div class="relative w-full bg-white" style="height: 70vh; min-height: 500px;">
               <iframe
                 :src="selectedActu?.pdfUrl"
                 :key="selectedActu?.id"
                 class="w-full h-full border-0"
                 :title="selectedActu?.title"
               />
-              <!-- Fallback message -->
-              <div class="absolute inset-0 flex items-center justify-center bg-gray-800 pointer-events-none opacity-0 peer-[&:not([src])]:opacity-100">
-                <div class="text-center p-8">
-                  <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <p class="text-gray-400">Chargement du PDF...</p>
-                </div>
-              </div>
             </div>
           </div>
 
           <!-- Navigation rapide mobile -->
           <div class="lg:hidden mt-6">
-            <div class="flex items-center justify-between bg-primary rounded-xl p-4 shadow-lg">
+            <div class="flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <button
                 @click="selectedActuId > 1 && selectActu(selectedActuId - 1)"
                 :disabled="selectedActuId === 1"
                 :class="[
-                  'flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-200',
+                  'flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium',
                   selectedActuId === 1
-                    ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
-                    : 'bg-gray-800 text-secondary hover:bg-accent'
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-100 text-gray-700 hover:bg-accent hover:text-white'
                 ]"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,17 +227,17 @@ watch(
                 </svg>
                 Précédent
               </button>
-              <span class="text-gray-600 text-sm">
+              <span class="text-gray-500 text-sm font-medium">
                 {{ selectedActuId }} / {{ actus.length }}
               </span>
               <button
                 @click="selectedActuId < actus.length && selectActu(selectedActuId + 1)"
                 :disabled="selectedActuId === actus.length"
                 :class="[
-                  'flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-200',
+                  'flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium',
                   selectedActuId === actus.length
-                    ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
-                    : 'bg-gray-800 text-secondary hover:bg-accent'
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-100 text-gray-700 hover:bg-accent hover:text-white'
                 ]"
               >
                 Suivant
