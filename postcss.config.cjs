@@ -1,10 +1,7 @@
 /* eslint-env node */
 module.exports = {
   plugins: {
-    'postcss-import': {},
-    'tailwindcss/nesting': 'postcss-nesting',
-    tailwindcss: {},
-    autoprefixer: {},
+    '@tailwindcss/postcss': {},
     ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
   },
 }
