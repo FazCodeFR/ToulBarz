@@ -14,22 +14,6 @@ interface Actu {
 const route = useRoute()
 const router = useRouter()
 
-// Detect mobile device
-const isMobile = ref(false)
-const checkMobile = () => {
-  isMobile.value = window.innerWidth < 1024 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-}
-
-onMounted(() => {
-  checkMobile()
-  window.addEventListener('resize', checkMobile)
-})
-
-import { onUnmounted } from 'vue'
-onUnmounted(() => {
-  window.removeEventListener('resize', checkMobile)
-})
-
 const actus: Actu[] = [
   {
     id: 1,
@@ -61,6 +45,14 @@ const selectedActuId = ref<number>(actus[0]?.id || 1)
 
 const selectedActu = computed(() => {
   return actus.find((actu) => actu.id === selectedActuId.value) || actus[0]
+})
+
+// Generate Google Docs Viewer URL for cross-platform PDF viewing
+const pdfViewerUrl = computed(() => {
+  if (!selectedActu.value) return ''
+  const baseUrl = window.location.origin
+  const pdfUrl = encodeURIComponent(baseUrl + selectedActu.value.pdfUrl)
+  return `https://docs.google.com/viewer?url=${pdfUrl}&embedded=true`
 })
 
 const selectActu = (id: number) => {
@@ -214,52 +206,15 @@ watch(
               </div>
             </div>
 
-            <!-- PDF Embed - Desktop -->
-            <div v-if="!isMobile" class="relative w-full bg-white" style="height: 70vh; min-height: 500px;">
+            <!-- PDF Embed - Works on both mobile and desktop via Google Docs Viewer -->
+            <div class="relative w-full bg-gray-100" style="height: 70vh; min-height: 500px;">
               <iframe
-                :src="selectedActu?.pdfUrl"
+                :src="pdfViewerUrl"
                 :key="selectedActu?.id"
                 class="w-full h-full border-0"
                 :title="selectedActu?.title"
+                allowfullscreen
               />
-            </div>
-
-            <!-- Mobile View - Card with actions -->
-            <div v-else class="p-6 bg-gray-50">
-              <div class="text-center py-8">
-                <!-- PDF Icon -->
-                <div class="mx-auto w-20 h-20 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
-                  <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-
-                <p class="text-gray-600 mb-8">
-                  Appuyez sur un bouton ci-dessous pour visualiser ou télécharger l'article
-                </p>
-
-                <!-- Action buttons -->
-                <div class="flex flex-col gap-3 max-w-xs mx-auto">
-                  <button
-                    @click="openPdfInNewTab"
-                    class="flex items-center justify-center gap-3 bg-accent hover:bg-accent-dark text-white px-6 py-4 rounded-xl transition-all duration-200 text-base font-semibold shadow-lg shadow-accent/30"
-                  >
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Voir le PDF
-                  </button>
-                  <button
-                    @click="downloadPdf"
-                    class="flex items-center justify-center gap-3 bg-primary hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-200 text-base font-semibold"
-                  >
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Télécharger
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
 
