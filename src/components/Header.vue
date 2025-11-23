@@ -64,19 +64,30 @@ onUnmounted(() => {
           to="street-workout"
           :class="[
             'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
-            $route.path === '/street-workout' 
-              ? 'text-accent border-b-2 border-accent' 
+            $route.path === '/street-workout'
+              ? 'text-accent border-b-2 border-accent'
               : 'text-secondary hover:text-accent hover:border-accent'
           ]"
         >
           Street Workout
         </router-link>
         <router-link
+          to="/actualites"
+          :class="[
+            'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
+            $route.path === '/actualites'
+              ? 'text-accent border-b-2 border-accent'
+              : 'text-secondary hover:text-accent hover:border-accent'
+          ]"
+        >
+          Nos actu
+        </router-link>
+        <router-link
           to="/evenements"
           :class="[
             'text-base font-semibold leading-6 py-2 pr-4 pl-3 border-b-2 border-transparent duration-200',
-            $route.path === '/evenements' 
-              ? 'text-accent border-b-2 border-accent' 
+            $route.path === '/evenements'
+              ? 'text-accent border-b-2 border-accent'
               : 'text-secondary hover:text-accent hover:border-accent'
           ]"
         >
@@ -134,20 +145,32 @@ onUnmounted(() => {
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/street-workout' 
-            ? 'bg-accent text-secondary' 
+          $route.path === '/street-workout'
+            ? 'bg-accent text-secondary'
             : 'hover:bg-accent hover:text-secondary'
         ]"
       >
         Street workout
       </router-link>
       <router-link
+        to="/actualites"
+        @click="closeMenu"
+        :class="[
+          'block py-2 px-4 text-white duration-200',
+          $route.path === '/actualites'
+            ? 'bg-accent text-secondary'
+            : 'hover:bg-accent hover:text-secondary'
+        ]"
+      >
+        Nos actu
+      </router-link>
+      <router-link
         to="/evenements"
         @click="closeMenu"
         :class="[
           'block py-2 px-4 text-white duration-200',
-          $route.path === '/evenements' 
-            ? 'bg-accent text-secondary' 
+          $route.path === '/evenements'
+            ? 'bg-accent text-secondary'
             : 'hover:bg-accent hover:text-secondary'
         ]"
       >

@@ -5,6 +5,7 @@ import AdhesionPage from '@/pages/AdhesionPage.vue'
 import EventPage from '@/pages/EventPage.vue'
 import FiguresPage from '@/pages/FiguresPage.vue'
 import MentionsLegalesPage from '@/pages/MentionsLegalesPage.vue'
+import ActuPage from '@/pages/ActuPage.vue'
 
 const routes = [
   {
@@ -21,6 +22,14 @@ const routes = [
     name: 'Adhésions',
     meta: {
       title: 'Adhésions - Toul\'Barz',
+    },
+  },
+  {
+    path: '/actualites',
+    component: ActuPage,
+    name: 'Nos actu',
+    meta: {
+      title: 'Nos Actualités - Toul\'Barz',
     },
   },
   {
