@@ -1,43 +1,46 @@
 <template>
-  <div class="bg-white py-24 sm:py-32 relative">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="bg-gradient-to-b from-white to-gray-50 py-20 sm:py-28 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 relative">
       <!-- Titre et texte -->
       <div class="mx-auto max-w-5xl text-center">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight underline underline-offset-4 decoration-accent text-gray-900 sm:text-5xl text-center">
-          Nos actions
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+          <i class="i-mdi-lightning-bolt"></i>
+          Ce que nous faisons
+        </span>
+        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          Nos <span class="text-accent">actions</span>
         </h2>
       </div>
 
       <!-- Cartes -->
-      <div class="mt-16 flex flex-col items-center justify-center space-y-6 md:space-y-0 md:flex-row md:space-x-6">
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div
           v-for="(item, index) in incentives"
           :key="index"
-          class="relative overflow-hidden rounded-3xl shadow-lg group transition-transform hover:scale-105 w-80 h-80 md:w-64 md:h-[450px]"
+          class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 aspect-[3/4]"
         >
-        <img
-          :src="item.imgSrc"
-          :alt="item.name"
-          loading="eager"
-          decoding="async"
-          class="w-full h-full object-cover"
-        />
+          <img
+            :src="item.imgSrc"
+            :alt="item.name"
+            loading="eager"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
 
-          <div
-            class="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-lg font-semibold md:text-xl z-10 bg-black/30"
-          >
-            <span>{{ item.name }}</span>
+          <!-- Gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
+
+          <!-- Content -->
+          <div class="absolute inset-0 flex flex-col items-center justify-end p-6 text-center">
+            <span class="text-white text-lg md:text-xl font-bold drop-shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              {{ item.name }}
+            </span>
+            <div class="h-0.5 w-0 bg-accent group-hover:w-16 transition-all duration-500 mt-2"></div>
           </div>
-
-          <!-- 🎉 Emoji only for "Communauté" -->
-          <!-- <div
-            v-if="item.name === 'Communauté'"
-            @click="openModalWithFireworks"
-            class="absolute bottom-24 right-32 text-lg cursor-pointer opacity-60 hover:opacity-100 transition-opacity z-20"
-            title="Surprise !"
-          >
-            🎉
-          </div> -->
         </div>
       </div>
     </div>
