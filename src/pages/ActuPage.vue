@@ -33,22 +33,22 @@ const actus: Actu[] = [
     pdfUrl: '/pdfs/03-10-2025-Mister-France.pdf',
     slug: 'mister-france',
   },
-  {
-    id: 2,
-    title: 'STAR DE LA TUBECON 2025',
-    subtitle: 'Tubecon 2025',
-    date: '04-10-2025',
-    pdfUrl: '/pdfs/04-10-2025-Tubecon.pdf',
-    slug: 'tubecon-2025',
-  },
-  {
-    id: 3,
-    title: 'LE PREMIER RENDEZ-VOUS DES ATHLÈTES',
-    subtitle: 'Cohésion Athlètes',
-    date: '05-10-2025',
-    pdfUrl: '/pdfs/05-10-2025-Cohésion-Athlètes.pdf',
-    slug: 'cohesion-athletes',
-  },
+  // {
+  //   id: 2,
+  //   title: 'STAR DE LA TUBECON 2025',
+  //   subtitle: 'Tubecon 2025',
+  //   date: '04-10-2025',
+  //   pdfUrl: '/pdfs/04-10-2025-Tubecon.pdf',
+  //   slug: 'tubecon-2025',
+  // },
+  // {
+  //   id: 3,
+  //   title: 'LE PREMIER RENDEZ-VOUS DES ATHLÈTES',
+  //   subtitle: 'Cohésion Athlètes',
+  //   date: '05-10-2025',
+  //   pdfUrl: '/pdfs/05-10-2025-Cohésion-Athlètes.pdf',
+  //   slug: 'cohesion-athletes',
+  // },
 ]
 
 const selectedActuId = ref<number>(actus[0]?.id || 1)
