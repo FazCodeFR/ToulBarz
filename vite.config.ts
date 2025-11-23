@@ -19,7 +19,16 @@ process.env.VITE_APP_VERSION = pkgVersion
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          // Recognize custom elements from web components
+          isCustomElement: (tag) =>
+            tag === 'youtube-video' ||
+            tag.startsWith('media-theme-'),
+        },
+      },
+    }),
     AutoImport({
       imports: [
         'vue',

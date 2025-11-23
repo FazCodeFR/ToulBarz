@@ -29,7 +29,7 @@
         <Motion
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1 }"
-          transition="{ delay: 0.2, duration: 0.8, easing: 'ease-out' }"
+          :transition="{ delay: 0.2, duration: 0.8, easing: 'ease-out' }"
         >
           <img class="h-64 sm:h-80 w-auto drop-shadow-2xl" src="/img/logo.webp" alt="Logo Toul'Barz" />
         </Motion>
@@ -49,7 +49,7 @@
         <Motion
           :initial="{ opacity: 0, y: 30 }"
           :animate="{ opacity: 1, y: 0 }"
-          transition="{ delay: 0.6, duration: 0.6 }"
+          :transition="{ delay: 0.6, duration: 0.6 }"
         >
           <p class="mt-3 text-lg sm:text-xl leading-8 text-white/90 font-medium tracking-wide">
             Street Workout Toulouse
@@ -61,7 +61,7 @@
           tag="div"
           :initial="{ opacity: 0, y: 20 }"
           :animate="{ opacity: 1, y: 0 }"
-          transition="{ delay: 0.8, duration: 0.6 }"
+          :transition="{ delay: 0.8, duration: 0.6 }"
           :whileHover="{ scale: 1.05 }"
         >
           <router-link
@@ -78,7 +78,7 @@
         <Motion
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
-          transition="{ delay: 1.1, duration: 0.6 }"
+          :transition="{ delay: 1.1, duration: 0.6 }"
           class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center"
           aria-label="Aller à la section événements"
         >
