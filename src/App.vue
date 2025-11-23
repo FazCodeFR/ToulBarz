@@ -73,7 +73,7 @@ const thisYear = new Date().getFullYear()
 </script>
 
 <template>
-  <main>
+  <main class="overflow-x-hidden">
     <Header/>
     <ScrollTopButton />
     <router-view />
