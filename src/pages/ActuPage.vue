@@ -75,9 +75,17 @@ const pdfViewerUrl = computed(() => {
 // Fonction pour scroller vers l'article
 const scrollToArticle = () => {
   nextTick(() => {
-    if (pdfViewerRef.value) {
-      pdfViewerRef.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    const el = pdfViewerRef.value
+    if (!el) return
+
+    const OFFSET = 120 //
+    const elementTop =
+      el.getBoundingClientRect().top + window.scrollY - OFFSET
+
+    window.scrollTo({
+      top: elementTop,
+      behavior: 'smooth',
+    })
   })
 }
 
