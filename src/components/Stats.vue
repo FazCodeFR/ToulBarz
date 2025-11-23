@@ -30,9 +30,9 @@
   </div>
 
   <!-- Éléments décoratifs améliorés -->
-  <div class="absolute top-1/4 -right-32 w-96 h-96 bg-gradient-to-br from-accent/20 to-orange-600/10 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-gradient-to-br from-accent/10 to-orange-500/20 rounded-full blur-3xl"></div>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
+  <div class="absolute top-1/4 -right-32 w-96 h-96 bg-gradient-to-br from-accent/20 to-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-gradient-to-br from-accent/10 to-orange-500/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent pointer-events-none"></div>
 </div>
 
 </template>
