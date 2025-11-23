@@ -28,6 +28,7 @@
             :alt="item.name"
             loading="eager"
             decoding="async"
+            fetchpriority="high"
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
 
