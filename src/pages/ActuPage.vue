@@ -54,7 +54,6 @@ const pdfViewerUrl = computed(() => {
   const pdfUrl = baseUrl + selectedActu.value.pdfUrl
   const url  =  `https://docs.google.com/gview?url=${pdfUrl}&embedded=true`
   console.log('🚀 ~ url:', url);
-  
   return url
 })
 
