@@ -28,6 +28,9 @@ export default defineConfig({
         {
           '@/store': ['useStore'],
         },
+        {
+          '@/composables/useScrollAnimation': ['useScrollAnimation', 'vScrollAnimate'],
+        },
         unheadVueComposablesImports,
       ],
       dts: 'auto-imports.d.ts',
