@@ -20,7 +20,7 @@ const actus: Actu[] = [
     title: 'LE STREET WORKOUT S\'INVITE À MISTER FRANCE',
     subtitle: 'Mister France',
     date: '03-10-2025',
-    pdfUrl: '/pdfs/03-10-2025 - Mister France.pdf',
+    pdfUrl: '/pdfs/03-10-2025-Mister-France.pdf',
     slug: 'mister-france',
   },
   {
@@ -28,7 +28,7 @@ const actus: Actu[] = [
     title: 'STAR DE LA TUBECON 2025',
     subtitle: 'Tubecon 2025',
     date: '04-10-2025',
-    pdfUrl: '/pdfs/04-10-2025 - Tubecon.pdf',
+    pdfUrl: '/pdfs/04-10-2025-Tubecon.pdf',
     slug: 'tubecon-2025',
   },
   {
@@ -36,7 +36,7 @@ const actus: Actu[] = [
     title: 'LE PREMIER RENDEZ-VOUS DES ATHLÈTES',
     subtitle: 'Cohésion Athlètes',
     date: '05-10-2025',
-    pdfUrl: '/pdfs/05-10-2025 - Cohésion Athlètes.pdf',
+    pdfUrl: '/pdfs/05-10-2025-Cohésion-Athlètes.pdf',
     slug: 'cohesion-athletes',
   },
 ]
@@ -51,8 +51,11 @@ const selectedActu = computed(() => {
 const pdfViewerUrl = computed(() => {
   if (!selectedActu.value) return ''
   const baseUrl = window.location.origin
-  const pdfUrl = encodeURIComponent(baseUrl + selectedActu.value.pdfUrl)
-  return `https://docs.google.com/viewer?url=${pdfUrl}&embedded=true`
+  const pdfUrl = baseUrl + selectedActu.value.pdfUrl
+  const url  =  `https://docs.google.com/gview?url=${pdfUrl}&embedded=true`
+  console.log('🚀 ~ url:', url);
+  
+  return url
 })
 
 const selectActu = (id: number) => {
