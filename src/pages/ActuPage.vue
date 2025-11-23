@@ -20,7 +20,7 @@ const actus: Actu[] = [
     title: 'LE STREET WORKOUT S\'INVITE À MISTER FRANCE',
     subtitle: 'Mister France',
     date: '03-10-2025',
-    pdfUrl: '/pdfs/03-10-2025 - Mister France.pdf',
+    pdfUrl: '/pdfs/03-10-2025-Mister-France.pdf',
     slug: 'mister-france',
   },
   {
@@ -28,7 +28,7 @@ const actus: Actu[] = [
     title: 'STAR DE LA TUBECON 2025',
     subtitle: 'Tubecon 2025',
     date: '04-10-2025',
-    pdfUrl: '/pdfs/04-10-2025 - Tubecon.pdf',
+    pdfUrl: '/pdfs/04-10-2025-Tubecon.pdf',
     slug: 'tubecon-2025',
   },
   {
@@ -36,7 +36,7 @@ const actus: Actu[] = [
     title: 'LE PREMIER RENDEZ-VOUS DES ATHLÈTES',
     subtitle: 'Cohésion Athlètes',
     date: '05-10-2025',
-    pdfUrl: '/pdfs/05-10-2025 - Cohésion Athlètes.pdf',
+    pdfUrl: '/pdfs/05-10-2025-Cohésion-Athlètes.pdf',
     slug: 'cohesion-athletes',
   },
 ]
@@ -45,6 +45,16 @@ const selectedActuId = ref<number>(actus[0]?.id || 1)
 
 const selectedActu = computed(() => {
   return actus.find((actu) => actu.id === selectedActuId.value) || actus[0]
+})
+
+// Generate Google Docs Viewer URL for cross-platform PDF viewing
+const pdfViewerUrl = computed(() => {
+  if (!selectedActu.value) return ''
+  const baseUrl = window.location.origin
+  const pdfUrl = baseUrl + selectedActu.value.pdfUrl
+  const url  =  `https://docs.google.com/gview?url=${pdfUrl}&embedded=true`
+  console.log('🚀 ~ url:', url);
+  return url
 })
 
 const selectActu = (id: number) => {
@@ -198,13 +208,14 @@ watch(
               </div>
             </div>
 
-            <!-- PDF Embed -->
-            <div class="relative w-full bg-white" style="height: 70vh; min-height: 500px;">
+            <!-- PDF Embed - Works on both mobile and desktop via Google Docs Viewer -->
+            <div class="relative w-full bg-gray-100" style="height: 70vh; min-height: 500px;">
               <iframe
-                :src="selectedActu?.pdfUrl"
+                :src="pdfViewerUrl"
                 :key="selectedActu?.id"
                 class="w-full h-full border-0"
                 :title="selectedActu?.title"
+                allowfullscreen
               />
             </div>
           </div>
