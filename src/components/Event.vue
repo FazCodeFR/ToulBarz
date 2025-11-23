@@ -1,43 +1,60 @@
 <template>
-  <div class="bg-white py-2 sm:py-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="relative isolate bg-white px-6 py-12 sm:py-24 lg:px-8">
+  <div class="relative bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24 overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-accent/10 to-orange-600/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="relative isolate px-6 py-12 sm:py-16 lg:px-8">
         <div class="mx-auto max-w-7xl text-center sm:max-w-4xl">
-          <h1 class="text-3xl font-bold tracking-tight text-accent sm:text-4xl lg:text-5xl underline underline-offset-4 decoration-accent text-gray-900">Nos actualités</h1>
+          <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+            Calendrier
+          </span>
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            Nos <span class="text-accent">événements</span>
+          </h1>
           <p class="mt-6 mb-12 text-lg font-medium text-gray-600 sm:text-xl">
             Découvrez nos prochains événements et rejoignez-nous
           </p>
         </div>
 
         <!-- Tab -->
-        <div class="sticky top-20 z-10 bg-white">
+        <div class="sticky top-20 z-10 bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-2 mb-8">
           <div class="sm:hidden w-full">
             <label for="tabs" class="w-full sr-only">Sélectionner un onglet</label>
-            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-accent focus:ring-accent" v-model="activeTab">
+            <select id="tabs" name="tabs" class="block w-full rounded-xl border-gray-200 focus:border-accent focus:ring-accent bg-white py-3 px-4" v-model="activeTab">
               <option v-for="tab in tabs" :key="tab.name" :value="tab.key">{{ tab.name }}</option>
             </select>
           </div>
 
           <div class="hidden sm:block">
-            <div class="border-b border-gray-200">
-              <nav class="-mb-px flex" aria-label="Tabs">
-                <a v-for="tab in tabs" :key="tab.name" href="#"
-                  :class="[tab.key === activeTab ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'w-1/2 border-b-2 py-4 px-1 text-center text-sm font-medium']"
-                  @click.prevent="activeTab = tab.key" :aria-current="tab.key === activeTab ? 'page' : undefined">
-                  {{ tab.name }}
-                </a>
-              </nav>
-            </div>
+            <nav class="flex gap-2" aria-label="Tabs">
+              <button
+                v-for="tab in tabs"
+                :key="tab.name"
+                :class="[
+                  'flex-1 py-3 px-4 text-center text-sm font-semibold rounded-xl transition-all duration-300',
+                  tab.key === activeTab
+                    ? 'bg-gradient-to-r from-accent to-accent-dark text-white shadow-md shadow-accent/30'
+                    : 'text-gray-600 hover:text-accent hover:bg-accent/5'
+                ]"
+                @click="activeTab = tab.key"
+                :aria-current="tab.key === activeTab ? 'page' : undefined"
+              >
+                {{ tab.name }}
+              </button>
+            </nav>
           </div>
         </div>
 
-        <div class="mt-12 flex flex-col gap-8 lg:flex-row">
+        <div class="mt-8 flex flex-col gap-8 lg:flex-row">
           <!-- Calendar Section -->
           <div class="lg:sticky lg:top-40 lg:w-1/3">
-            <div class="overflow-hidden rounded-xl bg-white shadow-md ring-1 ring-gray-200 transition-all duration-300 hover:shadow-lg">
-              <div class="bg-accent/10 p-4">
-                <h3 class="font-medium text-accent text-center">
-                  Calendrier des événements {{ activeTab === 'public' ? 'publics' : 'adhérents' }}
+            <div class="overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-gray-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+              <div class="bg-gradient-to-r from-accent to-accent-dark p-4">
+                <h3 class="font-semibold text-white text-center flex items-center justify-center gap-2">
+                  <i class="i-mdi-calendar-month"></i>
+                  Calendrier {{ activeTab === 'public' ? 'public' : 'adhérents' }}
                 </h3>
               </div>
               <Calendar
@@ -53,14 +70,14 @@
 
           <!-- Event List -->
           <div class="lg:w-2/3">
-            <div v-if="getActiveEvents.length" class="space-y-8">
-              <article 
-                v-for="event in getActiveEvents" 
-                :key="event.id" 
-                :id="`event-${event.id}`" 
-                class="group relative overflow-hidden rounded-xl bg-white p-6 shadow-md ring-1 ring-gray-200 transition-all duration-300 hover:shadow-lg"
+            <div v-if="getActiveEvents.length" class="space-y-6">
+              <article
+                v-for="event in getActiveEvents"
+                :key="event.id"
+                :id="`event-${event.id}`"
+                class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-100 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
               >
-                <div class="absolute top-0 left-0 h-full w-1 bg-accent transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+                <div class="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-accent to-accent-dark transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
                 
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <time :datetime="event.start" class="flex items-center gap-2 text-sm font-medium text-accent">
@@ -106,12 +123,12 @@
               </article>
             </div>
             
-            <div v-else class="flex flex-col items-center justify-center rounded-xl bg-white p-12 text-center shadow-md">
-              <div class="rounded-full bg-gray-100 p-4">
-                <span class="i-mdi-calendar-blank h-8 w-8 text-gray-400"></span>
+            <div v-else class="flex flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-lg ring-1 ring-gray-100">
+              <div class="rounded-2xl bg-gradient-to-br from-accent/10 to-orange-100 p-5">
+                <span class="i-mdi-calendar-blank h-10 w-10 text-accent"></span>
               </div>
-              <p class="mt-4 text-lg font-medium text-gray-600">Aucun événement à afficher pour le moment.</p>
-              <p class="mt-2 text-sm text-gray-500">Veuillez sélectionner une autre date ou catégorie.</p>
+              <p class="mt-6 text-lg font-semibold text-gray-900">Aucun événement à afficher</p>
+              <p class="mt-2 text-sm text-gray-500 max-w-xs">Revenez bientôt pour découvrir nos prochains événements</p>
             </div>
           </div>
         </div>

@@ -166,14 +166,22 @@ watch(
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 pt-32 pb-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="relative min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-16 overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/3 right-0 w-80 h-80 bg-gradient-to-br from-accent/10 to-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+          <i class="i-mdi-newspaper-variant-outline mr-1"></i>
+          Presse & Médias
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Nos <span class="text-accent">Actualités</span>
         </h1>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
           Retrouvez toutes nos dernières actualités et articles de presse
         </p>
       </div>

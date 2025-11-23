@@ -6,9 +6,9 @@
       rel="noopener noreferrer"
       aria-label="TikTok de Toul'Barz"
       title="TikTok de Toul'Barz"
-      class="group flex items-center justify-center w-12 h-12 bg-white shadow-lg rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl hover:bg-black"
+      class="group flex items-center justify-center w-12 h-12 bg-white shadow-lg shadow-black/10 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-black/20 hover:bg-black"
     >
-      <i class="i-bxl-tiktok text-xl text-black group-hover:text-white transition-colors"></i>
+      <i class="i-bxl-tiktok text-xl text-black group-hover:text-white transition-colors duration-300"></i>
     </a>
 
     <a
@@ -17,9 +17,9 @@
       rel="noopener noreferrer"
       aria-label="Instagram de Toul'Barz"
       title="Instagram de Toul'Barz"
-      class="group flex items-center justify-center w-12 h-12 bg-white shadow-lg rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-500 hover:to-orange-400"
+      class="group flex items-center justify-center w-12 h-12 bg-white shadow-lg shadow-black/10 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-pink-500/30 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-500 hover:to-orange-400"
     >
-      <i class="i-mdi-instagram text-xl text-pink-500 group-hover:text-white transition-colors"></i>
+      <i class="i-mdi-instagram text-xl text-pink-500 group-hover:text-white transition-colors duration-300"></i>
     </a>
   </div>
 </template>
