@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 interface Actu {
   id: number
@@ -9,27 +10,30 @@ interface Actu {
   pdfUrl: string
 }
 
+const route = useRoute()
+const router = useRouter()
+
 const actus: Actu[] = [
   {
     id: 1,
     title: 'LE STREET WORKOUT S\'INVITE À MISTER FRANCE',
     subtitle: 'Mister France',
     date: '03-10-2025',
-    pdfUrl: '/pdfs/actu-1-mister-france.pdf',
+    pdfUrl: '/pdfs/03-10-2025 - Mister France.pdf',
   },
   {
     id: 2,
     title: 'STAR DE LA TUBECON 2025',
     subtitle: 'Tubecon 2025',
     date: '04-10-2025',
-    pdfUrl: '/pdfs/actu-2-tubecon.pdf',
+    pdfUrl: '/pdfs/04-10-2025 - Tubecon.pdf',
   },
   {
     id: 3,
     title: 'LE PREMIER RENDEZ-VOUS DES ATHLÈTES',
     subtitle: 'Cohésion Athlètes',
     date: '05-10-2025',
-    pdfUrl: '/pdfs/actu-3-cohesion-athletes.pdf',
+    pdfUrl: '/pdfs/05-10-2025 - Cohésion Athlètes.pdf',
   },
 ]
 
@@ -41,6 +45,7 @@ const selectedActu = computed(() => {
 
 const selectActu = (id: number) => {
   selectedActuId.value = id
+  router.push({ query: { actu: id.toString() } })
 }
 
 const formatDate = (dateStr: string) => {
@@ -60,17 +65,47 @@ const downloadPdf = () => {
     link.click()
   }
 }
+
+const openPdfInNewTab = () => {
+  if (selectedActu.value) {
+    window.open(selectedActu.value.pdfUrl, '_blank')
+  }
+}
+
+// Initialize from URL query param
+onMounted(() => {
+  const actuParam = route.query.actu
+  if (actuParam) {
+    const id = parseInt(actuParam as string)
+    if (actus.find((a) => a.id === id)) {
+      selectedActuId.value = id
+    }
+  }
+})
+
+// Watch for route query changes
+watch(
+  () => route.query.actu,
+  (newActu) => {
+    if (newActu) {
+      const id = parseInt(newActu as string)
+      if (actus.find((a) => a.id === id)) {
+        selectedActuId.value = id
+      }
+    }
+  }
+)
 </script>
 
 <template>
-  <div class="min-h-screen bg-primary pt-8 pb-16">
+  <div class="min-h-screen bg-secondary pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
           Nos <span class="text-accent">Actualités</span>
         </h1>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
           Retrouvez toutes nos dernières actualités et articles de presse
         </p>
       </div>
@@ -79,7 +114,7 @@ const downloadPdf = () => {
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- Liste des actus (sidebar) -->
         <div class="lg:w-1/3 xl:w-1/4">
-          <div class="bg-gray-900 rounded-xl p-4 sticky top-28">
+          <div class="bg-primary rounded-xl p-4 sticky top-28">
             <h2 class="text-secondary font-semibold text-lg mb-4 px-2">
               Articles
             </h2>
@@ -123,7 +158,7 @@ const downloadPdf = () => {
 
         <!-- PDF Viewer -->
         <div class="lg:w-2/3 xl:w-3/4">
-          <div class="bg-gray-900 rounded-xl overflow-hidden">
+          <div class="bg-primary rounded-xl overflow-hidden shadow-lg">
             <!-- PDF Header -->
             <div class="bg-gray-800 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -134,15 +169,26 @@ const downloadPdf = () => {
                   {{ selectedActu?.subtitle }} - {{ formatDate(selectedActu?.date || '') }}
                 </p>
               </div>
-              <button
-                @click="downloadPdf"
-                class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-secondary px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Télécharger
-              </button>
+              <div class="flex gap-2">
+                <button
+                  @click="openPdfInNewTab"
+                  class="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-secondary px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Ouvrir
+                </button>
+                <button
+                  @click="downloadPdf"
+                  class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-secondary px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Télécharger
+                </button>
+              </div>
             </div>
 
             <!-- PDF Embed -->
@@ -167,7 +213,7 @@ const downloadPdf = () => {
 
           <!-- Navigation rapide mobile -->
           <div class="lg:hidden mt-6">
-            <div class="flex items-center justify-between bg-gray-900 rounded-xl p-4">
+            <div class="flex items-center justify-between bg-primary rounded-xl p-4 shadow-lg">
               <button
                 @click="selectedActuId > 1 && selectActu(selectedActuId - 1)"
                 :disabled="selectedActuId === 1"
@@ -183,7 +229,7 @@ const downloadPdf = () => {
                 </svg>
                 Précédent
               </button>
-              <span class="text-gray-400 text-sm">
+              <span class="text-gray-600 text-sm">
                 {{ selectedActuId }} / {{ actus.length }}
               </span>
               <button
