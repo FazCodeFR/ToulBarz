@@ -82,8 +82,8 @@
           class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center"
           aria-label="Aller à la section événements"
         >
-          <a href="#vision-section" class="animate-bounce p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
-            <i class="i-mdi-chevron-down text-4xl text-white"></i>
+          <a href="#vision-section" class="animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
+            <i class="i-mdi-chevron-down text-2xl text-white"></i>
           </a>
         </Motion>
       </div>

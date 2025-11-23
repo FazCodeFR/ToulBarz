@@ -12,7 +12,7 @@
       </div>
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-3">
         <!-- Section 1 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
           <div class="flex items-center gap-4 mb-4">
             <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
               <i class="i-mdi-account-plus text-2xl text-white"></i>
@@ -21,18 +21,18 @@
               Séance d'essai gratuite
             </h3>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">
             <a href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t" target="_blank"
               class="inline-flex items-center gap-1 text-accent font-semibold hover:text-accent-dark hover:underline transition">
               Viens découvrir gratuitement
             </a>
             le street workout au sein de notre association. Débutant, intermédiaire ou niveau avancé, tu pourras te faire encadrer par nos coachs et tu n'as pas besoin de matériel !
           </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full"></div>
+          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full mt-4"></div>
         </div>
 
         <!-- Section 2 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
           <div class="flex items-center gap-4 mb-4">
             <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
               <i class="i-mdi-calendar-star text-2xl text-white"></i>
@@ -41,7 +41,7 @@
               Nos événements
             </h3>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">
             Retrouve tous nos événements dans
             <router-link
                 to="/evenements"
@@ -53,11 +53,11 @@
               <i class="i-mdi-instagram text-sm"></i>
             </a>
           </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full"></div>
+          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full mt-4"></div>
         </div>
 
         <!-- Section 3 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
           <div class="flex items-center gap-4 mb-4">
             <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
               <i class="i-mdi-tree text-2xl text-white"></i>
@@ -66,10 +66,10 @@
               En plein air
             </h3>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+          <p class="text-gray-600 text-sm leading-relaxed flex-1">
             Toul'Barz est né d'un simple check à chaque nouvelle rencontre au parc, alors fais de même pour commencer ton nouveau sport !
           </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full"></div>
+          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-all duration-500 rounded-full mt-4"></div>
         </div>
       </div>
     </div>

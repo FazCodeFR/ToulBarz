@@ -12,63 +12,59 @@
       </div>
 
       <!-- Section de logos avec défilement infini -->
-      <div class="logos relative overflow-hidden whitespace-nowrap py-8 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
-        <div class="animate-slide-left-infinite hover:animation-pause inline-block w-max">
+      <div class="logos group/carousel relative overflow-hidden whitespace-nowrap py-8 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
+        <div class="animate-slide-left-infinite group-hover/carousel:animation-pause inline-block w-max">
           <!-- Génère dynamiquement les logos et détails des partenaires -->
-          <div
+          <a
             v-for="partenaire in partenaires"
             :key="partenaire.name"
-            class="inline-flex flex-col items-center mx-6 group"
+            :href="partenaire.link"
+            target="_blank"
+            class="inline-flex flex-col items-center mx-6 group/card"
           >
-            <div class="relative p-4 rounded-2xl bg-gray-50 group-hover:bg-accent/5 transition-colors duration-300">
+            <div class="relative p-4 rounded-2xl bg-gray-50 group-hover/card:bg-accent/5 transition-colors duration-300">
               <img
                 :src="partenaire.imgSrc"
                 :alt="partenaire.name"
-                class="h-20 w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                class="h-20 w-20 object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300"
               />
             </div>
             <!-- Nom avec lien et styles -->
-            <a
-              :href="partenaire.link"
-              target="_blank"
-              class="mt-3 text-sm text-center font-semibold text-gray-700 hover:text-accent transition-colors duration-300"
-            >
+            <span class="mt-3 text-sm text-center font-semibold text-gray-700 group-hover/card:text-accent transition-colors duration-300">
               {{ partenaire.name }}
-            </a>
-            <!-- Description visibles uniquement au survol -->
-            <p class="text-xs text-center text-gray-500">
+            </span>
+            <!-- Description -->
+            <span class="text-xs text-center text-gray-500">
               {{ partenaire.description }}
-            </p>
-          </div>
+            </span>
+          </a>
         </div>
 
         <!-- Duplicate pour l'effet de défilement infini -->
-        <div class="animate-slide-left-infinite hover:animation-pause inline-block w-max">
-          <div
+        <div class="animate-slide-left-infinite group-hover/carousel:animation-pause inline-block w-max">
+          <a
             v-for="partenaire in partenaires"
             :key="partenaire.name + '-duplicate'"
-            class="inline-flex flex-col items-center mx-6 group"
+            :href="partenaire.link"
+            target="_blank"
+            class="inline-flex flex-col items-center mx-6 group/card"
           >
-            <div class="relative p-4 rounded-2xl bg-gray-50 group-hover:bg-accent/5 transition-colors duration-300">
+            <div class="relative p-4 rounded-2xl bg-gray-50 group-hover/card:bg-accent/5 transition-colors duration-300">
               <img
                 :src="partenaire.imgSrc"
                 :alt="partenaire.name"
-                class="h-20 w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                class="h-20 w-20 object-contain grayscale group-hover/card:grayscale-0 transition-all duration-300"
               />
             </div>
             <!-- Nom avec lien et styles -->
-            <a
-              :href="partenaire.link"
-              target="_blank"
-              class="mt-3 text-sm text-center font-semibold text-gray-700 hover:text-accent transition-colors duration-300"
-            >
+            <span class="mt-3 text-sm text-center font-semibold text-gray-700 group-hover/card:text-accent transition-colors duration-300">
               {{ partenaire.name }}
-            </a>
-            <!-- Description visibles uniquement au survol -->
-            <p class="text-xs text-center text-gray-500">
+            </span>
+            <!-- Description -->
+            <span class="text-xs text-center text-gray-500">
               {{ partenaire.description }}
-            </p>
-          </div>
+            </span>
+          </a>
         </div>
       </div>
 
