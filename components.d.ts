@@ -18,6 +18,7 @@ declare module 'vue' {
     Footer: typeof import('./src/components/Footer.vue')['default']
     Formule: typeof import('./src/components/Formule.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
+    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Heroe: typeof import('./src/components/Heroe.vue')['default']
     Insta: typeof import('./src/components/Insta.vue')['default']
     InstaBouton: typeof import('./src/components/InstaBouton.vue')['default']
