@@ -88,7 +88,7 @@ onUnmounted(() => {
               : 'text-secondary hover:text-accent'
           ]"
         >
-          Nos actu
+          Nos actus
           <span
             :class="[
               'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent to-accent-dark transition-all duration-300',
@@ -193,7 +193,7 @@ onUnmounted(() => {
               : 'hover:bg-white/10'
           ]"
         >
-          Nos actu
+          Nos actus
         </router-link>
         <router-link
           to="/evenements"

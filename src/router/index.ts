@@ -27,7 +27,7 @@ const routes = [
   {
     path: '/actualites',
     component: ActuPage,
-    name: 'Nos actu',
+    name: 'Nos actus',
     meta: {
       title: 'Nos Actualités - Toul\'Barz',
     },
