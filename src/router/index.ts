@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+// Page d'accueil chargée immédiatement (critique)
 import IndexPage from '@/pages/IndexPage.vue'
-import AdhesionPage from '@/pages/AdhesionPage.vue'
-import EventPage from '@/pages/EventPage.vue'
-import FiguresPage from '@/pages/FiguresPage.vue'
-import MentionsLegalesPage from '@/pages/MentionsLegalesPage.vue'
-import ActuPage from '@/pages/ActuPage.vue'
+
+// Lazy loading des autres pages
+const AdhesionPage = () => import('@/pages/AdhesionPage.vue')
+const EventPage = () => import('@/pages/EventPage.vue')
+const FiguresPage = () => import('@/pages/FiguresPage.vue')
+const MentionsLegalesPage = () => import('@/pages/MentionsLegalesPage.vue')
+const ActuPage = () => import('@/pages/ActuPage.vue')
 
 const routes = [
   {

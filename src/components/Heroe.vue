@@ -30,67 +30,43 @@
     <!-- Contenu principal -->
     <div class="relative z-10 mx-auto max-w-2xl h-full flex items-center justify-center px-4">
       <div class="flex flex-col items-center text-center">
-        <!-- Logo -->
-        <Motion
-          :initial="{ opacity: 0, scale: 0.8 }"
-          :animate="{ opacity: 1, scale: 1 }"
-          :transition="{ delay: 0.2, duration: 0.8, ease: 'easeOut' }"
-        >
-          <img class="h-64 sm:h-80 w-auto drop-shadow-2xl" src="/img/logo.webp" alt="Logo Toul'Barz" />
-        </Motion>
+        <!-- Logo - CSS animation -->
+        <img
+          class="h-64 sm:h-80 w-auto drop-shadow-2xl animate-hero-logo"
+          src="/img/logo.webp"
+          alt="Logo Toul'Barz"
+          width="320"
+          height="320"
+        />
 
-        <!-- Titre -->
-        <Motion
-          :initial="{ opacity: 0, y: 20 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ type: 'spring', stiffness: 300, duration: 0.7 }"
-        >
-          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl font-display drop-shadow-lg">
-            TOUL'BARZ
-          </h1>
-        </Motion>
+        <!-- Titre - CSS animation -->
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl font-display drop-shadow-lg animate-hero-title">
+          TOUL'BARZ
+        </h1>
 
-        <!-- Slogan -->
-        <Motion
-          :initial="{ opacity: 0, y: 30 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ delay: 0.6, duration: 0.6 }"
-        >
-          <p class="mt-3 text-lg sm:text-xl leading-8 text-white/90 font-medium tracking-wide">
-            Street Workout Toulouse
-          </p>
-        </Motion>
+        <!-- Slogan - CSS animation -->
+        <p class="mt-3 text-lg sm:text-xl leading-8 text-white/90 font-medium tracking-wide animate-hero-slogan">
+          Street Workout Toulouse
+        </p>
 
-        <!-- Bouton CTA -->
-        <Motion
-          tag="div"
-          :initial="{ opacity: 0, y: 20 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ delay: 0.8, duration: 0.6 }"
-          :whileHover="{ scale: 1.05 }"
+        <!-- Bouton CTA - CSS animation -->
+        <router-link
+          to="/adhesions"
+          class="mt-8 group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-white font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 animate-hero-cta"
+          aria-label="Je m'inscris"
         >
-          <router-link
-            to="/adhesions"
-            class="mt-8 group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-white font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5"
-            aria-label="Je m'inscris"
-          >
-            <span class="text-base tracking-wide">Rejoins-nous</span>
-            <i class="i-mdi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-          </router-link>
-        </Motion>
+          <span class="text-base tracking-wide">Rejoins-nous</span>
+          <i class="i-mdi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+        </router-link>
 
-        <!-- Flèche vers le bas animée -->
-        <Motion
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ delay: 1.1, duration: 0.6 }"
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center"
+        <!-- Flèche vers le bas animée - CSS animation -->
+        <a
+          href="#vision-section"
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow"
           aria-label="Aller à la section événements"
         >
-          <a href="#vision-section" class="animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors">
-            <i class="i-mdi-chevron-down text-2xl text-white"></i>
-          </a>
-        </Motion>
+          <i class="i-mdi-chevron-down text-2xl text-white"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -143,3 +119,78 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', updateVideoSrc)
 })
 </script>
+
+<style scoped>
+@keyframes hero-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-title {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-slogan {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-cta {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-arrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-hero-logo {
+  animation: hero-logo 0.8s ease-out 0.2s both;
+}
+
+.animate-hero-title {
+  animation: hero-title 0.7s ease-out 0.4s both;
+}
+
+.animate-hero-slogan {
+  animation: hero-slogan 0.6s ease-out 0.6s both;
+}
+
+.animate-hero-cta {
+  animation: hero-cta 0.6s ease-out 0.8s both;
+}
+
+.animate-hero-arrow {
+  animation: hero-arrow 0.6s ease-out 1.1s both;
+}
+</style>

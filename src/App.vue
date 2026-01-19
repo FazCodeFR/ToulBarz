@@ -38,27 +38,48 @@ useHead({
       crossorigin: ""
     },
     {
+      rel: "preload",
+      as: "style",
+      href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+    },
+    {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap",
+      media: "print",
+      onload: "this.media='all'"
     }
   ],
   script: [
     {
-      // Google Analytics
-      src: "https://www.googletagmanager.com/gtag/js?id=G-JNS3NEMVE0",
-      async: true
-    },
-    {
-      // Instagram feed
-      src: "https://static.elfsight.com/platform/platform.js",
-      async: true
-    },
-    {
+      // Google Analytics - chargé après interaction
       innerHTML: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JNS3NEMVE0');
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JNS3NEMVE0';
+            script.async = true;
+            document.head.appendChild(script);
+            script.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-JNS3NEMVE0');
+            };
+          }, 3000);
+        });
+      `
+    },
+    {
+      // Instagram feed - chargé après interaction
+      innerHTML: `
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var script = document.createElement('script');
+            script.src = 'https://static.elfsight.com/platform/platform.js';
+            script.async = true;
+            document.head.appendChild(script);
+          }, 4000);
+        });
       `
     }
   ]
