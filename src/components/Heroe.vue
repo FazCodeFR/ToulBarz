@@ -1,18 +1,23 @@
 <template>
   <div class="relative h-[100vh] overflow-hidden">
-    <!-- Image de fond -->
-    <div
-      class="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-      style="background-image: url('/img/home_heroe.webp');"
-    ></div>
+    <!-- Image de fond (LCP) -->
+    <img
+      src="/img/home_heroe.webp"
+      alt="Street Workout Toulouse"
+      fetchpriority="high"
+      decoding="async"
+      class="absolute top-0 left-0 w-full h-full object-cover"
+    />
     <!-- Vidéo de fond (mobile ou desktop selon contexte) -->
     <video
+      ref="videoRef"
       v-show="videoLoaded"
       @loadeddata="videoLoaded = true"
       autoplay
       muted
       loop
       playsinline
+      preload="none"
       class="absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-500"
     >
       <source :src="videoSrc" type="video/mp4" />
@@ -29,7 +34,7 @@
         <Motion
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1 }"
-          :transition="{ delay: 0.2, duration: 0.8, easing: 'ease-out' }"
+          :transition="{ delay: 0.2, duration: 0.8, ease: 'easeOut' }"
         >
           <img class="h-64 sm:h-80 w-auto drop-shadow-2xl" src="/img/logo.webp" alt="Logo Toul'Barz" />
         </Motion>
@@ -91,23 +96,46 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const videoLoaded = ref(false)
 const videoSrc = ref('')
+const videoRef = ref<HTMLVideoElement | null>(null)
 
 // Fonction de détection responsive
-const updateVideoSrc = () => {
+const getVideoUrl = () => {
   const isMobile = window.innerWidth < 768 || window.innerHeight > window.innerWidth
-  videoSrc.value = isMobile
+  return isMobile
     ? 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_hero_mobile_the_roof.mp4'
     : 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_hero_pc_basket.mp4'
 }
-// Hébergement des vidéos temporaire sur R2
+
+const updateVideoSrc = () => {
+  const newSrc = getVideoUrl()
+  if (newSrc !== videoSrc.value) {
+    videoSrc.value = newSrc
+    // Recharger et lancer la vidéo quand le src change
+    if (videoRef.value) {
+      videoRef.value.load()
+      videoRef.value.play().catch(() => {
+        // Ignorer les erreurs d'autoplay (restrictions navigateur)
+      })
+    }
+  }
+}
+
+// Différer le chargement de la vidéo pour prioriser le LCP
+const loadVideoDeferred = () => {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => updateVideoSrc(), { timeout: 2000 })
+  } else {
+    setTimeout(updateVideoSrc, 1000)
+  }
+}
 
 onMounted(() => {
-  updateVideoSrc()
+  loadVideoDeferred()
   window.addEventListener('resize', updateVideoSrc)
 })
 
