@@ -27,28 +27,6 @@ useHead({
       content: 'Toul\'Barz - Street Workout Toulouse',
     },
   ],
-  link: [
-    {
-      rel: "preconnect",
-      href: "https://fonts.googleapis.com"
-    },
-    {
-      rel: "preconnect",
-      href: "https://fonts.gstatic.com",
-      crossorigin: ""
-    },
-    {
-      rel: "preload",
-      as: "style",
-      href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
-    },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap",
-      media: "print",
-      onload: "this.media='all'"
-    }
-  ],
   script: [
     {
       // Google Analytics - chargé après interaction
