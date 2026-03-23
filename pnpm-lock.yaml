@@ -81,9 +81,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.2.0(vite@8.0.0(@types/node@24.12.0)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2))
-      '@tsconfig/node22':
-        specifier: 22.0.0
-        version: 22.0.0
+      '@tsconfig/node24':
+        specifier: 24.0.0
+        version: 24.0.0
       '@types/jsdom':
         specifier: 28.0.0
         version: 28.0.0
@@ -1113,8 +1113,8 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
 
-  '@tsconfig/node22@22.0.0':
-    resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
+  '@tsconfig/node24@24.0.0':
+    resolution: {integrity: sha512-3/6Cr4dELEAucgPIr6ufY7yBYMi4ttZFOewABADNZ+bm4DUZl4dup2VBcBeP1ejj3QblrWVWux/1XcRv/ZVikA==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -4979,7 +4979,7 @@ snapshots:
       tailwindcss: 4.2.0
       vite: 8.0.0(@types/node@24.12.0)(esbuild@0.27.2)(jiti@2.6.1)(yaml@2.8.2)
 
-  '@tsconfig/node22@22.0.0': {}
+  '@tsconfig/node24@24.0.0': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
