@@ -2,7 +2,7 @@ import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'
 import { createApp, markRaw } from 'vue'
 import App from './App.vue'
-import './assets/index.postcss'
+import './assets/index.css'
 import router from './router'
 import { MotionPlugin } from '@vueuse/motion'
 

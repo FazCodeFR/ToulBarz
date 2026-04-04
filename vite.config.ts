@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import { unheadVueComposablesImports } from '@unhead/vue'
 import { version as pkgVersion } from './package.json'
 import MotionResolver from 'motion-v/resolver'
+import tailwindcss from '@tailwindcss/vite'
 import compression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -19,6 +20,7 @@ process.env.VITE_APP_VERSION = pkgVersion
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     vue({
       template: {
         compilerOptions: {
