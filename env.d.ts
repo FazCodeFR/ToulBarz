@@ -1,5 +1,10 @@
 /// <reference types="vite/client" />
 
+declare module '*.postcss' {
+  const content: string
+  export default content
+}
+
 interface ImportMetaEnv {
   /**
    * Automatically read from package.json version field

@@ -85,6 +85,9 @@
     "wait-on": "9.0.3"
   },
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
     "overrides": {
       "eslint": "8.x"
     }

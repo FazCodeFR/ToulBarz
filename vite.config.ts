@@ -77,21 +77,25 @@ export default defineConfig({
   },
 
   build: {
-    target: 'es2015', // meilleure compatibilité
-    sourcemap: false, // true si debug ou lighthouse veut les .map
+    target: 'es2020',
+    sourcemap: false,
     minify: 'esbuild',
+    cssMinify: 'esbuild',
     cssCodeSplit: true,
     reportCompressedSize: true,
-    chunkSizeWarningLimit: 500, // augmenter si besoin
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Séparer les dépendances lourdes (ex: unhead, vue, pinia, motion-v)
           if (id.includes('node_modules')) {
-            if (id.includes('vue')) return 'vue'
-            if (id.includes('pinia')) return 'pinia'
-            if (id.includes('motion-v')) return 'motion'
+            if (id.includes('vue') || id.includes('pinia') || id.includes('@vue')) return 'vue'
+            if (id.includes('motion-v') || id.includes('@vueuse/motion')) return 'motion'
             if (id.includes('@unhead')) return 'unhead'
+            if (id.includes('ical.js') || id.includes('rrule') || id.includes('v-calendar')) return 'calendar'
+            if (id.includes('youtube-video-element')) return 'youtube'
+            if (id.includes('player.style')) return 'player-style'
+            if (id.includes('@fireworks-js')) return 'fireworks'
+            if (id.includes('lodash-es')) return 'lodash'
             return 'vendor'
           }
         }
