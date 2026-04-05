@@ -25,7 +25,15 @@ const checkMobile = () => {
 }
 
 const actus: Actu[] = [
-    {
+  {
+    id: 9,
+    title: 'TURBO\'BARZ : SAISON 2 - LE RÉCAP',
+    subtitle: 'Récap Turbo\'Barz Saison 2',
+    date: '29-03-2026',
+    pdfUrl: '/pdfs/29-03-2026 - Récap TurboBarz Saison 2.pdf',
+    slug: 'recap-turbobarz-saison-2',
+  },
+  {
     id: 8,
     title: 'TOUL\'BARZ INVITÉE EN PRISON',
     subtitle: 'Prison',
