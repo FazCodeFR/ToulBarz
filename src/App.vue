@@ -3,29 +3,39 @@
 // See vite.config.ts for details about automatic imports
 const route = useRoute()
 
+const SITE_URL = 'https://toulbarz.fr'
+const DEFAULT_DESCRIPTION = "Toul'Barz est une association toulousaine qui place le Street Workout au cœur de ses projets. Cours pour tous niveaux, événements et communauté pour promouvoir cette discipline sportive à Toulouse."
+const DEFAULT_OG_IMAGE = `${SITE_URL}/img/logo_fond_blanc.webp`
+
+useSeoMeta({
+  title: () => (route.meta.title as string) || "Toul'Barz - Street Workout Toulouse",
+  description: DEFAULT_DESCRIPTION,
+  author: "Toul'Barz",
+  ogSiteName: "Toul'Barz",
+  ogType: 'website',
+  ogLocale: 'fr_FR',
+  ogTitle: () => (route.meta.title as string) || "Toul'Barz - Street Workout Toulouse",
+  ogDescription: DEFAULT_DESCRIPTION,
+  ogImage: DEFAULT_OG_IMAGE,
+  ogImageAlt: "Logo Toul'Barz - Street Workout Toulouse",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogUrl: () => `${SITE_URL}${route.path}`,
+  twitterCard: 'summary_large_image',
+  twitterTitle: () => (route.meta.title as string) || "Toul'Barz - Street Workout Toulouse",
+  twitterDescription: DEFAULT_DESCRIPTION,
+  twitterImage: DEFAULT_OG_IMAGE,
+  twitterImageAlt: "Logo Toul'Barz - Street Workout Toulouse",
+  robots: 'index, follow',
+  themeColor: '#ff7f11',
+})
+
 useHead({
   htmlAttrs: { lang: 'fr' },
-  title: () => route.meta.title || "Toul'Barz - Street Workout Toulouse",
-  meta: [
+  link: [
     {
-      property: 'og:title',
-      content: () => route.meta.title,
-    },
-    {
-      name: 'twitter:title',
-      content: () => route.meta.title,
-    },
-    {
-      name: 'description',
-      content: 'Toul\'Barz est une association toulousaine qui place le street workout au cœur de ses projets. Toul\'Barz propose des cours pour tous, débutants comme avancés, et organise des événements pour promouvoir cette discipline sportive.',
-    },
-    {
-      property: 'og:description',
-      content: 'Toul\'Barz - Street Workout Toulouse',
-    },
-    {
-      name: 'twitter:description',
-      content: 'Toul\'Barz - Street Workout Toulouse',
+      rel: 'canonical',
+      href: () => `${SITE_URL}${route.path}`,
     },
   ],
   script: [

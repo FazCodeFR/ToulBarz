@@ -1,3 +1,18 @@
+<script setup lang="ts">
+const description = "Adhérez à Toul'Barz pour la saison 2025-2026 : découvrez nos formules d'adhésion et inscrivez-vous en ligne via HelloAsso en toute sécurité. Rejoignez la communauté Street Workout de Toulouse."
+
+useSeoMeta({
+  title: "Adhésions - Toul'Barz",
+  description,
+  keywords: 'adhésion, inscription, cotisation, Toul\'Barz, HelloAsso, street workout Toulouse, saison 2025-2026',
+  ogTitle: "Adhésions 2025-2026 - Toul'Barz Street Workout",
+  ogDescription: description,
+  ogUrl: 'https://toulbarz.fr/adhesions',
+  twitterTitle: "Adhésions 2025-2026 - Toul'Barz Street Workout",
+  twitterDescription: description,
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
     <!-- Formule section -->

@@ -2,6 +2,22 @@
 import { vScrollAnimate } from '@/composables/useScrollAnimation'
 
 const store = useStore()
+
+const description = "Toul'Barz, association toulousaine de Street Workout : entraînements hebdomadaires pour tous niveaux, événements, cohésion d'équipe et promotion de la calisthénie à Toulouse."
+
+useSeoMeta({
+  title: "Toul'Barz - Street Workout Toulouse",
+  description,
+  keywords: 'street workout, calisthénie, Toulouse, association sportive, musculation au poids du corps, figures, entraînement, communauté',
+  ogTitle: "Toul'Barz - Association de Street Workout à Toulouse",
+  ogDescription: description,
+  ogImage: 'https://toulbarz.fr/img/home_heroe.webp',
+  ogImageAlt: "Toul'Barz en action - Street Workout à Toulouse",
+  ogUrl: 'https://toulbarz.fr/',
+  twitterTitle: "Toul'Barz - Association de Street Workout à Toulouse",
+  twitterDescription: description,
+  twitterImage: 'https://toulbarz.fr/img/home_heroe.webp',
+})
 </script>
 <template>
   <Heroe/>

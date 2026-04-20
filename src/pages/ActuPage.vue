@@ -121,6 +121,44 @@ const selectedActu = computed(() => {
   return actus.find((actu) => actu.id === selectedActuId.value) || actus[0]
 })
 
+const pageDescription = "Retrouvez toutes les actualités et articles de presse de Toul'Barz : événements, compétitions, interventions et comptes-rendus de l'association de Street Workout de Toulouse."
+
+useSeoMeta({
+  title: computed(() =>
+    selectedActu.value
+      ? `${selectedActu.value.subtitle} - Actualités Toul'Barz`
+      : "Nos Actualités - Toul'Barz",
+  ),
+  description: computed(() =>
+    selectedActu.value
+      ? `${selectedActu.value.title} - ${selectedActu.value.subtitle}. Article publié le ${selectedActu.value.date} par Toul'Barz.`
+      : pageDescription,
+  ),
+  keywords: 'actualités, presse, articles, Toul\'Barz, street workout, Toulouse, événements, communication',
+  ogType: 'article',
+  ogTitle: computed(() =>
+    selectedActu.value
+      ? `${selectedActu.value.subtitle} - Toul'Barz`
+      : "Nos Actualités - Toul'Barz",
+  ),
+  ogDescription: computed(() =>
+    selectedActu.value ? selectedActu.value.title : pageDescription,
+  ),
+  ogUrl: computed(() =>
+    selectedActu.value
+      ? `https://toulbarz.fr/actualites?actu=${selectedActu.value.slug}`
+      : 'https://toulbarz.fr/actualites',
+  ),
+  twitterTitle: computed(() =>
+    selectedActu.value
+      ? `${selectedActu.value.subtitle} - Toul'Barz`
+      : "Nos Actualités - Toul'Barz",
+  ),
+  twitterDescription: computed(() =>
+    selectedActu.value ? selectedActu.value.title : pageDescription,
+  ),
+})
+
 const currentIndex = computed(() => {
   return actus.findIndex((actu) => actu.id === selectedActuId.value)
 })
