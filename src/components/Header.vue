@@ -52,8 +52,9 @@ onUnmounted(() => {
   <!-- Navbar sticky -->
   <header
     :class="[
-      'relative lg:sticky lg:top-0 z-50 border-b transition-colors duration-300 ease-out bg-black/80 backdrop-blur-xl',
-      isScrolled || isMenuOpen ? 'border-white/10' : 'border-transparent'
+      'sticky top-0 z-50 border-b transition-colors duration-300 ease-out backdrop-blur-xl',
+      isMenuOpen ? 'bg-neutral-950/95' : 'bg-black/80',
+      isMenuOpen ? 'border-transparent' : (isScrolled ? 'border-white/10' : 'border-transparent')
     ]"
   >
     <nav
@@ -158,59 +159,49 @@ onUnmounted(() => {
     <div
       v-if="isMenuOpen"
       id="mobile-menu"
-      class="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 flex flex-col bg-neutral-950/95 backdrop-blur-xl overflow-y-auto"
+      class="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 flex flex-col items-center justify-center bg-neutral-950/95 backdrop-blur-xl overflow-y-auto"
+      @click.self="closeMenu"
     >
         <!-- Halo décoratif -->
         <div
-          class="pointer-events-none absolute -top-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"
+          class="pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-3xl"
           aria-hidden="true"
         ></div>
 
-        <div class="relative flex flex-1 flex-col px-5 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] pt-6">
+        <div
+          class="relative flex w-full max-w-sm flex-col items-center gap-4 px-5 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] pt-6"
+          @click.self="closeMenu"
+        >
           <!-- Liens -->
-          <nav class="flex flex-col gap-2">
+          <nav class="flex w-full flex-col gap-2">
             <router-link
               v-for="(item, index) in navItems"
               :key="item.to"
               :to="item.to"
               :style="{ animationDelay: `${index * 60}ms` }"
               :class="[
-                'menu-item group flex items-center gap-4 rounded-2xl border px-4 py-3.5 font-semibold transition-all duration-300 active:scale-[0.98]',
+                'menu-item group flex items-center justify-center gap-3 rounded-2xl border px-4 py-3.5 font-semibold transition-all duration-300 active:scale-[0.98]',
                 $route.path === item.to
-                  ? 'border-accent/40 bg-gradient-to-r from-accent/20 via-accent/10 to-transparent text-white shadow-lg shadow-accent/20'
+                  ? 'border-accent/40 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 text-white shadow-lg shadow-accent/20'
                   : 'border-white/5 bg-white/[0.03] text-white hover:border-white/10 hover:bg-white/[0.06]'
               ]"
               @click="closeMenu"
             >
-              <span
-                :class="[
-                  'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-300',
-                  $route.path === item.to
-                    ? 'bg-gradient-to-br from-accent to-accent-dark text-white shadow-md shadow-accent/30'
-                    : 'bg-white/5 text-accent group-hover:bg-white/10'
-                ]"
-              >
-                <i :class="[item.icon, 'text-xl']"></i>
-              </span>
-              <span class="flex-1 text-base leading-tight">{{ item.label }}</span>
               <i
                 :class="[
-                  'i-mdi-arrow-right shrink-0 text-xl transition-all duration-300',
-                  $route.path === item.to
-                    ? 'text-white'
-                    : 'text-white/30 group-hover:translate-x-1 group-hover:text-accent'
+                  item.icon,
+                  'text-xl transition-colors duration-300',
+                  $route.path === item.to ? 'text-accent' : 'text-white/70 group-hover:text-accent'
                 ]"
               ></i>
+              <span class="text-base leading-tight">{{ item.label }}</span>
             </router-link>
           </nav>
-
-          <!-- Espace flexible -->
-          <div class="flex-1 min-h-6"></div>
 
           <!-- CTA principal -->
           <router-link
             to="/adhesions"
-            class="menu-item group relative mt-8 inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-accent to-accent-dark px-6 py-4 text-base font-bold text-white shadow-xl shadow-accent/40 transition-transform duration-300 active:scale-[0.98]"
+            class="menu-item group relative mt-4 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-accent to-accent-dark px-6 py-4 text-base font-bold text-white shadow-xl shadow-accent/40 transition-transform duration-300 active:scale-[0.98]"
             :style="{ animationDelay: `${navItems.length * 60}ms` }"
             @click="closeMenu"
           >
@@ -222,7 +213,7 @@ onUnmounted(() => {
 
           <!-- Réseaux sociaux -->
           <div
-            class="menu-item mt-6 flex items-center justify-center gap-3"
+            class="menu-item mt-2 flex items-center justify-center gap-3"
             :style="{ animationDelay: `${(navItems.length + 1) * 60}ms` }"
           >
             <a
