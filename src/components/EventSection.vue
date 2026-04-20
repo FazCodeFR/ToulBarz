@@ -3,7 +3,7 @@
     <div class="w-full">
       <!-- Grand conteneur style bannière -->
       <div class="px-6 sm:px-8 py-8 sm:py-12">
-        <div class="md:flex md:items-center md:gap-12 mx-auto max-w-screen-xl">
+        <div class="md:flex md:items-center md:gap-12 mx-auto max-w-7xl">
           <div class="md:w-1/3 flex flex-col items-center md:items-start">
             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
               <i class="i-mdi-calendar-clock"></i>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <!-- Lien vers tous les événements -->
-        <div class="mt-6 text-center md:text-right mx-auto max-w-screen-xl">
+        <div class="mt-6 text-center md:text-right mx-auto max-w-7xl">
           <RouterLink
             to="/evenements"
             class="inline-flex items-center gap-2 text-accent hover:text-accent-dark text-sm font-semibold transition-colors group"

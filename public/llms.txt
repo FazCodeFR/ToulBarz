@@ -1,0 +1,33 @@
+# Toul'Barz
+
+> Toul'Barz est une association toulousaine de Street Workout. Le site officiel (toulbarz.fr) présente l'association, ses créneaux d'entraînement, ses formules d'adhésion, ses événements et ses actualités. Contenu intégralement en français.
+
+Toul'Barz pratique et promeut le Street Workout (calisthénie, figures de force et de statique au poids du corps) à Toulouse. L'association organise des entraînements hebdomadaires en extérieur, participe à des événements sportifs et culturels, et accueille aussi bien les débutants que les athlètes confirmés. Les adhésions se gèrent via HelloAsso ; les actualités sont publiées sous forme d'articles PDF téléchargeables.
+
+## Pages principales
+
+- [Accueil](https://toulbarz.fr/): présentation de l'association, hero vidéo, vision, actions, pôle Street Workout, contact, statistiques, partenaires, feed Instagram.
+- [Le Street Workout](https://toulbarz.fr/street-workout): définition de la discipline, figures emblématiques, niveaux de difficulté.
+- [Événements](https://toulbarz.fr/evenements): calendrier des événements de l'association (alimenté par flux iCal).
+- [Adhésions](https://toulbarz.fr/adhesions): formules de cotisation et paiement sécurisé via widget HelloAsso (adhésion saison 2025-2026).
+- [Nos actualités](https://toulbarz.fr/actualites): liste d'articles de presse et comptes rendus d'événements au format PDF, navigables depuis la page.
+
+## Actualités (articles PDF)
+
+- [Roc la Night - 01/04/2026](https://toulbarz.fr/actualites?actu=roc-la-night): le Break Dance de pair avec le Street Workout.
+- [Exposition au Social Hub - 01/04/2026](https://toulbarz.fr/actualites?actu=exposition-social-hub): une exposition artistique inédite.
+- [Récap Turbo'Barz Saison 2 - 29/03/2026](https://toulbarz.fr/actualites?actu=recap-turbobarz-saison-2): bilan de la saison 2 de Turbo'Barz.
+- [Passage en prison - 23/01/2026](https://toulbarz.fr/actualites?actu=passage-en-prison): Toul'Barz invitée à intervenir en milieu carcéral.
+- [Gala de boxe Fight Event III - 08/11/2025](https://toulbarz.fr/actualites?actu=gala-de-boxe): Toul'Barz invitée au Fight Event III.
+- [Halloween - 31/10/2025](https://toulbarz.fr/actualites?actu=halloween): événement Halloween de l'association.
+- [Cohésion Athlètes - 05/10/2025](https://toulbarz.fr/actualites?actu=cohesion-athletes): premier rendez-vous de cohésion entre athlètes.
+- [Tubecon 2025 - 04/10/2025](https://toulbarz.fr/actualites?actu=tubecon): Toul'Barz star de la Tubecon 2025.
+- [Mister France - 03/10/2025](https://toulbarz.fr/actualites?actu=mister-france): le Street Workout invité à Mister France.
+- [Récap saison 2024-2025 - 25/09/2025](https://toulbarz.fr/actualites?actu=recap-saison-2024-2025): bilan de la saison 2024-2025.
+- [International Strength Night 2 - 25/01/2025](https://toulbarz.fr/actualites?actu=isn-2): participation à l'ISN 2.
+
+## Optional
+
+- [Mentions légales](https://toulbarz.fr/mentions-legales): informations légales du site.
+- [Sitemap XML](https://toulbarz.fr/sitemap.xml): plan du site pour les crawlers.
+- [robots.txt](https://toulbarz.fr/robots.txt): directives d'indexation.

@@ -26,6 +26,22 @@ const checkMobile = () => {
 
 const actus: Actu[] = [
   {
+    id: 11,
+    title: 'LE BREAK DANCE DE PAIR AVEC LE STREET WORKOUT',
+    subtitle: 'Roc la Night',
+    date: '01-04-2026',
+    pdfUrl: '/pdfs/01-04-2026 - Roc la night.pdf',
+    slug: 'roc-la-night',
+  },
+  {
+    id: 10,
+    title: 'UNE EXPOSITION ARTISTIQUE JAMAIS VUE AUPARAVANT',
+    subtitle: 'Exposition au Social Hub',
+    date: '01-04-2026',
+    pdfUrl: '/pdfs/01-04-2026 - Exposition au Social Hub.pdf',
+    slug: 'exposition-social-hub',
+  },
+  {
     id: 9,
     title: 'TURBO\'BARZ : SAISON 2 - LE RÉCAP',
     subtitle: 'Récap Turbo\'Barz Saison 2',
@@ -108,6 +124,17 @@ const selectedActu = computed(() => {
 const currentIndex = computed(() => {
   return actus.findIndex((actu) => actu.id === selectedActuId.value)
 })
+
+const isNewActu = (dateStr: string): boolean => {
+  const [day, month, year] = dateStr.split('-')
+  if (!day || !month || !year) return false
+  const date = new Date(`${year}-${month}-${day}`)
+  if (Number.isNaN(date.getTime())) return false
+  const diffDays = (Date.now() - date.getTime()) / (1000 * 60 * 60 * 24)
+  return diffDays >= 0 && diffDays <= 30
+}
+
+const newActusCount = computed(() => actus.filter((a) => isNewActu(a.date)).length)
 
 // URL du PDF selon le device
 const pdfViewerUrl = computed(() => {
@@ -227,7 +254,7 @@ watch(
     <div class="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-1/3 right-0 w-80 h-80 bg-gradient-to-br from-accent/10 to-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-12">
         <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
@@ -247,21 +274,60 @@ watch(
         <!-- Liste des actus (sidebar) -->
         <div class="lg:w-1/3 xl:w-1/4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:flex lg:flex-col">
           <div class="bg-white rounded-2xl p-4 lg:p-5 shadow-sm border border-gray-100 lg:overflow-hidden lg:flex lg:flex-col lg:max-h-full">
-            <h2 class="text-primary font-semibold text-lg mb-4 px-2 shrink-0">
-              Articles
-            </h2>
+            <div class="flex items-center justify-between mb-4 px-2 shrink-0 gap-2">
+              <h2 class="text-primary font-semibold text-lg">
+                Articles
+              </h2>
+              <span
+                v-if="newActusCount > 0"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-accent to-orange-500 text-white text-[11px] font-bold shadow-sm shadow-accent/30"
+              >
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                {{ newActusCount }} nouveau{{ newActusCount > 1 ? 'x' : '' }}
+              </span>
+            </div>
             <div class="space-y-2 lg:space-y-3 lg:overflow-y-auto lg:pr-1">
               <button
                 v-for="actu in actus"
                 :key="actu.id"
                 @click="selectActu(actu.id)"
                 :class="[
-                  'w-full text-left p-3 lg:p-4 rounded-xl transition-all duration-300',
+                  'relative w-full text-left p-3 lg:p-4 rounded-xl transition-all duration-300',
                   selectedActuId === actu.id
                     ? 'bg-accent text-white shadow-md shadow-accent/30'
-                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-sm'
+                    : isNewActu(actu.date)
+                      ? 'bg-gradient-to-br from-accent/5 via-gray-50 to-gray-50 text-gray-700 ring-1 ring-accent/20 hover:ring-accent/40 hover:shadow-sm'
+                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-sm'
                 ]"
               >
+                <span
+                  v-if="isNewActu(actu.date)"
+                  :class="[
+                    'inline-flex items-center gap-1 px-2 py-0.5 mb-2 text-[10px] font-bold rounded-full shadow-sm',
+                    selectedActuId === actu.id
+                      ? 'bg-white text-accent'
+                      : 'bg-gradient-to-r from-accent to-orange-500 text-white'
+                  ]"
+                >
+                  <span class="relative flex h-1.5 w-1.5">
+                    <span
+                      :class="[
+                        'animate-ping absolute inline-flex h-full w-full rounded-full opacity-75',
+                        selectedActuId === actu.id ? 'bg-accent' : 'bg-white'
+                      ]"
+                    ></span>
+                    <span
+                      :class="[
+                        'relative inline-flex rounded-full h-1.5 w-1.5',
+                        selectedActuId === actu.id ? 'bg-accent' : 'bg-white'
+                      ]"
+                    ></span>
+                  </span>
+                  NOUVEAU
+                </span>
                 <div class="font-semibold text-sm leading-tight mb-1.5 lg:mb-2 line-clamp-2">
                   {{ actu.title }}
                 </div>

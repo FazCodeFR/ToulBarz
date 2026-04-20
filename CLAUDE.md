@@ -17,9 +17,11 @@ pnpm type-check       # TypeScript validation only
 pnpm lint             # ESLint + Prettier fix
 
 # Testing
-pnpm test             # Unit tests (watch mode)
-pnpm test-e2e         # E2E tests (headed mode)
+pnpm test             # Unit tests (watch mode) — Vitest
+pnpm test-e2e         # E2E tests (headed mode) — Playwright
 pnpm coverage         # Unit tests with coverage
+pnpm test -- tests/unit/example.test.ts   # Run a single unit test file
+pnpm test-e2e -- -g "pattern"             # Run E2E tests matching a title pattern
 ```
 
 **Always use pnpm** - never npm or yarn.
@@ -54,6 +56,18 @@ Components in `src/components/` auto-register globally. No import statements nee
 ### Custom Web Components
 
 The Vite config recognizes `youtube-video` and `media-theme-*` as custom elements (web components from youtube-video-element and player.style).
+
+### Routing & Code-Splitting
+
+Routes live in [src/router/index.ts](src/router/index.ts). `IndexPage` is eagerly imported (LCP-critical); all other pages are lazy-loaded via dynamic `import()`. Each route defines `meta.title` used by `@unhead/vue`. Vite's `manualChunks` in [vite.config.ts](vite.config.ts) groups vendor chunks (vue, motion, calendar, youtube, etc.) — keep heavy new deps chunked the same way.
+
+### Pinia Store Injection
+
+`main.ts` injects the router onto every store via `pinia.use(({ store }) => { store.router = markRaw(router) })`. Inside store actions, use `this.router.push(...)` — do **not** call `useRouter()` there.
+
+### Production Build Behavior
+
+`esbuild.drop` strips `console.*` and `debugger` in production. Don't rely on logs for prod debugging; use proper error handling instead.
 
 ### Key Integrations
 
@@ -97,9 +111,11 @@ Use Tailwind icon classes from mdi and bxl collections:
 
 ## Key Files for Common Tasks
 
-- **Membership pricing**: `src/components/Formule.vue`
-- **Practice hours**: `src/components/Footer.vue`
-- **Stats/member count**: `src/components/Stats.vue`
-- **Event calendar**: `src/components/Event.vue` (uses iCal feeds)
-- **Routes**: `src/router/index.ts`
-- **Store**: `src/store/index.ts`
+- **Membership pricing**: [src/components/Formule.vue](src/components/Formule.vue)
+- **Practice hours**: [src/components/Footer.vue](src/components/Footer.vue)
+- **Stats/member count**: [src/components/Stats.vue](src/components/Stats.vue)
+- **Event calendar**: [src/components/Event.vue](src/components/Event.vue) (uses iCal feeds)
+- **News/actus page**: [src/pages/ActuPage.vue](src/pages/ActuPage.vue) (PDFs live in [public/pdfs/](public/pdfs/))
+- **Routes**: [src/router/index.ts](src/router/index.ts)
+- **Store**: [src/store/index.ts](src/store/index.ts)
+- **Scroll animation composable/directive**: [src/composables/useScrollAnimation.ts](src/composables/useScrollAnimation.ts)
