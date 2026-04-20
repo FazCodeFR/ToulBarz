@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 // Page d'accueil chargée immédiatement (critique)
 import IndexPage from '@/pages/IndexPage.vue'
@@ -10,7 +10,7 @@ const FiguresPage = () => import('@/pages/FiguresPage.vue')
 const MentionsLegalesPage = () => import('@/pages/MentionsLegalesPage.vue')
 const ActuPage = () => import('@/pages/ActuPage.vue')
 
-const routes = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: IndexPage,
@@ -58,15 +58,13 @@ const routes = [
   },
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    return { top: 0 }
-  },
-})
-
-export default router
+export const scrollBehavior = (
+  to: unknown,
+  from: unknown,
+  savedPosition: { left: number; top: number } | null,
+) => {
+  if (savedPosition) {
+    return savedPosition
+  }
+  return { top: 0 }
+}

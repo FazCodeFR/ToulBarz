@@ -1,3 +1,4 @@
+/// <reference types="vite-ssg" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
@@ -113,5 +114,27 @@ export default defineConfig({
     host: false,
     port: 3000,
     open: true,
+  },
+
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+    beastiesOptions: false,
+    onFinished() {
+      // eslint-disable-next-line no-console
+      console.log('Static site generation completed.')
+    },
+  },
+
+  ssr: {
+    noExternal: [
+      '@fireworks-js/vue',
+      'fireworks-js',
+      'motion-v',
+      '@vueuse/motion',
+      'v-calendar',
+      'youtube-video-element',
+      'player.style',
+    ],
   },
 })

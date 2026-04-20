@@ -139,6 +139,7 @@ const newActusCount = computed(() => actus.filter((a) => isNewActu(a.date)).leng
 // URL du PDF selon le device
 const pdfViewerUrl = computed(() => {
   if (!selectedActu.value) return ''
+  if (typeof window === 'undefined') return selectedActu.value.pdfUrl
   const baseUrl = window.location.origin
   const pdfUrl = baseUrl + selectedActu.value.pdfUrl
   

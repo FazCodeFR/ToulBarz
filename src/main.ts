@@ -1,21 +1,20 @@
-import { createHead } from '@unhead/vue/client'
+import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
-import { createApp, markRaw } from 'vue'
+import { markRaw } from 'vue'
 import App from './App.vue'
 import './assets/index.css'
-import router from './router'
+import { routes, scrollBehavior } from './router'
 import { MotionPlugin } from '@vueuse/motion'
 
-const head = createHead()
-const app = createApp(App)
-
-const pinia = createPinia()
-pinia.use(({ store }) => {
-  store.router = markRaw(router)
-})
-app.use(pinia)
-app.use(router)
-app.use(MotionPlugin)
-app.use(head)
-
-app.mount('#app')
+export const createApp = ViteSSG(
+  App,
+  { routes, scrollBehavior },
+  ({ app, router }) => {
+    const pinia = createPinia()
+    pinia.use(({ store }) => {
+      store.router = markRaw(router)
+    })
+    app.use(pinia)
+    app.use(MotionPlugin)
+  },
+)

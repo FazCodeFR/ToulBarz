@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "cross-env DEBUG=0 vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "build-only": "vite build",
-    "preview": "vite build && vite preview",
+    "build-only": "vite-ssg build",
+    "build-spa": "vite build",
+    "preview": "vite-ssg build && vite preview",
     "start": "pnpm dev & wait-on tcp:3000 -v",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -55,6 +56,7 @@
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.9.1",
     "autoprefixer": "10.4.27",
+    "beasties": "^0.4.2",
     "cross-env": "10.1.0",
     "cssnano": "7.1.4",
     "eslint": "~9.39.1",
@@ -80,6 +82,7 @@
     "vite": "8.0.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-vue-devtools": "8.1.1",
+    "vite-ssg": "^28.3.0",
     "vitest": "4.1.2",
     "vue-tsc": "3.2.6",
     "wait-on": "9.0.4"

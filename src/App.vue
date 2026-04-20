@@ -4,6 +4,7 @@
 const route = useRoute()
 
 useHead({
+  htmlAttrs: { lang: 'fr' },
   title: () => route.meta.title || "Toul'Barz - Street Workout Toulouse",
   meta: [
     {

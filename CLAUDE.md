@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ToulBarz is the website for a street workout association in Toulouse, France. It's a Vue 3 SPA with TypeScript and Tailwind CSS, deployed on Vercel.
+ToulBarz is the website for a street workout association in Toulouse, France. It's a Vue 3 app pre-rendered to static HTML via **vite-ssg** (SSG), with TypeScript and Tailwind CSS, deployed on Vercel.
 
 **Primary Language**: French (all content and UI)
 
@@ -59,11 +59,23 @@ The Vite config recognizes `youtube-video` and `media-theme-*` as custom element
 
 ### Routing & Code-Splitting
 
-Routes live in [src/router/index.ts](src/router/index.ts). `IndexPage` is eagerly imported (LCP-critical); all other pages are lazy-loaded via dynamic `import()`. Each route defines `meta.title` used by `@unhead/vue`. Vite's `manualChunks` in [vite.config.ts](vite.config.ts) groups vendor chunks (vue, motion, calendar, youtube, etc.) — keep heavy new deps chunked the same way.
+Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a named `routes` constant (consumed by vite-ssg — it builds the router itself). `IndexPage` is eagerly imported (LCP-critical); all other pages are lazy-loaded via dynamic `import()`. Each route defines `meta.title` used by `@unhead/vue`. Vite's `manualChunks` in [vite.config.ts](vite.config.ts) groups vendor chunks (vue, motion, calendar, youtube, etc.) — keep heavy new deps chunked the same way.
+
+### SSG (vite-ssg) — SSR safety
+
+`pnpm build` runs `vite-ssg build`, which pre-renders every route in [src/router/index.ts](src/router/index.ts) to a static `.html` file in `dist/`. [src/main.ts](src/main.ts) exports `createApp = ViteSSG(App, { routes, scrollBehavior }, ({ app, router }) => { ... })` — plugins (Pinia, MotionPlugin) are registered inside the setup callback.
+
+**Rules for new code** (code runs on Node during prerender):
+
+- No `window`, `document`, `localStorage`, `IntersectionObserver`, etc. at module top level, in `setup()`, or inside `computed()`. Gate with `typeof window === 'undefined'` or move to `onMounted`.
+- `new Date()` is fine, but don't rely on locale/timezone matching the client.
+- For components that must only run client-side, wrap in `<ClientOnly>` (auto-registered by vite-ssg).
+- Packages that break SSR bundling (CJS-only, browser-only) go in `ssr.noExternal` in [vite.config.ts](vite.config.ts). Current list: `@fireworks-js/vue`, `motion-v`, `@vueuse/motion`, `v-calendar`, `youtube-video-element`, `player.style`.
+- Fallback SPA build (no prerender): `pnpm build-spa`.
 
 ### Pinia Store Injection
 
-`main.ts` injects the router onto every store via `pinia.use(({ store }) => { store.router = markRaw(router) })`. Inside store actions, use `this.router.push(...)` — do **not** call `useRouter()` there.
+[src/main.ts](src/main.ts) injects the router onto every store via `pinia.use(({ store }) => { store.router = markRaw(router) })` — the `router` comes from the vite-ssg setup callback argument. Inside store actions, use `this.router.push(...)` — do **not** call `useRouter()` there.
 
 ### Production Build Behavior
 
