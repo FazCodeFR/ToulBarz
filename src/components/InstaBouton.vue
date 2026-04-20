@@ -1,5 +1,17 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useStore } from '@/store'
+
+const { isMobileMenuOpen } = storeToRefs(useStore())
+</script>
+
 <template>
-  <div class="fixed left-4 bottom-6 z-50 flex flex-col gap-3">
+  <div
+    :class="[
+      'fixed left-4 bottom-6 z-50 flex flex-col gap-3 transition-opacity duration-200',
+      isMobileMenuOpen ? 'pointer-events-none opacity-0 lg:pointer-events-auto lg:opacity-100' : ''
+    ]"
+  >
     <a
       href="https://www.tiktok.com/@toul_barz"
       target="_blank"

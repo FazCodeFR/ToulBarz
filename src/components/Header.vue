@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
+import { useStore } from "@/store";
 
 const route = useRoute();
+const store = useStore();
+const { isMobileMenuOpen: isMenuOpen } = storeToRefs(store);
 
-// Gestion de l'état du menu et du scroll
-const isMenuOpen = ref(false);
 const isScrolled = ref(false);
 
 const navItems = [
@@ -180,21 +182,22 @@ onUnmounted(() => {
               :to="item.to"
               :style="{ animationDelay: `${index * 60}ms` }"
               :class="[
-                'menu-item group flex items-center justify-center gap-3 rounded-2xl border px-4 py-3.5 font-semibold transition-all duration-300 active:scale-[0.98]',
+                'menu-item group flex items-center gap-4 rounded-2xl border px-5 py-4 font-semibold transition-all duration-300 active:scale-[0.98]',
                 $route.path === item.to
                   ? 'border-accent/40 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 text-white shadow-lg shadow-accent/20'
                   : 'border-white/5 bg-white/[0.03] text-white hover:border-white/10 hover:bg-white/[0.06]'
               ]"
               @click="closeMenu"
             >
-              <i
+              <span
                 :class="[
-                  item.icon,
-                  'text-xl transition-colors duration-300',
-                  $route.path === item.to ? 'text-accent' : 'text-white/70 group-hover:text-accent'
+                  'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-300',
+                  $route.path === item.to ? 'bg-accent/20 text-accent' : 'bg-white/5 text-white/70 group-hover:bg-accent/10 group-hover:text-accent'
                 ]"
-              ></i>
-              <span class="text-base leading-tight">{{ item.label }}</span>
+              >
+                <i :class="[item.icon, 'h-6 w-6']"></i>
+              </span>
+              <span class="text-base leading-none">{{ item.label }}</span>
             </router-link>
           </nav>
 

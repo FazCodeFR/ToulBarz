@@ -1,7 +1,7 @@
 <template>
   <Transition name="fade">
     <button
-      v-if="isVisible"
+      v-if="isVisible && !isMobileMenuOpen"
       @click="scrollToTop"
       class="fixed z-40 bottom-4 right-4 group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-accent to-accent-dark text-white rounded-full shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-110"
       aria-label="Retour en haut"
@@ -13,6 +13,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useStore } from '@/store'
+
+const { isMobileMenuOpen } = storeToRefs(useStore())
 
 const isVisible = ref(false)
 

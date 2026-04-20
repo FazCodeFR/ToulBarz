@@ -8,6 +8,7 @@ export const useStore = defineStore('main', {
     debug: import.meta.env.MODE === 'development',
     version: versionString,
     isInitialized: false,
+    isMobileMenuOpen: false,
     count: 0,
   }),
 
