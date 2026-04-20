@@ -83,7 +83,7 @@ const thisYear = new Date().getFullYear()
 </script>
 
 <template>
-  <main class="overflow-x-hidden">
+  <main class="overflow-x-clip bg-black">
     <Header/>
     <ScrollTopButton />
     <InstaBouton />
