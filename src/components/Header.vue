@@ -10,9 +10,11 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-// Fonction pour détecter le scroll
+// Fonction pour détecter le scroll (avec seuil pour éviter le flicker)
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 0;
+  const y = window.scrollY;
+  if (!isScrolled.value && y > 20) isScrolled.value = true;
+  else if (isScrolled.value && y < 10) isScrolled.value = false;
 };
 
 // Fonction pour fermer le menu lorsqu'un lien est cliqué
@@ -30,31 +32,25 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Fond noir statique -->
-  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-black/95 z-40"></div>
-
   <!-- Navbar sticky -->
   <header
     :class="[
-    'sticky top-0 z-50 transition-all duration-500 ease-out',
-    isScrolled ? 'bg-primary/80 backdrop-blur-xl shadow-lg shadow-black/20' : 'bg-primary',
-    isMenuOpen ? 'h-auto' : 'h-24'
+    'sticky top-0 z-50 bg-neutral-950 border-b transition-colors duration-300 ease-out',
+    isScrolled ? 'border-white/10' : 'border-transparent',
+    isMenuOpen ? 'h-auto' : 'h-20'
   ]"
   >
     <nav
-      :class="[
-        'mx-auto flex max-w-7xl items-center justify-between gap-x-6 transition-all duration-500 ease-out',
-        isScrolled ? 'p-4' : 'p-6'
-      ]"
+      class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-x-6 px-6"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <router-link to="/" class="-m-1.5 p-1.5 group">
+        <router-link to="/" class="-m-1.5 p-1.5 group inline-flex items-center">
           <span class="sr-only">Toul'Barz</span>
           <img
             :class="[
-              'transition-all duration-500 ease-out group-hover:scale-105',
-              isScrolled ? 'h-14 w-auto' : 'h-16 w-auto'
+              'h-14 w-auto origin-left transition-transform duration-300 ease-out will-change-transform group-hover:scale-105',
+              isScrolled ? 'scale-90' : 'scale-100'
             ]"
             src="/img/logo.webp"
             alt="Logo Toul'Barz"
@@ -169,7 +165,7 @@ onUnmounted(() => {
     </nav>
 
     <!-- Menu mobile -->
-    <div v-if="isMenuOpen" class="lg:hidden overflow-auto max-h-[80vh] bg-gradient-to-b from-primary/95 to-primary backdrop-blur-xl">
+    <div v-if="isMenuOpen" class="lg:hidden overflow-auto max-h-[80vh] bg-neutral-950 backdrop-blur-xl">
       <div class="px-4 py-2 space-y-1">
         <router-link
           to="street-workout"
