@@ -52,7 +52,7 @@
         <!-- Bouton CTA - CSS animation -->
         <router-link
           to="/adhesions"
-          class="mt-8 group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-white font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 animate-hero-cta"
+          class="mt-8 group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-primary font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 animate-hero-cta"
           aria-label="Je m'inscris"
         >
           <span class="text-base tracking-wide">Rejoins-nous</span>
@@ -61,7 +61,8 @@
 
         <!-- Flèche vers le bas animée - CSS animation -->
         <a
-          href="#vision-section"
+          href="#event-section"
+          @click.prevent="scrollToEvents"
           class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow"
           aria-label="Aller à la section événements"
         >
@@ -118,6 +119,26 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateVideoSrc)
 })
+
+const scrollToEvents = () => {
+  const target = document.getElementById('event-section')
+  if (!target) return
+  const startY = window.scrollY
+  const headerOffset = 80
+  const targetY = target.getBoundingClientRect().top + startY - headerOffset
+  const distance = targetY - startY
+  const duration = 1200
+  const startTime = performance.now()
+  const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  const step = (now: number) => {
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    window.scrollTo(0, startY + distance * easeInOutCubic(progress))
+    if (progress < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
 </script>
 
 <style scoped>

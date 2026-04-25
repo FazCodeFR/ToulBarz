@@ -110,7 +110,7 @@ onUnmounted(() => {
         <!-- CTA desktop uniquement -->
         <router-link
           to="/adhesions"
-          class="hidden lg:inline-flex group relative overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent-dark px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-105"
+          class="hidden lg:inline-flex group relative overflow-hidden rounded-full bg-gradient-to-r from-accent to-accent-dark px-5 py-2.5 text-sm font-semibold text-primary shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-105"
         >
           <span class="relative z-10 flex items-center gap-2">
             Rejoins-nous

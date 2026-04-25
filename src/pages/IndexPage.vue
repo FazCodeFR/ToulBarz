@@ -22,7 +22,7 @@ useSeoMeta({
 <template>
   <Heroe/>
   <div class="bg-gray-50">
-    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
+    <div id="event-section" v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
       <EventSection></EventSection>
     </div>
   </div>

@@ -136,7 +136,7 @@
             <div class="mt-10 text-center">
               <RouterLink
                 to="/adhesions"
-                class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent-dark rounded-full text-white font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105"
+                class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent-dark rounded-full text-primary font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105"
               >
                 Commencer maintenant
                 <i class="i-mdi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
@@ -166,7 +166,7 @@
       </p>
       <RouterLink
         to="/adhesions"
-        class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent-dark rounded-full text-white font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105"
+        class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent-dark rounded-full text-primary font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105"
       >
         Rejoins-nous
         <i class="i-mdi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
