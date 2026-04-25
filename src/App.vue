@@ -63,10 +63,31 @@ useHead({
       innerHTML: `
         window.addEventListener('load', function() {
           setTimeout(function() {
+            var fontFix = document.createElement('style');
+            fontFix.textContent = "@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:local('Roboto Light'),local('Roboto')}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:local('Roboto Regular'),local('Roboto')}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:local('Roboto Medium'),local('Roboto')}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:local('Roboto Bold'),local('Roboto')}";
+            document.head.appendChild(fontFix);
             var script = document.createElement('script');
             script.src = 'https://static.elfsight.com/platform/platform.js';
             script.async = true;
             document.head.appendChild(script);
+            var patchSheets = function() {
+              for (var i = 0; i < document.styleSheets.length; i++) {
+                try {
+                  var rules = document.styleSheets[i].cssRules;
+                  if (!rules) continue;
+                  for (var j = 0; j < rules.length; j++) {
+                    var r = rules[j];
+                    if (r.type === 5 && !r.style.getPropertyValue('font-display')) {
+                      r.style.setProperty('font-display', 'swap');
+                    }
+                  }
+                } catch (e) {}
+              }
+            };
+            script.onload = function() {
+              setTimeout(patchSheets, 200);
+              setTimeout(patchSheets, 1500);
+            };
           }, 4000);
         });
       `

@@ -11,21 +11,21 @@
           L'asso en quelques <span class="text-accent">chiffres</span>
         </h2>
       </div>
-      <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div
+      <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <li
           v-for="stat in stats"
           :key="stat.id"
           class="group relative flex flex-col items-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-accent/50 transition-all duration-300"
           v-intersect="() => startAnimation(stat.id)"
         >
-          <dd class="text-5xl sm:text-6xl font-extrabold tracking-tight text-accent drop-shadow-lg">
+          <span class="text-5xl sm:text-6xl font-extrabold tracking-tight text-accent drop-shadow-lg">
             {{ animatedValues[stat.id] }}
-          </dd>
-          <dt class="mt-3 text-base font-medium text-gray-300 text-center">{{ stat.name }}</dt>
+          </span>
+          <span class="mt-3 text-base font-medium text-gray-300 text-center">{{ stat.name }}</span>
           <!-- Hover glow effect -->
-          <div class="absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </dl>
+          <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </li>
+      </ul>
     </div>
   </div>
 

@@ -78,6 +78,8 @@ onUnmounted(() => {
             ]"
             src="/img/logo.webp"
             alt="Logo Toul'Barz"
+            width="56"
+            height="56"
           >
         </router-link>
       </div>
