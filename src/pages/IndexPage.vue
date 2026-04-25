@@ -8,7 +8,6 @@ const description = "Toul'Barz, association toulousaine de Street Workout : entr
 useSeoMeta({
   title: "Toul'Barz - Street Workout Toulouse",
   description,
-  keywords: 'street workout, calisthénie, Toulouse, association sportive, musculation au poids du corps, figures, entraînement, communauté',
   ogTitle: "Toul'Barz - Association de Street Workout à Toulouse",
   ogDescription: description,
   ogImage: 'https://toulbarz.fr/img/home_heroe.webp',
@@ -17,6 +16,15 @@ useSeoMeta({
   twitterTitle: "Toul'Barz - Association de Street Workout à Toulouse",
   twitterDescription: description,
   twitterImage: 'https://toulbarz.fr/img/home_heroe.webp',
+})
+
+useHead({
+  meta: [
+    {
+      name: 'keywords',
+      content: 'street workout, calisthénie, Toulouse, association sportive, musculation au poids du corps, figures, entraînement, communauté',
+    },
+  ],
 })
 </script>
 <template>

@@ -150,12 +150,20 @@ const description = "Mentions légales du site Toul'Barz : informations sur l'as
 useSeoMeta({
   title: "Mentions Légales - Toul'Barz",
   description,
-  keywords: 'mentions légales, RGPD, cookies, association, Toul\'Barz, contact, hébergeur',
   ogTitle: "Mentions Légales - Toul'Barz",
   ogDescription: description,
   ogUrl: 'https://toulbarz.fr/mentions-legales',
   twitterTitle: "Mentions Légales - Toul'Barz",
   twitterDescription: description,
   robots: 'noindex, follow',
+})
+
+useHead({
+  meta: [
+    {
+      name: 'keywords',
+      content: 'mentions légales, RGPD, cookies, association, Toul\'Barz, contact, hébergeur',
+    },
+  ],
 })
 </script>

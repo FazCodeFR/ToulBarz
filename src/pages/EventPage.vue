@@ -4,12 +4,20 @@ const description = "Découvrez le calendrier des événements Toul'Barz : comp�
 useSeoMeta({
   title: "Événements - Toul'Barz",
   description,
-  keywords: 'événements, calendrier, compétitions, street workout, Toulouse, sorties, rencontres, Toul\'Barz',
   ogTitle: "Événements & Calendrier - Toul'Barz Street Workout",
   ogDescription: description,
   ogUrl: 'https://toulbarz.fr/evenements',
   twitterTitle: "Événements & Calendrier - Toul'Barz Street Workout",
   twitterDescription: description,
+})
+
+useHead({
+  meta: [
+    {
+      name: 'keywords',
+      content: 'événements, calendrier, compétitions, street workout, Toulouse, sorties, rencontres, Toul\'Barz',
+    },
+  ],
 })
 </script>
 

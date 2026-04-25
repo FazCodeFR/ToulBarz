@@ -134,7 +134,6 @@ useSeoMeta({
       ? `${selectedActu.value.title} - ${selectedActu.value.subtitle}. Article publié le ${selectedActu.value.date} par Toul'Barz.`
       : pageDescription,
   ),
-  keywords: 'actualités, presse, articles, Toul\'Barz, street workout, Toulouse, événements, communication',
   ogType: 'article',
   ogTitle: computed(() =>
     selectedActu.value
@@ -157,6 +156,15 @@ useSeoMeta({
   twitterDescription: computed(() =>
     selectedActu.value ? selectedActu.value.title : pageDescription,
   ),
+})
+
+useHead({
+  meta: [
+    {
+      name: 'keywords',
+      content: 'actualités, presse, articles, Toul\'Barz, street workout, Toulouse, événements, communication',
+    },
+  ],
 })
 
 const currentIndex = computed(() => {

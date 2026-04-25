@@ -4,7 +4,6 @@ const description = "Le Street Workout : discipline de force et de statique au p
 useSeoMeta({
   title: "Le Street Workout - Toul'Barz",
   description,
-  keywords: 'street workout, calisthénie, planche, front lever, back lever, muscle-up, handstand, human flag, figures, force, statique, poids du corps',
   ogTitle: "Le Street Workout - Figures & Discipline | Toul'Barz",
   ogDescription: description,
   ogImage: 'https://toulbarz.fr/img/figures/header.webp',
@@ -13,6 +12,15 @@ useSeoMeta({
   twitterTitle: "Le Street Workout - Figures & Discipline | Toul'Barz",
   twitterDescription: description,
   twitterImage: 'https://toulbarz.fr/img/figures/header.webp',
+})
+
+useHead({
+  meta: [
+    {
+      name: 'keywords',
+      content: 'street workout, calisthénie, planche, front lever, back lever, muscle-up, handstand, human flag, figures, force, statique, poids du corps',
+    },
+  ],
 })
 </script>
 
