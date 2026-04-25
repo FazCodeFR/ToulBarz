@@ -21,28 +21,44 @@ useSeoMeta({
 </script>
 <template>
   <Heroe/>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
-    <EventSection></EventSection>
+  <div class="bg-gray-50">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
+      <EventSection></EventSection>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 100 }">
-    <Vision></Vision>
+  <div class="bg-white">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 100 }">
+      <Vision></Vision>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-left', delay: 0 }">
-    <Action></Action>
+  <div class="bg-white">
+    <div v-scroll-animate="{ animation: 'fade-left', delay: 0 }">
+      <Action></Action>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-right', delay: 0 }">
-    <StreetWorkout></StreetWorkout>
+  <div class="bg-white">
+    <div v-scroll-animate="{ animation: 'fade-right', delay: 0 }">
+      <StreetWorkout></StreetWorkout>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
-    <Contact></Contact>
+  <div class="bg-gray-50">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
+      <Contact></Contact>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'zoom-in', delay: 0 }">
-    <Stats></Stats>
+  <div class="bg-gray-900">
+    <div v-scroll-animate="{ animation: 'zoom-in', delay: 0 }">
+      <Stats></Stats>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
-    <Partenaire></Partenaire>
+  <div class="bg-white">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
+      <Partenaire></Partenaire>
+    </div>
   </div>
-  <div v-scroll-animate="{ animation: 'fade-up', delay: 100 }">
-    <Insta></Insta>
+  <div class="bg-white">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 100 }">
+      <Insta></Insta>
+    </div>
   </div>
 </template>

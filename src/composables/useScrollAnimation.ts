@@ -33,12 +33,12 @@ export function useScrollAnimation(
   }
 
   const initialClasses: Record<AnimationType, string> = {
-    'fade-up': 'opacity-0 translate-y-8',
-    'fade-down': 'opacity-0 -translate-y-8',
-    'fade-left': 'opacity-0 translate-x-8',
-    'fade-right': 'opacity-0 -translate-x-8',
-    'zoom-in': 'opacity-0 scale-95',
-    'zoom-out': 'opacity-0 scale-105',
+    'fade-up': 'translate-y-4',
+    'fade-down': '-translate-y-4',
+    'fade-left': 'translate-x-8',
+    'fade-right': '-translate-x-8',
+    'zoom-in': 'scale-95',
+    'zoom-out': 'scale-105',
   }
 
   onMounted(() => {
@@ -46,17 +46,16 @@ export function useScrollAnimation(
 
     // Set initial state
     const initialClassList = initialClasses[animation].split(' ')
-    elementRef.value.classList.add(...initialClassList, 'transition-all', 'duration-700', 'ease-out')
+    elementRef.value.classList.add(...initialClassList, 'transition-transform', 'duration-700', 'ease-out', 'will-change-transform')
 
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             isVisible.value = true
-            // Remove initial classes and add visible state
             const el = entry.target as HTMLElement
             initialClassList.forEach(cls => el.classList.remove(cls))
-            el.classList.add('opacity-100', 'translate-y-0', 'translate-x-0', 'scale-100')
+            el.classList.add('translate-y-0', 'translate-x-0', 'scale-100')
 
             if (once && observer) {
               observer.unobserve(el)
@@ -64,7 +63,7 @@ export function useScrollAnimation(
           } else if (!once) {
             isVisible.value = false
             const el = entry.target as HTMLElement
-            el.classList.remove('opacity-100', 'translate-y-0', 'translate-x-0', 'scale-100')
+            el.classList.remove('translate-y-0', 'translate-x-0', 'scale-100')
             el.classList.add(...initialClassList)
           }
         })
@@ -87,33 +86,72 @@ export function useScrollAnimation(
   }
 }
 
-// Directive for easier use in templates
+const directiveInitialClasses: Record<AnimationType, string[]> = {
+  'fade-up': ['translate-y-4'],
+  'fade-down': ['-translate-y-4'],
+  'fade-left': ['translate-x-8'],
+  'fade-right': ['-translate-x-8'],
+  'zoom-in': ['scale-95'],
+  'zoom-out': ['scale-105'],
+}
+
+type ScrollAnimateBinding = {
+  value?: { animation?: AnimationType; delay?: number; threshold?: number }
+}
+
+// Transform-only animation: the element stays fully opaque so the parent's
+// background never bleeds through. Animation runs on GPU (compositor-only)
+// for smooth motion. Horizontal translates are clipped by main's
+// `overflow-x-clip`; vertical offsets are kept small (16px) to minimise the
+// brief layout gap during the slide-in.
 export const vScrollAnimate = {
-  mounted(el: HTMLElement, binding: { value?: { animation?: AnimationType; delay?: number; threshold?: number } }) {
+  // Bake the initial offset state into the SSR-rendered HTML so the
+  // animation starts from the same position the server rendered, avoiding
+  // any post-hydration snap.
+  getSSRProps(binding: ScrollAnimateBinding) {
+    const { animation = 'fade-up', delay = 0 } = binding.value || {}
+    const classes = [
+      ...directiveInitialClasses[animation],
+      'transition-transform',
+      'duration-700',
+      'ease-out',
+      'will-change-transform',
+    ].join(' ')
+    return {
+      class: classes,
+      style: delay > 0 ? `transition-delay:${delay}ms` : undefined,
+    }
+  },
+  mounted(el: HTMLElement, binding: ScrollAnimateBinding) {
     const { animation = 'fade-up', delay = 0, threshold = 0.1 } = binding.value || {}
 
-    const initialClasses: Record<AnimationType, string[]> = {
-      'fade-up': ['opacity-0', 'translate-y-8'],
-      'fade-down': ['opacity-0', '-translate-y-8'],
-      'fade-left': ['opacity-0', 'translate-x-8'],
-      'fade-right': ['opacity-0', '-translate-x-8'],
-      'zoom-in': ['opacity-0', 'scale-95'],
-      'zoom-out': ['opacity-0', 'scale-105'],
-    }
-
-    const initialClassList = initialClasses[animation]
-    el.classList.add(...initialClassList, 'transition-all', 'duration-700', 'ease-out')
+    const initialClassList = directiveInitialClasses[animation]
+    el.classList.add(...initialClassList, 'transition-transform', 'duration-700', 'ease-out', 'will-change-transform')
 
     if (delay > 0) {
       el.style.transitionDelay = `${delay}ms`
+    }
+
+    const reveal = () => {
+      initialClassList.forEach(cls => el.classList.remove(cls))
+      el.classList.add('translate-y-0', 'translate-x-0', 'scale-100')
+    }
+
+    // If the element is already in view at mount (above the fold after
+    // hydration), reveal it on the next frame so the transition runs from
+    // the SSR'd hidden state instead of snapping in.
+    const rect = el.getBoundingClientRect()
+    const inViewport = rect.top < window.innerHeight && rect.bottom > 0
+    if (inViewport) {
+      requestAnimationFrame(() => requestAnimationFrame(reveal))
+      return
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            initialClassList.forEach(cls => el.classList.remove(cls))
-            el.classList.add('opacity-100', 'translate-y-0', 'translate-x-0', 'scale-100')
+            reveal()
             observer.unobserve(el)
           }
         })
