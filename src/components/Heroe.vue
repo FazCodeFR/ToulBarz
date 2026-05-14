@@ -10,15 +10,15 @@
     />
     <!-- Vidéo de fond (mobile ou desktop selon contexte) -->
     <video
-      ref="videoRef"
       v-show="videoLoaded"
-      @loadeddata="videoLoaded = true"
+      ref="videoRef"
       autoplay
       muted
       loop
       playsinline
       preload="none"
       class="absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-500"
+      @loadeddata="videoLoaded = true"
     >
       <source :src="videoSrc" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo HTML5.
@@ -62,9 +62,9 @@
         <!-- Flèche vers le bas animée - CSS animation -->
         <a
           href="#event-section"
-          @click.prevent="scrollToEvents"
           class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow"
           aria-label="Aller à la section événements"
+          @click.prevent="scrollToEvents"
         >
           <i class="i-mdi-chevron-down text-2xl text-white"></i>
         </a>
@@ -129,8 +129,8 @@ const scrollToEvents = () => {
   const distance = targetY - startY
   const duration = 1200
   const startTime = performance.now()
-  const easeInOutCubic = (t: number) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  const easeInOutCubic = (time: number) =>
+    time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2
   const step = (now: number) => {
     const elapsed = now - startTime
     const progress = Math.min(elapsed / duration, 1)

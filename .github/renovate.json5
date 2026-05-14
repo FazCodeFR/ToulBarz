@@ -1,25 +1,48 @@
 {
-  extends: ['config:base', 'group:all', 'schedule:weekly', ':widenPeerDependencies'],
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'group:allNonMajor',
+    'schedule:weekly',
+    ':widenPeerDependencies',
+  ],
   enabledManagers: ['npm', 'github-actions'],
+  timezone: 'Europe/Paris',
+  dependencyDashboard: true,
   packageRules: [
     {
-      updateTypes: ['patch'],
+      // Skip patch-only updates: too noisy, rarely matter
+      matchUpdateTypes: ['patch'],
       enabled: false,
     },
     {
+      // Auto-merge non-major npm updates after a 2-day cooldown
       matchManagers: ['npm'],
+      matchUpdateTypes: ['minor'],
       automerge: true,
-      stabilityDays: 2,
-      // Eslint v9 changes the configuration format and most packages are
-      // not compatible with it yet.
-      // See https://github.com/vuejs/eslint-config-prettier/issues/19
-      ignoreDeps: ['eslint'],
+      minimumReleaseAge: '2 days',
     },
     {
-      matchPackagePatterns: ['github-actions'],
+      // Auto-merge github-actions updates
+      matchManagers: ['github-actions'],
       automerge: true,
     },
+    {
+      // Force manual approval for major bumps of the build/test toolchain.
+      // These have historically broken type-check (vite, vitest, vue-tsc, TS).
+      matchPackageNames: [
+        'vite',
+        'vitest',
+        'typescript',
+        'vue-tsc',
+        'vue',
+        'vue-router',
+        '/^@vitest//',
+        '/^@vitejs//',
+        '/^@vue//',
+      ],
+      matchUpdateTypes: ['major'],
+      dependencyDashboardApproval: true,
+    },
   ],
-  timezone: 'Europe/Helsinki',
-  dependencyDashboard: true,
 }

@@ -121,7 +121,7 @@ export default defineConfig({
     formatting: 'minify',
     beastiesOptions: false,
     onFinished() {
-      // eslint-disable-next-line no-console
+       
       console.log('Static site generation completed.')
     },
   },

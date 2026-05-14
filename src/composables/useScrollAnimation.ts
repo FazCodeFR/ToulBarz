@@ -23,29 +23,29 @@ export function useScrollAnimation(
   const isVisible = ref(false)
   let observer: IntersectionObserver | null = null
 
-  const animationClasses: Record<AnimationType, string> = {
-    'fade-up': 'animate-fade-up',
-    'fade-down': 'animate-fade-down',
-    'fade-left': 'animate-fade-left',
-    'fade-right': 'animate-fade-right',
-    'zoom-in': 'animate-zoom-in',
-    'zoom-out': 'animate-zoom-out',
-  }
+  const animationClasses = new Map<AnimationType, string>([
+    ['fade-up', 'animate-fade-up'],
+    ['fade-down', 'animate-fade-down'],
+    ['fade-left', 'animate-fade-left'],
+    ['fade-right', 'animate-fade-right'],
+    ['zoom-in', 'animate-zoom-in'],
+    ['zoom-out', 'animate-zoom-out'],
+  ])
 
-  const initialClasses: Record<AnimationType, string> = {
-    'fade-up': 'translate-y-4',
-    'fade-down': '-translate-y-4',
-    'fade-left': 'translate-x-8',
-    'fade-right': '-translate-x-8',
-    'zoom-in': 'scale-95',
-    'zoom-out': 'scale-105',
-  }
+  const initialClasses = new Map<AnimationType, string>([
+    ['fade-up', 'translate-y-4'],
+    ['fade-down', '-translate-y-4'],
+    ['fade-left', 'translate-x-8'],
+    ['fade-right', '-translate-x-8'],
+    ['zoom-in', 'scale-95'],
+    ['zoom-out', 'scale-105'],
+  ])
 
   onMounted(() => {
     if (!elementRef.value) return
 
     // Set initial state
-    const initialClassList = initialClasses[animation].split(' ')
+    const initialClassList = (initialClasses.get(animation) ?? '').split(' ')
     elementRef.value.classList.add(...initialClassList, 'transition-transform', 'duration-700', 'ease-out', 'will-change-transform')
 
     observer = new IntersectionObserver(
@@ -82,18 +82,18 @@ export function useScrollAnimation(
 
   return {
     isVisible,
-    animationClass: animationClasses[animation],
+    animationClass: animationClasses.get(animation) ?? '',
   }
 }
 
-const directiveInitialClasses: Record<AnimationType, string[]> = {
-  'fade-up': ['translate-y-4'],
-  'fade-down': ['-translate-y-4'],
-  'fade-left': ['translate-x-8'],
-  'fade-right': ['-translate-x-8'],
-  'zoom-in': ['scale-95'],
-  'zoom-out': ['scale-105'],
-}
+const directiveInitialClasses = new Map<AnimationType, string[]>([
+  ['fade-up', ['translate-y-4']],
+  ['fade-down', ['-translate-y-4']],
+  ['fade-left', ['translate-x-8']],
+  ['fade-right', ['-translate-x-8']],
+  ['zoom-in', ['scale-95']],
+  ['zoom-out', ['scale-105']],
+])
 
 type ScrollAnimateBinding = {
   value?: { animation?: AnimationType; delay?: number; threshold?: number }
@@ -111,7 +111,7 @@ export const vScrollAnimate = {
   getSSRProps(binding: ScrollAnimateBinding) {
     const { animation = 'fade-up', delay = 0 } = binding.value || {}
     const classes = [
-      ...directiveInitialClasses[animation],
+      ...(directiveInitialClasses.get(animation) ?? []),
       'transition-transform',
       'duration-700',
       'ease-out',
@@ -125,7 +125,7 @@ export const vScrollAnimate = {
   mounted(el: HTMLElement, binding: ScrollAnimateBinding) {
     const { animation = 'fade-up', delay = 0, threshold = 0.1 } = binding.value || {}
 
-    const initialClassList = directiveInitialClasses[animation]
+    const initialClassList = directiveInitialClasses.get(animation) ?? []
     el.classList.add(...initialClassList, 'transition-transform', 'duration-700', 'ease-out', 'will-change-transform')
 
     if (delay > 0) {

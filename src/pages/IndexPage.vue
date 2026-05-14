@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { vScrollAnimate } from '@/composables/useScrollAnimation'
 
-const store = useStore()
-
 const description = "Toul'Barz, association toulousaine de Street Workout : entraînements hebdomadaires pour tous niveaux, événements, cohésion d'équipe et promotion de la calisthénie à Toulouse."
 
 useSeoMeta({

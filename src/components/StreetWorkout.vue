@@ -6,8 +6,6 @@
           <!-- Video Section -->
           <div class="relative order-2 lg:order-1">
               <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                
-                <!-- Thème Halloween -->
                 <media-theme-halloween v-if="isHalloween" class="w-full">
                   <youtube-video
                     slot="media"
@@ -19,7 +17,6 @@
                   ></youtube-video>
                 </media-theme-halloween>
 
-                <!-- Thème Noël -->
                 <media-theme-x-mas v-else-if="isChristmas" class="w-full">
                   <youtube-video
                     slot="media"
@@ -31,11 +28,10 @@
                   ></youtube-video>
                 </media-theme-x-mas>
 
-                <!-- Thème par défaut -->
                 <media-theme-sutro
                   v-else
-                  style="--media-primary-color: #ff7f11; --media-accent-color: #ff7f11;"
                   class="w-full"
+                  style="--media-primary-color: #ff7f11; --media-accent-color: #ff7f11;"
                 >
                   <youtube-video
                     slot="media"
@@ -46,7 +42,6 @@
                     style="aspect-ratio: 16/9;"
                   ></youtube-video>
                 </media-theme-sutro>
-
               </div>
               
               <!-- Éléments décoratifs -->
@@ -99,7 +94,7 @@
 
 
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import 'youtube-video-element';
 

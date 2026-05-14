@@ -22,7 +22,8 @@
             </h3>
           </div>
           <p class="text-gray-600 text-sm leading-relaxed flex-1">
-            <a href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t" target="_blank"
+            <a
+href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t" target="_blank"
               class="inline-flex items-center gap-1 text-accent font-semibold hover:text-accent-dark hover:underline transition">
               Viens découvrir gratuitement
             </a>
@@ -47,7 +48,8 @@
                 to="/evenements"
                 class="font-semibold text-accent hover:text-accent-dark hover:underline transition-colors duration-300"
               >l'onglet dédié</router-link> et ne manque aucune actu sur notre
-            <a href="https://www.instagram.com/toulbarz_tlb/" target="_blank"
+            <a
+href="https://www.instagram.com/toulbarz_tlb/" target="_blank"
               class="inline-flex items-center gap-1 text-accent font-semibold hover:text-accent-dark hover:underline transition">
               Instagram
               <i class="i-mdi-instagram text-sm"></i>

@@ -25,11 +25,11 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
 const showInstagram = ref(true);
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = import.meta.env.PROD;
 
 onMounted(() => {
   if (!isProd) return;
@@ -42,7 +42,7 @@ onMounted(() => {
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
-        if (node.nodeType === 1 && node.tagName === "A" && node.href.includes("elfsight.com")) {
+        if (node instanceof HTMLAnchorElement && node.href.includes("elfsight.com")) {
           node.remove();
         }
       });

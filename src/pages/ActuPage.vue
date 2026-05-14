@@ -180,7 +180,7 @@ const isNewActu = (dateStr: string): boolean => {
   return diffDays >= 0 && diffDays <= 30
 }
 
-const newActusCount = computed(() => actus.filter((a) => isNewActu(a.date)).length)
+const newActusCount = computed(() => actus.filter((item) => isNewActu(item.date)).length)
 
 // URL du PDF selon le device
 const pdfViewerUrl = computed(() => {
@@ -216,7 +216,7 @@ const scrollToArticle = () => {
 }
 
 const selectActu = (id: number) => {
-  const actu = actus.find((a) => a.id === id)
+  const actu = actus.find((item) => item.id === id)
   if (actu) {
     selectedActuId.value = id
     router.push({ query: { actu: actu.slug } })
@@ -233,13 +233,13 @@ const formatDate = (dateStr?: string) => {
   const [day, month, year] = dateStr.split('-')
   if (!day || !month || !year) return dateStr // format inattendu → on renvoie brut
 
-  const months = [
-    'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
-    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
-  ]
+  const months = new Map<number, string>([
+    [1, 'janvier'], [2, 'février'], [3, 'mars'], [4, 'avril'],
+    [5, 'mai'], [6, 'juin'], [7, 'juillet'], [8, 'août'],
+    [9, 'septembre'], [10, 'octobre'], [11, 'novembre'], [12, 'décembre'],
+  ])
 
-  const monthIndex = parseInt(month) - 1
-  return `${parseInt(day)} ${months[monthIndex]} ${year}`
+  return `${parseInt(day)} ${months.get(parseInt(month)) ?? ''} ${year}`
 }
 
 
@@ -266,7 +266,7 @@ onMounted(() => {
   
   const actuParam = route.query.actu as string
   if (actuParam) {
-    const actu = actus.find((a) => a.slug === actuParam)
+    const actu = actus.find((item) => item.slug === actuParam)
     if (actu) {
       selectedActuId.value = actu.id
       // Scroll vers l'article après un court délai pour laisser le DOM se charger
@@ -286,7 +286,7 @@ watch(
   () => route.query.actu,
   (newActu) => {
     if (newActu) {
-      const actu = actus.find((a) => a.slug === newActu)
+      const actu = actus.find((item) => item.slug === newActu)
       if (actu) {
         selectedActuId.value = actu.id
       }
@@ -340,7 +340,6 @@ watch(
               <button
                 v-for="actu in actus"
                 :key="actu.id"
-                @click="selectActu(actu.id)"
                 :class="[
                   'relative w-full text-left p-3 lg:p-4 rounded-xl transition-all duration-300',
                   selectedActuId === actu.id
@@ -349,6 +348,7 @@ watch(
                       ? 'bg-gradient-to-br from-accent/5 via-gray-50 to-gray-50 text-gray-700 ring-1 ring-accent/20 hover:ring-accent/40 hover:shadow-sm'
                       : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-sm'
                 ]"
+                @click="selectActu(actu.id)"
               >
                 <span
                   v-if="isNewActu(actu.date)"
@@ -402,7 +402,7 @@ watch(
         </div>
 
         <!-- PDF Viewer -->
-        <div class="lg:w-2/3 xl:w-3/4" ref="pdfViewerRef">
+        <div ref="pdfViewerRef" class="lg:w-2/3 xl:w-3/4">
           <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             <!-- PDF Header -->
             <div class="bg-primary p-4 lg:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 lg:gap-4">
@@ -416,8 +416,8 @@ watch(
               </div>
               <div class="flex gap-2 lg:gap-3 justify-center sm:justify-end shrink-0">
                 <button
-                  @click="openPdfInNewTab"
                   class="flex items-center gap-1.5 lg:gap-2 bg-white/10 hover:bg-white/20 text-white px-3 lg:px-4 py-2 lg:py-2.5 rounded-xl transition-all duration-200 text-xs lg:text-sm font-medium backdrop-blur-sm"
+                  @click="openPdfInNewTab"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -425,8 +425,8 @@ watch(
                   Ouvrir
                 </button>
                 <button
-                  @click="downloadPdf"
                   class="flex items-center gap-1.5 lg:gap-2 bg-accent hover:bg-accent-dark text-white px-3 lg:px-4 py-2 lg:py-2.5 rounded-xl transition-all duration-200 text-xs lg:text-sm font-medium shadow-md shadow-accent/30"
+                  @click="downloadPdf"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -439,8 +439,8 @@ watch(
             <!-- PDF Embed - Mobile: Google Docs Viewer / Desktop: Direct PDF -->
             <div class="relative w-full bg-gray-100 h-[80vh] min-h-[400px] lg:h-[calc(100vh-12rem)]">
               <iframe
-                :src="pdfViewerUrl"
                 :key="`${selectedActu?.id}-${isMobile}`"
+                :src="pdfViewerUrl"
                 class="w-full h-full border-0"
                 :title="selectedActu?.title"
                 allowfullscreen
@@ -452,7 +452,6 @@ watch(
           <div class="lg:hidden mt-4">
             <div class="flex items-center justify-between bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
               <button
-                @click="currentIndex > 0 && selectActu(actus[currentIndex - 1]!.id)"
                 :disabled="currentIndex === 0"
                 :class="[
                   'flex items-center gap-1.5 px-3 py-2 rounded-xl transition-all duration-200 text-sm font-medium',
@@ -460,6 +459,7 @@ watch(
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : 'bg-gray-100 text-gray-700 hover:bg-accent hover:text-white active:bg-accent active:text-white'
                 ]"
+                @click="currentIndex > 0 && selectActu(actus[currentIndex - 1]!.id)"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -470,7 +470,6 @@ watch(
                 {{ currentIndex + 1 }} / {{ actus.length }}
               </span>
               <button
-                @click="currentIndex < actus.length - 1 && selectActu(actus[currentIndex + 1]!.id)"
                 :disabled="currentIndex === actus.length - 1"
                 :class="[
                   'flex items-center gap-1.5 px-3 py-2 rounded-xl transition-all duration-200 text-sm font-medium',
@@ -478,6 +477,7 @@ watch(
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : 'bg-gray-100 text-gray-700 hover:bg-accent hover:text-white active:bg-accent active:text-white'
                 ]"
+                @click="currentIndex < actus.length - 1 && selectActu(actus[currentIndex + 1]!.id)"
               >
                 Suivant
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

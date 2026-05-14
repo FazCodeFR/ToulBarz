@@ -20,7 +20,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-16">
         <div
-          v-for="(feature, index) in features"
+          v-for="feature in features"
           :key="feature.name"
           class="group relative rounded-2xl p-1 bg-gradient-to-br from-accent/20 via-transparent to-accent/10 hover:from-accent/30 hover:to-accent/20 transition-all duration-500"
         >
@@ -42,7 +42,7 @@
 
   
 
-<script setup>
+<script setup lang="ts">
 const features = [
   {
     name: 'Officialiser',

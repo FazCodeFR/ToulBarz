@@ -78,15 +78,29 @@
 </template>
 
 
-<script setup>
-import { ref, onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, type Ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
-const isLoading = ref(true);
-const eventsPublic = ref([]);
-const eventsMembers = ref([]);
+interface CalendarEvent {
+  id: string
+  summary: string
+  location: string
+  start: Date
+}
 
-const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
+interface GoogleCalendarApiEvent {
+  id: string
+  summary?: string
+  location?: string
+  start?: { dateTime?: string; date?: string }
+}
+
+const isLoading = ref(true);
+const eventsPublic = ref<CalendarEvent[]>([]);
+const eventsMembers = ref<CalendarEvent[]>([]);
+
+const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>) => {
   try {
     const now = new Date();
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=2&timeMin=${now.toISOString()}`;
@@ -94,14 +108,14 @@ const fetchGoogleCalendarEvents = async (calendarId, eventsRef) => {
     if (!response.ok) throw new Error('Erreur API');
     const data = await response.json();
 
-    const fetchedEvents = data.items.map(event => ({
+    const fetchedEvents: CalendarEvent[] = (data.items as GoogleCalendarApiEvent[]).map(event => ({
       id: event.id,
       summary: event.summary || 'Sans titre',
       location: event.location || 'Lieu non spécifié',
-      start: new Date(event.start?.dateTime || event.start?.date),
+      start: new Date(event.start?.dateTime || event.start?.date || ''),
     }));
 
-    eventsRef.value = fetchedEvents.filter(e => e.start > now);
+    eventsRef.value = fetchedEvents.filter(ev => ev.start > now);
   } catch (error) {
     console.error('Erreur événements :', error);
   }
@@ -115,7 +129,7 @@ onMounted(async () => {
   isLoading.value = false;
 });
 
-const formatDate = (date) =>
+const formatDate = (date: Date | string) =>
   new Date(date).toLocaleDateString('fr-FR', {
     weekday: 'short',
     day: 'numeric',

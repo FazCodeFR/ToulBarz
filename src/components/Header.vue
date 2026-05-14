@@ -26,9 +26,9 @@ const closeMenu = () => {
 };
 
 const handleScroll = () => {
-  const y = window.scrollY;
-  if (!isScrolled.value && y > 20) isScrolled.value = true;
-  else if (isScrolled.value && y < 10) isScrolled.value = false;
+  const scrollY = window.scrollY;
+  if (!isScrolled.value && scrollY > 20) isScrolled.value = true;
+  else if (isScrolled.value && scrollY < 10) isScrolled.value = false;
 };
 
 // Verrouille le scroll du body quand le menu est ouvert

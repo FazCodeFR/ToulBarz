@@ -52,7 +52,7 @@
       class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50"
     >
       <div class="bg-white bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 space-y-2  p-6 rounded-2xl shadow-xl max-w-sm text-center relative overflow-hidden z-10">
-        <button @click="closeModal" class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
+        <button class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl" @click="closeModal">
           ✖
         </button>
         <div class="text-center text-white ">
@@ -78,7 +78,6 @@
         hue: { min: 0, max: 360 },
         delay: { min: 15, max: 30 },
         rocketsPoint: { min: 50, max: 50 },
-        speed: 2,
         acceleration: 1.05,
         friction: 0.97,
         gravity: 1.5,
@@ -92,7 +91,7 @@
 
 
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { Fireworks } from '@fireworks-js/vue'
 
@@ -105,15 +104,6 @@ const incentives = [
 
 const showModal = ref(false)
 const showFireworks = ref(false)
-
-const openModalWithFireworks = () => {
-  showModal.value = true
-  showFireworks.value = true
-
-  setTimeout(() => {
-    showFireworks.value = false
-  }, 11000)
-}
 
 const closeModal = () => {
   showModal.value = false

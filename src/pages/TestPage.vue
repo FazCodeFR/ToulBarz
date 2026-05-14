@@ -18,7 +18,8 @@
             <div class="space-y-3">
                 <p><strong>Nom de l'Hébergeur:</strong> Vercel</p>
                 <p><strong>Adresse:</strong> 340 S Lemon Ave, Walnut, CA 91789, États-Unis</p>
-                <p><strong>Contact:</strong> <a href="mailto:support@vercel.com"
+                <p><strong>Contact:</strong> <a
+href="mailto:support@vercel.com"
                         class="text-orange-500 hover:underline">support@vercel.com</a></p>
             </div>
         </section>
@@ -45,9 +46,11 @@
         <section class="contact-info space-y-6">
             <h2 class="text-2xl font-semibold text-black">Informations de Contact</h2>
             <div class="space-y-3">
-                <p><strong>Email:</strong> <a href="mailto:contact@toulbarz.fr"
+                <p><strong>Email:</strong> <a
+href="mailto:contact@toulbarz.fr"
                         class="text-orange-500 hover:underline">contact@toulbarz.fr</a></p>
-                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/toulbarz_tlb/"
+                <p><strong>Instagram:</strong> <a
+href="https://www.instagram.com/toulbarz_tlb/"
                         class="text-orange-500 hover:underline">@toulbarz_tlb</a></p>
             </div>
         </section>

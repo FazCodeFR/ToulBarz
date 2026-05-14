@@ -2,9 +2,9 @@
   <Transition name="fade">
     <button
       v-if="isVisible && !isMobileMenuOpen"
-      @click="scrollToTop"
       class="fixed z-40 bottom-4 right-4 group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-accent to-accent-dark text-white rounded-full shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:shadow-accent/40 hover:scale-110"
       aria-label="Retour en haut"
+      @click="scrollToTop"
     >
       <i class="i-mdi-chevron-up text-2xl transition-transform duration-300 group-hover:-translate-y-0.5"></i>
     </button>
@@ -25,8 +25,8 @@ const scrollToTop = () => {
   if (startY === 0) return
   const duration = 1200
   const startTime = performance.now()
-  const easeInOutCubic = (t: number) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  const easeInOutCubic = (time: number) =>
+    time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2
   const step = (now: number) => {
     const elapsed = now - startTime
     const progress = Math.min(elapsed / duration, 1)

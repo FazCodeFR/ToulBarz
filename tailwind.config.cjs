@@ -1,4 +1,3 @@
-/* eslint-env node */
 const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
 
 /** @type {import('tailwindcss').Config} */

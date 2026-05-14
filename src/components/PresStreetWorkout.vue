@@ -175,7 +175,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const figures = [
   {
     name: 'Muscle-up',
@@ -244,23 +244,16 @@ const conseils = [
   }
 ];
 
-const getDifficultyClasses = (difficulty) => {
-  const colorMap = {
-    'Débutant': {
-      badge: 'bg-gradient-to-r from-green-500 to-green-600'
-    },
-    'Intermédiaire': {
-      badge: 'bg-gradient-to-r from-accent to-accent-dark'
-    },
-    'Avancée': {
-      badge: 'bg-gradient-to-r from-purple-500 to-purple-600'
-    },
-    'default': {
-      badge: 'bg-gradient-to-r from-accent to-accent-dark'
-    }
+const getDifficultyClasses = (difficulty: string) => {
+  switch (difficulty) {
+    case 'Débutant':
+      return { badge: 'bg-gradient-to-r from-green-500 to-green-600' }
+    case 'Avancée':
+      return { badge: 'bg-gradient-to-r from-purple-500 to-purple-600' }
+    case 'Intermédiaire':
+    default:
+      return { badge: 'bg-gradient-to-r from-accent to-accent-dark' }
   }
-
-  return colorMap[difficulty] || colorMap.default
 };
 </script>
 

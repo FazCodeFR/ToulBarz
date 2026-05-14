@@ -15,11 +15,11 @@
         <li
           v-for="stat in stats"
           :key="stat.id"
-          class="group relative flex flex-col items-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-accent/50 transition-all duration-300"
           v-intersect="() => startAnimation(stat.id)"
+          class="group relative flex flex-col items-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-accent/50 transition-all duration-300"
         >
           <span class="text-5xl sm:text-6xl font-extrabold tracking-tight text-accent drop-shadow-lg">
-            {{ animatedValues[stat.id] }}
+            {{ animatedValues.get(stat.id) }}
           </span>
           <span class="mt-3 text-base font-medium text-gray-300 text-center">{{ stat.name }}</span>
           <!-- Hover glow effect -->
@@ -37,8 +37,9 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import type { Directive } from 'vue'
 const stats = [
   { id: 1, name: 'Adhérents', value: 94 },
   { id: 2, name: 'Bénévoles', value: 18 },
@@ -47,13 +48,10 @@ const stats = [
 ]
 
 // Valeurs animées
-const animatedValues = ref(stats.reduce((acc, stat) => {
-  acc[stat.id] = 0
-  return acc
-}, {}))
+const animatedValues = ref(new Map<number, number>(stats.map(stat => [stat.id, 0])))
 
-const startAnimation = (id) => {
-  const targetValue = stats.find(stat => stat.id === id).value
+const startAnimation = (id: number) => {
+  const targetValue = stats.find(stat => stat.id === id)?.value ?? 0
   let currentValue = 0
   const step = Math.ceil(targetValue / 100)
   const interval = setInterval(() => {
@@ -62,11 +60,11 @@ const startAnimation = (id) => {
       currentValue = targetValue
       clearInterval(interval)
     }
-    animatedValues.value[id] = currentValue
+    animatedValues.value.set(id, currentValue)
   }, 20)
 }
 
-const vIntersect = {
+const vIntersect: Directive<HTMLElement, () => void> = {
   mounted(el, binding) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {

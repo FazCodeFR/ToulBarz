@@ -7,13 +7,23 @@ on:
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'package.json'
       - 'pnpm-lock.yaml'
+      - 'vite.config.ts'
+      - 'vitest.config.ts'
+      - 'playwright.config.ts'
+      - 'tsconfig*.json'
       - '.github/workflows/main.yml'
   pull_request:
     paths:
       - 'src/**'
       - 'tests/**'
+      - 'package.json'
       - 'pnpm-lock.yaml'
+      - 'vite.config.ts'
+      - 'vitest.config.ts'
+      - 'playwright.config.ts'
+      - 'tsconfig*.json'
       - '.github/workflows/main.yml'
 
 concurrency:

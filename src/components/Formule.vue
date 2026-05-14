@@ -19,7 +19,7 @@
 
     <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-stretch gap-8 sm:mt-20 lg:max-w-4xl lg:grid-cols-2">
       <div
-        v-for="(tier, tierIdx) in tiers"
+        v-for="tier in tiers"
         :key="tier.id"
         :class="[
           'group relative rounded-3xl p-8 sm:p-10 transition-all duration-500',
@@ -116,7 +116,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
