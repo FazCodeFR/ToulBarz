@@ -26,6 +26,14 @@ const checkMobile = () => {
 
 const actus: Actu[] = [
   {
+    id: 12,
+    title: 'ENCORE UN SHOW AU GRAND PALAIS DES SPORTS',
+    subtitle: 'Futsal GPS',
+    date: '01-04-2026',
+    pdfUrl: '/pdfs/01-04-2026 - Futsal GPS.pdf',
+    slug: 'futsal-gps',
+  },
+  {
     id: 11,
     title: 'LE BREAK DANCE DE PAIR AVEC LE STREET WORKOUT',
     subtitle: 'Roc la Night',
