@@ -26,6 +26,22 @@ const checkMobile = () => {
 
 const actus: Actu[] = [
   {
+    id: 14,
+    title: 'LE RASSEMBLEMENT DE LA RENTRÉE 2024',
+    subtitle: 'Rassemblement de rentrée 2024',
+    date: '31-08-2024',
+    pdfUrl: '/pdfs/31-08-2024 - Rassemblement de rentrée 2024.pdf',
+    slug: 'rassemblement-rentree-2024',
+  },
+  {
+    id: 13,
+    title: 'TOUL\'BARZ MARQUE L\'INAUGURATION DE SON TEMPLE EXTÉRIEUR : LE PARC D\'EMPALOT',
+    subtitle: 'Inauguration d\'Empalot',
+    date: '08-08-2024',
+    pdfUrl: '/pdfs/08-08-2024 - Inauguration Empalot.pdf',
+    slug: 'inauguration-empalot',
+  },
+  {
     id: 12,
     title: 'ENCORE UN SHOW AU GRAND PALAIS DES SPORTS',
     subtitle: 'Futsal GPS',
