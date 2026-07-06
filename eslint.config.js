@@ -53,6 +53,8 @@ export default [
       'comma-dangle': ['error', 'only-multiline'],
       'id-length': [2, { exceptions: ['i', 'j', '_'] }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '_' }],
+      // slot="media" est un attribut natif requis par les web components (media-theme-*)
+      'vue/no-deprecated-slot-attribute': ['error', { ignore: ['youtube-video'] }],
       'vue/multi-word-component-names': [
         'error',
         {

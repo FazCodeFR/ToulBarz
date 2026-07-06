@@ -9,6 +9,7 @@ const EventPage = () => import('@/pages/EventPage.vue')
 const FiguresPage = () => import('@/pages/FiguresPage.vue')
 const MentionsLegalesPage = () => import('@/pages/MentionsLegalesPage.vue')
 const ActuPage = () => import('@/pages/ActuPage.vue')
+const IsnPage = () => import('@/pages/IsnPage.vue')
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -40,6 +41,14 @@ export const routes: RouteRecordRaw[] = [
     component: EventPage,
     meta: {
       title: 'Événements - Toul\'Barz',
+    },
+  },
+  {
+    path: '/isn-2026',
+    component: IsnPage,
+    name: 'ISN 2026',
+    meta: {
+      title: 'ISN 2026 - International Strength Nights | Toul\'Barz',
     },
   },
   {

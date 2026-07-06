@@ -14,6 +14,7 @@ const navItems = [
   { to: "/street-workout", label: "Street Workout", icon: "i-mdi-dumbbell" },
   { to: "/actualites", label: "Nos actus", icon: "i-mdi-newspaper-variant-outline" },
   { to: "/evenements", label: "Événements", icon: "i-mdi-calendar-star" },
+  { to: "/isn-2026", label: "ISN 2026", icon: "i-mdi-trophy-outline", highlight: true },
   { to: "/adhesions", label: "Adhésions", icon: "i-mdi-card-account-details-outline" },
 ];
 
@@ -91,12 +92,24 @@ onUnmounted(() => {
           :key="item.to"
           :to="item.to"
           :class="[
-            'relative text-base font-semibold leading-6 py-2 px-3 transition-all duration-300 group',
-            $route.path === item.to ? 'text-accent' : 'text-secondary hover:text-accent'
+            'relative text-base font-semibold leading-6 py-2 transition-all duration-300 group',
+            item.highlight
+              ? 'inline-flex items-center gap-2 rounded-full border px-4 uppercase tracking-wide'
+              : 'px-3',
+            item.highlight
+              ? ($route.path === item.to
+                ? 'border-accent bg-accent/10 text-accent'
+                : 'border-accent/60 text-secondary hover:border-accent hover:bg-accent/10 hover:text-accent')
+              : ($route.path === item.to ? 'text-accent' : 'text-secondary hover:text-accent')
           ]"
         >
+          <span v-if="item.highlight" class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+          </span>
           {{ item.label }}
           <span
+            v-if="!item.highlight"
             :class="[
               'absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent to-accent-dark transition-all duration-300',
               $route.path === item.to ? 'w-full' : 'w-0 group-hover:w-full'
@@ -187,7 +200,9 @@ onUnmounted(() => {
                 'menu-item group flex items-center gap-4 rounded-2xl border px-5 py-4 font-semibold transition-all duration-300 active:scale-[0.98]',
                 $route.path === item.to
                   ? 'border-accent/40 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 text-white shadow-lg shadow-accent/20'
-                  : 'border-white/5 bg-white/[0.03] text-white hover:border-white/10 hover:bg-white/[0.06]'
+                  : item.highlight
+                    ? 'border-accent/50 bg-white/[0.03] text-white hover:border-accent hover:bg-accent/10'
+                    : 'border-white/5 bg-white/[0.03] text-white hover:border-white/10 hover:bg-white/[0.06]'
               ]"
               @click="closeMenu"
             >
@@ -200,6 +215,12 @@ onUnmounted(() => {
                 <i :class="[item.icon, 'h-6 w-6']"></i>
               </span>
               <span class="text-base leading-none">{{ item.label }}</span>
+              <span
+                v-if="item.highlight"
+                class="ml-auto rounded-full border border-accent/60 bg-accent/10 px-2.5 py-1 text-xs font-bold uppercase tracking-widest text-accent"
+              >
+                ✦ Nouveau
+              </span>
             </router-link>
           </nav>
 

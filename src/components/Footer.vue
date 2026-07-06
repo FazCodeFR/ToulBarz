@@ -28,6 +28,7 @@ const quickLinks = [
   { label: 'Accueil', path: '/' },
   { label: 'Street Workout', path: '/street-workout' },
   { label: 'Événements', path: '/evenements' },
+  { label: 'ISN 2026', path: '/isn-2026' },
   { label: 'Adhésions', path: '/adhesions' },
 ];
 
