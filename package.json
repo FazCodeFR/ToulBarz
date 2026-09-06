@@ -40,7 +40,7 @@
     "@egoist/tailwindcss-icons": "1.9.2",
     "@iconify/json": "2.2.459",
     "@iconify/types": "2.0.0",
-    "@pinia/testing": "1.0.3",
+    "@pinia/testing": "2.0.1",
     "@playwright/test": "1.62.0",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.3.0",
