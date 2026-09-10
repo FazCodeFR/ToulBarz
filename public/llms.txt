@@ -9,7 +9,7 @@ Toul'Barz pratique et promeut le Street Workout (calisthénie, figures de force 
 - [Accueil](https://toulbarz.fr/): présentation de l'association, hero vidéo, vision, actions, pôle Street Workout, contact, statistiques, partenaires, feed Instagram.
 - [Le Street Workout](https://toulbarz.fr/street-workout): définition de la discipline, figures emblématiques, niveaux de difficulté.
 - [Événements](https://toulbarz.fr/evenements): calendrier des événements de l'association (alimenté par flux iCal).
-- [Adhésions](https://toulbarz.fr/adhesions): formules de cotisation et paiement sécurisé via widget HelloAsso (adhésion saison 2025-2026).
+- [Adhésions](https://toulbarz.fr/adhesions): formules de cotisation et paiement sécurisé via widget HelloAsso (adhésion saison 2026-2027).
 - [Nos actualités](https://toulbarz.fr/actualites): liste d'articles de presse et comptes rendus d'événements au format PDF, navigables depuis la page.
 
 ## Actualités (articles PDF)

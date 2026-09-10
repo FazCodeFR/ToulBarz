@@ -56,7 +56,7 @@ useHead({
             id="haWidget"
             allowtransparency="true"
             scrolling="auto"
-            src="https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toul-barz-2025-2026-1/widget"
+            src="https://www.helloasso.com/associations/toulbarz/adhesions/adhesions-toul-barz-2026-2027/widget"
             class="w-full border-0"
             style="height: 750px;"
           ></iframe>
