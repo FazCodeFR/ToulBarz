@@ -16,6 +16,13 @@
           </div>
           <!-- Cartes d'événements à droite -->
           <div class="flex-1 mt-8 md:mt-0 grid gap-4 sm:gap-6 md:grid-cols-2">
+            <div
+              v-if="hasErrorPublic"
+              class="rounded-2xl p-5 bg-gray-100 flex items-center gap-2 text-sm text-gray-500"
+            >
+              <i class="i-mdi-alert-circle-outline text-accent"></i>
+              Impossible de charger les événements publics.
+            </div>
             <RouterLink
               v-for="event in eventsPublic.slice(0, 1)"
               :key="event.id"
@@ -38,6 +45,13 @@
               </p>
             </RouterLink>
 
+            <div
+              v-if="hasErrorMembers"
+              class="rounded-2xl p-5 bg-gray-100 flex items-center gap-2 text-sm text-gray-500"
+            >
+              <i class="i-mdi-alert-circle-outline text-accent"></i>
+              Impossible de charger les événements adhérents.
+            </div>
             <RouterLink
               v-for="event in eventsMembers.slice(0, 1)"
               :key="event.id"
@@ -99,11 +113,13 @@ interface GoogleCalendarApiEvent {
 const isLoading = ref(true);
 const eventsPublic = ref<CalendarEvent[]>([]);
 const eventsMembers = ref<CalendarEvent[]>([]);
+const hasErrorPublic = ref(false);
+const hasErrorMembers = ref(false);
 
-const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>) => {
+const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>, errorRef: Ref<boolean>) => {
   try {
     const now = new Date();
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=2&timeMin=${now.toISOString()}`;
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30&timeMin=${now.toISOString()}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('Erreur API');
     const data = await response.json();
@@ -118,13 +134,14 @@ const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<Cale
     eventsRef.value = fetchedEvents.filter(ev => ev.start > now);
   } catch (error) {
     console.error('Erreur événements :', error);
+    errorRef.value = true;
   }
 };
 
 onMounted(async () => {
   await Promise.all([
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic),
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers),
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic, hasErrorPublic),
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers, hasErrorMembers),
   ]);
   isLoading.value = false;
 });

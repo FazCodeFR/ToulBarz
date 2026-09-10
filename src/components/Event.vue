@@ -133,6 +133,13 @@
               </article>
             </div>
             
+            <div v-else-if="hasActiveError" class="flex flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-lg ring-1 ring-gray-100">
+              <div class="rounded-2xl bg-gradient-to-br from-accent/10 to-orange-100 p-5">
+                <span class="i-mdi-alert-circle-outline h-10 w-10 text-accent"></span>
+              </div>
+              <p class="mt-6 text-lg font-semibold text-gray-900">Impossible de charger les événements</p>
+              <p class="mt-2 text-sm text-gray-500 max-w-xs">Réessayez plus tard ou consultez notre Instagram en attendant</p>
+            </div>
             <div v-else class="flex flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-lg ring-1 ring-gray-100">
               <div class="rounded-2xl bg-gradient-to-br from-accent/10 to-orange-100 p-5">
                 <span class="i-mdi-calendar-blank h-10 w-10 text-accent"></span>
@@ -175,6 +182,8 @@ const isLoading = ref(true);
 const activeTab = ref('public');
 const eventsPublic = ref<CalendarEvent[]>([]);
 const eventsMembers = ref<CalendarEvent[]>([]);
+const hasErrorPublic = ref(false);
+const hasErrorMembers = ref(false);
 
 const tabs = [
   { name: 'Événements publics', key: 'public' },
@@ -230,7 +239,7 @@ const handleDayClick = (day: { date: Date }) => {
 };
 
 
-const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>) => {
+const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>, errorRef: Ref<boolean>) => {
   try {
     const now = new Date();
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30&timeMin=${now.toISOString()}`;
@@ -249,17 +258,22 @@ const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<Cale
     eventsRef.value = fetchedEvents.filter((event) => event.end > now);
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
+    errorRef.value = true;
   }
 };
 
 
 onMounted(async () => {
   await Promise.all([
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic),
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers),
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic, hasErrorPublic),
+    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers, hasErrorMembers),
   ]);
   isLoading.value = false;
 });
+
+const hasActiveError = computed(() =>
+  activeTab.value === 'public' ? hasErrorPublic.value : hasErrorMembers.value
+);
 
 const getActiveEvents = computed(() =>
   activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value
