@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { vScrollAnimate } from '@/composables/useScrollAnimation'
+
 const description = "Pour les pratiquants débutants ou intermédiaires qui veulent progresser et rejoindre la communauté toulousaine."
 
 const features = [
