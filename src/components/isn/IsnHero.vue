@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BILLETTERIE_URL, LIEU } from '@/data/isn'
+import { LIEU } from '@/data/isn'
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import { BILLETTERIE_URL, LIEU } from '@/data/isn'
 
     <div class="relative mx-auto max-w-4xl">
       <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-white/80">
-        ✦ 3ème édition
+        ✦ 3ème édition — Événement terminé
       </span>
 
       <h1 class="mt-8 font-black uppercase leading-none tracking-wide">
@@ -32,26 +32,17 @@ import { BILLETTERIE_URL, LIEU } from '@/data/isn'
       </p>
 
       <p class="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-        Pendant un week-end entier, ISN 2026 réunira des athlètes internationaux de street workout,
+        Pendant un week-end entier, ISN 2026 a réuni des athlètes internationaux de street workout,
         des passionnés venus du monde entier et un public à la recherche d'un show sportif immersif
-        et spectaculaire. Et cette année encore, le public sera le seul juge.
+        et spectaculaire. Et cette année encore, le public a été le seul juge.
       </p>
 
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
-          :href="BILLETTERIE_URL"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-8 py-4 text-base font-bold uppercase tracking-wide text-white shadow-xl shadow-accent/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40"
-        >
-          Réserve ta place
-          <i class="i-mdi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
-        </a>
-        <a
           href="#programme"
           class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-base font-bold uppercase tracking-wide text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
         >
-          Voir le programme
+          Revivre le programme
           <i class="i-mdi-chevron-down"></i>
         </a>
       </div>

@@ -10,11 +10,17 @@ const { isMobileMenuOpen: isMenuOpen } = storeToRefs(store);
 
 const isScrolled = ref(false);
 
-const navItems = [
+interface NavItem {
+  to: string;
+  label: string;
+  icon: string;
+  highlight?: boolean;
+}
+
+const navItems: NavItem[] = [
   { to: "/street-workout", label: "Street Workout", icon: "i-mdi-dumbbell" },
   { to: "/actualites", label: "Nos actus", icon: "i-mdi-newspaper-variant-outline" },
   { to: "/evenements", label: "Événements", icon: "i-mdi-calendar-star" },
-  { to: "/isn-2026", label: "ISN 2026", icon: "i-mdi-trophy-outline", highlight: true },
   { to: "/adhesions", label: "Adhésions", icon: "i-mdi-card-account-details-outline" },
 ];
 

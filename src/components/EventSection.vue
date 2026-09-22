@@ -1,5 +1,8 @@
 <template>
-  <section class="bg-gradient-to-r from-gray-50 to-gray-100 text-black">
+  <section
+    v-if="isLoading || hasEvents || hasErrorPublic || hasErrorMembers"
+    class="bg-gradient-to-r from-gray-50 to-gray-100 text-black"
+  >
     <div class="w-full">
       <!-- Grand conteneur style bannière -->
       <div class="px-6 sm:px-8 py-8 sm:py-12">
@@ -93,7 +96,7 @@
 
 
 <script setup lang="ts">
-import { ref, onMounted, type Ref } from 'vue';
+import { ref, computed, onMounted, type Ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
 interface CalendarEvent {
@@ -115,6 +118,7 @@ const eventsPublic = ref<CalendarEvent[]>([]);
 const eventsMembers = ref<CalendarEvent[]>([]);
 const hasErrorPublic = ref(false);
 const hasErrorMembers = ref(false);
+const hasEvents = computed(() => eventsPublic.value.length > 0 || eventsMembers.value.length > 0);
 
 const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>, errorRef: Ref<boolean>) => {
   try {

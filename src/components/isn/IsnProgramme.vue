@@ -7,7 +7,7 @@ import { programme } from '@/data/isn'
   <section id="programme" class="relative scroll-mt-24 px-6 py-16 sm:py-20">
     <div class="mx-auto max-w-3xl">
       <h2 class="text-center text-3xl font-black uppercase tracking-wide text-transparent [-webkit-text-stroke:1.5px_white] sm:text-5xl">
-        &gt; Au programme
+        &gt; Le programme
       </h2>
 
       <div v-for="(day, dayIndex) in programme" :key="day.day" class="mt-16">

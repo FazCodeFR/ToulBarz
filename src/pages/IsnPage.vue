@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const description = "ISN 2026 - International Strength Nights, 3ème édition : le plus grand show de street workout au monde, les 1er et 2 août 2026 au Grand Palais des Sports de Toulouse. Battles internationales, vote du public en direct, workshop et rassemblement communautaire."
+const description = "ISN 2026 - International Strength Nights, 3ème édition : le plus grand show de street workout au monde s'est tenu les 1er et 2 août 2026 au Grand Palais des Sports de Toulouse. Retour sur les battles internationales, le vote du public en direct, le workshop et le rassemblement communautaire."
 
 useSeoMeta({
-  title: "ISN 2026 - International Strength Nights | Toul'Barz",
+  title: "ISN 2026 - International Strength Nights (édition passée) | Toul'Barz",
   description,
-  ogTitle: 'ISN 2026 - International Strength Nights | Toulouse',
+  ogTitle: 'ISN 2026 - International Strength Nights | Retour sur l\'édition Toulouse',
   ogDescription: description,
   ogImage: 'https://toulbarz.fr/img/isn/og-isn-2026.jpg',
   ogImageAlt: 'ISN 2026 - International Strength Nights - 01-02.08.26 - Grand Palais des Sports, Toulouse',
   ogUrl: 'https://toulbarz.fr/isn-2026',
-  twitterTitle: 'ISN 2026 - International Strength Nights | Toulouse',
+  twitterTitle: 'ISN 2026 - International Strength Nights | Retour sur l\'édition Toulouse',
   twitterDescription: description,
   twitterImage: 'https://toulbarz.fr/img/isn/og-isn-2026.jpg',
 })
@@ -31,7 +31,7 @@ useHead({
         startDate: '2026-07-31T18:00:00+02:00',
         endDate: '2026-08-02T23:00:00+02:00',
         image: 'https://toulbarz.fr/img/isn/og-isn-2026.jpg',
-        eventStatus: 'https://schema.org/EventScheduled',
+        eventStatus: 'https://schema.org/EventCompleted',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         location: {
           '@type': 'Place',
@@ -45,24 +45,6 @@ useHead({
           },
         },
         description,
-        offers: [
-          {
-            '@type': 'Offer',
-            name: 'Standard Pass',
-            url: 'https://my.weezevent.com/isn2026',
-            price: '19.90',
-            priceCurrency: 'EUR',
-            availability: 'https://schema.org/InStock',
-          },
-          {
-            '@type': 'Offer',
-            name: 'Premium Pass',
-            url: 'https://my.weezevent.com/isn2026',
-            price: '34.90',
-            priceCurrency: 'EUR',
-            availability: 'https://schema.org/InStock',
-          },
-        ],
         organizer: {
           '@type': 'Organization',
           name: "Toul'Barz",

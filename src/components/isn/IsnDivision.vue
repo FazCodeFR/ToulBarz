@@ -19,7 +19,7 @@ import { vScrollAnimate } from '@/composables/useScrollAnimation'
       </h2>
 
       <p class="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-        En 2026, des athlètes féminines entreront dans l'arène parmi les meilleurs athlètes
+        En 2026, des athlètes féminines sont entrées dans l'arène parmi les meilleurs athlètes
         du monde, dans une seule et même division.
       </p>
 
@@ -35,7 +35,7 @@ import { vScrollAnimate } from '@/composables/useScrollAnimation'
       </p>
 
       <p class="mx-auto mt-4 max-w-2xl text-base font-semibold text-white">
-        Le 1er août au Grand Palais des Sports de Toulouse, la performance parlera d'elle-même.
+        Le 1er août au Grand Palais des Sports de Toulouse, la performance a parlé d'elle-même.
       </p>
     </div>
   </section>

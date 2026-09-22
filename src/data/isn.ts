@@ -17,7 +17,7 @@ export interface IsnStat {
 }
 
 export const stats: IsnStat[] = [
-  { id: 1, name: 'Personnes attendues', value: 1700 },
+  { id: 1, name: 'Personnes présentes', value: 1700 },
   { id: 2, name: 'Pays représentés', value: 20, prefix: '+' },
   { id: 3, name: 'Athlètes internationaux', value: 20, prefix: '~' },
   { id: 4, name: 'Édition', value: 3, suffix: 'ème' },

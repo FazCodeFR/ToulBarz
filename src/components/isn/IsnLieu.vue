@@ -23,7 +23,7 @@ import { LIEU } from '@/data/isn'
         <div class="mx-auto mt-6 h-px w-32 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
         <p class="mt-6 text-sm leading-relaxed text-white/60">
-          Le Grand Palais des Sports de Toulouse accueillera le show principal dans une ambiance
+          Le Grand Palais des Sports de Toulouse a accueilli le show principal dans une ambiance
           sombre, cinématographique et spectaculaire mêlant lumières, fumée, DJ set, scénographie
           et performances de très haut niveau.
         </p>

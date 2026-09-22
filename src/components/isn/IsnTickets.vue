@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { vScrollAnimate } from '@/composables/useScrollAnimation'
-import { BILLETTERIE_URL, extraTickets, tiers } from '@/data/isn'
+import { extraTickets, tiers } from '@/data/isn'
 </script>
 
 <template>
@@ -12,6 +12,9 @@ import { BILLETTERIE_URL, extraTickets, tiers } from '@/data/isn'
         </h2>
         <p class="mt-4 flex items-center justify-center gap-3 text-sm font-bold tracking-widest text-white/60">
           01.08.26 <i aria-hidden="true" class="i-mdi-web"></i> 02.08.26
+        </p>
+        <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-white/40">
+          Billetterie fermée — tarifs indiqués à titre indicatif
         </p>
       </div>
 
@@ -100,19 +103,6 @@ import { BILLETTERIE_URL, extraTickets, tiers } from '@/data/isn'
             </div>
           </li>
         </ul>
-      </div>
-
-      <!-- Bouton unique de réservation -->
-      <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }" class="mt-10 text-center">
-        <a
-          :href="BILLETTERIE_URL"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-10 py-4 text-base font-bold uppercase tracking-wide text-white shadow-xl shadow-accent/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/40"
-        >
-          Réserver ma place
-          <i class="i-mdi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
-        </a>
       </div>
     </div>
   </section>
