@@ -13,7 +13,7 @@
           class="flex flex-col items-start border-l border-white/15 pl-4 sm:pl-6"
         >
           <span class="text-6xl lg:text-8xl font-extrabold tracking-tighter tabular-nums text-accent">
-            {{ stat.prefix ?? '' }}{{ animatedValues.get(stat.id) }}
+            {{ animatedValues.get(stat.id) }}
           </span>
           <span class="mt-3 text-base font-medium text-white/70">{{ stat.name }}</span>
         </li>
@@ -33,10 +33,10 @@
 import { ref } from 'vue'
 import type { Directive } from 'vue'
 const stats = [
-  { id: 1, name: 'Adhérents', value: 140 },
+  { id: 1, name: 'Adhérents', value: 50 },
   { id: 2, name: 'Bénévoles', value: 15 },
   { id: 3, name: 'Personnes initiées', value: 2500 },
-  { id: 4, name: 'Évènements réalisés en 3 ans', value: 350, prefix: '+' },
+  { id: 4, name: 'Évènements réalisés', value: 350 },
 ]
 
 // Valeurs animées

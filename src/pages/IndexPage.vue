@@ -50,7 +50,7 @@ useHead({
       <Stats></Stats>
     </div>
   </div>
-  <div class="bg-gray-50">
+  <div class="bg-white">
     <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
       <Contact></Contact>
     </div>

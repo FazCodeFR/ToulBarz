@@ -1,9 +1,5 @@
 <template>
-  <div class="bg-gradient-to-b from-white to-gray-50 py-20 sm:py-28 relative overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-
+  <div class="bg-white py-20 sm:py-28 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 relative">
       <!-- Titre -->
       <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">

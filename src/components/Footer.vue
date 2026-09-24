@@ -24,10 +24,11 @@ const associationInfo = {
 };
 
 const quickLinks = [
-  { label: 'Accueil', path: '/' },
-  { label: 'Street Workout', path: '/street-workout' },
-  { label: 'Événements', path: '/evenements' },
   { label: 'Adhésions', path: '/adhesions' },
+  { label: 'Événements', path: '/evenements' },
+  { label: 'Street workout', path: '/street-workout' },
+  { label: 'Nos actus', path: '/actualites' },
+  { label: 'ISN août 2026', path: '/isn-2026' },
 ];
 
 const legalLinks = [
@@ -42,14 +43,21 @@ const legalLinks = [
     <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl"></div>
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
         <!-- Association Info -->
-        <div class="lg:col-span-1">
+        <div class="sm:col-span-2 lg:col-span-5 lg:pr-8">
           <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-accent to-orange-400 bg-clip-text text-transparent">
             {{ associationInfo.name }}
           </h3>
           <p class="mb-6 text-gray-300 leading-relaxed">{{ associationInfo.description }}</p>
-          <div class="flex space-x-3">
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              :href="'mailto:' + associationInfo.email"
+              class="group inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-gray-300 whitespace-nowrap hover:border-accent hover:text-accent transition-all duration-300"
+            >
+              <i class="i-mdi-email-outline h-5 w-5 text-accent shrink-0" aria-hidden="true"></i>
+              {{ associationInfo.email }}
+            </a>
             <a
               href="https://www.instagram.com/toulbarz_tlb/"
               target="_blank"
@@ -72,7 +80,7 @@ const legalLinks = [
         </div>
 
         <!-- Links -->
-        <div>
+        <nav class="lg:col-span-3" aria-label="Liens rapides">
           <h3 class="text-lg font-semibold mb-4 text-white">Liens rapides</h3>
           <ul class="space-y-3">
             <li v-for="link in quickLinks" :key="link.path">
@@ -85,55 +93,33 @@ const legalLinks = [
               </router-link>
             </li>
           </ul>
-        </div>
+        </nav>
 
-        <!-- Contact Info -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">Contact</h3>
-          <div class="space-y-3">
-            <p class="flex items-center gap-3">
-              <i class="i-mdi-email text-accent flex-shrink-0"></i>
-              <a
-                :href="'mailto:' + associationInfo.email"
-                class="text-gray-400 hover:text-accent transition-colors duration-300"
-              >
-                {{ associationInfo.email }}
-              </a>
-            </p>
-          </div>
-
-          <h4 class="font-semibold mt-6 mb-3 text-white text-sm">{{ associationInfo.practiceHoursTitle }}</h4>
-          <div class="space-y-2">
-            <div
-              v-for="(hour, index) in associationInfo.practiceHours"
-              :key="index"
-              class="flex items-center gap-2 text-sm text-gray-400"
-            >
-              <i class="i-mdi-clock-outline text-accent/70 flex-shrink-0"></i>
-              <span>{{ hour.day }} à </span>
+        <!-- Practice hours -->
+        <div class="lg:col-span-4">
+          <h3 class="text-lg font-semibold mb-4 text-white">{{ associationInfo.practiceHoursTitle }}</h3>
+          <ul class="grid grid-cols-1 gap-3">
+            <li v-for="hour in associationInfo.practiceHours" :key="hour.day">
               <a
                 :href="hour.link"
-                class="text-accent hover:text-accent-dark hover:underline transition-colors"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-3 rounded-xl bg-white/3 border border-white/5 px-4 py-3"
               >
-                {{ hour.place }}
+                <i class="i-mdi-clock-outline h-5 w-5 text-accent shrink-0"></i>
+                <span class="flex-1 min-w-0">
+                  <span class="flex items-baseline justify-between gap-2">
+                    <span class="font-semibold text-white">{{ hour.day }}</span>
+                    <span class="text-sm text-gray-400 whitespace-nowrap">{{ hour.time }}</span>
+                  </span>
+                  <span class="flex items-center gap-1 text-sm text-accent group-hover:underline">
+                    <i class="i-mdi-map-marker-outline shrink-0"></i>
+                    {{ hour.place }}
+                  </span>
+                </span>
               </a>
-              <span class="text-gray-500">{{ hour.time }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Newsletter -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">Newsletter</h3>
-          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
-            <p class="text-gray-400 text-sm mb-4">Inscris-toi pour recevoir nos actualités</p>
-            <div class="flex items-center gap-2 text-accent">
-              <i class="i-mdi-clock-outline"></i>
-              <span class="text-sm font-medium">À venir prochainement</span>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -11,7 +11,7 @@ const benefits = [
 </script>
 
 <template>
-  <section id="contact-section" class="bg-gray-50 py-20 sm:py-28">
+  <section id="contact-section" class="bg-white py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }" class="mb-16">
         <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -75,9 +75,7 @@ const benefits = [
             class="group flex flex-1 flex-col rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-gray-200 transition duration-300 hover:shadow-lg hover:ring-accent/40"
           >
             <div class="mb-4 flex items-center gap-4">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
-                <i class="i-mdi-calendar-star text-2xl" aria-hidden="true"></i>
-              </div>
+              <i class="i-mdi-calendar-star shrink-0 text-3xl text-accent" aria-hidden="true"></i>
               <h3 class="text-lg font-bold text-gray-900">
                 Nos événements
               </h3>
@@ -112,9 +110,7 @@ const benefits = [
             class="group flex flex-1 flex-col rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-gray-200 transition duration-300 hover:shadow-lg hover:ring-accent/40"
           >
             <div class="mb-4 flex items-center gap-4">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
-                <i class="i-mdi-tree text-2xl" aria-hidden="true"></i>
-              </div>
+              <i class="i-mdi-tree shrink-0 text-3xl text-accent" aria-hidden="true"></i>
               <h3 class="text-lg font-bold text-gray-900">
                 En plein air
               </h3>
