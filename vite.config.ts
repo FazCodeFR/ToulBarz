@@ -28,7 +28,8 @@ export default defineConfig({
           // Recognize custom elements from web components
           isCustomElement: (tag) =>
             tag === 'youtube-video' ||
-            tag.startsWith('media-theme-'),
+            tag.startsWith('media-theme-') ||
+            tag === 'media-poster-image',
         },
       },
     }),

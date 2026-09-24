@@ -18,10 +18,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { to: "/street-workout", label: "Street Workout", icon: "i-mdi-dumbbell" },
-  { to: "/actualites", label: "Nos actus", icon: "i-mdi-newspaper-variant-outline" },
+  { to: "/adhesions", label: "Adhésions", icon: "i-mdi-card-account-details-outline", highlight: true },
   { to: "/evenements", label: "Événements", icon: "i-mdi-calendar-star" },
-  { to: "/adhesions", label: "Adhésions", icon: "i-mdi-card-account-details-outline" },
+  { to: "/street-workout", label: "Street workout", icon: "i-mdi-dumbbell" },
+  { to: "/actualites", label: "Nos actus", icon: "i-mdi-newspaper-variant-outline" },
+  { to: "/isn-2026", label: "ISN août 2026", icon: "i-mdi-trophy-outline" },
 ];
 
 const toggleMenu = () => {
@@ -100,7 +101,7 @@ onUnmounted(() => {
           :class="[
             'relative text-base font-semibold leading-6 py-2 transition-all duration-300 group',
             item.highlight
-              ? 'inline-flex items-center gap-2 rounded-full border px-4 uppercase tracking-wide'
+              ? 'inline-flex items-center gap-2 rounded-full border px-4'
               : 'px-3',
             item.highlight
               ? ($route.path === item.to
@@ -221,12 +222,6 @@ onUnmounted(() => {
                 <i :class="[item.icon, 'h-6 w-6']"></i>
               </span>
               <span class="text-base leading-none">{{ item.label }}</span>
-              <span
-                v-if="item.highlight"
-                class="ml-auto rounded-full border border-accent/60 bg-accent/10 px-2.5 py-1 text-xs font-bold uppercase tracking-widest text-accent"
-              >
-                ✦ Nouveau
-              </span>
             </router-link>
           </nav>
 

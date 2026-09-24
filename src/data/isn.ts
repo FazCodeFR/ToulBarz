@@ -1,6 +1,6 @@
 export const BILLETTERIE_URL = 'https://my.weezevent.com/isn2026'
 export const INSTAGRAM_URL = 'https://www.instagram.com/isn_calisthenics/'
-export const VIDEO_URL = 'https://www.youtube.com/embed/IZknfKYn1_o'
+export const VIDEO_URL = 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_isn_2026.mp4'
 
 export const LIEU = {
   name: 'Palais des Sports André Brouat',
@@ -12,15 +12,16 @@ export interface IsnStat {
   id: number
   name: string
   value: number
-  prefix?: string
-  suffix?: string
+  icon: string
+  highlight?: boolean
 }
 
 export const stats: IsnStat[] = [
-  { id: 1, name: 'Personnes présentes', value: 1700 },
-  { id: 2, name: 'Pays représentés', value: 20, prefix: '+' },
-  { id: 3, name: 'Athlètes internationaux', value: 20, prefix: '~' },
-  { id: 4, name: 'Édition', value: 3, suffix: 'ème' },
+  { id: 1, name: 'Spectateurs', value: 1190, icon: 'i-mdi-account-group', highlight: true },
+  { id: 2, name: 'Participants', value: 700, icon: 'i-mdi-arm-flex', highlight: true },
+  { id: 3, name: 'Pays représentés', value: 20, icon: 'i-mdi-earth' },
+  { id: 4, name: 'Athlètes internationaux', value: 19, icon: 'i-mdi-trophy-outline' },
+  { id: 5, name: 'Bénévoles mobilisés', value: 50, icon: 'i-mdi-hand-heart' },
 ]
 
 export interface ProgrammeSlot {
@@ -49,9 +50,9 @@ export const programme: ProgrammeDay[] = [
         badges: ['Accès par invitation', 'Retranscription en live'],
         paragraphs: [
           "Le point de départ officiel du week-end.",
-          "Un moment clé où tout commence : présentation des athlètes, révélation des battles, premières confrontations et annonces autour de l'événement.",
-          "Les plus grands acteurs du street workout y seront réunis, dans un format plus intime, immersif et chargé en tension, devant les 100 premiers détenteurs de pass premium, partenaires et invités.",
-          "La soirée se poursuivra ensuite avec un rassemblement sportif et communautaire au bord de la Garonne.",
+          "Un moment clé où tout a commencé : présentation des athlètes, révélation des battles, premières confrontations et annonces autour de l'événement.",
+          "Les plus grands acteurs du street workout y étaient réunis, dans un format plus intime, immersif et chargé en tension, devant les 100 premiers détenteurs de pass premium, partenaires et invités.",
+          "La soirée s'est poursuivie avec un rassemblement sportif et communautaire au bord de la Garonne.",
         ],
       },
     ],
@@ -67,8 +68,8 @@ export const programme: ProgrammeDay[] = [
         badges: ['15:30 accès Pass Premium', '16:30 accès tous pass'],
         paragraphs: [
           "Accès à l'aire de jeu, aux stands partenaires, rencontres avec les athlètes et démonstrations.",
-          "Un espace vivant pour s'immerger dans l'univers ISN 2026 : performances libres, stands, musique, animations, espaces restauration et merchandising officiel disponible en quantité limitée.",
-          "De 15h30 à 16h30, l'accès est exclusivement réservé aux détenteurs du Premium Pass, avec des animations exclusives, des battles spéciales et un accès prioritaire au merchandising en édition limitée.",
+          "Un espace vivant pour s'immerger dans l'univers ISN 2026 : performances libres, stands, musique, animations, espaces restauration et merchandising officiel en quantité limitée.",
+          "De 15h30 à 16h30, l'accès était exclusivement réservé aux détenteurs du Premium Pass, avec des animations exclusives, des battles spéciales et un accès prioritaire au merchandising en édition limitée.",
         ],
       },
       {
@@ -77,9 +78,9 @@ export const programme: ProgrammeDay[] = [
         place: 'Grand Palais des Sports | Toulouse, FR',
         badges: ['Vote du public via QR code'],
         paragraphs: [
-          "Une vingtaine d'athlètes s'affrontent lors de 6 à 8 battles dans un format rythmé et imprévisible.",
-          "Le Grand Palais des Sports se transformera en véritable arène : battles, scénographie immersive, interventions live, ambiance épique et performances spectaculaires.",
-          "Chaque passage est jugé en direct par le public : grâce à un système de vote accessible via QR code, chaque spectateur pourra voter depuis son téléphone pour décider des gagnants des battles et des champions ISN 2026.",
+          "19 athlètes internationaux se sont affrontés lors de battles au format rythmé et imprévisible.",
+          "Le Grand Palais des Sports s'est transformé en véritable arène : battles, scénographie immersive, interventions live, ambiance épique et performances spectaculaires.",
+          "Chaque passage a été jugé en direct par le public : grâce à un système de vote accessible via QR code, chaque spectateur a pu voter depuis son téléphone pour désigner les gagnants des battles et les champions ISN 2026.",
         ],
       },
     ],
@@ -89,19 +90,19 @@ export const programme: ProgrammeDay[] = [
     date: '2 août',
     slots: [
       {
-        time: '13:00 - 16:00',
+        time: '12:30 - 16:00',
         title: 'Workshop Exclusif',
-        place: 'Lieu révélé prochainement',
+        place: 'The Roof — Halles de la Cartoucherie | Toulouse, FR',
         badges: ['Billetterie séparée'],
         paragraphs: [
           "Un format inédit pour s'entraîner et progresser aux côtés des athlètes internationaux, en petit comité.",
-          "Les informations et places seront communiquées prochainement.",
+          "L'équipe Neo Strength (Iliesse, Daï-Long, Leevan et Onizuka) a animé ateliers pratiques, conseils techniques et corrections, avant un goûter convivial.",
         ],
       },
       {
-        time: '17:00 - 23:00',
+        time: '18:00 - 23:00',
         title: 'Rassemblement',
-        place: 'Lieu révélé prochainement',
+        place: 'Lac de la Reynerie | Toulouse, FR',
         paragraphs: [
           "Un grand moment de partage autour du street workout.",
           "Rassemblement outdoor : entraînement libre, battles communautaires, stands, food trucks, animations, coucher de soleil et moments de partage avec les athlètes et toute la communauté ISN.",
@@ -195,3 +196,35 @@ export const extraTickets: ExtraTicket[] = [
     },
   },
 ]
+
+export interface GalleryPhoto {
+  id: number
+  alt: string
+  // large = 2×2, wide = 2×1, tall = 1×2 (photo portrait)
+  span?: 'large' | 'wide' | 'tall'
+}
+
+// Ordre éditorial : 4 large + 2 wide + 1 tall + 10 standard = 32 cellules (8 rangées complètes sur 4 colonnes)
+export const gallery: GalleryPhoto[] = [
+  { id: 6, alt: 'Le Grand Palais des Sports plongé dans les lumières violettes pendant le show ISN 2026', span: 'large' },
+  { id: 3, alt: 'Présentation des athlètes sur scène lors du Face-Off à la Salle du Sénéchal' },
+  { id: 8, alt: "Face-à-face entre deux athlètes au centre de l'arène avant les battles" },
+  { id: 12, alt: 'Trois athlètes en planche sur les barres devant un public illuminé par les lampes des téléphones', span: 'large' },
+  { id: 5, alt: 'Figure acrobatique en noir et blanc : un athlète porte une athlète en équilibre', span: 'tall' },
+  { id: 11, alt: 'Athlète en L-sit aux anneaux pendant une battle' },
+  { id: 13, alt: 'Athlète en équilibre sur les barres parallèles sous les yeux des autres compétiteurs', span: 'large' },
+  { id: 17, alt: 'Athlète en planche sur une barre basse pendant le show' },
+  { id: 9, alt: 'Figure aérienne à la barre fixe, en noir et blanc' },
+  { id: 16, alt: 'Le public debout applaudit dans les gradins du Grand Palais des Sports', span: 'wide' },
+  { id: 14, alt: 'Battle à la barre fixe observée par deux athlètes, en noir et blanc' },
+  { id: 15, alt: "Les athlètes saluent le public sur la scène de l'arène" },
+  { id: 10, alt: "Vue d'ensemble de la foule rassemblée sur l'aire de jeu pendant l'Arena Experience", span: 'wide' },
+  { id: 4, alt: 'Battle communautaire au cœur du cercle lors du rassemblement de nuit', span: 'large' },
+  { id: 7, alt: "Photo de groupe des athlètes et de l'équipe ISN 2026 devant l'écran de l'édition 2026" },
+  { id: 1, alt: 'Ateliers et corrections techniques pendant le workshop Neo Strength' },
+  { id: 2, alt: 'Stands, drapeau ISN et participants au rassemblement en plein air' },
+]
+
+const photoFile = (id: number) => `isn-2026-${String(id).padStart(2, '0')}.webp`
+export const galleryThumb = (id: number) => `/img/isn/thumb/${photoFile(id)}`
+export const galleryFull = (id: number) => `/img/isn/full/${photoFile(id)}`

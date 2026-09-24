@@ -5,7 +5,6 @@ const associationInfo = {
   name: 'ToulBarz',
   description:
     'Toul\'Barz est un club associatif de street workout toulousain dédié à officialiser, démocratiser et rendre accessible la pratique de cette discipline.',
-  address: '34 rue Boulbonne, 31000 Toulouse',
   email: 'contact@toulbarz.fr',
   practiceHoursTitle: 'Horaires adhérents',
   practiceHours: [
@@ -92,10 +91,6 @@ const legalLinks = [
         <div>
           <h3 class="text-lg font-semibold mb-4 text-white">Contact</h3>
           <div class="space-y-3">
-            <p class="flex items-start gap-3 text-gray-400">
-              <i class="i-mdi-map-marker text-accent mt-0.5 flex-shrink-0"></i>
-              <span>{{ associationInfo.address }}</span>
-            </p>
             <p class="flex items-center gap-3">
               <i class="i-mdi-email text-accent flex-shrink-0"></i>
               <a

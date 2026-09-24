@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import 'youtube-video-element'
 import 'player.style/sutro'
-import { VIDEO_URL } from '@/data/isn'
+import { VIDEO_URL, galleryFull } from '@/data/isn'
+
+// Aperçu affiché via le slot "poster" du thème (le poster natif de <video> est masqué par media-chrome)
+const POSTER_URL = galleryFull(12)
 </script>
 
 <template>
@@ -16,23 +18,29 @@ import { VIDEO_URL } from '@/data/isn'
         </p>
       </div>
 
-      <ClientOnly>
-        <div class="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50">
+      <!-- Cadre 16:9 rendu dès le SSR pour éviter le décalage de mise en page -->
+      <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-black/50">
+        <ClientOnly>
           <media-theme-sutro
-            class="w-full"
-            style="--media-primary-color: #ff7f11; --media-accent-color: #ff7f11;"
+            class="block h-full w-full [--media-accent-color:#ff7f11] [--media-object-fit:cover] [--media-primary-color:#ff7f11]"
           >
-            <youtube-video
+            <!-- eslint-disable vue/no-deprecated-slot-attribute -- slots natifs du web component, pas des slots Vue -->
+            <video
               slot="media"
               :src="VIDEO_URL"
               playsinline
-              crossorigin
-              class="w-full"
-              style="aspect-ratio: 16/9;"
-            ></youtube-video>
+              preload="metadata"
+              class="h-full w-full object-cover"
+            ></video>
+            <media-poster-image
+              slot="poster"
+              :src="POSTER_URL"
+              class="h-full w-full"
+            ></media-poster-image>
+            <!-- eslint-enable vue/no-deprecated-slot-attribute -->
           </media-theme-sutro>
-        </div>
-      </ClientOnly>
+        </ClientOnly>
+      </div>
     </div>
   </section>
 </template>

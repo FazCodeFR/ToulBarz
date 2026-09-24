@@ -34,3 +34,6 @@ LOCAL_NOTES.md
 /playwright/.cache
 package-lock.json
 *.tsbuildinfo
+
+# Original full-res photos (not deployed)
+raw/
