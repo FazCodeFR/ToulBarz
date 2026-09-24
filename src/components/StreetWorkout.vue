@@ -15,13 +15,17 @@
           <div class="aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-2xl">
             <ClientOnly>
               <!-- eslint-disable vue/no-deprecated-slot-attribute -- slots natifs du web component, pas des slots Vue -->
-              <media-theme-halloween v-if="isHalloween" class="block h-full w-full [--media-object-fit:cover]">
+              <media-theme-halloween
+                v-if="isHalloween"
+                class="block h-full w-full"
+                :class="isFullscreen ? '[--media-object-fit:contain]' : '[--media-object-fit:cover]'"
+              >
                 <video
                   slot="media"
                   :src="VIDEO_URL"
                   playsinline
                   preload="metadata"
-                  class="h-full w-full object-cover"
+                  class="h-full w-full"
                 ></video>
                 <media-poster-image
                   slot="poster"
@@ -30,13 +34,17 @@
                 ></media-poster-image>
               </media-theme-halloween>
 
-              <media-theme-x-mas v-else-if="isChristmas" class="block h-full w-full [--media-object-fit:cover]">
+              <media-theme-x-mas
+                v-else-if="isChristmas"
+                class="block h-full w-full"
+                :class="isFullscreen ? '[--media-object-fit:contain]' : '[--media-object-fit:cover]'"
+              >
                 <video
                   slot="media"
                   :src="VIDEO_URL"
                   playsinline
                   preload="metadata"
-                  class="h-full w-full object-cover"
+                  class="h-full w-full"
                 ></video>
                 <media-poster-image
                   slot="poster"
@@ -47,14 +55,15 @@
 
               <media-theme-sutro
                 v-else
-                class="block h-full w-full [--media-accent-color:#ff7f11] [--media-object-fit:cover] [--media-primary-color:#ff7f11]"
+                class="block h-full w-full [--media-accent-color:#ff7f11] [--media-primary-color:#ff7f11]"
+                :class="isFullscreen ? '[--media-object-fit:contain]' : '[--media-object-fit:cover]'"
               >
                 <video
                   slot="media"
                   :src="VIDEO_URL"
                   playsinline
                   preload="metadata"
-                  class="h-full w-full object-cover"
+                  class="h-full w-full"
                 ></video>
                 <media-poster-image
                   slot="poster"
@@ -98,6 +107,8 @@ import 'player.style/halloween'
 const VIDEO_URL = 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_home_street_workout.mp4'
 // Aperçu affiché via le slot "poster" du thème (le poster natif de <video> est masqué par media-chrome)
 const POSTER_URL = '/img/actions/action_shows_&_animations.webp'
+
+const { isFullscreen } = useFullscreenVideo()
 
 const currentTheme = ref('default')
 

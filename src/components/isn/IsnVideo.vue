@@ -4,6 +4,8 @@ import { VIDEO_URL, galleryFull } from '@/data/isn'
 
 // Aperçu affiché via le slot "poster" du thème (le poster natif de <video> est masqué par media-chrome)
 const POSTER_URL = galleryFull(12)
+
+const { isFullscreen } = useFullscreenVideo()
 </script>
 
 <template>
@@ -22,7 +24,8 @@ const POSTER_URL = galleryFull(12)
       <div class="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-black/50">
         <ClientOnly>
           <media-theme-sutro
-            class="block h-full w-full [--media-accent-color:#ff7f11] [--media-object-fit:cover] [--media-primary-color:#ff7f11]"
+            class="block h-full w-full [--media-accent-color:#ff7f11] [--media-primary-color:#ff7f11]"
+            :class="isFullscreen ? '[--media-object-fit:contain]' : '[--media-object-fit:cover]'"
           >
             <!-- eslint-disable vue/no-deprecated-slot-attribute -- slots natifs du web component, pas des slots Vue -->
             <video
@@ -30,7 +33,7 @@ const POSTER_URL = galleryFull(12)
               :src="VIDEO_URL"
               playsinline
               preload="metadata"
-              class="h-full w-full object-cover"
+              class="h-full w-full"
             ></video>
             <media-poster-image
               slot="poster"

@@ -5,7 +5,7 @@ import { fileURLToPath, URL } from 'node:url'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { unheadVueComposablesImports } from '@unhead/vue'
-import { version as pkgVersion } from './package.json'
+import pkg from './package.json' with { type: 'json' }
 import MotionResolver from 'motion-v/resolver'
 import tailwindcss from '@tailwindcss/vite'
 import compression from 'vite-plugin-compression'
@@ -17,7 +17,7 @@ if (isProd) {
   process.env.VITE_APP_BUILD_EPOCH = new Date().getTime().toString()
 }
 
-process.env.VITE_APP_VERSION = pkgVersion
+process.env.VITE_APP_VERSION = pkg.version
 
 export default defineConfig({
   plugins: [
@@ -42,6 +42,9 @@ export default defineConfig({
         },
         {
           '@/composables/useScrollAnimation': ['useScrollAnimation', 'vScrollAnimate'],
+        },
+        {
+          '@/composables/useFullscreenVideo': ['useFullscreenVideo'],
         },
         unheadVueComposablesImports,
       ],
@@ -87,7 +90,10 @@ export default defineConfig({
     cssCodeSplit: true,
     reportCompressedSize: true,
     chunkSizeWarningLimit: 500,
-    rollupOptions: {
+    rolldownOptions: {
+      checks: {
+        pluginTimings: false,
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -95,7 +101,11 @@ export default defineConfig({
             if (id.includes('motion-v') || id.includes('@vueuse/motion')) return 'motion'
             if (id.includes('@unhead')) return 'unhead'
             if (id.includes('ical.js') || id.includes('rrule') || id.includes('v-calendar')) return 'calendar'
-            if (id.includes('player.style')) return 'player-style'
+            // Un chunk par thème : chaque page ne charge que les thèmes qu'elle utilise
+            if (id.includes('player.style')) {
+              const theme = id.match(/player\.style[\\/]themes[\\/]([^\\/]+)/)?.[1]
+              return theme ? `player-${theme}` : 'player-style'
+            }
             if (id.includes('lodash-es')) return 'lodash'
             return 'vendor'
           }

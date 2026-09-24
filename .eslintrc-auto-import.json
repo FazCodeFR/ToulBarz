@@ -82,6 +82,7 @@
     "useAttrs": true,
     "useCssModule": true,
     "useCssVars": true,
+    "useFullscreenVideo": true,
     "useHead": true,
     "useHeadSafe": true,
     "useId": true,
