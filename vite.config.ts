@@ -98,7 +98,6 @@ export default defineConfig({
             if (id.includes('ical.js') || id.includes('rrule') || id.includes('v-calendar')) return 'calendar'
             if (id.includes('youtube-video-element')) return 'youtube'
             if (id.includes('player.style')) return 'player-style'
-            if (id.includes('@fireworks-js')) return 'fireworks'
             if (id.includes('lodash-es')) return 'lodash'
             return 'vendor'
           }
@@ -129,8 +128,6 @@ export default defineConfig({
 
   ssr: {
     noExternal: [
-      '@fireworks-js/vue',
-      'fireworks-js',
       'motion-v',
       '@vueuse/motion',
       'v-calendar',

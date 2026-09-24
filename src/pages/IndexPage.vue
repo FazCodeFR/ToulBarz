@@ -38,23 +38,21 @@ useHead({
     </div>
   </div>
   <div class="bg-white">
-    <div v-scroll-animate="{ animation: 'fade-left', delay: 0 }">
-      <Action></Action>
-    </div>
+    <Action></Action>
   </div>
   <div class="bg-white">
     <div v-scroll-animate="{ animation: 'fade-right', delay: 0 }">
       <StreetWorkout></StreetWorkout>
     </div>
   </div>
-  <div class="bg-gray-50">
-    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
-      <Contact></Contact>
-    </div>
-  </div>
   <div class="bg-gray-900">
     <div v-scroll-animate="{ animation: 'zoom-in', delay: 0 }">
       <Stats></Stats>
+    </div>
+  </div>
+  <div class="bg-gray-50">
+    <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }">
+      <Contact></Contact>
     </div>
   </div>
   <div class="bg-white">

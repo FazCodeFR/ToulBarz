@@ -1,11 +1,7 @@
 <template>
   <div class="bg-white py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-          <i class="i-mdi-handshake"></i>
-          Partenariats
-        </span>
+      <div class="mb-12">
         <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
           Nos <span class="text-accent">partenaires</span>
         </h2>
@@ -20,7 +16,7 @@
             :key="partenaire.name"
             :href="partenaire.link"
             target="_blank"
-            class="inline-flex flex-col items-center mx-6 group/card"
+            class="inline-flex flex-col items-center mx-6 group/card rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <div class="relative p-4 rounded-2xl bg-gray-50 group-hover/card:bg-accent/5 transition-colors duration-300">
               <img
@@ -47,7 +43,7 @@
             :key="partenaire.name + '-duplicate'"
             :href="partenaire.link"
             target="_blank"
-            class="inline-flex flex-col items-center mx-6 group/card"
+            class="inline-flex flex-col items-center mx-6 group/card rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <div class="relative p-4 rounded-2xl bg-gray-50 group-hover/card:bg-accent/5 transition-colors duration-300">
               <img
@@ -72,7 +68,7 @@
         <a
           href="https://www.instagram.com/toulbarz_tlb/"
           target="_blank"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-accent text-accent font-semibold hover:bg-accent hover:text-white transition-all duration-300"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-accent text-accent font-semibold hover:bg-accent hover:text-white transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <i class="i-mdi-plus"></i>
           Devenir partenaire

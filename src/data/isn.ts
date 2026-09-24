@@ -28,8 +28,7 @@ export interface ProgrammeSlot {
   time: string
   title: string
   place: string
-  badges?: string[]
-  paragraphs: string[]
+  summary: string
 }
 
 export interface ProgrammeDay {
@@ -45,15 +44,9 @@ export const programme: ProgrammeDay[] = [
     slots: [
       {
         time: '18:00 - 19:30',
-        title: 'Face-Off Exclusif',
-        place: 'Salle du Sénéchal | Toulouse, FR',
-        badges: ['Accès par invitation', 'Retranscription en live'],
-        paragraphs: [
-          "Le point de départ officiel du week-end.",
-          "Un moment clé où tout a commencé : présentation des athlètes, révélation des battles, premières confrontations et annonces autour de l'événement.",
-          "Les plus grands acteurs du street workout y étaient réunis, dans un format plus intime, immersif et chargé en tension, devant les 100 premiers détenteurs de pass premium, partenaires et invités.",
-          "La soirée s'est poursuivie avec un rassemblement sportif et communautaire au bord de la Garonne.",
-        ],
+        title: 'Face-Off',
+        place: 'Salle du Sénéchal',
+        summary: 'Présentation des athlètes et révélation des battles devant les pass premium et invités.',
       },
     ],
   },
@@ -64,24 +57,14 @@ export const programme: ProgrammeDay[] = [
       {
         time: '15:30 - 18:30',
         title: 'Arena Experience',
-        place: 'Grand Palais des Sports | Toulouse, FR',
-        badges: ['15:30 accès Pass Premium', '16:30 accès tous pass'],
-        paragraphs: [
-          "Accès à l'aire de jeu, aux stands partenaires, rencontres avec les athlètes et démonstrations.",
-          "Un espace vivant pour s'immerger dans l'univers ISN 2026 : performances libres, stands, musique, animations, espaces restauration et merchandising officiel en quantité limitée.",
-          "De 15h30 à 16h30, l'accès était exclusivement réservé aux détenteurs du Premium Pass, avec des animations exclusives, des battles spéciales et un accès prioritaire au merchandising en édition limitée.",
-        ],
+        place: 'Grand Palais des Sports',
+        summary: 'Stands, démonstrations et rencontres avec les athlètes.',
       },
       {
         time: '20:30 - 23:45',
         title: 'Le Show ISN',
-        place: 'Grand Palais des Sports | Toulouse, FR',
-        badges: ['Vote du public via QR code'],
-        paragraphs: [
-          "19 athlètes internationaux se sont affrontés lors de battles au format rythmé et imprévisible.",
-          "Le Grand Palais des Sports s'est transformé en véritable arène : battles, scénographie immersive, interventions live, ambiance épique et performances spectaculaires.",
-          "Chaque passage a été jugé en direct par le public : grâce à un système de vote accessible via QR code, chaque spectateur a pu voter depuis son téléphone pour désigner les gagnants des battles et les champions ISN 2026.",
-        ],
+        place: 'Grand Palais des Sports',
+        summary: '19 athlètes internationaux en battles, départagés par le vote du public.',
       },
     ],
   },
@@ -91,22 +74,15 @@ export const programme: ProgrammeDay[] = [
     slots: [
       {
         time: '12:30 - 16:00',
-        title: 'Workshop Exclusif',
-        place: 'The Roof — Halles de la Cartoucherie | Toulouse, FR',
-        badges: ['Billetterie séparée'],
-        paragraphs: [
-          "Un format inédit pour s'entraîner et progresser aux côtés des athlètes internationaux, en petit comité.",
-          "L'équipe Neo Strength (Iliesse, Daï-Long, Leevan et Onizuka) a animé ateliers pratiques, conseils techniques et corrections, avant un goûter convivial.",
-        ],
+        title: 'Workshop Neo Strength',
+        place: 'The Roof — Halles de la Cartoucherie',
+        summary: 'Ateliers en petit comité avec Iliesse, Daï-Long, Leevan et Onizuka.',
       },
       {
         time: '18:00 - 23:00',
         title: 'Rassemblement',
-        place: 'Lac de la Reynerie | Toulouse, FR',
-        paragraphs: [
-          "Un grand moment de partage autour du street workout.",
-          "Rassemblement outdoor : entraînement libre, battles communautaires, stands, food trucks, animations, coucher de soleil et moments de partage avec les athlètes et toute la communauté ISN.",
-        ],
+        place: 'Lac de la Reynerie',
+        summary: 'Entraînement libre et battles communautaires en plein air.',
       },
     ],
   },

@@ -7,12 +7,12 @@
       <!-- Grand conteneur style bannière -->
       <div class="px-6 sm:px-8 py-8 sm:py-12">
         <div class="md:flex md:items-center md:gap-12 mx-auto max-w-7xl">
-          <div class="md:w-1/3 flex flex-col items-center md:items-start">
+          <div class="md:w-1/3 flex flex-col items-start">
             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
               <i class="i-mdi-calendar-clock"></i>
               À venir
             </span>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 text-left">
               Prochains
               <span class="text-accent">événements</span>
             </h2>
@@ -30,7 +30,7 @@
               v-for="event in eventsPublic.slice(0, 1)"
               :key="event.id"
               to="/evenements"
-              class="rounded-2xl p-5 bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 block group hover:-translate-y-1"
+              class="rounded-2xl p-5 bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 block group hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <div class="flex items-center justify-between mb-3">
                 <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-accent to-accent-dark text-white shadow-sm">
@@ -59,7 +59,7 @@
               v-for="event in eventsMembers.slice(0, 1)"
               :key="event.id"
               to="/evenements"
-              class="rounded-2xl p-5 bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 block group hover:-translate-y-1"
+              class="rounded-2xl p-5 bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 block group hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <div class="flex items-center justify-between mb-3">
                 <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-sm">
@@ -82,7 +82,7 @@
         <div class="mt-6 text-center md:text-right mx-auto max-w-7xl">
           <RouterLink
             to="/evenements"
-            class="inline-flex items-center gap-2 text-accent hover:text-accent-dark text-sm font-semibold transition-colors group"
+            class="inline-flex items-center gap-2 text-accent hover:text-accent-dark text-sm font-semibold transition-colors group rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Voir tous les événements
             <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>

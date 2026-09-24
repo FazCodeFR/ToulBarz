@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fireworks-js/vue':
-        specifier: ^2.10.8
-        version: 2.10.8(vue@3.5.32(typescript@6.0.2))
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -723,11 +720,6 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
-
-  '@fireworks-js/vue@2.10.8':
-    resolution: {integrity: sha512-XcLfgSO5OHxV6ffn3T3KC0vgJa1in3oLB/Laqzfgc3OBtx2bpwsfbayZNNiQdscRijl1yxHTC0fqe0q83m/dzg==}
-    peerDependencies:
-      vue: '>=3.0.0'
 
   '@hapi/address@5.1.1':
     resolution: {integrity: sha512-A+po2d/dVoY7cYajycYI43ZbYMXukuopIsqCjh5QzsBCipDtdofHntljDlpccMjIfTy6UOkg+5KPriwYch2bXA==}
@@ -2452,9 +2444,6 @@ packages:
   find-up@5.0.0:
     resolution: {integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==}
     engines: {node: '>=10'}
-
-  fireworks-js@2.10.8:
-    resolution: {integrity: sha512-UZNxeJvRmQzLisN4iriWXqKojG9TDJqc0dPmkUw0/+AEQQ3w8z1Jx2YdFSiBGSVb/u4dPTQXU109GMVblzhfpg==}
 
   flat-cache@4.0.1:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}
@@ -4972,11 +4961,6 @@ snapshots:
 
   '@exodus/bytes@1.15.1': {}
 
-  '@fireworks-js/vue@2.10.8(vue@3.5.32(typescript@6.0.2))':
-    dependencies:
-      fireworks-js: 2.10.8
-      vue: 3.5.32(typescript@6.0.2)
-
   '@hapi/address@5.1.1':
     dependencies:
       '@hapi/hoek': 11.0.7
@@ -6875,8 +6859,6 @@ snapshots:
     dependencies:
       locate-path: 6.0.0
       path-exists: 4.0.0
-
-  fireworks-js@2.10.8: {}
 
   flat-cache@4.0.1:
     dependencies:

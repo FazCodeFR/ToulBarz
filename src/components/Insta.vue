@@ -5,7 +5,7 @@
     <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-accent/5 to-orange-500/5 rounded-full blur-3xl"></div>
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="mb-12">
         <span class="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 text-pink-600 text-sm font-semibold mb-4">
           <i class="i-mdi-instagram mr-1"></i>
           Réseaux sociaux
@@ -13,7 +13,7 @@
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
           Suivez-nous sur <span class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">Instagram</span>
         </h2>
-        <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="mt-4 text-lg text-gray-600 max-w-2xl">
           Découvrez nos dernières actualités, photos et vidéos
         </p>
       </div>

@@ -21,7 +21,7 @@ import { INSTAGRAM_URL } from '@/data/isn'
         pour créer une expérience unique.
       </p>
       <p class="mx-auto mt-4 max-w-2xl text-base font-semibold text-white">
-        Pendant un week-end entier, près de 1 900 passionnés ont vécu l'un des plus grands shows de street workout au monde.
+        Pendant un week-end entier, près de 1 200 passionnés ont vécu l'un des plus grands shows de street workout au monde.
       </p>
 
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

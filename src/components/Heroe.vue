@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-[100vh] overflow-hidden">
+  <div class="relative h-[calc(100svh-5rem)] overflow-hidden">
     <!-- Image de fond (LCP) -->
     <img
       src="/img/home_heroe.webp"
@@ -29,10 +29,10 @@
 
     <!-- Contenu principal -->
     <div class="relative z-10 mx-auto max-w-2xl h-full flex items-center justify-center px-4">
-      <div class="flex flex-col items-center text-center">
+      <div class="flex w-full flex-col items-center text-center">
         <!-- Logo - CSS animation -->
         <img
-          class="h-64 sm:h-80 w-auto drop-shadow-2xl animate-hero-logo"
+          class="h-48 sm:h-64 w-auto drop-shadow-2xl animate-hero-logo"
           src="/img/logo.webp"
           alt="Logo Toul'Barz"
           width="320"
@@ -40,7 +40,7 @@
         />
 
         <!-- Titre - CSS animation -->
-        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl font-display drop-shadow-lg animate-hero-title">
+        <h1 class="text-6xl font-extrabold tracking-tight text-white sm:text-8xl lg:text-9xl font-display drop-shadow-lg animate-hero-title">
           TOUL'BARZ
         </h1>
 
@@ -49,20 +49,31 @@
           Street Workout Toulouse
         </p>
 
-        <!-- Bouton CTA - CSS animation -->
-        <router-link
-          to="/adhesions"
-          class="mt-8 group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-primary font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 animate-hero-cta"
-          aria-label="Je m'inscris"
-        >
-          <span class="text-base tracking-wide">Rejoins-nous</span>
-          <i class="i-mdi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-        </router-link>
+        <!-- Boutons CTA - CSS animation -->
+        <div class="mt-8 flex w-full flex-wrap justify-center gap-3 animate-hero-cta">
+          <router-link
+            to="/adhesions"
+            class="group relative inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 sm:px-8 sm:py-2.5 text-primary font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label="Je m'inscris"
+          >
+            <span class="text-sm sm:text-base tracking-wide">Rejoins-nous</span>
+            <i class="i-mdi-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+          </router-link>
+          <a
+            href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-5 py-3 sm:px-8 sm:py-2.5 text-white font-semibold transition-colors duration-300 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <i class="i-mdi-whatsapp text-xl"></i>
+            <span class="text-sm sm:text-base tracking-wide">Séance d'essai</span>
+          </a>
+        </div>
 
         <!-- Flèche vers le bas animée - CSS animation -->
         <a
           href="#event-section"
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow"
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           aria-label="Aller à la section événements"
           @click.prevent="scrollToEvents"
         >

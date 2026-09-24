@@ -65,10 +65,6 @@
 
           <!-- Text Section -->
           <div class="order-1 lg:order-2">
-            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-              <i class="i-mdi-help-circle-outline"></i>
-              Découvrir
-            </span>
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
               Qu'est-ce que le
               <span class="text-accent">Street Workout</span> ?
@@ -79,7 +75,7 @@
             <div class="mt-8">
               <RouterLink
                 to="/street-workout"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:shadow-lg group"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:shadow-lg group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 En savoir plus
                 <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>

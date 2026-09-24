@@ -70,7 +70,7 @@ Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a 
 - No `window`, `document`, `localStorage`, `IntersectionObserver`, etc. at module top level, in `setup()`, or inside `computed()`. Gate with `typeof window === 'undefined'` or move to `onMounted`.
 - `new Date()` is fine, but don't rely on locale/timezone matching the client.
 - For components that must only run client-side, wrap in `<ClientOnly>` (auto-registered by vite-ssg).
-- Packages that break SSR bundling (CJS-only, browser-only) go in `ssr.noExternal` in [vite.config.ts](vite.config.ts). Current list: `@fireworks-js/vue`, `motion-v`, `@vueuse/motion`, `v-calendar`, `youtube-video-element`, `player.style`.
+- Packages that break SSR bundling (CJS-only, browser-only) go in `ssr.noExternal` in [vite.config.ts](vite.config.ts). Current list: `motion-v`, `@vueuse/motion`, `v-calendar`, `youtube-video-element`, `player.style`.
 - Fallback SPA build (no prerender): `pnpm build-spa`.
 
 ### Pinia Store Injection

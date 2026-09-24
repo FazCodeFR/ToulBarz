@@ -2,28 +2,20 @@
 <div class="bg-gradient-to-br from-gray-900 via-gray-900 to-black py-20 sm:py-28 relative overflow-hidden">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 relative">
     <div class="mx-auto max-w-2xl lg:max-w-none">
-      <div class="text-center mb-12">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-semibold mb-6">
-          <i class="i-mdi-chart-line"></i>
-          Nos chiffres
-        </span>
-        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          L'asso en quelques <span class="text-accent">chiffres</span>
-        </h2>
-      </div>
-      <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <h2 class="mb-12 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        L'asso en quelques <span class="text-accent">chiffres</span>
+      </h2>
+      <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-8 lg:grid-cols-4">
         <li
           v-for="stat in stats"
           :key="stat.id"
           v-intersect="() => startAnimation(stat.id)"
-          class="group relative flex flex-col items-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-accent/50 transition-all duration-300"
+          class="flex flex-col items-start border-l border-white/15 pl-4 sm:pl-6"
         >
-          <span class="text-5xl sm:text-6xl font-extrabold tracking-tight text-accent drop-shadow-lg">
+          <span class="text-6xl lg:text-8xl font-extrabold tracking-tighter tabular-nums text-accent">
             {{ stat.prefix ?? '' }}{{ animatedValues.get(stat.id) }}
           </span>
-          <span class="mt-3 text-base font-medium text-gray-300 text-center">{{ stat.name }}</span>
-          <!-- Hover glow effect -->
-          <span aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="mt-3 text-base font-medium text-white/70">{{ stat.name }}</span>
         </li>
       </ul>
     </div>
@@ -44,7 +36,7 @@ const stats = [
   { id: 1, name: 'Adhérents', value: 140 },
   { id: 2, name: 'Bénévoles', value: 15 },
   { id: 3, name: 'Personnes initiées', value: 2500 },
-  { id: 4, name: 'Évènements réalisés en 2 ans', value: 350, prefix: '+' },
+  { id: 4, name: 'Évènements réalisés en 3 ans', value: 350, prefix: '+' },
 ]
 
 // Valeurs animées

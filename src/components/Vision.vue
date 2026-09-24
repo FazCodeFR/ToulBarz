@@ -1,15 +1,11 @@
 <template>
   <section id="vision-section" class="bg-white py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-          <i class="i-mdi-eye-outline"></i>
-          Notre mission
-        </span>
+      <div>
         <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
           Notre <span class="text-accent">vision</span>
         </h2>
-        <p class="mt-6 max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed">
+        <p class="mt-6 max-w-4xl text-lg text-gray-600 leading-relaxed">
           Chez <span class="font-semibold text-gray-900">Toul'Barz</span>, nous ne sommes pas un simple
           <span class="font-semibold text-gray-900">club de street workout à Toulouse.</span>
           Nous sommes une association qui <span class="font-semibold text-accent">structure, développe et fédère</span> la pratique du

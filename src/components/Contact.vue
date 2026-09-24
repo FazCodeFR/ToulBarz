@@ -1,79 +1,130 @@
+<script setup lang="ts">
+import { vScrollAnimate } from '@/composables/useScrollAnimation'
+
+const whatsappUrl = 'https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t'
+
+const benefits = [
+  'Tous niveaux, du débutant à l\'avancé',
+  'Encadré par nos coachs',
+  'Aucun matériel nécessaire',
+]
+</script>
+
 <template>
-  <div class="bg-gray-50 py-20 sm:py-28">
+  <section id="contact-section" class="bg-gray-50 py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-          <i class="i-mdi-rocket-launch"></i>
-          Commencer
-        </span>
+      <div v-scroll-animate="{ animation: 'fade-up', delay: 0 }" class="mb-16">
         <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-          Comment <span class="text-accent">commencer</span> ?
+          Comment <span class="text-accent">commencer</span>&nbsp;?
         </h2>
+        <p class="mt-6 max-w-3xl text-lg text-gray-600 leading-relaxed">
+          Pas besoin d'être un athlète pour nous rejoindre
+        </p>
       </div>
-      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <!-- Section 1 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl translate-y-0 hover:-translate-y-1.5 transition-[transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] will-change-[transform,box-shadow] flex flex-col">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-              <i class="i-mdi-account-plus text-2xl text-white"></i>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 lg:items-stretch">
+        <!-- Bloc principal : séance d'essai -->
+        <div
+          v-scroll-animate="{ animation: 'fade-up', delay: 100 }"
+          class="relative overflow-hidden lg:col-span-7 rounded-2xl bg-white border border-gray-100 p-8 sm:p-10 shadow-md transition-shadow duration-300 hover:shadow-xl"
+        >
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent to-accent-dark" aria-hidden="true"></div>
+
+          <div>
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-dark shadow-lg shadow-accent/30">
+                <i class="i-mdi-account-plus text-3xl text-white" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                Séance d'essai gratuite
+              </h3>
             </div>
-            <h3 class="font-bold text-gray-900 text-lg">
-              Séance d'essai gratuite
-            </h3>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed flex-1">
+
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-600">
+              <span class="font-semibold text-accent">Viens découvrir gratuitement</span>
+              le street workout au sein de notre association. Débutant, intermédiaire ou niveau avancé, tu pourras te faire encadrer par nos coachs et tu n'as pas besoin de matériel&nbsp;!
+            </p>
+
+            <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+              <li
+                v-for="benefit in benefits"
+                :key="benefit"
+                class="flex items-start gap-2 rounded-xl bg-gray-50 px-4 py-3 text-sm font-medium text-gray-800 ring-1 ring-gray-100"
+              >
+                <i class="i-mdi-check-circle mt-0.5 shrink-0 text-lg text-accent" aria-hidden="true"></i>
+                {{ benefit }}
+              </li>
+            </ul>
+
             <a
-href="https://chat.whatsapp.com/E0ywhsRd8Hu6l8qhScf8t9?mode=ems_copy_t" target="_blank"
-              class="inline-flex items-center gap-1 text-accent font-semibold hover:text-accent-dark hover:underline transition">
-              Viens découvrir gratuitement
+              :href="whatsappUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-10 flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-center font-semibold text-primary shadow-lg shadow-accent/30 transition duration-300 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:inline-flex sm:w-auto sm:px-8"
+            >
+              <i class="i-mdi-whatsapp shrink-0 text-xl" aria-hidden="true"></i>
+              Ma séance d'essai gratuite
             </a>
-            le street workout au sein de notre association. Débutant, intermédiaire ou niveau avancé, tu pourras te faire encadrer par nos coachs et tu n'as pas besoin de matériel !
-          </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-[width] duration-500 ease-out rounded-full mt-4"></div>
+          </div>
         </div>
 
-        <!-- Section 2 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl translate-y-0 hover:-translate-y-1.5 transition-[transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] will-change-[transform,box-shadow] flex flex-col">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-              <i class="i-mdi-calendar-star text-2xl text-white"></i>
+        <!-- Blocs secondaires -->
+        <div class="flex flex-col gap-6 lg:col-span-5">
+          <div
+            v-scroll-animate="{ animation: 'fade-up', delay: 200 }"
+            class="group flex flex-1 flex-col rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-gray-200 transition duration-300 hover:shadow-lg hover:ring-accent/40"
+          >
+            <div class="mb-4 flex items-center gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+                <i class="i-mdi-calendar-star text-2xl" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900">
+                Nos événements
+              </h3>
             </div>
-            <h3 class="font-bold text-gray-900 text-lg">
-              Nos événements
-            </h3>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed flex-1">
-            Retrouve tous nos événements dans
-            <router-link
+            <p class="text-sm leading-relaxed text-gray-600">
+              Retrouve tous nos événements dans
+              <router-link
                 to="/evenements"
-                class="font-semibold text-accent hover:text-accent-dark hover:underline transition-colors duration-300"
+                class="rounded-sm font-semibold text-accent transition-colors duration-300 hover:text-accent-dark hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >l'onglet dédié</router-link> et ne manque aucune actu sur notre
-            <a
-href="https://www.instagram.com/toulbarz_tlb/" target="_blank"
-              class="inline-flex items-center gap-1 text-accent font-semibold hover:text-accent-dark hover:underline transition">
-              Instagram
-              <i class="i-mdi-instagram text-sm"></i>
-            </a>
-          </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-[width] duration-500 ease-out rounded-full mt-4"></div>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl translate-y-0 hover:-translate-y-1.5 transition-[transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] will-change-[transform,box-shadow] flex flex-col">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-              <i class="i-mdi-tree text-2xl text-white"></i>
-            </div>
-            <h3 class="font-bold text-gray-900 text-lg">
-              En plein air
-            </h3>
+              <a
+                href="https://www.instagram.com/toulbarz_tlb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 rounded-sm font-semibold text-accent transition hover:text-accent-dark hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                Instagram
+                <i class="i-mdi-instagram text-sm" aria-hidden="true"></i>
+              </a>
+            </p>
+            <router-link
+              to="/evenements"
+              class="mt-6 inline-flex w-fit items-center gap-1 rounded-sm text-sm font-semibold text-gray-900 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              Voir le calendrier
+              <i class="i-mdi-arrow-right transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+            </router-link>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed flex-1">
-            Toul'Barz est né d'un simple check à chaque nouvelle rencontre au parc, alors fais de même pour commencer ton nouveau sport !
-          </p>
-          <div class="h-1 w-0 bg-gradient-to-r from-accent to-accent-dark group-hover:w-full transition-[width] duration-500 ease-out rounded-full mt-4"></div>
+
+          <div
+            v-scroll-animate="{ animation: 'fade-up', delay: 300 }"
+            class="group flex flex-1 flex-col rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-gray-200 transition duration-300 hover:shadow-lg hover:ring-accent/40"
+          >
+            <div class="mb-4 flex items-center gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
+                <i class="i-mdi-tree text-2xl" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900">
+                En plein air
+              </h3>
+            </div>
+            <p class="text-sm leading-relaxed text-gray-600">
+              Toul'Barz est né d'un simple check à chaque nouvelle rencontre au parc, alors fais de même pour commencer ton nouveau&nbsp;sport&nbsp;!
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
