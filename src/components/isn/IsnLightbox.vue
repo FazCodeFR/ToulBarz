@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onUnmounted, ref, watch } from 'vue'
-import { galleryFull } from '@/data/isn'
+import { galleryFull, galleryThumb } from '@/data/isn'
 import type { GalleryPhoto } from '@/data/isn'
 
 const props = defineProps<{ photos: GalleryPhoto[] }>()
@@ -10,12 +10,13 @@ const navButtonClass = 'absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-c
 
 const dialogRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLButtonElement | null>(null)
+const thumbRefs: (HTMLButtonElement | null)[] = []
 let returnFocusTo: HTMLElement | null = null
 
 const current = computed(() => (index.value === null ? null : props.photos[index.value]))
 const pad = (value: number) => String(value).padStart(2, '0')
 const position = computed(() => pad((index.value ?? 0) + 1))
-const photoCount = pad(props.photos.length)
+const photoCount = computed(() => pad(props.photos.length))
 
 const close = () => {
   index.value = null
@@ -48,22 +49,53 @@ const onKeydown = (event: KeyboardEvent) => {
   else if (event.key === 'Tab') trapFocus(event)
 }
 
-let touchStart: { clientX: number, clientY: number } | null = null
-const onTouchStart = (event: TouchEvent) => {
-  const touch = event.changedTouches[0]
-  touchStart = { clientX: touch.clientX, clientY: touch.clientY }
+// Swipe : la photo suit le doigt, l'axe est verrouillé dès 10px et les gestes à plusieurs doigts (pinch-zoom) sont ignorés
+const dragX = ref(0)
+const dragging = ref(false)
+let touchStart: { clientX: number, clientY: number, axis: 'x' | 'y' | null } | null = null
+
+const resetDrag = () => {
+  touchStart = null
+  dragX.value = 0
+  dragging.value = false
 }
-const onTouchEnd = (event: TouchEvent) => {
+const onTouchStart = (event: TouchEvent) => {
+  if (event.touches.length > 1) return resetDrag()
+  const touch = event.touches[0]
+  touchStart = { clientX: touch.clientX, clientY: touch.clientY, axis: null }
+}
+const onTouchMove = (event: TouchEvent) => {
+  if (event.touches.length > 1) return resetDrag()
   if (!touchStart) return
-  const touch = event.changedTouches[0]
+  const touch = event.touches[0]
   const dx = touch.clientX - touchStart.clientX
   const dy = touch.clientY - touchStart.clientY
-  touchStart = null
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1)
+  if (!touchStart.axis && Math.max(Math.abs(dx), Math.abs(dy)) > 10) {
+    touchStart.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y'
+  }
+  if (touchStart.axis === 'x') {
+    dragging.value = true
+    dragX.value = dx
+  }
+}
+const onTouchEnd = () => {
+  const dx = dragX.value
+  const swiped = touchStart?.axis === 'x' && Math.abs(dx) > 50
+  resetDrag()
+  if (swiped) go(dx < 0 ? 1 : -1)
 }
 
 const setOpen = (open: boolean) => {
-  document.body.style.overflow = open ? 'hidden' : ''
+  const { style } = document.body
+  if (open) {
+    // Compense la barre de défilement masquée pour éviter que la page ne se décale
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth
+    style.paddingRight = scrollbar > 0 ? `${scrollbar}px` : ''
+    style.overflow = 'hidden'
+  } else {
+    style.overflow = ''
+    style.paddingRight = ''
+  }
   if (open) window.addEventListener('keydown', onKeydown)
   else window.removeEventListener('keydown', onKeydown)
 }
@@ -84,12 +116,17 @@ watch(
 )
 
 // Précharge les photos voisines pour une navigation instantanée
-watch(index, (value) => {
+watch(index, async (value, previous) => {
   if (value === null) return
   const total = props.photos.length
   for (const delta of [-1, 1]) {
     new Image().src = galleryFull(props.photos[(value + delta + total) % total].id)
   }
+
+  // Centre la miniature active (instantané à l'ouverture ou si l'utilisateur limite les animations)
+  await nextTick()
+  const smooth = previous !== null && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  thumbRefs[value]?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth ? 'smooth' : 'auto' })
 })
 
 onUnmounted(() => {
@@ -113,8 +150,6 @@ onUnmounted(() => {
           aria-modal="true"
           aria-label="Galerie photos ISN 2026"
           class="fixed inset-0 z-[100] flex flex-col bg-black/95 text-white backdrop-blur-sm"
-          @touchstart.passive="onTouchStart"
-          @touchend.passive="onTouchEnd"
         >
           <div class="flex items-center justify-between px-4 py-4 sm:px-8">
             <p class="text-sm font-bold uppercase tracking-[0.3em] text-white/60 tabular-nums" aria-live="polite">
@@ -131,21 +166,36 @@ onUnmounted(() => {
             </button>
           </div>
 
-          <div class="relative flex min-h-0 flex-1 items-center justify-center px-4 sm:px-20" @click.self="close">
-            <Transition
-              mode="out-in"
-              enter-active-class="transition-opacity duration-200 ease-out"
-              enter-from-class="opacity-0"
-              leave-active-class="transition-opacity duration-150 ease-in"
-              leave-to-class="opacity-0"
+          <div
+            class="relative flex min-h-0 flex-1 touch-pan-y touch-pinch-zoom items-center justify-center px-4 sm:px-20"
+            @touchstart.passive="onTouchStart"
+            @touchmove.passive="onTouchMove"
+            @touchend.passive="onTouchEnd"
+            @touchcancel.passive="resetDrag"
+          >
+            <!-- Le déplacement est porté par ce wrapper pour ne pas interférer avec les transitions d'opacité de l'image -->
+            <div
+              class="flex h-full w-full items-center justify-center"
+              :class="!dragging && 'transition-transform duration-300 ease-out motion-reduce:transition-none'"
+              :style="{ transform: `translateX(${dragX}px)` }"
+              @click.self="close"
             >
-              <img
-                :key="current.id"
-                :src="galleryFull(current.id)"
-                :alt="current.alt"
-                class="max-h-full max-w-full select-none rounded-lg object-contain shadow-2xl shadow-black/60"
+              <Transition
+                mode="out-in"
+                enter-active-class="transition-opacity duration-200 ease-out"
+                enter-from-class="opacity-0"
+                leave-active-class="transition-opacity duration-150 ease-in"
+                leave-to-class="opacity-0"
               >
-            </Transition>
+                <img
+                  :key="current.id"
+                  :src="galleryFull(current.id)"
+                  :alt="current.alt"
+                  draggable="false"
+                  class="max-h-full max-w-full select-none rounded-lg object-contain shadow-2xl shadow-black/60"
+                >
+              </Transition>
+            </div>
 
             <button
               type="button"
@@ -165,9 +215,26 @@ onUnmounted(() => {
             </button>
           </div>
 
-          <p class="mx-auto max-w-3xl px-6 py-5 text-center text-sm leading-relaxed text-white/70 sm:text-base">
+          <!-- Sur les écrans peu hauts (mobile en paysage), on libère de la place pour la photo -->
+          <p class="mx-auto line-clamp-2 max-w-3xl px-6 pb-3 pt-5 text-center text-sm leading-relaxed text-white/70 sm:text-base [@media(max-height:500px)]:py-2">
             {{ current.alt }}
           </p>
+
+          <ul role="list" class="flex gap-2 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:px-8 [@media(max-height:500px)]:hidden">
+            <li v-for="(photo, i) in photos" :key="photo.id" class="shrink-0 first:ml-auto last:mr-auto">
+              <button
+                :ref="(el) => { thumbRefs[i] = el as HTMLButtonElement | null }"
+                type="button"
+                class="block h-14 w-20 overflow-hidden rounded-md border-2 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                :class="i === index ? 'border-accent opacity-100' : 'border-transparent opacity-50 hover:opacity-100'"
+                :aria-label="`Voir la photo ${i + 1} : ${photo.alt}`"
+                :aria-current="i === index ? 'true' : undefined"
+                @click="index = i"
+              >
+                <img :src="galleryThumb(photo.id)" alt="" loading="lazy" decoding="async" class="h-full w-full object-cover">
+              </button>
+            </li>
+          </ul>
         </div>
       </Transition>
     </Teleport>

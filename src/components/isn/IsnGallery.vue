@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { vScrollAnimate } from '@/composables/useScrollAnimation'
-import { gallery, galleryFull, galleryThumb } from '@/data/isn'
+import { gallery, galleryMedium, galleryThumb } from '@/data/isn'
 import type { GalleryPhoto } from '@/data/isn'
 
 const spanClasses: Record<NonNullable<GalleryPhoto['span']>, string> = {
@@ -10,8 +10,10 @@ const spanClasses: Record<NonNullable<GalleryPhoto['span']>, string> = {
   tall: 'row-span-2',
 }
 
-// Les tuiles sur 2 colonnes dépassent 800px de rendu sur écran retina : on propose aussi la version HD
+// Les tuiles sur 2 colonnes dépassent 800px de rendu sur écran retina : on propose une version 1400px
+// (la HD 2400px est réservée à la lightbox, trop lourde pour la grille)
 const isWide = (photo: GalleryPhoto) => photo.span === 'large' || photo.span === 'wide'
+const wideSizes = '(min-width: 1200px) 576px, (min-width: 768px) 50vw, 100vw'
 
 const activeIndex = ref<number | null>(null)
 </script>
@@ -46,8 +48,8 @@ const activeIndex = ref<number | null>(null)
         >
           <img
             :src="galleryThumb(photo.id)"
-            :srcset="isWide(photo) ? `${galleryThumb(photo.id)} 800w, ${galleryFull(photo.id)} 2400w` : undefined"
-            :sizes="isWide(photo) ? '(min-width: 768px) 50vw, 100vw' : undefined"
+            :srcset="isWide(photo) ? `${galleryThumb(photo.id)} 800w, ${galleryMedium(photo.id)} 1400w` : undefined"
+            :sizes="isWide(photo) ? wideSizes : undefined"
             :alt="photo.alt"
             loading="lazy"
             decoding="async"

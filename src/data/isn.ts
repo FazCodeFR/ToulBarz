@@ -206,25 +206,26 @@ export interface GalleryPhoto {
 
 // Ordre éditorial : 4 large + 2 wide + 1 tall + 10 standard = 32 cellules (8 rangées complètes sur 4 colonnes)
 export const gallery: GalleryPhoto[] = [
-  { id: 6, alt: 'Le Grand Palais des Sports plongé dans les lumières violettes pendant le show ISN 2026', span: 'large' },
-  { id: 3, alt: 'Présentation des athlètes sur scène lors du Face-Off à la Salle du Sénéchal' },
-  { id: 8, alt: "Face-à-face entre deux athlètes au centre de l'arène avant les battles" },
-  { id: 12, alt: 'Trois athlètes en planche sur les barres devant un public illuminé par les lampes des téléphones', span: 'large' },
-  { id: 5, alt: 'Figure acrobatique en noir et blanc : un athlète porte une athlète en équilibre', span: 'tall' },
-  { id: 11, alt: 'Athlète en L-sit aux anneaux pendant une battle' },
-  { id: 13, alt: 'Athlète en équilibre sur les barres parallèles sous les yeux des autres compétiteurs', span: 'large' },
-  { id: 17, alt: 'Athlète en planche sur une barre basse pendant le show' },
-  { id: 9, alt: 'Figure aérienne à la barre fixe, en noir et blanc' },
-  { id: 16, alt: 'Le public debout applaudit dans les gradins du Grand Palais des Sports', span: 'wide' },
-  { id: 14, alt: 'Battle à la barre fixe observée par deux athlètes, en noir et blanc' },
-  { id: 15, alt: "Les athlètes saluent le public sur la scène de l'arène" },
-  { id: 10, alt: "Vue d'ensemble de la foule rassemblée sur l'aire de jeu pendant l'Arena Experience", span: 'wide' },
-  { id: 4, alt: 'Battle communautaire au cœur du cercle lors du rassemblement de nuit', span: 'large' },
-  { id: 7, alt: "Photo de groupe des athlètes et de l'équipe ISN 2026 devant l'écran de l'édition 2026" },
-  { id: 1, alt: 'Ateliers et corrections techniques pendant le workshop Neo Strength' },
-  { id: 2, alt: 'Stands, drapeau ISN et participants au rassemblement en plein air' },
+  { id: 6, alt: 'Concours de handstand sous les lumières du Palais des Sports', span: 'large' },
+  { id: 3, alt: "Présentation de l'ISN 2026" },
+  { id: 8, alt: "Interview d'un athlète au milieu de l'arène" },
+  { id: 12, alt: 'Front lever à trois, éclairés par les flashs du public', span: 'large' },
+  { id: 5, alt: 'Charlie et Héloïse en porté', span: 'tall' },
+  { id: 11, alt: 'Croix de fer aux anneaux' },
+  { id: 13, alt: 'Handstand one arm sur les barres parallèles', span: 'large' },
+  { id: 17, alt: 'Planche tenue par une athlète sur la barre basse' },
+  { id: 9, alt: 'Handstand one arm sur la barre' },
+  { id: 16, alt: 'Le public debout dans les gradins', span: 'wide' },
+  { id: 14, alt: 'Planche à la barre fixe' },
+  { id: 15, alt: 'Célébration sur scène' },
+  { id: 10, alt: "La foule sur l'aire de jeu pendant l'Arena Experience", span: 'wide' },
+  { id: 4, alt: 'Planche large au milieu du cercle, au rassemblement', span: 'large' },
+  { id: 7, alt: "Photo de groupe des athlètes et de l'équipe ISN 2026" },
+  { id: 1, alt: 'Entrée en front lever' },
+  { id: 2, alt: 'Stands et drapeau ISN au rassemblement en plein air' },
 ]
 
 const photoFile = (id: number) => `isn-2026-${String(id).padStart(2, '0')}.webp`
 export const galleryThumb = (id: number) => `/img/isn/thumb/${photoFile(id)}`
+export const galleryMedium = (id: number) => `/img/isn/md/${photoFile(id)}`
 export const galleryFull = (id: number) => `/img/isn/full/${photoFile(id)}`

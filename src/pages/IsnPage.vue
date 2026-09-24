@@ -6,7 +6,7 @@ useSeoMeta({
   description,
   ogTitle: 'ISN 2026 - International Strength Nights | Retour sur l\'édition Toulouse',
   ogDescription: description,
-  ogImage: 'https://toulbarz.fr/img/isn/thumb/isn-2026-06.webp',
+  ogImage: 'https://toulbarz.fr/img/isn/og-isn-2026.jpg',
   ogImageAlt: 'ISN 2026 - International Strength Nights - 01-02.08.26 - Grand Palais des Sports, Toulouse',
   ogUrl: 'https://toulbarz.fr/isn-2026',
   twitterTitle: 'ISN 2026 - International Strength Nights | Retour sur l\'édition Toulouse',

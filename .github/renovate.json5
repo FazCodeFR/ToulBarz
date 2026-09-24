@@ -16,6 +16,13 @@
       enabled: false,
     },
     {
+      // vite-ssg renders the head with its own @unhead/vue: a different major
+      // creates a second instance and strips every SEO tag from the prerendered
+      // HTML. Keep it on the major vite-ssg depends on.
+      matchPackageNames: ['@unhead/vue'],
+      allowedVersions: '<3',
+    },
+    {
       // Bundle every remaining update (npm + github-actions, minor + major)
       // into a single grouped PR, once a month, and merge it automatically
       // once CI is green.
