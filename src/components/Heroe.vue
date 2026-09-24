@@ -28,11 +28,11 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-[1]"></div>
 
     <!-- Contenu principal -->
-    <div class="relative z-10 mx-auto max-w-2xl h-full flex items-center justify-center px-4">
-      <div class="flex w-full flex-col items-center text-center">
+    <div class="relative z-10 mx-auto max-w-2xl h-full flex flex-col items-center px-4">
+      <div class="flex flex-1 w-full flex-col items-center justify-center text-center">
         <!-- Logo - CSS animation -->
         <img
-          class="h-48 sm:h-64 w-auto drop-shadow-2xl animate-hero-logo"
+          class="h-36 sm:h-64 w-auto drop-shadow-2xl animate-hero-logo"
           src="/img/logo.webp"
           alt="Logo Toul'Barz"
           width="320"
@@ -40,17 +40,17 @@
         />
 
         <!-- Titre - CSS animation -->
-        <h1 class="text-6xl font-extrabold tracking-tight text-white sm:text-8xl lg:text-9xl font-display drop-shadow-lg animate-hero-title">
+        <h1 class="text-5xl font-extrabold tracking-tight text-white sm:text-8xl lg:text-9xl font-display drop-shadow-lg animate-hero-title">
           TOUL'BARZ
         </h1>
 
         <!-- Slogan - CSS animation -->
-        <p class="mt-3 text-lg sm:text-xl leading-8 text-white/90 font-medium tracking-wide animate-hero-slogan">
+        <p class="mt-2 sm:mt-3 text-lg sm:text-xl leading-8 text-white/90 font-medium tracking-wide animate-hero-slogan">
           Street Workout Toulouse
         </p>
 
         <!-- Boutons CTA - CSS animation -->
-        <div class="mt-8 flex w-full flex-wrap justify-center gap-3 animate-hero-cta">
+        <div class="mt-6 sm:mt-8 flex w-full max-w-xs sm:max-w-none flex-col sm:flex-row justify-center gap-3 animate-hero-cta">
           <router-link
             to="/adhesions"
             class="group relative inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 sm:px-8 sm:py-2.5 text-primary font-semibold shadow-lg shadow-accent/30 transition-all duration-300 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -69,17 +69,17 @@
             <span class="text-sm sm:text-base tracking-wide">Séance d'essai</span>
           </a>
         </div>
-
-        <!-- Flèche vers le bas animée - CSS animation -->
-        <a
-          href="#event-section"
-          class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          aria-label="Aller à la section événements"
-          @click.prevent="scrollToEvents"
-        >
-          <i class="i-mdi-chevron-down text-2xl text-white"></i>
-        </a>
       </div>
+
+      <!-- Flèche vers le bas animée - CSS animation -->
+      <a
+        href="#event-section"
+        class="mb-6 sm:mb-8 shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors animate-hero-arrow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        aria-label="Aller à la section événements"
+        @click.prevent="scrollToEvents"
+      >
+        <i class="i-mdi-chevron-down text-2xl text-white animate-bounce"></i>
+      </a>
     </div>
   </div>
 </template>

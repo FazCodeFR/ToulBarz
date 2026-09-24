@@ -55,11 +55,11 @@ Components in `src/components/` auto-register globally. No import statements nee
 
 ### Custom Web Components
 
-The Vite config recognizes `youtube-video` and `media-theme-*` as custom elements (web components from youtube-video-element and player.style).
+The Vite config recognizes `media-theme-*` and `media-poster-image` as custom elements (web components from player.style). Videos are native `<video slot="media">` elements pointing to Cloudflare R2 (see [src/components/isn/IsnVideo.vue](src/components/isn/IsnVideo.vue)).
 
 ### Routing & Code-Splitting
 
-Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a named `routes` constant (consumed by vite-ssg — it builds the router itself). `IndexPage` is eagerly imported (LCP-critical); all other pages are lazy-loaded via dynamic `import()`. Each route defines `meta.title` used by `@unhead/vue`. Vite's `manualChunks` in [vite.config.ts](vite.config.ts) groups vendor chunks (vue, motion, calendar, youtube, etc.) — keep heavy new deps chunked the same way.
+Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a named `routes` constant (consumed by vite-ssg — it builds the router itself). `IndexPage` is eagerly imported (LCP-critical); all other pages are lazy-loaded via dynamic `import()`. Each route defines `meta.title` used by `@unhead/vue`. Vite's `manualChunks` in [vite.config.ts](vite.config.ts) groups vendor chunks (vue, motion, calendar, player-style, etc.) — keep heavy new deps chunked the same way.
 
 ### SSG (vite-ssg) — SSR safety
 
@@ -70,7 +70,7 @@ Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a 
 - No `window`, `document`, `localStorage`, `IntersectionObserver`, etc. at module top level, in `setup()`, or inside `computed()`. Gate with `typeof window === 'undefined'` or move to `onMounted`.
 - `new Date()` is fine, but don't rely on locale/timezone matching the client.
 - For components that must only run client-side, wrap in `<ClientOnly>` (auto-registered by vite-ssg).
-- Packages that break SSR bundling (CJS-only, browser-only) go in `ssr.noExternal` in [vite.config.ts](vite.config.ts). Current list: `motion-v`, `@vueuse/motion`, `v-calendar`, `youtube-video-element`, `player.style`.
+- Packages that break SSR bundling (CJS-only, browser-only) go in `ssr.noExternal` in [vite.config.ts](vite.config.ts). Current list: `motion-v`, `@vueuse/motion`, `v-calendar`, `player.style`.
 - Fallback SPA build (no prerender): `pnpm build-spa`.
 
 ### Pinia Store Injection

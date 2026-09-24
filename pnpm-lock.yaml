@@ -41,9 +41,6 @@ importers:
       vue-router:
         specifier: 5.3.0
         version: 5.3.0(esbuild@0.27.2)(pinia@3.0.4(typescript@6.0.2)(vue@3.5.32(typescript@6.0.2)))(rolldown@1.2.1)(rollup@4.53.3)(vite@8.2.0(@types/node@24.13.2)(esbuild@0.27.2)(jiti@2.7.0)(terser@5.46.1)(yaml@2.9.0))(vue@3.5.32(typescript@6.0.2))
-      youtube-video-element:
-        specifier: ^1.8.0
-        version: 1.9.0
     devDependencies:
       '@egoist/tailwindcss-icons':
         specifier: 1.9.2
@@ -3120,9 +3117,6 @@ packages:
   media-chrome@4.16.1:
     resolution: {integrity: sha512-qtFlsy0lNDVCyVo//ZCAfRPKwgehfOYp6rThZzDUuZ5ypv41yqUfAxK+P9TOs+XSVWXATPTT2WRV0fbW0BH4vQ==}
 
-  media-played-ranges-mixin@0.1.0:
-    resolution: {integrity: sha512-zTsvkleu5sAyTsPVxDI+KUbCwy/lXwHgOPi3ER9S3lhtAWhGTQH6qxvfrVMym1cvoLU36SPbVr6Qe8Zxyc0WpA==}
-
   memorystream@0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
     engines: {node: '>= 0.10.0'}
@@ -4489,9 +4483,6 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-
-  youtube-video-element@1.9.0:
-    resolution: {integrity: sha512-Hh0dbQM+FVlUaYUbpYkZNUvdKxTNcSNvTGzkQKYShltnX+LRHEp2eYvC2Zm43eU8Np+CBZuoNR2i+seCYzzAyg==}
 
 snapshots:
 
@@ -7530,8 +7521,6 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  media-played-ranges-mixin@0.1.0: {}
-
   memorystream@0.3.1: {}
 
   merge2@1.4.1: {}
@@ -9071,7 +9060,3 @@ snapshots:
       yargs-parser: 22.0.0
 
   yocto-queue@0.1.0: {}
-
-  youtube-video-element@1.9.0:
-    dependencies:
-      media-played-ranges-mixin: 0.1.0

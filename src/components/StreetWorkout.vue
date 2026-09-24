@@ -1,86 +1,87 @@
 <template>
   <div class="bg-white text-primary">
-    <div class="mx-auto max-w-7xl py-20 px-4 sm:px-6 sm:py-28 lg:px-8">
-      <div class="mx-auto max-w-6xl">
-        <div class="grid grid-cols-1 items-center gap-12 lg:gap-16 lg:grid-cols-2">
-          <!-- Video Section -->
-          <div class="relative order-2 lg:order-1">
-              <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                <media-theme-halloween v-if="isHalloween" class="w-full">
-                  <youtube-video
-                    slot="media"
-                    src="https://www.youtube.com/embed/-S6mYskysIk"
-                    playsinline
-                    crossorigin
-                    class="w-full"
-                    style="aspect-ratio: 16/9;"
-                  ></youtube-video>
-                </media-theme-halloween>
+    <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 sm:py-28 lg:px-8">
+      <!-- Title -->
+      <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+        Qu'est-ce que le
+        <span class="text-accent">Street Workout</span> ?
+      </h2>
 
-                <media-theme-x-mas v-else-if="isChristmas" class="w-full">
-                  <youtube-video
-                    slot="media"
-                    src="https://www.youtube.com/embed/-S6mYskysIk"
-                    playsinline
-                    crossorigin
-                    class="w-full"
-                    style="aspect-ratio: 16/9;"
-                  ></youtube-video>
-                </media-theme-x-mas>
+      <!-- Mobile : vidéo puis texte empilés — Desktop : vidéo (3/5) à gauche, texte (2/5) à droite -->
+      <div class="mt-10 grid grid-cols-1 items-center gap-10 sm:mt-14 lg:grid-cols-5 lg:gap-14">
+        <!-- Video Section -->
+        <div class="w-full lg:col-span-3">
+          <!-- Cadre 16:9 rendu dès le SSR pour éviter le décalage de mise en page -->
+          <div class="aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-2xl">
+            <ClientOnly>
+              <!-- eslint-disable vue/no-deprecated-slot-attribute -- slots natifs du web component, pas des slots Vue -->
+              <media-theme-halloween v-if="isHalloween" class="block h-full w-full [--media-object-fit:cover]">
+                <video
+                  slot="media"
+                  :src="VIDEO_URL"
+                  playsinline
+                  preload="metadata"
+                  class="h-full w-full object-cover"
+                ></video>
+                <media-poster-image
+                  slot="poster"
+                  :src="POSTER_URL"
+                  class="h-full w-full"
+                ></media-poster-image>
+              </media-theme-halloween>
 
-                <media-theme-sutro
-                  v-else
-                  class="w-full"
-                  style="--media-primary-color: #ff7f11; --media-accent-color: #ff7f11;"
-                >
-                  <youtube-video
-                    slot="media"
-                    src="https://www.youtube.com/embed/-S6mYskysIk"
-                    playsinline
-                    crossorigin
-                    class="w-full"
-                    style="aspect-ratio: 16/9;"
-                  ></youtube-video>
-                </media-theme-sutro>
-              </div>
-              
-              <!-- Éléments décoratifs -->
-              <div 
-                class="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl -z-10"
-                :class="{
-                  'bg-orange-500/20': isHalloween,
-                  'bg-red-500/20': isChristmas,
-                  'bg-accent/20': isDefault
-                }"
-              ></div>
-              <div 
-                class="absolute -top-4 -left-4 w-16 h-16 rounded-xl -z-10"
-                :class="{
-                  'bg-purple-500/10': isHalloween,
-                  'bg-green-500/10': isChristmas,
-                  'bg-accent/10': isDefault
-                }"
-              ></div>
-            </div>
+              <media-theme-x-mas v-else-if="isChristmas" class="block h-full w-full [--media-object-fit:cover]">
+                <video
+                  slot="media"
+                  :src="VIDEO_URL"
+                  playsinline
+                  preload="metadata"
+                  class="h-full w-full object-cover"
+                ></video>
+                <media-poster-image
+                  slot="poster"
+                  :src="POSTER_URL"
+                  class="h-full w-full"
+                ></media-poster-image>
+              </media-theme-x-mas>
 
-          <!-- Text Section -->
-          <div class="order-1 lg:order-2">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
-              Qu'est-ce que le
-              <span class="text-accent">Street Workout</span> ?
-            </h2>
-            <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-              Le street workout ou calisthenics, du grec <em>Khalos Sthenos</em> (« beauté de la force »), est un sport-spectacle en pleine explosion, mêlant force, agilité et équilibre. Utilisant uniquement le poids du corps, il transforme la performance en un spectacle vivant, où les athlètes repoussent les limites de leurs corps.
-            </p>
-            <div class="mt-8">
-              <RouterLink
-                to="/street-workout"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:shadow-lg group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              <media-theme-sutro
+                v-else
+                class="block h-full w-full [--media-accent-color:#ff7f11] [--media-object-fit:cover] [--media-primary-color:#ff7f11]"
               >
-                En savoir plus
-                <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>
-              </RouterLink>
-            </div>
+                <video
+                  slot="media"
+                  :src="VIDEO_URL"
+                  playsinline
+                  preload="metadata"
+                  class="h-full w-full object-cover"
+                ></video>
+                <media-poster-image
+                  slot="poster"
+                  :src="POSTER_URL"
+                  class="h-full w-full"
+                ></media-poster-image>
+              </media-theme-sutro>
+              <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+            </ClientOnly>
+          </div>
+        </div>
+
+        <!-- Text Section -->
+        <div class="text-center lg:col-span-2 lg:text-left">
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+            Le street workout ou calisthenics, du grec <em>Khalos Sthenos</em> (« beauté de la force »),<br />
+            est un sport-spectacle en pleine explosion, mêlant force, agilité et équilibre.<br />
+            Utilisant uniquement le poids du corps, il transforme la performance en un spectacle vivant, où les athlètes repoussent les limites de leurs corps.
+          </p>
+          <div class="mt-8">
+            <RouterLink
+              to="/street-workout"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:shadow-lg group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              En savoir plus
+              <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -88,47 +89,44 @@
   </div>
 </template>
 
-
-
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import 'youtube-video-element';
-
 // Import tous les thèmes
-import 'player.style/sutro';
-import 'player.style/x-mas';
-import 'player.style/halloween';
+import 'player.style/sutro'
+import 'player.style/x-mas'
+import 'player.style/halloween'
 
-const currentTheme = ref('default');
+const VIDEO_URL = 'https://pub-6adac5dd42e04ef5bc9df5e5e87fcee8.r2.dev/video_home_street_workout.mp4'
+// Aperçu affiché via le slot "poster" du thème (le poster natif de <video> est masqué par media-chrome)
+const POSTER_URL = '/img/actions/action_shows_&_animations.webp'
+
+const currentTheme = ref('default')
 
 // Fonction pour déterminer la période actuelle
 const getCurrentPeriod = () => {
-  const now = new Date();
-  const month = now.getMonth(); // 0-11 (0 = janvier, 11 = décembre)
-  const day = now.getDate();
+  const now = new Date()
+  const month = now.getMonth() // 0-11 (0 = janvier, 11 = décembre)
+  const day = now.getDate()
 
   // Halloween : du 15 octobre au 5 novembre
   if ((month === 9 && day >= 15) || (month === 10 && day <= 5)) {
-    return 'halloween';
+    return 'halloween'
   }
 
   // Noël : du 23 novembre au 5 janvier
   if (
     (month === 10 && day >= 23) || // 23 → 30 novembre (mois 10)
     month === 11 ||                // décembre
-    (month === 0 && day <= 5)      // jusqu’au 5 janvier
+    (month === 0 && day <= 5)      // jusqu'au 5 janvier
   ) {
-    return 'christmas';
+    return 'christmas'
   }
 
-  return 'default';
-};
+  return 'default'
+}
 
 onMounted(() => {
-  currentTheme.value = getCurrentPeriod();
-});
+  currentTheme.value = getCurrentPeriod()
+})
 
-const isHalloween = computed(() => currentTheme.value === 'halloween');
-const isChristmas = computed(() => currentTheme.value === 'christmas');
-const isDefault = computed(() => currentTheme.value === 'default');
-</script>
+const isHalloween = computed(() => currentTheme.value === 'halloween')
+const isChristmas = computed(() => currentTheme.value === 'christmas')</script>

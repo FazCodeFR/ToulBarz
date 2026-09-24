@@ -54,7 +54,7 @@ const incentives = [
   },
   {
     name: 'Shows & Animations',
-    imgSrc: '/img/actions/action_show_&_spectacles.webp',
+    imgSrc: '/img/actions/action_shows_&_animations.webp',
     class: 'col-span-2 aspect-[2/1] lg:aspect-auto',
   },
 ]

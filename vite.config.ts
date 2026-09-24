@@ -27,7 +27,6 @@ export default defineConfig({
         compilerOptions: {
           // Recognize custom elements from web components
           isCustomElement: (tag) =>
-            tag === 'youtube-video' ||
             tag.startsWith('media-theme-') ||
             tag === 'media-poster-image',
         },
@@ -96,7 +95,6 @@ export default defineConfig({
             if (id.includes('motion-v') || id.includes('@vueuse/motion')) return 'motion'
             if (id.includes('@unhead')) return 'unhead'
             if (id.includes('ical.js') || id.includes('rrule') || id.includes('v-calendar')) return 'calendar'
-            if (id.includes('youtube-video-element')) return 'youtube'
             if (id.includes('player.style')) return 'player-style'
             if (id.includes('lodash-es')) return 'lodash'
             return 'vendor'
@@ -131,7 +129,6 @@ export default defineConfig({
       'motion-v',
       '@vueuse/motion',
       'v-calendar',
-      'youtube-video-element',
       'player.style',
     ],
   },

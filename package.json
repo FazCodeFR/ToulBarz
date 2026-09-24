@@ -32,8 +32,7 @@
     "rrule": "^2.8.1",
     "v-calendar": "^3.1.2",
     "vue": "3.5.32",
-    "vue-router": "5.3.0",
-    "youtube-video-element": "^1.8.0"
+    "vue-router": "5.3.0"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "1.9.2",
