@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const description = "ISN 2026 - International Strength Nights, 3ème édition : le plus grand show de street workout au monde s'est tenu les 1er et 2 août 2026 au Grand Palais des Sports de Toulouse. Retour sur les battles internationales, le vote du public en direct, le workshop et le rassemblement communautaire."
+import { BILLETTERIE_URL } from '@/data/isn'
+
+const description = "ISN 2026 - International Strength Nights, 3ème édition : le plus grand show de street workout au monde s'est tenu du 31 juillet au 2 août 2026 au Grand Palais des Sports de Toulouse. Retour sur les battles internationales, le vote du public en direct, le workshop et le rassemblement communautaire."
 
 useSeoMeta({
   title: "ISN 2026 - International Strength Nights (édition passée) | Toul'Barz",
@@ -31,7 +33,7 @@ useHead({
         startDate: '2026-07-31T18:00:00+02:00',
         endDate: '2026-08-02T23:00:00+02:00',
         image: 'https://toulbarz.fr/img/isn/og-isn-2026.jpg',
-        eventStatus: 'https://schema.org/EventCompleted',
+        eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         location: {
           '@type': 'Place',
@@ -45,6 +47,18 @@ useHead({
           },
         },
         description,
+        offers: {
+          '@type': 'Offer',
+          url: BILLETTERIE_URL,
+          price: '19.90',
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/SoldOut',
+          validFrom: '2026-07-06T00:00:00+02:00',
+        },
+        performer: {
+          '@type': 'PerformingGroup',
+          name: 'Athlètes internationaux ISN 2026',
+        },
         organizer: {
           '@type': 'Organization',
           name: "Toul'Barz",
