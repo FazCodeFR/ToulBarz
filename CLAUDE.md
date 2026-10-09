@@ -88,7 +88,7 @@ Routes live in [src/router/index.ts](src/router/index.ts) and are exported as a 
 | HelloAsso | Membership payments (iframe in Formule.vue) |
 | Elfsight | Instagram feed embed |
 | Cloudflare R2 | Video hosting (hero section) |
-| ical.js + rrule | iCal feed parsing for events |
+| ical.js + rrule | Not imported anywhere: events come from the platform agenda feed |
 | v-calendar | Calendar component |
 
 ## Code Style
@@ -126,7 +126,7 @@ Use Tailwind icon classes from mdi and bxl collections:
 - **Membership pricing**: [src/components/Formule.vue](src/components/Formule.vue)
 - **Practice hours**: [src/components/Footer.vue](src/components/Footer.vue)
 - **Stats/member count**: [src/components/Stats.vue](src/components/Stats.vue)
-- **Event calendar**: [src/components/Event.vue](src/components/Event.vue) (uses iCal feeds)
+- **Event calendar**: [src/components/Event.vue](src/components/Event.vue) and [src/components/EventSection.vue](src/components/EventSection.vue), fed by [src/composables/useAgenda.ts](src/composables/useAgenda.ts) (`https://api.toulbarz.fr/api/public/agenda/v1`, plain text: never render it with `v-html`)
 - **News/actus page**: [src/pages/ActuPage.vue](src/pages/ActuPage.vue) (PDFs live in [public/pdfs/](public/pdfs/))
 - **Routes**: [src/router/index.ts](src/router/index.ts)
 - **Store**: [src/store/index.ts](src/store/index.ts)
