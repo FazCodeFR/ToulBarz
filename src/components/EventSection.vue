@@ -96,59 +96,18 @@
 
 
 <script setup lang="ts">
-import { ref, computed, onMounted, type Ref } from 'vue';
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useAgenda } from '@/composables/useAgenda';
 
-interface CalendarEvent {
-  id: string
-  summary: string
-  location: string
-  start: Date
-}
-
-interface GoogleCalendarApiEvent {
-  id: string
-  summary?: string
-  location?: string
-  start?: { dateTime?: string; date?: string }
-}
-
-const isLoading = ref(true);
-const eventsPublic = ref<CalendarEvent[]>([]);
-const eventsMembers = ref<CalendarEvent[]>([]);
-const hasErrorPublic = ref(false);
-const hasErrorMembers = ref(false);
+const { isLoading, hasError, eventsPublic: allPublic, eventsMembers: allMembers } = useAgenda();
+// L'accueil ne montre que ce qui n'a pas encore commencé
+const upcoming = <T extends { start: Date }>(events: T[]) => events.filter((event) => event.start > new Date());
+const eventsPublic = computed(() => upcoming(allPublic.value));
+const eventsMembers = computed(() => upcoming(allMembers.value));
+const hasErrorPublic = hasError;
+const hasErrorMembers = hasError;
 const hasEvents = computed(() => eventsPublic.value.length > 0 || eventsMembers.value.length > 0);
-
-const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>, errorRef: Ref<boolean>) => {
-  try {
-    const now = new Date();
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30&timeMin=${now.toISOString()}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Erreur API');
-    const data = await response.json();
-
-    const fetchedEvents: CalendarEvent[] = (data.items as GoogleCalendarApiEvent[]).map(event => ({
-      id: event.id,
-      summary: event.summary || 'Sans titre',
-      location: event.location || 'Lieu non spécifié',
-      start: new Date(event.start?.dateTime || event.start?.date || ''),
-    }));
-
-    eventsRef.value = fetchedEvents.filter(ev => ev.start > now);
-  } catch (error) {
-    console.error('Erreur événements :', error);
-    errorRef.value = true;
-  }
-};
-
-onMounted(async () => {
-  await Promise.all([
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic, hasErrorPublic),
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers, hasErrorMembers),
-  ]);
-  isLoading.value = false;
-});
 
 const formatDate = (date: Date | string) =>
   new Date(date).toLocaleDateString('fr-FR', {

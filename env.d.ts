@@ -11,6 +11,10 @@ interface ImportMetaEnv {
    */
   readonly VITE_APP_VERSION: string
   readonly VITE_APP_BUILD_EPOCH?: string
+  /**
+   * Flux d'agenda de la plateforme (par défaut https://api.toulbarz.fr/api/public/agenda/v1)
+   */
+  readonly VITE_AGENDA_URL?: string
 }
 interface ImportMeta {
   readonly env: ImportMetaEnv

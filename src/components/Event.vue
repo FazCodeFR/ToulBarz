@@ -96,8 +96,8 @@
                 </h3>
                 
                 <div class="mt-4 prose prose-sm text-gray-600 max-w-none">
-                  <!-- eslint-disable-next-line vue/no-v-html -->
-                  <div v-html="event.description || 'Aucune description disponible'"></div>
+                  <!-- Texte brut : jamais de v-html sur un contenu venu d'ailleurs -->
+                  <p class="whitespace-pre-line">{{ event.description || 'Aucune description disponible' }}</p>
                   <p>
                     📩 Envoie-nous un MP sur
                     <a
@@ -129,10 +129,25 @@
                   <span class="i-mdi-calendar-plus h-4 w-4"></span>
                   Ajouter à Google Calendar
                 </a>
+                <a
+                  v-for="link in linksOf(event)"
+                  :key="link.href"
+                  :href="link.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <span class="i-mdi-open-in-new h-4 w-4"></span>
+                  {{ link.label }}
+                </a>
                 </div>
               </article>
             </div>
             
+            <div v-else-if="isLoading" class="flex flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-lg ring-1 ring-gray-100">
+              <span class="i-mdi-loading h-10 w-10 animate-spin text-accent"></span>
+              <p class="mt-6 text-sm text-gray-500">Chargement des événements…</p>
+            </div>
             <div v-else-if="hasActiveError" class="flex flex-col items-center justify-center rounded-2xl bg-white p-12 text-center shadow-lg ring-1 ring-gray-100">
               <div class="rounded-2xl bg-gradient-to-br from-accent/10 to-orange-100 p-5">
                 <span class="i-mdi-alert-circle-outline h-10 w-10 text-accent"></span>
@@ -156,34 +171,13 @@
 
 
 <script setup lang="ts">
-import { ref, computed, onMounted, type Ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Calendar } from 'v-calendar';
 import 'v-calendar/style.css';
+import { useAgenda, type AgendaEvent, type AgendaLinks } from '@/composables/useAgenda';
 
-interface CalendarEvent {
-  id: string
-  summary: string
-  description: string
-  location: string
-  start: Date
-  end: Date
-}
-
-interface GoogleCalendarApiEvent {
-  id: string
-  summary?: string
-  description?: string
-  location?: string
-  start?: { dateTime?: string; date?: string }
-  end?: { dateTime?: string; date?: string }
-}
-
-const isLoading = ref(true);
+const { isLoading, hasError, eventsPublic, eventsMembers } = useAgenda();
 const activeTab = ref('public');
-const eventsPublic = ref<CalendarEvent[]>([]);
-const eventsMembers = ref<CalendarEvent[]>([]);
-const hasErrorPublic = ref(false);
-const hasErrorMembers = ref(false);
 
 const tabs = [
   { name: 'Événements publics', key: 'public' },
@@ -239,41 +233,20 @@ const handleDayClick = (day: { date: Date }) => {
 };
 
 
-const fetchGoogleCalendarEvents = async (calendarId: string, eventsRef: Ref<CalendarEvent[]>, errorRef: Ref<boolean>) => {
-  try {
-    const now = new Date();
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${import.meta.env.VITE_GOOGLE_API_KEY}&singleEvents=true&orderBy=startTime&maxResults=30&timeMin=${now.toISOString()}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Erreur lors de la récupération des événements');
-    const data = await response.json();
-
-    const fetchedEvents: CalendarEvent[] = (data.items as GoogleCalendarApiEvent[]).map((event) => ({
-      id: event.id,
-      summary: event?.summary || 'Sans titre',
-      description: event?.description ? event.description.replace(/\n/g, '<br/>') : '',
-      location: event?.location || 'Lieu non spécifié',
-      start: new Date(event.start?.dateTime || event.start?.date || ''),
-      end: new Date(event.end?.dateTime || event.end?.date || ''),
-    }));
-    eventsRef.value = fetchedEvents.filter((event) => event.end > now);
-  } catch (error) {
-    console.error('Erreur lors de la récupération des événements :', error);
-    errorRef.value = true;
-  }
+// Liens utiles d'un événement ou d'une séance, selon l'onglet : essai côté public, réservation côté adhérents
+const linksOf = (event: AgendaEvent): { label: string; href: string }[] => {
+  const links: AgendaLinks = event.links;
+  const isPublicTab = activeTab.value === 'public';
+  const booking = isPublicTab ? links.trial ?? links.page : links.member ?? links.page;
+  const bookingLabel = isPublicTab && links.trial ? "Séance d'essai" : 'Réserver ma place';
+  return [
+    booking ? { label: bookingLabel, href: booking } : null,
+    links.registration ? { label: "S'inscrire", href: links.registration } : null,
+    links.ticketing ? { label: 'Billetterie', href: links.ticketing } : null,
+  ].filter((link): link is { label: string; href: string } => link !== null);
 };
 
-
-onMounted(async () => {
-  await Promise.all([
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_PUBLIC_ID, eventsPublic, hasErrorPublic),
-    fetchGoogleCalendarEvents(import.meta.env.VITE_CALENDAR_MEMBERS_ID, eventsMembers, hasErrorMembers),
-  ]);
-  isLoading.value = false;
-});
-
-const hasActiveError = computed(() =>
-  activeTab.value === 'public' ? hasErrorPublic.value : hasErrorMembers.value
-);
+const hasActiveError = computed(() => hasError.value);
 
 const getActiveEvents = computed(() =>
   activeTab.value === 'public' ? eventsPublic.value : eventsMembers.value
