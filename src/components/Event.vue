@@ -5,7 +5,7 @@
     <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl"></div>
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="relative isolate px-6 py-12 sm:py-16 lg:px-8">
+      <div class="relative isolate py-12 sm:py-16">
         <div class="mx-auto max-w-7xl text-center sm:max-w-4xl">
           <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
             Calendrier
