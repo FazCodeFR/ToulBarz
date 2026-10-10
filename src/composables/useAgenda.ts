@@ -19,6 +19,8 @@ export interface AgendaEvent {
   summary: string
   description: string
   location: string
+  // Lieu + adresse complète, pour la carte et l'agenda (jamais affiché tel quel)
+  fullAddress: string
   start: Date
   end: Date
   isPublic: boolean
@@ -61,7 +63,8 @@ export function parseAgenda(data: unknown): AgendaEvent[] | null {
       kind: raw.kind === 'session' ? 'session' : 'event',
       summary: text(raw.title) || 'Sans titre',
       description: text(raw.description),
-      location: [text(raw.place), text(raw.address)].filter(Boolean).join(', ') || 'Lieu non spécifié',
+      location: text(raw.place) || text(raw.address) || 'Lieu non spécifié',
+      fullAddress: [text(raw.place), text(raw.address)].filter(Boolean).join(', '),
       start,
       end,
       isPublic: agendas.public === true,

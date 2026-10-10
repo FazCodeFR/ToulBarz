@@ -52,6 +52,9 @@ describe('agenda feed', () => {
       ['s1', false, true],
     ])
     expect(events?.[0]?.location).toBe('Lieu fictif')
+    const [withAddress] = parseAgenda(feed([item({ address: '1 rue fictive, Toulouse' })])) ?? []
+    expect(withAddress?.location).toBe('Lieu fictif')
+    expect(withAddress?.fullAddress).toBe('Lieu fictif, 1 rue fictive, Toulouse')
   })
 
   test('refuses an unknown format and skips broken items', () => {
