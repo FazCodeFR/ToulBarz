@@ -97,8 +97,11 @@
                 
                 <div class="mt-4 prose prose-sm text-gray-600 max-w-none">
                   <!-- Texte brut : jamais de v-html sur un contenu venu d'ailleurs -->
-                  <p class="whitespace-pre-line">{{ event.description || 'Aucune description disponible' }}</p>
-                  <p>
+                  <p v-if="event.description || event.kind === 'event'" class="whitespace-pre-line">
+                    {{ event.description || 'Aucune description disponible' }}
+                  </p>
+                  <!-- Une séance a son bouton de réservation : pas besoin du MP -->
+                  <p v-if="event.kind === 'event'">
                     📩 Envoie-nous un MP sur
                     <a
                       href="https://www.instagram.com/toulbarz_tlb"
@@ -113,7 +116,7 @@
                 <div class="mt-6 flex flex-wrap items-center gap-4">
                   <a 
                     v-if="event.location !== 'Lieu non spécifié'" 
-                    :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`" 
+                    :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.fullAddress || event.location)}`" 
                     target="_blank" 
                     class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors duration-200"
                   >
@@ -121,7 +124,7 @@
                     {{ event.location }}
                   </a>
                   <a
-                  :href="`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.summary)}&dates=${formatGoogleCalendarDate(event.start)}/${formatGoogleCalendarDate(event.end)}&details=${encodeURIComponent(event.description || '')}&location=${encodeURIComponent(event.location || '')}`"
+                  :href="`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.summary)}&dates=${formatGoogleCalendarDate(event.start)}/${formatGoogleCalendarDate(event.end)}&details=${encodeURIComponent(event.description || '')}&location=${encodeURIComponent(event.fullAddress || '')}`"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
@@ -135,10 +138,10 @@
                   :href="link.href"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                  class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
-                  <span class="i-mdi-open-in-new h-4 w-4"></span>
                   {{ link.label }}
+                  <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
                 </div>
               </article>
