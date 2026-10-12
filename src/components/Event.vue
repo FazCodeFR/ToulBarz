@@ -81,12 +81,12 @@
                 
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <time :datetime="event.start.toISOString()" class="flex items-center gap-2 text-sm font-medium text-accent">
-                    <span class="i-mdi-calendar-outline h-5 w-5"></span>
+                    <span class="i-mdi-calendar-outline h-5 w-5 shrink-0"></span>
                     {{ formatDate(event.start) }}
                   </time>
                   
                   <div class="flex items-center gap-2 text-sm text-gray-500">
-                    <span class="i-mdi-clock-outline h-4 w-4"></span>
+                    <span class="i-mdi-clock-outline h-4 w-4 shrink-0"></span>
                     <span>{{ formatTime(event.start) }} - {{ formatTime(event.end) }}</span>
                   </div>
                 </div>
@@ -104,7 +104,7 @@
                   <p v-if="event.kind === 'event'">
                     📩 Envoie-nous un MP sur
                     <a
-                      href="https://www.instagram.com/toulbarz_tlb"
+                      :href="INSTAGRAM_URL"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-accent underline"
@@ -113,36 +113,37 @@
                   </p>
                 </div>
                 
-                <div class="mt-6 flex flex-wrap items-center gap-4">
-                  <a 
-                    v-if="event.location !== 'Lieu non spécifié'" 
-                    :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.fullAddress || event.location)}`" 
-                    target="_blank" 
-                    class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors duration-200"
+                <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                  <a
+                    v-if="event.location !== 'Lieu non spécifié'"
+                    :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.fullAddress || event.location)}`"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex w-full sm:w-auto items-start sm:items-center gap-2 rounded-xl sm:rounded-full bg-gray-100 px-4 py-2.5 sm:py-1.5 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors duration-200"
                   >
-                    <span class="i-mdi-map-marker h-4 w-4"></span>
-                    {{ event.location }}
+                    <span class="i-mdi-map-marker h-4 w-4 shrink-0 mt-0.5 sm:mt-0"></span>
+                    <span class="min-w-0 break-words text-left">{{ event.location }}</span>
                   </a>
                   <a
-                  :href="`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.summary)}&dates=${formatGoogleCalendarDate(event.start)}/${formatGoogleCalendarDate(event.end)}&details=${encodeURIComponent(event.description || '')}&location=${encodeURIComponent(event.fullAddress || '')}`"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
-                >
-                  <span class="i-mdi-calendar-plus h-4 w-4"></span>
-                  Ajouter à Google Calendar
-                </a>
-                <a
-                  v-for="link in linksOf(event)"
-                  :key="link.href"
-                  :href="link.href"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-dark px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:shadow-md transition-shadow duration-200"
-                >
-                  {{ link.label }}
-                  <i class="i-mdi-arrow-right transition-transform group-hover:translate-x-1"></i>
-                </a>
+                    :href="buildGoogleCalendarUrl(event)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl sm:rounded-full bg-accent/10 px-4 py-2.5 sm:py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
+                  >
+                    <span class="i-mdi-calendar-plus h-4 w-4 shrink-0"></span>
+                    Ajouter à Google Calendar
+                  </a>
+                  <a
+                    v-for="link in linksOf(event)"
+                    :key="link.href"
+                    :href="link.href"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl sm:rounded-full bg-gradient-to-r from-accent to-accent-dark px-4 py-2.5 sm:py-1.5 text-sm font-medium text-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                  >
+                    {{ link.label }}
+                    <i class="i-mdi-arrow-right shrink-0 transition-transform group-hover:translate-x-1"></i>
+                  </a>
                 </div>
               </article>
             </div>
@@ -179,6 +180,9 @@ import { Calendar } from 'v-calendar';
 import 'v-calendar/style.css';
 import { useAgenda, type AgendaEvent, type AgendaLinks } from '@/composables/useAgenda';
 
+const INSTAGRAM_URL = 'https://www.instagram.com/toulbarz_tlb';
+const EVENTS_URL = 'https://toulbarz.fr/evenements';
+
 const { isLoading, hasError, eventsPublic, eventsMembers } = useAgenda();
 const activeTab = ref('public');
 
@@ -204,6 +208,26 @@ const calendarAttributes = computed(() => {
 
 const formatGoogleCalendarDate = (date: Date | string) => {
   return new Date(date).toISOString().replace(/[-:]|\.\d{3}/g, '');
+};
+
+const buildGoogleCalendarUrl = (event: AgendaEvent) => {
+  const footer = [
+    `📩 Envoie-nous un MP sur <a href="${INSTAGRAM_URL}">Instagram (@toulbarz_tlb)</a> pour plus d'infos.`,
+    `📅 Retrouve tous nos événements : <a href="${EVENTS_URL}">toulbarz.fr/evenements</a>`,
+    '— ToulBarz, street workout à Toulouse',
+  ].join('<br/><br/>');
+  // La description est du texte brut : on garde ses retours à la ligne dans le HTML de Google Calendar
+  const description = event.description.replace(/\n/g, '<br/>');
+  const details = description ? `${description}<br/><br/>${footer}` : footer;
+
+  const params = [
+    'action=TEMPLATE',
+    `text=${encodeURIComponent(event.summary)}`,
+    `dates=${formatGoogleCalendarDate(event.start)}/${formatGoogleCalendarDate(event.end)}`,
+    `details=${encodeURIComponent(details)}`,
+    `location=${encodeURIComponent(event.fullAddress)}`,
+  ];
+  return `https://www.google.com/calendar/render?${params.join('&')}`;
 };
 
 
