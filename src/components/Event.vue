@@ -218,7 +218,14 @@ const buildGoogleCalendarUrl = (event: AgendaEvent) => {
   ].join('<br/><br/>');
   // La description est du texte brut : on garde ses retours à la ligne dans le HTML de Google Calendar
   const description = event.description.replace(/\n/g, '<br/>');
-  const details = description ? `${description}<br/><br/>${footer}` : footer;
+  const address = event.fullAddress || (event.location !== 'Lieu non spécifié' ? event.location : '');
+  const place = address
+    ? `📍 Lieu : <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}">${address}</a>`
+    : '';
+  const links = linksOf(event)
+    .map((link) => `👉 ${link.label} : <a href="${link.href}">${link.href}</a>`)
+    .join('<br/>');
+  const details = [description, place, links, footer].filter(Boolean).join('<br/><br/>');
 
   const params = [
     'action=TEMPLATE',
