@@ -119,7 +119,7 @@
                     :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.fullAddress || event.location)}`"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex w-full sm:w-auto items-start sm:items-center gap-2 rounded-xl sm:rounded-full bg-gray-100 px-4 py-2.5 sm:py-1.5 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors duration-200"
+                    class="flex w-full sm:w-auto items-start sm:items-center gap-2 rounded-xl sm:rounded-full bg-gray-100 px-4 py-2.5 sm:py-1.5 text-sm font-medium text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors duration-200"
                   >
                     <span class="i-mdi-map-marker h-4 w-4 shrink-0 mt-0.5 sm:mt-0"></span>
                     <span class="min-w-0 break-words text-left">{{ event.location }}</span>
@@ -128,10 +128,10 @@
                     :href="buildGoogleCalendarUrl(event)"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl sm:rounded-full bg-accent/10 px-4 py-2.5 sm:py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
+                    class="flex w-full sm:w-auto items-start sm:items-center gap-2 rounded-xl sm:rounded-full bg-accent/10 px-4 py-2.5 sm:py-1.5 text-sm font-medium text-accent hover:bg-accent hover:text-white transition-colors duration-200"
                   >
-                    <span class="i-mdi-calendar-plus h-4 w-4 shrink-0"></span>
-                    Ajouter à Google Calendar
+                    <span class="i-mdi-calendar-plus h-4 w-4 shrink-0 mt-0.5 sm:mt-0"></span>
+                    <span class="min-w-0 break-words text-left">Ajouter à Google Calendar</span>
                   </a>
                   <a
                     v-for="link in linksOf(event)"
