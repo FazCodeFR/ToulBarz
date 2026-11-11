@@ -33,7 +33,7 @@
 import { ref } from 'vue'
 import type { Directive } from 'vue'
 const stats = [
-  { id: 1, name: 'Adhérents', value: 50 },
+  { id: 1, name: 'Adhérents', value: 91 },
   { id: 2, name: 'Bénévoles', value: 15 },
   { id: 3, name: 'Personnes initiées', value: 2500 },
   { id: 4, name: 'Évènements réalisés', value: 350 },
